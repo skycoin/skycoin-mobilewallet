@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:rim="http://www.blackberry.com/ns/widgets"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="skycoin"
+        version="1.0.0">
+  <name>Skycoin</name>
+
+  <platform name="android">
+    <source-file src="src/android/Skycoin.java" target-dir="src/net/skycoin/cordova/skycoin" />
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="Skycoin" >
+        <param name="android-package" value="net.skycoin.cordova.Skycoin"/>
+      </feature>
+    </config-file>
+
+    <framework src="src/android/skycoin.gradle" custom="true" type="gradleReference" />
+
+    <resource-file src="libs/mobile.aar" target="libs/mobile.aar" />
+  </platform>
+</plugin>
+

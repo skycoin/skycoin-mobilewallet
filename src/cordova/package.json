@@ -1,0 +1,12 @@
+{
+  "name": "skycoin",
+  "version": "1.0.0",
+  "description": "Skycoin Plugin",
+  "cordova": {
+    "id": "skycoin",
+    "platforms": [
+      "android"
+    ]
+  },
+  "author": "xano8437"
+}
