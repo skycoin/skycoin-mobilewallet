@@ -5,14 +5,19 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="skycoin"
         version="1.0.0">
+
   <name>Skycoin</name>
+
+  <js-module src="www/Skycoin.js" name="Skycoin">
+    <clobbers target="Skycoin" />
+  </js-module>
 
   <platform name="android">
     <source-file src="src/android/Skycoin.java" target-dir="src/net/skycoin/cordova/skycoin" />
 
     <config-file target="res/xml/config.xml" parent="/*">
       <feature name="Skycoin" >
-        <param name="android-package" value="net.skycoin.cordova.Skycoin"/>
+        <param name="android-package" value="net.skycoin.cordova.skycoin.Skycoin"/>
       </feature>
     </config-file>
 

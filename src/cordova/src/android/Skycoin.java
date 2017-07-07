@@ -1,4 +1,4 @@
-package org.apache.cordova.walletapi;
+package net.skycoin.cordova.skycoin;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -16,10 +16,14 @@ public class Skycoin extends CordovaPlugin {
         //c.setServerAddr("139.129.46.29:8080");
         c.setWalletDirPath(Environment.getExternalStorageDirectory().toString() + "/superwallet");
         Mobile.init(c);
+        System.out.println("Looking");
         if("createwallet".equals(action)){
+            System.out.println("Found");
             try {
+                System.out.println("Trying");
                 String  seeda = Mobile.newSeed();
                 String  res = Mobile.newWallet(args.getString(0), seeda);
+                System.out.println("Success");
                 System.out.println(res);
                 callbackContext.success(res);
                 return true;

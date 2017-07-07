@@ -6,6 +6,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
+declare var Skycoin: any;
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -31,6 +33,13 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      console.log('creatingWalletv2');
+      Skycoin.createWallet(function (success) {
+          console.log('success', success);
+        },
+        function (error) {
+          console.log('error', error);
+        }, 'skycoin');
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
