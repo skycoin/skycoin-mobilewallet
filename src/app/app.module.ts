@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { WalletsPage } from '../pages/wallets/wallets';
 import { ListPage } from '../pages/list/list';
 
+import { File } from '@ionic-native/file';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LocalApiProvider } from '../providers/local-api/local-api';
@@ -27,6 +28,7 @@ import { LocalApiProvider } from '../providers/local-api/local-api';
     ListPage
   ],
   providers: [
+    File,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},

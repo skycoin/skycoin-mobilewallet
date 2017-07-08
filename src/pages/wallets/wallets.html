@@ -12,8 +12,8 @@
 
   <ion-card>
     <ion-list>
-      <ion-item>
-        Wallet
+      <ion-item *ngFor="let wallet of wallets">
+        {{ wallet.name }}
       </ion-item>
     </ion-list>
   </ion-card>
