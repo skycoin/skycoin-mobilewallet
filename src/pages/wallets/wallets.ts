@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { LocalApiProvider } from '../../providers/local-api/local-api';
 
 @Component({
   templateUrl: 'wallets.html'
 })
 export class WalletsPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    private localApi: LocalApiProvider,
+  ) {}
 
+  createWallet() {
+
+    console.log('creatingWallet');
+    this.localApi.createWallet('abcd');
   }
-
 }

@@ -1,18 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Platform } from 'ionic-angular';
 
-/*
-  Generated class for the LocalApiProvider provider.
+declare var Skycoin: any;
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular DI.
-*/
 @Injectable()
 export class LocalApiProvider {
 
-  constructor(public http: Http) {
-    console.log('Hello LocalApiProvider Provider');
+  constructor(
+    private platform: Platform,
+  ) {}
+
+  createWallet(seed: string) {
+    return this.call('createWallet', [seed])
   }
 
+  private call(method, args = []) {
+    console.log('calling: ' + method);
+    this.platform.ready().then(() => {
+      Skycoin[method](function (success) {
+          console.log('success', success);
+        },
+        function (error) {
+          console.log('error', error);
+        }, 'skycoin');
+    });
+  }
 }
