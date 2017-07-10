@@ -10,6 +10,7 @@ import { File } from '@ionic-native/file';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LocalApiProvider } from '../providers/local-api/local-api';
+import { WalletProvider } from '../providers/wallet/wallet';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LocalApiProvider } from '../providers/local-api/local-api';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    LocalApiProvider
+    LocalApiProvider,
+    WalletProvider
   ]
 })
 export class AppModule {}
