@@ -25,6 +25,10 @@ export class WalletsPage implements OnInit {
     this.wallet.all().subscribe(wallets => this.wallets = wallets);
   }
 
+  createAddress(wallet) {
+    this.localApi.createAddress(wallet.name.substr(0, wallet.name.length - 4), 1);
+  }
+
   createWallet() {
     this.localApi.createWallet('abcd');
   }

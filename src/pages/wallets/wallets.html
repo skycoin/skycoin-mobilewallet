@@ -10,11 +10,11 @@
 <ion-content padding>
   <button ion-button secondary (click)="createWallet()">New Wallet</button>
 
-  <ion-card>
+  <ion-card *ngFor="let wallet of wallets">
+    <h2>{{ wallet.name }}</h2>
+    <button ion-button secondary (click)="createAddress(wallet)">New Address</button>
     <ion-list>
-      <ion-item *ngFor="let wallet of wallets">
-        {{ wallet.name }}
-      </ion-item>
+      <ion-item *ngFor="let address of wallet.addresses">{{ address | json }}</ion-item>
     </ion-list>
   </ion-card>
 </ion-content>

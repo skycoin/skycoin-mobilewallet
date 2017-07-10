@@ -11,8 +11,13 @@ export class LocalApiProvider {
     private platform: Platform,
   ) {}
 
+  createAddress(id: string, index: number) {
+    console.log(id);
+    return this.call('createAddress', [id, 1]);
+  }
+
   createWallet(seed: string) {
-    return this.call('createWallet', [seed])
+    return this.call('createWallet', ['skycoin', seed])
   }
 
   private call(method, args = []) {
@@ -22,8 +27,8 @@ export class LocalApiProvider {
           console.log('success', success);
         },
         function (error) {
-          console.log('error', error);
-        }, 'skycoin');
+          console.log(error);
+        }, args);
     });
   }
 }

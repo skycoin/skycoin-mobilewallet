@@ -5,7 +5,7 @@ import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaArgs;
 import org.json.JSONException;
 import android.os.Environment;
-import go.mobile.*;
+import mobile.*;
 
 public class Skycoin extends CordovaPlugin {
     @Override
@@ -35,20 +35,19 @@ public class Skycoin extends CordovaPlugin {
         }else if("createaddress".equals(action)){
             final  String a = args.getString(0);
             final Integer b = args.getInt(1);
-            cordova.getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    String res = null;
-                    try {
-                        res = Mobile.newAddress(a,b);
-                        System.out.println(res);
-                        callbackContext.success(res);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        callbackContext.error("创建钱包地址失败！");
-                    };
-                }
-            });
+
+            String res = null;
+            try {
+                System.out.println(a);
+                System.out.println(b);
+                res = Mobile.newAddress(a,b);
+                System.out.println(res);
+                callbackContext.success(res);
+            } catch (Exception e) {
+                e.printStackTrace();
+                callbackContext.error("创建钱包地址失败！");
+            };
+
             return true;
         }else if("getaddressinwallet".equals(action)){
             String res = null;
@@ -85,8 +84,7 @@ public class Skycoin extends CordovaPlugin {
         }else if("sendskycoin".equals(action)){
             String res = null;
             try {
-//                res = Mobile.sendSky(args.getString(0), args.getString(1),args.getString(2));
-                res = Mobile.sendSky(args.getString(0), args.getString(1),args.getString(2));
+                res = Mobile.send(args.getString(0), args.getString(1),args.getString(2),args.getString(3),null);
                 callbackContext.success(res);
             } catch (Exception e) {
                 e.printStackTrace();
