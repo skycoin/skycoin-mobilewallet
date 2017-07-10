@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Platform } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
 declare var Skycoin: any;
 
@@ -22,12 +24,14 @@ export class LocalApiProvider {
 
   private call(method, args = []) {
     console.log('calling: ' + method);
-    this.platform.ready().then(() => {
-      Skycoin[method](function (success) {
-          console.log('success', success);
+    return Observable.create((observer: Observer<any>) => {
+      Skycoin[method](
+        success => {
+          observer.next(success);
+          observer.complete();
         },
-        function (error) {
-          console.log(error);
+        error => {
+          observer.error(error)
         }, args);
     });
   }

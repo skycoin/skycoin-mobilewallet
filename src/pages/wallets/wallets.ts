@@ -30,6 +30,6 @@ export class WalletsPage implements OnInit {
   }
 
   createWallet() {
-    this.localApi.createWallet('abcd');
+    this.localApi.createWallet('abcd').subscribe(wallet => console.log(wallet));
   }
 }
