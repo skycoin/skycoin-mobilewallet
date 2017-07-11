@@ -37,4 +37,11 @@ export class WalletsPage implements OnInit {
   createWallet() {
     this.wallet.create().subscribe(wallet => this.wallets.unshift(wallet));
   }
+
+  deleteWallet(wallet) {
+    this.wallet.destroy(wallet).subscribe(() => this.wallets = this.wallets.filter(o => {
+      console.log('filtering');
+      return o.seed !== wallet.seed
+    }));
+  }
 }

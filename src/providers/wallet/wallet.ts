@@ -23,6 +23,10 @@ export class WalletProvider {
     });
   }
 
+  destroy(wallet: any) {
+    return this.storage.deleteWallet(wallet);
+  }
+
   all() {
     return this.storage.all('wallets');
   }

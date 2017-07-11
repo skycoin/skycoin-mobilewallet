@@ -27,6 +27,15 @@ export class StorageApiProvider {
     });
   }
 
+  deleteWallet(wallet: any) {
+    console.log('deleting...');
+    return this.get('wallets').flatMap(collection => {
+      let col = collection ? collection.filter(o => o.seed !== wallet.seed) : [];
+      console.log('col', col);
+      return this.set('wallets', col);
+    });
+  }
+
   // updateWallet(wallet: any) {
   //   return this.get('wallets').flatMap(collection => {
   //     const index = collection.findIndex(record => record.seed === wallet.seed);
