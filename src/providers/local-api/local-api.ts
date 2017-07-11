@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/map';
-import { Platform } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 
@@ -9,21 +7,17 @@ declare var Skycoin: any;
 @Injectable()
 export class LocalApiProvider {
 
-  constructor(
-    private platform: Platform,
-  ) {}
-
-  createAddress(id: string, index: number) {
-    console.log(id);
+  createAddress(id: string, index: number): Observable<any> {
     return this.call('createAddress', [id, 1]);
   }
 
-  createWallet(seed: string) {
+  createWallet(seed: string): Observable<any> {
     return this.call('createWallet', ['skycoin', seed])
   }
 
   private call(method, args = []) {
     console.log('calling: ' + method);
+    console.log(args);
     return Observable.create((observer: Observer<any>) => {
       Skycoin[method](
         success => {

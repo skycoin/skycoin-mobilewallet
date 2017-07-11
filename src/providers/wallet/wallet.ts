@@ -14,7 +14,13 @@ export class WalletProvider {
   ) { }
 
   create() {
-    return this.localApi.createWallet('').flatMap(wallet => this.storage.create('wallets', {seed: wallet}));
+    return this.localApi.createWallet('').flatMap(wallet => {
+      return this.storage.create('wallets', {seed: wallet})
+        .map(seed => {
+          console.log(seed);
+          return seed;
+        });
+    });
   }
 
   all() {

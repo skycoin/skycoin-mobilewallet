@@ -14,6 +14,7 @@ import { LocalApiProvider } from '../providers/local-api/local-api';
 import { WalletProvider } from '../providers/wallet/wallet';
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageApiProvider } from '../providers/storage-api/storage-api';
+import { AddressProvider } from '../providers/address/address';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { StorageApiProvider } from '../providers/storage-api/storage-api';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LocalApiProvider,
     WalletProvider,
-    StorageApiProvider
+    StorageApiProvider,
+    AddressProvider
   ]
 })
 export class AppModule {}

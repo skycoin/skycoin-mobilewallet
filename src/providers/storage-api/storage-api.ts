@@ -23,9 +23,17 @@ export class StorageApiProvider {
     return this.get(table).flatMap(collection => {
       let col = collection ? collection : [];
       col.push(object);
-      return this.set(table, col);
+      return this.set(table, col).map(() => object);
     });
   }
+
+  // updateWallet(wallet: any) {
+  //   return this.get('wallets').flatMap(collection => {
+  //     const index = collection.findIndex(record => record.seed === wallet.seed);
+  //     collection[index] = wallet;
+  //     return this.set('wallets', collection);
+  //   });
+  // }
 
   get(key: string) {
     return Observable.fromPromise(this.platform.ready()).flatMap(() => Observable.fromPromise(this.storage.getItem(key)))
