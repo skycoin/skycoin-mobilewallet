@@ -19,7 +19,7 @@ export class AddressProvider {
       }
     });
 
-    return this.local.createAddress(wallet.seed, index)
+    return this.local.createAddress(wallet.id, index)
       .map(address => JSON.parse(address).addresses[0]);
   }
 }

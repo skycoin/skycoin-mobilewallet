@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 import { WalletProvider } from '../../providers/wallet/wallet';
 import { AddressProvider } from '../../providers/address/address';
+import { WalletDetailPage } from '../wallet-detail/wallet-detail';
 
 @Component({
   templateUrl: 'wallets.html'
@@ -13,6 +14,7 @@ export class WalletsPage implements OnInit {
   constructor(
     private address: AddressProvider,
     private platform: Platform,
+    public nav: NavController,
     private wallet: WalletProvider,
   ) {}
 
@@ -21,7 +23,10 @@ export class WalletsPage implements OnInit {
   }
 
   getWallets() {
-    this.wallet.all().subscribe(wallets => this.wallets = wallets);
+    this.wallet.all().subscribe(wallets => {
+      this.wallets = wallets;
+      console.log(wallets);
+    });
   }
 
   createAddress(wallet) {
@@ -43,5 +48,10 @@ export class WalletsPage implements OnInit {
       console.log('filtering');
       return o.seed !== wallet.seed
     }));
+  }
+
+  openWallet(wallet) {
+    console.log('opening');
+    this.nav.push(WalletDetailPage, {wallet: wallet});
   }
 }

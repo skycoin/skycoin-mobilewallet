@@ -15,10 +15,12 @@ import { WalletProvider } from '../providers/wallet/wallet';
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageApiProvider } from '../providers/storage-api/storage-api';
 import { AddressProvider } from '../providers/address/address';
+import { WalletDetailPage } from '../pages/wallet-detail/wallet-detail';
 
 @NgModule({
   declarations: [
     MyApp,
+    WalletDetailPage,
     WalletsPage,
     ListPage
   ],
@@ -30,6 +32,7 @@ import { AddressProvider } from '../providers/address/address';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    WalletDetailPage,
     WalletsPage,
     ListPage
   ],
