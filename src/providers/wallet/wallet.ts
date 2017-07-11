@@ -1,19 +1,23 @@
 import { Injectable } from '@angular/core';
-import { File } from '@ionic-native/file';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
+import { LocalApiProvider } from '../local-api/local-api';
+import { StorageApiProvider } from '../storage-api/storage-api';
 
 @Injectable()
 export class WalletProvider {
 
   constructor(
-    private file: File,
+    private localApi: LocalApiProvider,
+    private storage: StorageApiProvider,
   ) { }
 
+  create() {
+    return this.localApi.createWallet('').flatMap(wallet => this.storage.create('wallets', {seed: wallet}));
+  }
+
   all() {
-    return Observable.fromPromise(this.file.listDir(this.file.externalRootDirectory, 'superwallet'))
-      .map(files => files.filter(file => file.name.substr(file.name.length - 4) === '.wlt'));
+    return this.storage.all('wallets');
   }
 }

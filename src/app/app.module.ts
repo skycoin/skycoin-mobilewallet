@@ -7,11 +7,13 @@ import { WalletsPage } from '../pages/wallets/wallets';
 import { ListPage } from '../pages/list/list';
 
 import { File } from '@ionic-native/file';
+import { NativeStorage } from '@ionic-native/native-storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LocalApiProvider } from '../providers/local-api/local-api';
 import { WalletProvider } from '../providers/wallet/wallet';
 import { IonicStorageModule } from '@ionic/storage';
+import { StorageApiProvider } from '../providers/storage-api/storage-api';
 
 @NgModule({
   declarations: [
@@ -32,11 +34,13 @@ import { IonicStorageModule } from '@ionic/storage';
   ],
   providers: [
     File,
+    NativeStorage,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LocalApiProvider,
-    WalletProvider
+    WalletProvider,
+    StorageApiProvider
   ]
 })
 export class AppModule {}
