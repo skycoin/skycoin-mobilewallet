@@ -28,7 +28,8 @@ export class WalletProvider {
   }
 
   destroy(wallet: any) {
-    return this.storage.deleteWallet(wallet);
+    const filename = 'superwallet/' + wallet.id + '.wlt';
+    return Observable.fromPromise(this.file.removeFile(this.file.externalRootDirectory, filename));
   }
 
   all() {

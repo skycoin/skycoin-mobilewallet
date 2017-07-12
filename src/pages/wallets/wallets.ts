@@ -46,7 +46,7 @@ export class WalletsPage implements OnInit {
   deleteWallet(wallet) {
     this.wallet.destroy(wallet).subscribe(() => this.wallets = this.wallets.filter(o => {
       console.log('filtering');
-      return o.seed !== wallet.seed
+      return o.id !== wallet.id
     }));
   }
 
