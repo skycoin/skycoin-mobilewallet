@@ -18,10 +18,10 @@ export class WalletDetailPage {
 
   createAddress() {
     this.address.create(this.wallet).subscribe(address => {
-      if (this.wallet.addresses && this.wallet.addresses.length) {
-        this.wallet.addresses.push(address);
+      if (this.wallet.entries && this.wallet.entries.length) {
+        this.wallet.entries.push(address);
       } else {
-        this.wallet.addresses = [address];
+        this.wallet.entries = [address];
       }
     });
   }
