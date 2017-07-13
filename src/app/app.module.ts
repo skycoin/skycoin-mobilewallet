@@ -16,13 +16,15 @@ import { IonicStorageModule } from '@ionic/storage';
 import { StorageApiProvider } from '../providers/storage-api/storage-api';
 import { AddressProvider } from '../providers/address/address';
 import { WalletDetailPage } from '../pages/wallet-detail/wallet-detail';
+import { SkyPipe } from '../pipes/sky/sky.pipe';
 
 @NgModule({
   declarations: [
     MyApp,
     WalletDetailPage,
     WalletsPage,
-    ListPage
+    ListPage,
+    SkyPipe
   ],
   imports: [
     BrowserModule,
