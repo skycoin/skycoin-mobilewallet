@@ -7,6 +7,7 @@ import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
+import { WalletModel } from '../../models/wallet.model';
 
 @Injectable()
 export class WalletProvider {
@@ -17,13 +18,11 @@ export class WalletProvider {
     private storage: StorageApiProvider,
   ) { }
 
-  create() {
+  create(): Observable<WalletModel> {
     return this.localApi.createWallet('').flatMap(wallet => {
       return this.storage.create('wallets', {seed: wallet})
-        .map(seed => {
-          console.log(seed);
-          return seed;
-        });
+        .flatMap(seed => this.file.readAsText(this.file.externalRootDirectory, 'superwallet/' + seed.seed + '.wlt'))
+        .map(file => JSON.parse(file));
     });
   }
 
@@ -32,11 +31,10 @@ export class WalletProvider {
     return Observable.fromPromise(this.file.removeFile(this.file.externalRootDirectory, filename));
   }
 
-  all() {
+  all(): Observable<WalletModel[]> {
     return Observable.fromPromise(this.file.listDir(this.file.externalRootDirectory, 'superwallet'))
       .map(paths => paths.filter(path => path.name.substr(path.name.length - 4) === '.wlt'))
       .flatMap(paths => {
-        console.log('paths', paths);
         const files = paths.map(path => this.file.readAsText(this.file.externalRootDirectory, 'superwallet/' + path.name));
         return Observable.forkJoin(files).map(files => files.map(file => JSON.parse(file)));
       });
