@@ -11,9 +11,12 @@ export class WalletDetailPage {
 
   constructor(
     private address: AddressProvider,
-    private navParams: NavParams
-  ) {
+    private navParams: NavParams,
+  ) {}
+
+  ngOnInit() {
     this.wallet = this.navParams.get('wallet');
+    this.addAddressBalances();
   }
 
   createAddress() {
@@ -24,5 +27,15 @@ export class WalletDetailPage {
         this.wallet.entries = [address];
       }
     });
+  }
+
+  private addAddressBalances() {
+    if (this.wallet.entries) {
+      this.wallet.entries.forEach((address, index ) => {
+        this.address.getBalance(address).subscribe(balance => {
+          this.wallet.entries[index].balance = balance.balance;
+        })
+      });
+    }
   }
 }

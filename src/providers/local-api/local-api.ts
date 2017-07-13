@@ -15,6 +15,10 @@ export class LocalApiProvider {
     return this.call('createWallet', ['skycoin', seed])
   }
 
+  getBalance(address: string) {
+    return this.call('getAddressBalance', ['skycoin', address]).map(balance => JSON.parse(balance));
+  }
+
   private call(method, args = []) {
     console.log('calling: ' + method);
     console.log(args);

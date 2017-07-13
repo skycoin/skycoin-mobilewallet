@@ -15,7 +15,7 @@ var Skycoin = {
   },
   getAddressBalance: function(successCallback, errorCallback, args) {
     console.log('getting address balance');
-    exec(successCallback, errorCallback, "Skycoin", "getaddressinwallet", args);
+    exec(successCallback, errorCallback, "Skycoin", "getbalance", args);
   },
   sendSkycoin: function(successCallback, errorCallback, args) {
     console.log('sending skycoin');
