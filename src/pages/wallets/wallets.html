@@ -7,15 +7,24 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <button ion-button secondary (click)="createWallet()">New Wallet</button>
 
-  <ion-card *ngFor="let wallet of wallets" (click)="openWallet(wallet)">
-    <h2>{{ wallet.name }}</h2>
-    <button ion-button secondary (click)="createAddress(wallet)">New Address</button>
-    <button ion-button danger (click)="deleteWallet(wallet)">Delete Wallet</button>
-    <ion-list *ngIf="wallet.entries">
-      <ion-item *ngFor="let address of wallet.entries">{{ address | json }}</ion-item>
-    </ion-list>
-  </ion-card>
+<ion-content>
+  <div class="sky-header">
+
+  </div>
+  <ion-list>
+    <ion-item-divider color="light">Wallets</ion-item-divider>
+    <ion-item-sliding *ngFor="let wallet of wallets">
+      <ion-item (click)="openWallet(wallet)">
+        <h2>{{ wallet.id }}</h2>
+        <p>Balance: not yet added</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="deleteWallet(wallet)">
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+    <ion-item (click)="createWallet()"><i>Click to add a wallet</i></ion-item>
+  </ion-list>
 </ion-content>
