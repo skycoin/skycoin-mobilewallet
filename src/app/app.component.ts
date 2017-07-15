@@ -4,7 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { WalletsPage } from '../pages/wallets/wallets';
-import { ListPage } from '../pages/list/list';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,7 +20,6 @@ export class MyApp {
 
     this.pages = [
       { title: 'Wallets', component: WalletsPage },
-      { title: 'List', component: ListPage }
     ];
 
   }

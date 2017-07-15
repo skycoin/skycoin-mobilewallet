@@ -4,7 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { WalletsPage } from '../pages/wallets/wallets';
-import { ListPage } from '../pages/list/list';
 
 import { File } from '@ionic-native/file';
 import { NativeStorage } from '@ionic-native/native-storage';
@@ -23,7 +22,6 @@ import { SkyPipe } from '../pipes/sky/sky.pipe';
     MyApp,
     WalletDetailPage,
     WalletsPage,
-    ListPage,
     SkyPipe
   ],
   imports: [
@@ -36,7 +34,6 @@ import { SkyPipe } from '../pipes/sky/sky.pipe';
     MyApp,
     WalletDetailPage,
     WalletsPage,
-    ListPage
   ],
   providers: [
     File,
