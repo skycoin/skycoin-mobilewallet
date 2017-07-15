@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>send-skycoin</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list inset [formGroup]="form">
+
+    <ion-item>
+      <ion-label floating>Wallet</ion-label>
+      <ion-select formControlName="wallet_id">
+        <ion-option *ngFor="let wallet of wallets" [value]="wallet.id">{{ wallet.id }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Pay to</ion-label>
+      <ion-input formControlName="address" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Amount</ion-label>
+      <ion-input formControlName="amount" type="number"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <div padding>
+    <button ion-button color="primary" block [disabled]="!form.valid" (click)="send()">Send</button>
+  </div>
+</ion-content>

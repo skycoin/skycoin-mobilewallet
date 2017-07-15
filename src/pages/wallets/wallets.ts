@@ -3,6 +3,7 @@ import { NavController, Platform } from 'ionic-angular';
 import { WalletProvider } from '../../providers/wallet/wallet';
 import { WalletDetailPage } from '../wallet-detail/wallet-detail';
 import { WalletModel } from '../../models/wallet.model';
+import { SendSkycoinPage } from '../send-skycoin/send-skycoin';
 
 @Component({
   templateUrl: 'wallets.html'
@@ -35,5 +36,9 @@ export class WalletsPage implements OnInit {
 
   openWallet(wallet) {
     this.nav.push(WalletDetailPage, {wallet: wallet});
+  }
+
+  openSendPage() {
+    this.nav.push(SendSkycoinPage);
   }
 }

@@ -16,22 +16,27 @@ import { StorageApiProvider } from '../providers/storage-api/storage-api';
 import { AddressProvider } from '../providers/address/address';
 import { WalletDetailPage } from '../pages/wallet-detail/wallet-detail';
 import { SkyPipe } from '../pipes/sky/sky.pipe';
+import { SendSkycoinPage } from '../pages/send-skycoin/send-skycoin';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     MyApp,
+    SendSkycoinPage,
+    SkyPipe,
     WalletDetailPage,
     WalletsPage,
-    SkyPipe
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    SendSkycoinPage,
     WalletDetailPage,
     WalletsPage,
   ],
@@ -44,7 +49,7 @@ import { SkyPipe } from '../pipes/sky/sky.pipe';
     LocalApiProvider,
     WalletProvider,
     StorageApiProvider,
-    AddressProvider
+    AddressProvider,
   ]
 })
 export class AppModule {}
