@@ -71,16 +71,23 @@ public class Skycoin extends CordovaPlugin {
             }
             return true;
         }else if("getbalance".equals(action)){
-            String res = null;
-            try {
-                res = Mobile.getBalance(args.getString(0), args.getString(1));
-                System.out.println(res);
-                callbackContext.success(res);
-            } catch (Exception e) {
-                e.printStackTrace();
-                callbackContext.error("获取钱包余额失败！");
-            }
-            return true;
+            final String coin = args.getString(0);
+            final String address = args.getString(1);
+              cordova.getThreadPool().execute(new Runnable() {
+                  public void run() {
+                      try {
+                          String res = null;
+                          res = Mobile.getBalance(coin, address);
+                          System.out.println(res);
+                          callbackContext.success(res);
+                      } catch (Exception e) {
+                        e.printStackTrace();
+                        callbackContext.error("获取钱包余额失败！");
+                      }
+                  }
+              });
+
+              return true;
         }else if("sendskycoin".equals(action)){
             String res = null;
             try {
