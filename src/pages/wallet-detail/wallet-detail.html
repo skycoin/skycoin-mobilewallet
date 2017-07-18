@@ -12,7 +12,7 @@
     <ion-item-divider color="light">Addresses</ion-item-divider>
     <ion-item *ngFor="let address of (wallet.entries ? wallet.entries: [])">
       <h2>{{ address.address }}</h2>
-      <p>Balance: {{ address.balance | sky }}</p>
+      <p counto [step]="30" [countTo]="address.balance" [countFrom]="0" [duration]="1" (countoChange)="address.counto = $event">Balance: {{address.counto | sky}}</p>
     </ion-item>
     <ion-item (click)="createAddress()"><i>Click to add an address</i></ion-item>
   </ion-list>

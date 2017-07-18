@@ -10,6 +10,7 @@ import { SendSkycoinPage } from '../send-skycoin/send-skycoin';
 })
 export class WalletsPage implements OnInit {
 
+  sum = 0;
   wallets: WalletModel[] = [];
 
   constructor(
@@ -22,16 +23,25 @@ export class WalletsPage implements OnInit {
     this.platform.ready().then(() => this.getWallets());
   }
 
-  getWallets() {
-    this.wallet.all().subscribe((wallets: WalletModel[]) => this.wallets = wallets);
-  }
-
   createWallet() {
     this.wallet.create().subscribe((wallet: WalletModel) => this.wallets.unshift(wallet));
   }
 
   deleteWallet(wallet) {
     this.wallet.destroy(wallet).subscribe(() => this.wallets = this.wallets.filter(o => o.id !== wallet.id));
+  }
+
+  getWallets() {
+    this.wallet.all().subscribe((wallets: WalletModel[]) => {
+      this.wallets = wallets;
+      wallets.forEach((wallet, index) => {
+        this.wallet.balance(wallet).subscribe(result => {
+          console.log(result);
+          this.sum = this.sum + result.balance;
+          this.wallets[index].balance = result.balance;
+        })
+      });
+    });
   }
 
   openWallet(wallet) {
