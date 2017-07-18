@@ -18,6 +18,7 @@ import { WalletDetailPage } from '../pages/wallet-detail/wallet-detail';
 import { SkyPipe } from '../pipes/sky/sky.pipe';
 import { SendSkycoinPage } from '../pages/send-skycoin/send-skycoin';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CounttoDirective } from '../directives/countto/countto';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SkyPipe,
     WalletDetailPage,
     WalletsPage,
+    CounttoDirective,
   ],
   imports: [
     BrowserModule,
