@@ -20,6 +20,10 @@ var Skycoin = {
   sendSkycoin: function(successCallback, errorCallback, args) {
     console.log('sending skycoin');
     exec(successCallback, errorCallback, "Skycoin", "sendskycoin", args);
+  },
+  getWalletbalance: function(successCallback, errorCallback, args) {
+    console.log('get wallet balance');
+    exec(successCallback, errorCallback, "Skycoin", "getblanceofwalletid", args);
   }
 };
 
