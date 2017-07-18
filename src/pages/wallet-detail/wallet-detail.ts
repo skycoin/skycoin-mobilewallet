@@ -7,6 +7,7 @@ import { AddressProvider } from '../../providers/address/address';
   templateUrl: 'wallet-detail.html',
 })
 export class WalletDetailPage {
+  sum: number = 0;
   wallet: any;
 
   constructor(
@@ -34,6 +35,7 @@ export class WalletDetailPage {
       this.wallet.entries.forEach((address, index ) => {
         this.address.getBalance(address).subscribe(balance => {
           this.wallet.entries[index].balance = balance.balance;
+          this.sum = this.sum + balance.balance;
         })
       });
     }

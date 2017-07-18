@@ -6,7 +6,7 @@
 
 <ion-content>
   <div class="sky-header-dark">
-
+    <h1 counto [step]="60" [countTo]="sum" [countFrom]="0" [duration]="1" (countoChange)="counto = $event">{{counto | sky }}</h1>
   </div>
   <ion-list>
     <ion-item-divider color="light">Addresses</ion-item-divider>

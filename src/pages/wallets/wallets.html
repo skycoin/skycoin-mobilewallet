@@ -10,7 +10,7 @@
 
 <ion-content>
   <div class="sky-header-light">
-    <div counto [step]="30" [countTo]="sum" [countFrom]="0" [duration]="4" (countoChange)="counto = $event">{{counto | sky }}</div>
+    <h1 counto [step]="60" [countTo]="sum" [countFrom]="0" [duration]="1" (countoChange)="counto = $event">{{counto | sky }}</h1>
     <ion-fab right bottom>
       <button ion-fab color="danger" (click)="openSendPage()">
         <ion-icon name="ios-send"></ion-icon>
