@@ -25,10 +25,6 @@ export class WalletsPage implements OnInit {
     this.platform.ready().then(() => this.getWallets());
   }
 
-  createWallet() {
-    this.wallet.create().subscribe((wallet: WalletModel) => this.wallets.unshift(wallet));
-  }
-
   deleteWallet(wallet) {
     this.wallet.destroy(wallet).subscribe(() => this.wallets = this.wallets.filter(o => o.id !== wallet.id));
   }
