@@ -24,6 +24,10 @@ var Skycoin = {
   getWalletbalance: function(successCallback, errorCallback, args) {
     console.log('get wallet balance');
     exec(successCallback, errorCallback, "Skycoin", "getblanceofwalletid", args);
+  },
+  generateSeed: function(successCallback, errorCallback, args) {
+    console.log('generate seed');
+    exec(successCallback, errorCallback, "Skycoin", "generateseed", args);
   }
 };
 

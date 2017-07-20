@@ -44,6 +44,18 @@ public class Skycoin extends CordovaPlugin {
             };
 
             return true;
+        } else if ("generateseed".equals(action)) {
+            try {
+                String res = null;
+                res = Mobile.newSeed();
+                System.out.println(res);
+                callbackContext.success(res);
+            } catch (Exception e) {
+                e.printStackTrace();
+                callbackContext.error("generateseed failed!");
+            };
+
+            return true;
         } else if ("getaddressinwallet".equals(action)) {
             String res = null;
             try {
@@ -94,6 +106,7 @@ public class Skycoin extends CordovaPlugin {
             }
             return true;
         } else if ("getblanceofwalletid".equals(action)) {
+            System.out.println("getblanceofwalletid");
             final String coin = args.getString(0);
             final String wallet = args.getString(1);
             cordova.getThreadPool().execute(new Runnable() {
