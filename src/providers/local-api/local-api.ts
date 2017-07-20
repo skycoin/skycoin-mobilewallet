@@ -16,6 +16,10 @@ export class LocalApiProvider {
     return this.call('createWallet', ['skycoin', seed])
   }
 
+  generateSeed(): Observable<any> {
+    return this.call('generateSeed');
+  }
+
   getBalance(address: string) {
     return this.call('getAddressBalance', ['skycoin', address]).map(balance => JSON.parse(balance));
   }

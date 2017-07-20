@@ -44,4 +44,8 @@ export class WalletProvider {
     const filename = 'superwallet/' + wallet.id + '.wlt';
     return Observable.fromPromise(this.file.removeFile(this.file.externalRootDirectory, filename));
   }
+
+  generateSeed() {
+    return this.localApi.generateSeed();
+  }
 }
