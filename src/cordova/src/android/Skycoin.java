@@ -16,14 +16,9 @@ public class Skycoin extends CordovaPlugin {
         c.setServerAddr("121.41.103.148:8080");
         c.setWalletDirPath(Environment.getExternalStorageDirectory().toString() + "/superwallet");
         Mobile.init(c);
-        System.out.println("Looking");
         if ("createwallet".equals(action)) {
-            System.out.println("Found");
             try {
-                System.out.println("Trying");
-                String seeda = Mobile.newSeed();
-                String res = Mobile.newWallet(args.getString(0), seeda);
-                System.out.println("Success");
+                String res = Mobile.newWallet(args.getString(0), args.getString(1));
                 System.out.println(res);
                 callbackContext.success(res);
                 return true;
@@ -46,8 +41,7 @@ public class Skycoin extends CordovaPlugin {
             } catch (Exception e) {
                 e.printStackTrace();
                 callbackContext.error("创建钱包地址失败！");
-            }
-            ;
+            };
 
             return true;
         } else if ("getaddressinwallet".equals(action)) {
@@ -115,6 +109,8 @@ public class Skycoin extends CordovaPlugin {
                     }
                 }
             });
+
+            return true;
         }
         return super.execute(action, args, callbackContext);
     }
