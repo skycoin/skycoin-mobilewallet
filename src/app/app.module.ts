@@ -19,10 +19,12 @@ import { SkyPipe } from '../pipes/sky/sky.pipe';
 import { SendSkycoinPage } from '../pages/send-skycoin/send-skycoin';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CounttoDirective } from '../directives/countto/countto';
+import { NewWalletPage } from '../pages/new-wallet/new-wallet';
 
 @NgModule({
   declarations: [
     MyApp,
+    NewWalletPage,
     SendSkycoinPage,
     SkyPipe,
     WalletDetailPage,
@@ -38,6 +40,7 @@ import { CounttoDirective } from '../directives/countto/countto';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    NewWalletPage,
     SendSkycoinPage,
     WalletDetailPage,
     WalletsPage,

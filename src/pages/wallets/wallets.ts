@@ -4,13 +4,15 @@ import { WalletProvider } from '../../providers/wallet/wallet';
 import { WalletDetailPage } from '../wallet-detail/wallet-detail';
 import { WalletModel } from '../../models/wallet.model';
 import { SendSkycoinPage } from '../send-skycoin/send-skycoin';
+import { NewWalletPage } from '../new-wallet/new-wallet';
 
 @Component({
   templateUrl: 'wallets.html'
 })
 export class WalletsPage implements OnInit {
 
-  sum = 0;
+  showCreateForm: boolean = false;
+  sum: number = 0;
   wallets: WalletModel[] = [];
 
   constructor(
@@ -46,6 +48,10 @@ export class WalletsPage implements OnInit {
 
   openWallet(wallet) {
     this.nav.push(WalletDetailPage, {wallet: wallet});
+  }
+
+  openNewWalletPage() {
+    this.nav.push(NewWalletPage);
   }
 
   openSendPage() {
