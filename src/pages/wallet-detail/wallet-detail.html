@@ -6,13 +6,13 @@
 
 <ion-content>
   <div class="sky-header-dark">
-    <h1 counto [step]="60" [countTo]="sum" [countFrom]="0" [duration]="1" (countoChange)="counto = $event">{{counto | sky }}</h1>
+    <h1> <balance [amount]="wallet.balance"></balance></h1>
   </div>
   <ion-list>
     <ion-item-divider color="light">Addresses</ion-item-divider>
-    <ion-item *ngFor="let address of (wallet.entries ? wallet.entries: [])">
+   <ion-item *ngFor="let address of (wallet.entries||[])">
       <h2>{{ address.address }}</h2>
-      <p counto [step]="30" [countTo]="address.balance" [countFrom]="0" [duration]="1" (countoChange)="address.counto = $event">Balance: {{address.counto | sky}}</p>
+      Balance: <balance [amount]="address.balance"></balance>
     </ion-item>
     <ion-item (click)="createAddress()"><i>Click to add an address</i></ion-item>
   </ion-list>

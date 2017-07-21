@@ -6,6 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SkyPipe implements PipeTransform {
 
   transform(value: number) {
-    return value ? (value / 1000000 + ' SKY') : 0;
+    if (value < 0) {
+      return 'loading .. '
+    } else {
+      return (value ? (value / 1000000) : 0) + ' SKY';
+    }
   }
 }
