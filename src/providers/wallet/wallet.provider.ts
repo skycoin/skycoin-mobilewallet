@@ -31,6 +31,10 @@ export class WalletProvider {
     return this.wallets.asObservable();
   }
 
+  find(wallet: WalletModel) {
+    return this.wallets.asObservable().map(wallets => wallets.find(w => w.id === wallet.id));
+  }
+
   remove(wallet: WalletModel) {
     const filename = 'superwallet/' + wallet.id + '.wlt';
     return Observable.fromPromise(this.file.removeFile(this.file.externalRootDirectory, filename))
@@ -45,13 +49,6 @@ export class WalletProvider {
 
   sum(): Observable<number> {
     return this.all().map(wallets => wallets.map(wallet => wallet.balance >= 0 ? wallet.balance : 0).reduce((a,b) => a + b, 0));
-  }
-
-  loadData(): void {
-    this.indexWallets().subscribe(wallets => {
-      this.wallets.next(wallets);
-      this.refreshBalances();
-    });
   }
 
   balance(wallet: WalletModel): Observable<any> {
@@ -99,5 +96,12 @@ export class WalletProvider {
           return wallet;
         }));
       });
+  }
+
+  private loadData(): void {
+    this.indexWallets().subscribe(wallets => {
+      this.wallets.next(wallets);
+      this.refreshBalances();
+    });
   }
 }

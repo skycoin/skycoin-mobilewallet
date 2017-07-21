@@ -23,7 +23,6 @@ export class WalletDetailPage {
   ngOnInit() {
     this.walletSubscription = this.walletProvider.find(this.navParams.get('wallet')).subscribe(wallet => {
       this.wallet = wallet;
-      console.log(wallet.entries);
       this.addAddressBalances();
     });
   }
@@ -42,7 +41,6 @@ export class WalletDetailPage {
     if (this.wallet.entries) {
       this.wallet.entries.forEach((address, index ) => {
         this.address.getBalance(address).subscribe(balance => {
-          console.log(balance);
           this.wallet.entries[index].balance = balance.balance;
           this.sum = this.sum + balance.balance;
         })
