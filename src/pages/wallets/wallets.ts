@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { WalletDetailPage } from '../wallet-detail/wallet-detail';
@@ -35,5 +35,10 @@ export class WalletsPage {
 
   openSendPage() {
     this.nav.push(SendSkycoinPage);
+  }
+
+  refreshData() {
+    console.log('refreshing');
+    this.wallet.refresh();
   }
 }

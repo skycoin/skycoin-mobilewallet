@@ -17,7 +17,7 @@ import { Platform } from 'ionic-angular';
 @Injectable()
 export class WalletProvider {
 
-  public wallets: Subject<WalletModel[]> = new BehaviorSubject<WalletModel[]>([]);
+  wallets: Subject<WalletModel[]> = new BehaviorSubject<WalletModel[]>([]);
 
   constructor(
     private file: File,
@@ -75,6 +75,10 @@ export class WalletProvider {
     return this.localApi.generateSeed();
   }
 
+  refresh() {
+    this.loadData();
+  }
+
   private refreshBalances() {
     this.wallets.first().subscribe(wallets => {
       Observable.forkJoin(wallets.map(wallet => this.balance(wallet).map(balance => {
@@ -99,7 +103,7 @@ export class WalletProvider {
   }
 
   private loadData(): void {
-    this.indexWallets().subscribe(wallets => {
+    this.indexWallets().first().subscribe(wallets => {
       this.wallets.next(wallets);
       this.refreshBalances();
     });
