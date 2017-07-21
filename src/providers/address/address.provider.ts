@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LocalApiProvider } from '../local-api/local-api';
+import { LocalApiProvider } from '../local-api/local-api.provider';
 import 'rxjs/add/operator/map';
 import { AddressModel } from '../../models/address.model';
 

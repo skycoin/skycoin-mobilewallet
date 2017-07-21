@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
-import { WalletProvider } from '../../providers/wallet/wallet';
+import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { WalletDetailPage } from '../wallet-detail/wallet-detail';
 import { WalletModel } from '../../models/wallet.model';
 import { SendSkycoinPage } from '../send-skycoin/send-skycoin';

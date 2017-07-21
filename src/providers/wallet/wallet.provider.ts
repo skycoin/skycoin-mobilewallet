@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { File } from '@ionic-native/file';
-import { LocalApiProvider } from '../local-api/local-api';
-import { StorageApiProvider } from '../storage-api/storage-api';
+import { LocalApiProvider } from '../local-api/local-api.provider';
+import { StorageApiProvider } from '../storage-api/storage-api.provider';
 import { Observable } from 'rxjs/Observable';
 import { WalletModel } from '../../models/wallet.model';
 import 'rxjs/add/observable/forkJoin';

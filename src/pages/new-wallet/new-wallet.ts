@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WalletProvider } from '../../providers/wallet/wallet';
+import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from 'ionic-angular';
 

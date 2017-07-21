@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
-import { AddressProvider } from '../../providers/address/address';
+import { AddressProvider } from '../../providers/address/address.provider';
 
 @Component({
   selector: 'page-wallet-detail',

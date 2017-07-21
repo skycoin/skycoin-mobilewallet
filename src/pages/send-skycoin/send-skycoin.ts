@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { WalletProvider } from '../../providers/wallet/wallet';
+import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { WalletModel } from '../../models/wallet.model';
-import { LocalApiProvider } from '../../providers/local-api/local-api';
+import { LocalApiProvider } from '../../providers/local-api/local-api.provider';
 
 @Component({
   selector: 'page-send-skycoin',
