@@ -21,12 +21,12 @@ public class Skycoin extends CordovaPlugin {
                 String res = Mobile.newWallet(args.getString(0), args.getString(1));
                 System.out.println(res);
                 callbackContext.success(res);
-                return true;
             } catch (Exception e) {
                 e.printStackTrace();
                 callbackContext.error("创建钱包失败！");
-                return true;
-            }
+            };
+
+            return true;
         } else if ("createaddress".equals(action)) {
             final String a = args.getString(0);
             final Integer b = args.getInt(1);
