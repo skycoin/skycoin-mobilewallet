@@ -20,6 +20,7 @@ import { SendSkycoinPage } from '../pages/send-skycoin/send-skycoin';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CounttoDirective } from '../directives/countto/countto';
 import { NewWalletPage } from '../pages/new-wallet/new-wallet';
+import { BalanceComponent } from '../components/balance/balance';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { NewWalletPage } from '../pages/new-wallet/new-wallet';
     WalletDetailPage,
     WalletsPage,
     CounttoDirective,
+    BalanceComponent,
   ],
   imports: [
     BrowserModule,
