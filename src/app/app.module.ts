@@ -21,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CounttoDirective } from '../directives/countto/countto';
 import { NewWalletPage } from '../pages/new-wallet/new-wallet';
 import { BalanceComponent } from '../components/balance/balance';
+import { WalletOptionPipe } from '../pipes/wallet-option/wallet-option';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { BalanceComponent } from '../components/balance/balance';
     WalletsPage,
     CounttoDirective,
     BalanceComponent,
+    WalletOptionPipe,
   ],
   imports: [
     BrowserModule,

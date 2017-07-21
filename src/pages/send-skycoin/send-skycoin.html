@@ -1,34 +1,37 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>send-skycoin</ion-title>
+    <ion-title>Send coins</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  <ion-list inset [formGroup]="form">
+<ion-content class="split-background">
+  <div class="material-paper">
+    <ion-list [formGroup]="form">
+      <ion-item>
+        <ion-label floating>Wallet</ion-label>
+        <ion-select formControlName="wallet_id">
+          <ng-container *ngFor="let wallet of wallet.all() | async">
+            <ion-option *ngIf="wallet.balance" [value]="wallet.id">{{ wallet | walletOption }}</ion-option>
+          </ng-container>
+        </ion-select>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Wallet</ion-label>
-      <ion-select formControlName="wallet_id">
-        <ion-option *ngFor="let wallet of wallets" [value]="wallet.id">{{ wallet.id }}</ion-option>
-      </ion-select>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Pay to</ion-label>
+        <ion-input formControlName="address" type="text"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Pay to</ion-label>
-      <ion-input formControlName="address" type="text"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Amount</ion-label>
+        <ion-input formControlName="amount" type="number"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Amount</ion-label>
-      <ion-input formControlName="amount" type="number"></ion-input>
-    </ion-item>
-
-  </ion-list>
-  <div padding>
-    <button ion-button color="primary" block [disabled]="!form.valid" (click)="send()">Send</button>
+    </ion-list>
+    <div class="buttons">
+      <button ion-button round class="inline-button" [disabled]="!form.valid" (click)="send()">Send</button>
+    </div>
   </div>
 </ion-content>

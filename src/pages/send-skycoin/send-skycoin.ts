@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { WalletModel } from '../../models/wallet.model';
 import { LocalApiProvider } from '../../providers/local-api/local-api.provider';
 
 @Component({
@@ -11,17 +10,15 @@ import { LocalApiProvider } from '../../providers/local-api/local-api.provider';
 export class SendSkycoinPage implements OnInit {
 
   form: FormGroup;
-  wallets: WalletModel[] = [];
 
   constructor(
     public formBuilder: FormBuilder,
     public localApi: LocalApiProvider,
-    public walletProvider: WalletProvider
+    public wallet: WalletProvider
   ) {}
 
   ngOnInit() {
     this.initForm();
-    this.walletProvider.all().subscribe(wallets => this.wallets = wallets);
   }
 
   send() {
