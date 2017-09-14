@@ -8,28 +8,16 @@ declare var Skycoin: any;
 @Injectable()
 export class LocalApiProvider {
 
-  createAddress(id: string, index: number): Observable<any> {
-    return this.call('createAddress', [id, 1]);
+  getAddresses(seed: string, amount: number): Observable<any> {
+    return this.call('getAddresses', [seed, amount]).map(response => JSON.parse(response))
   }
 
-  createWallet(seed: string): Observable<any> {
-    return this.call('createWallet', ['skycoin', seed])
+  getBalances(addresses: string): Observable<any> {
+    return this.call('getBalances', [addresses]).map(response => JSON.parse(response))
   }
 
-  generateSeed(): Observable<any> {
-    return this.call('generateSeed');
-  }
-
-  getBalance(address: string) {
-    return this.call('getAddressBalance', ['skycoin', address]).map(balance => JSON.parse(balance));
-  }
-
-  getBalanceOfWallet(walletId: string) {
-    return this.call('getWalletbalance', ['skycoin', walletId]).map(balance => JSON.parse(balance));
-  }
-
-  sendSkycoin(id: string, address: string, amount: number) {
-    return this.call('sendSkycoin', ['skycoin', id, address, amount * 1000000]);
+  postTransaction(seed: string, addresses: number, destination: string, amount: number): Observable<any> {
+    return this.call('postTransaction', [seed, addresses, destination, amount])
   }
 
   private call(method, args = []) {
