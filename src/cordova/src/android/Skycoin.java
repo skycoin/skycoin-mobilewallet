@@ -12,113 +12,49 @@ import mobile.*;
 public class Skycoin extends CordovaPlugin {
     @Override
     public boolean execute(String action, CordovaArgs args, final CallbackContext callbackContext) throws JSONException {
-        Config c = Mobile.newConfig();
-        c.setServerAddr("121.41.103.148:8080");
-        c.setWalletDirPath(Environment.getExternalStorageDirectory().toString() + "/superwallet");
-        Mobile.init(c);
-        if ("createwallet".equals(action)) {
+        if ("GetAddresses".equals(action)) {
             try {
-                String res = Mobile.newWallet(args.getString(0), args.getString(1));
+                String res = Mobile.getAddresses(args.getString(0), args.getInt(1));
                 System.out.println(res);
                 callbackContext.success(res);
             } catch (Exception e) {
                 e.printStackTrace();
-                callbackContext.error("创建钱包失败！");
+                callbackContext.error("GetAddresses failed");
             };
 
             return true;
-        } else if ("createaddress".equals(action)) {
-            final String a = args.getString(0);
-            final Integer b = args.getInt(1);
-
-            String res = null;
-            try {
-                System.out.println(a);
-                System.out.println(b);
-                res = Mobile.newAddress(a, b);
-                System.out.println(res);
-                callbackContext.success(res);
-            } catch (Exception e) {
-                e.printStackTrace();
-                callbackContext.error("创建钱包地址失败！");
-            };
-
-            return true;
-        } else if ("generateseed".equals(action)) {
-            try {
-                String res = null;
-                res = Mobile.newSeed();
-                System.out.println(res);
-                callbackContext.success(res);
-            } catch (Exception e) {
-                e.printStackTrace();
-                callbackContext.error("generateseed failed!");
-            };
-
-            return true;
-        } else if ("getaddressinwallet".equals(action)) {
-            String res = null;
-            try {
-                res = Mobile.getAddresses(args.getString(0));
-                System.out.println(res);
-                callbackContext.success(res);
-            } catch (Exception e) {
-                e.printStackTrace();
-                callbackContext.error("获取钱包地址失败！");
-            }
-            return true;
-        } else if ("getpubkeyandseckeypairofaddress".equals(action)) {
-            String res = null;
-            try {
-                res = Mobile.getKeyPairOfAddr(args.getString(0), args.getString(1));
-                callbackContext.success(res);
-            } catch (Exception e) {
-                e.printStackTrace();
-                callbackContext.error("获取钱包地址公钥与私钥失败！");
-            }
-            return true;
-        } else if ("getbalance".equals(action)) {
-            final String coin = args.getString(0);
-            final String address = args.getString(1);
+        } else if ("GetBalances".equals(action)) {
+            final String addresses = args.getString(0);
             cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
                     try {
                         String res = null;
-                        res = Mobile.getBalance(coin, address);
+                        res = Mobile.getBalances(addresses);
                         System.out.println(res);
                         callbackContext.success(res);
                     } catch (Exception e) {
                         e.printStackTrace();
-                        callbackContext.error("getbalance failed");
+                        callbackContext.error("GetBalances failed");
                     }
                 }
             });
 
             return true;
-        } else if ("sendskycoin".equals(action)) {
-            String res = null;
-            try {
-                res = Mobile.send(args.getString(0), args.getString(1), args.getString(2), args.getString(3), null);
-                callbackContext.success(res);
-            } catch (Exception e) {
-                e.printStackTrace();
-                callbackContext.error("skycoin转账失败！");
-            }
-            return true;
-        } else if ("getblanceofwalletid".equals(action)) {
-            System.out.println("getblanceofwalletid");
-            final String coin = args.getString(0);
-            final String wallet = args.getString(1);
+        } else if ("PostTransaction".equals(action)) {
+            final String seed = args.getString(0);
+            final Integer addresses = args.getInt(1);
+            final String destinationAddress = args.getString(2);
+            final Integer amount = args.getInt(3);
             cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
                     try {
                         String res = null;
-                        res = Mobile.getWalletBalance(coin, wallet);
+                        res = Mobile.postTransaction(seed, addresses, destinationAddress, amount);
                         System.out.println(res);
                         callbackContext.success(res);
                     } catch (Exception e) {
                         e.printStackTrace();
-                        callbackContext.error("getbalanceofwalletid failed");
+                        callbackContext.error("PostTransaction failed");
                     }
                 }
             });
