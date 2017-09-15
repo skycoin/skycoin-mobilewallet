@@ -39,12 +39,12 @@
         "cordova-plugin-splashscreen": "^4.0.3",
         "cordova-plugin-statusbar": "^2.2.2",
         "cordova-plugin-whitelist": "^1.3.1",
+        "cordova-skycoin-liteclient": "^1.0.4",
         "cordova-sqlite-storage": "^2.0.4",
         "ionic-angular": "3.5.0",
         "ionic-plugin-keyboard": "^2.2.1",
         "ionicons": "3.0.0",
         "rxjs": "5.4.0",
-        "skycoin": "src/cordova",
         "sw-toolbox": "3.6.0",
         "zone.js": "0.8.12"
     },
@@ -63,10 +63,10 @@
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
             "cordova-plugin-file": {},
-            "skycoin": {},
             "cordova-sqlite-storage": {},
             "cordova-plugin-nativestorage": {},
-            "cordova-plugin-secure-storage": {}
+            "cordova-plugin-secure-storage": {},
+            "cordova-skycoin-liteclient": {}
         },
         "platforms": [
             "android"
