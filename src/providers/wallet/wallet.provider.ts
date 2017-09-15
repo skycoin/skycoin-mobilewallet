@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { File } from '@ionic-native/file';
 import { LocalApiProvider } from '../local-api/local-api.provider';
 import { Observable } from 'rxjs/Observable';
 import { WalletModel } from '../../models/wallet.model';
@@ -13,6 +12,8 @@ import "rxjs/add/operator/retry";
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Platform } from 'ionic-angular';
+import { SecureStorageProvider } from '../secure-storage/secure-storage';
+import { AddressModel } from '../../models/address.model';
 
 @Injectable()
 export class WalletProvider {
@@ -20,9 +21,9 @@ export class WalletProvider {
   wallets: Subject<WalletModel[]> = new BehaviorSubject<WalletModel[]>([]);
 
   constructor(
-    private file: File,
     private localApi: LocalApiProvider,
     private platform: Platform,
+    private secureStorage: SecureStorageProvider,
   ) {
     this.platform.ready().then(() => this.loadData());
   }
@@ -31,81 +32,103 @@ export class WalletProvider {
     return this.wallets.asObservable();
   }
 
+  createAddress(wallet: WalletModel) {
+    const count = wallet.entries ? wallet.entries.length : 0;
+    this.localApi.getAddresses(wallet.seed, count + 1)
+      .subscribe(addresses => {
+        wallet.entries = addresses;
+        this.updateWallet(wallet);
+      });
+  }
+
   find(wallet: WalletModel) {
-    return this.wallets.asObservable().map(wallets => wallets.find(w => w.id === wallet.id));
+    return this.wallets.asObservable().map(wallets => wallets.find(w => w.seed === wallet.seed));
   }
 
   remove(wallet: WalletModel) {
-    const filename = 'superwallet/' + wallet.id + '.wlt';
-    return Observable.fromPromise(this.file.removeFile(this.file.externalRootDirectory, filename))
-      .do(() => {
-        this.wallets.first().subscribe(wallets => {
-          const index = wallets.findIndex(w => w.id === wallet.id);
-          if (index > -1) wallets.splice(index, 1);
-          this.wallets.next(wallets);
-        });
-      });
+    this.wallets.first().subscribe(wallets => {
+      wallets = wallets.filter(w => w.seed !== wallet.seed);
+      this.updateWallets(wallets);
+    });
   }
 
   sum(): Observable<number> {
     return this.all().map(wallets => wallets.map(wallet => wallet.balance >= 0 ? wallet.balance : 0).reduce((a,b) => a + b, 0));
   }
 
-  balance(wallet: WalletModel): Observable<any> {
-    return this.localApi.getBalanceOfWallet(wallet.id).retry(3);
-  }
+  create(label: string, seed: string): Observable<AddressModel[]> {
+    // TODO: fix this
+    return this.localApi.getBalances(seed, 1)
+      .do(data => {
+        let wallet: WalletModel = {
+          label: label,
+          seed: seed,
+          balance: null,
+          entries: data,
+        };
 
-  create(seed: string): Observable<WalletModel> {
-    const obs = this.localApi.createWallet(seed)
-        .flatMap(seed => this.file.readAsText(this.file.externalRootDirectory, 'superwallet/' + seed + '.wlt'))
-        .map(file => {
-          console.log(file);
-          return <WalletModel>JSON.parse(file);
-        });
-
-    return obs.do(wallet => this.wallets.first().subscribe(wallets => {
-      console.log('doing');
-      wallets.push(wallet);
-      this.wallets.next(wallets);
-      this.refreshBalances();
-    }));
+        this.addWallet(wallet);
+      });
   }
 
   generateSeed() {
-    return this.localApi.generateSeed();
+    return this.localApi.getSeed();
   }
 
   refresh() {
     this.loadData();
   }
 
-  private refreshBalances() {
+  refreshBalances() {
     this.wallets.first().subscribe(wallets => {
-      Observable.forkJoin(wallets.map(wallet => this.balance(wallet).map(balance => {
-        wallet.balance = balance.balance;
-        return wallet;
-      })))
-        .subscribe(newWallets => this.wallets.next(newWallets));
+      Observable.forkJoin(wallets.map(wallet => this.addBalance(wallet)))
+        .subscribe(wallets => {
+          console.log(wallets);
+          this.updateWallets(wallets)
+        })
     });
   }
 
-  private indexWallets() {
-    return Observable.fromPromise(this.file.listDir(this.file.externalRootDirectory, 'superwallet'))
-      .map(paths => paths.filter(path => path.name.substr(path.name.length - 4) === '.wlt'))
-      .flatMap(paths => {
-        const files = paths.map(path => this.file.readAsText(this.file.externalRootDirectory, 'superwallet/' + path.name));
-        return Observable.forkJoin(files).map(files => files.map(file => {
-          let wallet = JSON.parse(file);
-          wallet.balance = -1;
-          return wallet;
-        }));
-      });
+  private addBalance(wallet: WalletModel): Observable<WalletModel> {
+    return this.localApi.getBalances(wallet.seed, wallet.entries.length).map(addressesWithBalance => {
+      wallet.entries = addressesWithBalance;
+      wallet.balance = addressesWithBalance.reduce((balance, address) => balance + address.balance, 0);
+      return wallet;
+    })
+  }
+
+  private addWallet(wallet: WalletModel) {
+    this.wallets.first().subscribe(wallets => {
+      wallets.push(wallet);
+      this.updateWallets(wallets);
+      this.refreshBalances();
+    });
+  }
+
+  private updateWallet(wallet: WalletModel) {
+    this.wallets.first().subscribe(wallets => {
+      const index = wallets.findIndex(w => w.seed === wallet.seed);
+      wallets[index] = wallet;
+      this.updateWallets(wallets);
+      this.refreshBalances();
+    });
+  }
+
+  private updateWallets(wallets: WalletModel[]) {
+    this.wallets.next(wallets);
+    this.secureStorage.set('wallets', wallets);
+  }
+
+  private indexWallets(): Observable<WalletModel[]> {
+    return this.secureStorage.get('wallets');
   }
 
   private loadData(): void {
-    this.indexWallets().first().subscribe(wallets => {
-      this.wallets.next(wallets);
-      this.refreshBalances();
-    });
+    this.indexWallets()
+      .first()
+      .subscribe(wallets => {
+          this.wallets.next(wallets);
+          this.refreshBalances();
+        }, error => console.log(error));
   }
 }

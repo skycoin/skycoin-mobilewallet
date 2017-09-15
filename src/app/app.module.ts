@@ -13,7 +13,6 @@ import { LocalApiProvider } from '../providers/local-api/local-api.provider';
 import { WalletProvider } from '../providers/wallet/wallet.provider';
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageApiProvider } from '../providers/storage-api/storage-api.provider';
-import { AddressProvider } from '../providers/address/address.provider';
 import { WalletDetailPage } from '../pages/wallet-detail/wallet-detail';
 import { SkyPipe } from '../pipes/sky/sky.pipe';
 import { SendSkycoinPage } from '../pages/send-skycoin/send-skycoin';
@@ -22,6 +21,9 @@ import { CounttoDirective } from '../directives/countto/countto';
 import { NewWalletPage } from '../pages/new-wallet/new-wallet';
 import { BalanceComponent } from '../components/balance/balance';
 import { WalletOptionPipe } from '../pipes/wallet-option/wallet-option';
+import { SecureStorageProvider } from '../providers/secure-storage/secure-storage';
+import { SecureStorage } from '@ionic-native/secure-storage';
+import { Clipboard } from '@ionic-native/clipboard';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { WalletOptionPipe } from '../pipes/wallet-option/wallet-option';
     LocalApiProvider,
     WalletProvider,
     StorageApiProvider,
-    AddressProvider,
+    SecureStorage,
+    SecureStorageProvider,
+    Clipboard,
   ]
 })
 export class AppModule {}

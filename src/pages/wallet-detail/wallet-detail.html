@@ -10,7 +10,7 @@
   </div>
   <ion-list>
     <ion-item-divider color="light">Addresses</ion-item-divider>
-   <ion-item *ngFor="let address of (wallet.entries||[])">
+   <ion-item *ngFor="let address of (wallet.entries||[])" (click)="copy(address)">
       <h2>{{ address.address }}</h2>
       Balance: <balance [amount]="address.balance"></balance>
     </ion-item>

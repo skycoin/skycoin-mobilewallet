@@ -2,34 +2,39 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import { AddressModel } from '../../models/address.model';
 
 declare var Skycoin: any;
 
 @Injectable()
 export class LocalApiProvider {
 
-  createAddress(id: string, index: number): Observable<any> {
-    return this.call('createAddress', [id, 1]);
+  getAddresses(seed: string, amount: number): Observable<AddressModel[]> {
+    return this.call('getAddresses', [seed, amount])
+      .map(response => JSON.parse(response).map(address => ({
+        address: address.Address,
+        balance: 0,
+      })))
   }
 
-  createWallet(seed: string): Observable<any> {
-    return this.call('createWallet', ['skycoin', seed])
+  getBalances(seed: string, addresses: number): Observable<any> {
+    return this.call('getBalances', [seed, addresses])
+      .map(response => {
+        console.log(JSON.parse(response));
+        return JSON.parse(response).map(address => ({
+          address: address.Address,
+          balance: address.Coins,
+        }))
+      })
   }
 
-  generateSeed(): Observable<any> {
-    return this.call('generateSeed');
+  getSeed(): Observable<any> {
+    return this.call('getSeed', []);
   }
 
-  getBalance(address: string) {
-    return this.call('getAddressBalance', ['skycoin', address]).map(balance => JSON.parse(balance));
-  }
-
-  getBalanceOfWallet(walletId: string) {
-    return this.call('getWalletbalance', ['skycoin', walletId]).map(balance => JSON.parse(balance));
-  }
-
-  sendSkycoin(id: string, address: string, amount: number) {
-    return this.call('sendSkycoin', ['skycoin', id, address, amount * 1000000]);
+  postTransaction(seed: string, addresses: number, destination: string, amount: number): Observable<any> {
+    return this.call('postTransaction', [seed, addresses, destination, amount])
   }
 
   private call(method, args = []) {

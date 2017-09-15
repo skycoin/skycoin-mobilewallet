@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavParams } from 'ionic-angular';
-import { AddressProvider } from '../../providers/address/address.provider';
+import { NavParams, Platform } from 'ionic-angular';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { Subscription } from 'rxjs/Subscription';
+import { AddressModel } from '../../models/address.model';
+import { Clipboard } from '@ionic-native/clipboard';
 
 @Component({
   selector: 'page-wallet-detail',
@@ -15,7 +16,8 @@ export class WalletDetailPage {
   private walletSubscription: Subscription;
 
   constructor(
-    private address: AddressProvider,
+    private clipboard: Clipboard,
+    private platform: Platform,
     private walletProvider: WalletProvider,
     private navParams: NavParams,
   ) {}
@@ -23,28 +25,14 @@ export class WalletDetailPage {
   ngOnInit() {
     this.walletSubscription = this.walletProvider.find(this.navParams.get('wallet')).subscribe(wallet => {
       this.wallet = wallet;
-      this.addAddressBalances();
     });
+  }
+
+  copy(address: AddressModel) {
+    this.platform.ready().then(() => this.clipboard.copy(address.address));
   }
 
   createAddress() {
-    this.address.create(this.wallet).subscribe(address => {
-      if (this.wallet.entries && this.wallet.entries.length) {
-        this.wallet.entries.push(address);
-      } else {
-        this.wallet.entries = [address];
-      }
-    });
-  }
-
-  private addAddressBalances() {
-    if (this.wallet.entries) {
-      this.wallet.entries.forEach((address, index ) => {
-        this.address.getBalance(address).subscribe(balance => {
-          this.wallet.entries[index].balance = balance.balance;
-          this.sum = this.sum + balance.balance;
-        })
-      });
-    }
+    this.walletProvider.createAddress(this.wallet);
   }
 }
