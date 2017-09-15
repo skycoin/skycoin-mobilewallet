@@ -31,7 +31,9 @@
 
     </ion-list>
     <div class="buttons">
-      <button ion-button round class="inline-button" [disabled]="!form.valid" (click)="send()">Send</button>
+      <button ion-button round class="inline-button" [disabled]="!form.valid" (click)="send()">
+        Send <ion-spinner item-start name="bubbles" *ngIf="loading"></ion-spinner>
+      </button>
     </div>
   </div>
 </ion-content>

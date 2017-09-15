@@ -56,14 +56,6 @@ export class WalletProvider {
     return this.all().map(wallets => wallets.map(wallet => wallet.balance >= 0 ? wallet.balance : 0).reduce((a,b) => a + b, 0));
   }
 
-  private addBalance(wallet: WalletModel): Observable<WalletModel> {
-    return this.localApi.getBalances(wallet.seed, wallet.entries.length).map(addressesWithBalance => {
-        wallet.entries = addressesWithBalance;
-        wallet.balance = addressesWithBalance.reduce((balance, address) => balance + address.balance, 0);
-        return wallet;
-      })
-  }
-
   create(label: string, seed: string): Observable<AddressModel[]> {
     // TODO: fix this
     return this.localApi.getBalances(seed, 1)
@@ -87,6 +79,24 @@ export class WalletProvider {
     this.loadData();
   }
 
+  refreshBalances() {
+    this.wallets.first().subscribe(wallets => {
+      Observable.forkJoin(wallets.map(wallet => this.addBalance(wallet)))
+        .subscribe(wallets => {
+          console.log(wallets);
+          this.updateWallets(wallets)
+        })
+    });
+  }
+
+  private addBalance(wallet: WalletModel): Observable<WalletModel> {
+    return this.localApi.getBalances(wallet.seed, wallet.entries.length).map(addressesWithBalance => {
+      wallet.entries = addressesWithBalance;
+      wallet.balance = addressesWithBalance.reduce((balance, address) => balance + address.balance, 0);
+      return wallet;
+    })
+  }
+
   private addWallet(wallet: WalletModel) {
     this.wallets.first().subscribe(wallets => {
       wallets.push(wallet);
@@ -107,16 +117,6 @@ export class WalletProvider {
   private updateWallets(wallets: WalletModel[]) {
     this.wallets.next(wallets);
     this.secureStorage.set('wallets', wallets);
-  }
-
-  private refreshBalances() {
-    this.wallets.first().subscribe(wallets => {
-      Observable.forkJoin(wallets.map(wallet => this.addBalance(wallet)))
-        .subscribe(wallets => {
-          console.log(wallets);
-          this.updateWallets(wallets)
-        })
-    });
   }
 
   private indexWallets(): Observable<WalletModel[]> {
