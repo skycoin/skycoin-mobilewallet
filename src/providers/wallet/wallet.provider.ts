@@ -32,15 +32,15 @@ export class WalletProvider {
   }
 
   find(wallet: WalletModel) {
-    return this.wallets.asObservable().map(wallets => wallets.find(w => w.id === wallet.id));
+    return this.wallets.asObservable().map(wallets => wallets.find(w => w.seed === wallet.seed));
   }
 
   remove(wallet: WalletModel) {
-    const filename = 'superwallet/' + wallet.id + '.wlt';
+    const filename = 'superwallet/' + wallet.seed + '.wlt';
     return Observable.fromPromise(this.file.removeFile(this.file.externalRootDirectory, filename))
       .do(() => {
         this.wallets.first().subscribe(wallets => {
-          const index = wallets.findIndex(w => w.id === wallet.id);
+          const index = wallets.findIndex(w => w.seed === wallet.seed);
           if (index > -1) wallets.splice(index, 1);
           this.wallets.next(wallets);
         });

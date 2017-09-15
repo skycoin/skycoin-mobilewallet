@@ -1,6 +1,8 @@
 import { AddressModel } from './address.model';
+
 export class WalletModel {
-  id: string;
+  label: string;
+  seed: string;
   balance: number;
   entries: AddressModel[];
 }

@@ -23,7 +23,7 @@
     <ion-item-divider color="light">Wallets</ion-item-divider>
     <ion-item-sliding *ngFor="let wallet of wallet.all() | async">
       <ion-item (click)="openWallet(wallet)">
-        <h2>{{ wallet.id }}</h2>
+        <h2>{{ wallet.seed }}</h2>
         <p>Balance: <balance [amount]="wallet.balance ? wallet.balance : null"></balance></p>
       </ion-item>
       <ion-item-options side="right">
