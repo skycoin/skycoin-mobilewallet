@@ -12,9 +12,9 @@
     <ion-list [formGroup]="form">
       <ion-item>
         <ion-label floating>Wallet</ion-label>
-        <ion-select formControlName="wallet_id">
+        <ion-select formControlName="wallet">
           <ng-container *ngFor="let wallet of wallet.all() | async">
-            <ion-option *ngIf="wallet.balance" [value]="wallet.id">{{ wallet | walletOption }}</ion-option>
+            <ion-option *ngIf="wallet.balance" [value]="wallet">{{ wallet | walletOption }}</ion-option>
           </ng-container>
         </ion-select>
       </ion-item>

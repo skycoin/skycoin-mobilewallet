@@ -22,13 +22,16 @@ export class SendSkycoinPage implements OnInit {
   }
 
   send() {
-    this.localApi.sendSkycoin(this.form.value.wallet_id, this.form.value.address, this.form.value.amount)
+    const seed = this.form.value.wallet.seed;
+    const addresses = this.form.value.wallet.entries.length;
+    const amount = this.form.value.amount * 1000000;
+    this.localApi.postTransaction(seed, addresses, this.form.value.address, amount)
       .subscribe(response => console.log(response));
   }
 
   private initForm() {
     this.form = this.formBuilder.group({
-      wallet_id: ['', Validators.required],
+      wallet: ['', Validators.required],
       address: ['', Validators.required],
       amount: ['', Validators.required],
     });

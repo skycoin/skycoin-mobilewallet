@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { File } from '@ionic-native/file';
 import { LocalApiProvider } from '../local-api/local-api.provider';
 import { Observable } from 'rxjs/Observable';
 import { WalletModel } from '../../models/wallet.model';
@@ -22,7 +21,6 @@ export class WalletProvider {
   wallets: Subject<WalletModel[]> = new BehaviorSubject<WalletModel[]>([]);
 
   constructor(
-    private file: File,
     private localApi: LocalApiProvider,
     private platform: Platform,
     private secureStorage: SecureStorageProvider,
