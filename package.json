@@ -65,7 +65,7 @@
             "cordova-plugin-file": {},
             "skycoin": {},
             "cordova-sqlite-storage": {},
-            "cordova-plugin-nativestorage": {}
+            "cordova-plugin-nativestorage": {},
             "cordova-plugin-secure-storage": {}
         },
         "platforms": [

@@ -22,6 +22,8 @@ import { CounttoDirective } from '../directives/countto/countto';
 import { NewWalletPage } from '../pages/new-wallet/new-wallet';
 import { BalanceComponent } from '../components/balance/balance';
 import { WalletOptionPipe } from '../pipes/wallet-option/wallet-option';
+import { SecureStorageProvider } from '../providers/secure-storage/secure-storage';
+import { SecureStorage } from '@ionic-native/secure-storage';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import { WalletOptionPipe } from '../pipes/wallet-option/wallet-option';
     WalletProvider,
     StorageApiProvider,
     AddressProvider,
+    SecureStorage,
+    SecureStorageProvider,
   ]
 })
 export class AppModule {}
