@@ -14,6 +14,7 @@ import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Platform } from 'ionic-angular';
 import { SecureStorageProvider } from '../secure-storage/secure-storage';
+import { AddressModel } from '../../models/address.model';
 
 @Injectable()
 export class WalletProvider {
@@ -57,7 +58,8 @@ export class WalletProvider {
     return this.localApi.getBalanceOfWallet(wallet.id).retry(3);
   }
 
-  create(seed: string): Observable<WalletModel> {
+  create(seed: string): Observable<AddressModel[]> {
+    // TODO: fix this
     return this.localApi.getAddresses(seed, 1)
       .do(data => {
         let wallet: WalletModel = {
@@ -99,6 +101,10 @@ export class WalletProvider {
           return wallet;
         }));
       });
+  }
+
+  private indexWallets(): Observable<WalletModel[]> {
+    return this.secureStorage.get('wallets');
   }
 
   private loadData(): void {

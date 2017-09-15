@@ -2,14 +2,20 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import { AddressModel } from '../../models/address.model';
 
 declare var Skycoin: any;
 
 @Injectable()
 export class LocalApiProvider {
 
-  getAddresses(seed: string, amount: number): Observable<any> {
-    return this.call('getAddresses', [seed, amount]).map(response => JSON.parse(response))
+  getAddresses(seed: string, amount: number): Observable<AddressModel[]> {
+    return this.call('getAddresses', [seed, amount])
+      .map(response => JSON.parse(response).map(address => ({
+        adddress: address.Address,
+        balance: 0,
+      })))
   }
 
   getBalances(addresses: string): Observable<any> {
