@@ -22,7 +22,7 @@ export class WalletsPage {
   ) {}
 
   deleteWallet(wallet) {
-    this.wallet.remove(wallet).subscribe();
+    this.wallet.remove(wallet);
   }
 
   openWallet(wallet) {

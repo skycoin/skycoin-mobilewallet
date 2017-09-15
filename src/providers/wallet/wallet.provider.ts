@@ -46,15 +46,10 @@ export class WalletProvider {
   }
 
   remove(wallet: WalletModel) {
-    const filename = 'superwallet/' + wallet.seed + '.wlt';
-    return Observable.fromPromise(this.file.removeFile(this.file.externalRootDirectory, filename))
-      .do(() => {
-        this.wallets.first().subscribe(wallets => {
-          const index = wallets.findIndex(w => w.seed === wallet.seed);
-          if (index > -1) wallets.splice(index, 1);
-          this.wallets.next(wallets);
-        });
-      });
+    this.wallets.first().subscribe(wallets => {
+      wallets = wallets.filter(w => w.seed !== wallet.seed);
+      this.updateWallets(wallets);
+    });
   }
 
   sum(): Observable<number> {
