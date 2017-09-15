@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
-import { AddressProvider } from '../../providers/address/address.provider';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { Subscription } from 'rxjs/Subscription';
 

@@ -13,7 +13,6 @@ import { LocalApiProvider } from '../providers/local-api/local-api.provider';
 import { WalletProvider } from '../providers/wallet/wallet.provider';
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageApiProvider } from '../providers/storage-api/storage-api.provider';
-import { AddressProvider } from '../providers/address/address.provider';
 import { WalletDetailPage } from '../pages/wallet-detail/wallet-detail';
 import { SkyPipe } from '../pipes/sky/sky.pipe';
 import { SendSkycoinPage } from '../pages/send-skycoin/send-skycoin';
@@ -60,7 +59,6 @@ import { SecureStorage } from '@ionic-native/secure-storage';
     LocalApiProvider,
     WalletProvider,
     StorageApiProvider,
-    AddressProvider,
     SecureStorage,
     SecureStorageProvider,
   ]
