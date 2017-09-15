@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage';
-import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/fromPromise';
 import { Platform } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class SecureStorageProvider {
@@ -11,24 +12,20 @@ export class SecureStorageProvider {
     private secureStorage: SecureStorage,
   ) {}
 
-  get(key: string) {
-    this.platform.ready().then(() => {
-      this.secureStorage.create('wallets')
+  get(key: string): Observable<any> {
+    return Observable.fromPromise(this.platform.ready().then(() => {
+      return this.secureStorage.create('wallets')
         .then((storage: SecureStorageObject) => {
-          storage.get(key)
-            .then(
-              data => JSON.parse(data),
-              error => console.log(error)
-            );
+          return storage.get(key)
         });
-    });
+    }));
   }
 
   set(key: string, value: any) {
     this.platform.ready().then(() => {
       this.secureStorage.create('wallets')
         .then((storage: SecureStorageObject) => {
-          storage.set(JSON.stringify(key), value)
+          storage.set(key, JSON.stringify(value))
             .then(
               data => console.log(data),
               error => console.log(error)
