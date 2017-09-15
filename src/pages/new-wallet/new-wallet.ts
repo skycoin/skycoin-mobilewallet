@@ -23,7 +23,7 @@ export class NewWalletPage implements OnInit {
   }
 
   createWallet() {
-    this.wallet.create(this.form.value.seed).subscribe(() => this.nav.pop());
+    this.wallet.create(this.form.value.label, this.form.value.seed).subscribe(() => this.nav.pop());
   }
 
   generateSeed() {
@@ -32,6 +32,7 @@ export class NewWalletPage implements OnInit {
 
   private initForm() {
     this.form = this.formBuilder.group({
+      label: ['', Validators.required],
       seed: ['', Validators.required],
     });
 

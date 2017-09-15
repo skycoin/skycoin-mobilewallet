@@ -64,12 +64,12 @@ export class WalletProvider {
       })
   }
 
-  create(seed: string): Observable<AddressModel[]> {
+  create(label: string, seed: string): Observable<AddressModel[]> {
     // TODO: fix this
-    return this.localApi.getAddresses(seed, 1)
+    return this.localApi.getBalances(seed, 1)
       .do(data => {
         let wallet: WalletModel = {
-          label: "Todo: add label",
+          label: label,
           seed: seed,
           balance: null,
           entries: data,

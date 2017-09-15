@@ -10,6 +10,10 @@
   <div class="material-paper">
     <ion-list [formGroup]="form">
       <ion-item>
+        <ion-label floating>Label</ion-label>
+        <ion-input formControlName="label" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
         <ion-label color="primary" stacked>Seed</ion-label>
         <ion-textarea formControlName="seed" rows="5" placeholder="..."></ion-textarea>
       </ion-item>
