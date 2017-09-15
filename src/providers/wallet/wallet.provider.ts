@@ -63,8 +63,13 @@ export class WalletProvider {
     return this.all().map(wallets => wallets.map(wallet => wallet.balance >= 0 ? wallet.balance : 0).reduce((a,b) => a + b, 0));
   }
 
-  balance(wallet: WalletModel): Observable<any> {
-    return this.localApi.getBalanceOfWallet(wallet.id).retry(3);
+  private addBalance(wallet: WalletModel): Observable<WalletModel> {
+    const addresses = wallet.entries.map(address => address.address).join(',');
+    return this.localApi.getBalances(addresses).map(addressesWithBalance => {
+        wallet.entries = addressesWithBalance;
+        wallet.balance = addressesWithBalance.reduce((balance, address) => balance + address.balance, 0);
+        return wallet;
+      })
   }
 
   create(seed: string): Observable<AddressModel[]> {
@@ -93,23 +98,33 @@ export class WalletProvider {
   private addWallet(wallet: WalletModel) {
     this.wallets.first().subscribe(wallets => {
       wallets.push(wallet);
-      this.wallets.next(wallets);
-      this.secureStorage.set('wallets', wallets);
+      this.updateWallets(wallets);
       this.refreshBalances();
     });
   }
 
-  private indexWallets() {
-    return Observable.fromPromise(this.file.listDir(this.file.externalRootDirectory, 'superwallet'))
-      .map(paths => paths.filter(path => path.name.substr(path.name.length - 4) === '.wlt'))
-      .flatMap(paths => {
-        const files = paths.map(path => this.file.readAsText(this.file.externalRootDirectory, 'superwallet/' + path.name));
-        return Observable.forkJoin(files).map(files => files.map(file => {
-          let wallet = JSON.parse(file);
-          wallet.balance = -1;
-          return wallet;
-        }));
-      });
+  private updateWallet(wallet: WalletModel) {
+    this.wallets.first().subscribe(wallets => {
+      const index = wallets.findIndex(w => w.seed === wallet.seed);
+      wallets[index] = wallet;
+      this.updateWallets(wallets);
+      this.refreshBalances();
+    });
+  }
+
+  private updateWallets(wallets: WalletModel[]) {
+    this.wallets.next(wallets);
+    this.secureStorage.set('wallets', wallets);
+  }
+
+  private refreshBalances() {
+    this.wallets.first().subscribe(wallets => {
+      Observable.forkJoin(wallets.map(wallet => this.addBalance(wallet)))
+        .subscribe(wallets => {
+          console.log(wallets);
+          this.updateWallets(wallets)
+        })
+    });
   }
 
   private indexWallets(): Observable<WalletModel[]> {

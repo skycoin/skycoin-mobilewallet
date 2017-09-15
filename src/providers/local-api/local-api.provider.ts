@@ -19,7 +19,14 @@ export class LocalApiProvider {
   }
 
   getBalances(addresses: string): Observable<any> {
-    return this.call('getBalances', [addresses]).map(response => JSON.parse(response))
+    return this.call('getBalances', [addresses])
+      .map(response => {
+        console.log(JSON.parse(response));
+        return JSON.parse(response).map(address => ({
+          address: address.Address,
+          balance: address.Coins,
+        }))
+      })
   }
 
   postTransaction(seed: string, addresses: number, destination: string, amount: number): Observable<any> {
