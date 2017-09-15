@@ -23,6 +23,7 @@ import { BalanceComponent } from '../components/balance/balance';
 import { WalletOptionPipe } from '../pipes/wallet-option/wallet-option';
 import { SecureStorageProvider } from '../providers/secure-storage/secure-storage';
 import { SecureStorage } from '@ionic-native/secure-storage';
+import { Clipboard } from '@ionic-native/clipboard';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { SecureStorage } from '@ionic-native/secure-storage';
     StorageApiProvider,
     SecureStorage,
     SecureStorageProvider,
+    Clipboard,
   ]
 })
 export class AppModule {}
