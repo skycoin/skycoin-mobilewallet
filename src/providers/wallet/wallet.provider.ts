@@ -13,6 +13,7 @@ import "rxjs/add/operator/retry";
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Platform } from 'ionic-angular';
+import { SecureStorageProvider } from '../secure-storage/secure-storage';
 
 @Injectable()
 export class WalletProvider {
@@ -23,6 +24,7 @@ export class WalletProvider {
     private file: File,
     private localApi: LocalApiProvider,
     private platform: Platform,
+    private secureStorage: SecureStorageProvider,
   ) {
     this.platform.ready().then(() => this.loadData());
   }
@@ -56,19 +58,17 @@ export class WalletProvider {
   }
 
   create(seed: string): Observable<WalletModel> {
-    const obs = this.localApi.createWallet(seed)
-        .flatMap(seed => this.file.readAsText(this.file.externalRootDirectory, 'superwallet/' + seed + '.wlt'))
-        .map(file => {
-          console.log(file);
-          return <WalletModel>JSON.parse(file);
-        });
+    return this.localApi.getAddresses(seed, 1)
+      .do(data => {
+        let wallet: WalletModel = {
+          label: "Todo: add label",
+          seed: seed,
+          balance: null,
+          entries: data,
+        };
 
-    return obs.do(wallet => this.wallets.first().subscribe(wallets => {
-      console.log('doing');
-      wallets.push(wallet);
-      this.wallets.next(wallets);
-      this.refreshBalances();
-    }));
+        this.addWallet(wallet);
+      });
   }
 
   generateSeed() {
@@ -79,13 +79,12 @@ export class WalletProvider {
     this.loadData();
   }
 
-  private refreshBalances() {
+  private addWallet(wallet: WalletModel) {
     this.wallets.first().subscribe(wallets => {
-      Observable.forkJoin(wallets.map(wallet => this.balance(wallet).map(balance => {
-        wallet.balance = balance.balance;
-        return wallet;
-      })))
-        .subscribe(newWallets => this.wallets.next(newWallets));
+      wallets.push(wallet);
+      this.wallets.next(wallets);
+      this.secureStorage.set('wallets', wallets);
+      this.refreshBalances();
     });
   }
 
@@ -103,9 +102,11 @@ export class WalletProvider {
   }
 
   private loadData(): void {
-    this.indexWallets().first().subscribe(wallets => {
-      this.wallets.next(wallets);
-      this.refreshBalances();
-    });
+    this.indexWallets()
+      .first()
+      .subscribe(wallets => {
+          this.wallets.next(wallets);
+          this.refreshBalances();
+        }, error => console.log(error));
   }
 }

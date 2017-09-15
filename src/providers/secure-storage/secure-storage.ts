@@ -18,7 +18,7 @@ export class SecureStorageProvider {
         .then((storage: SecureStorageObject) => {
           return storage.get(key)
         });
-    }));
+    })).map(value => JSON.parse(value));
   }
 
   set(key: string, value: any) {
