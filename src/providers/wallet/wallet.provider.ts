@@ -57,8 +57,7 @@ export class WalletProvider {
   }
 
   private addBalance(wallet: WalletModel): Observable<WalletModel> {
-    const addresses = wallet.entries.map(address => address.address).join(',');
-    return this.localApi.getBalances(addresses).map(addressesWithBalance => {
+    return this.localApi.getBalances(wallet.seed, wallet.entries.length).map(addressesWithBalance => {
         wallet.entries = addressesWithBalance;
         wallet.balance = addressesWithBalance.reduce((balance, address) => balance + address.balance, 0);
         return wallet;

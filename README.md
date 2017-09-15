@@ -40,7 +40,4 @@ Compile a new build by running:
 
 ## Cordova plugin
 
-If you update the Cordova plugin, you can persist these changes to the plugin directory by removing & adding the plugin:
-
-  cordova plugin rm skycoin
-  cordova plugin add src/cordova --nofetch
+The Skycoin mobile wallet uses the [Cordova Skycoin Liteclient plugin](https://github.com/montycrypto/cordova-skycoin)
