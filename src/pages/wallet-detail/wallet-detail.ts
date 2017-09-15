@@ -28,13 +28,7 @@ export class WalletDetailPage {
   }
 
   createAddress() {
-    this.address.create(this.wallet).subscribe(address => {
-      if (this.wallet.entries && this.wallet.entries.length) {
-        this.wallet.entries.push(address);
-      } else {
-        this.wallet.entries = [address];
-      }
-    });
+    this.walletProvider.createAddress(this.wallet);
   }
 
   private addAddressBalances() {

@@ -34,6 +34,15 @@ export class WalletProvider {
     return this.wallets.asObservable();
   }
 
+  createAddress(wallet: WalletModel) {
+    const count = wallet.entries ? wallet.entries.length : 0;
+    this.localApi.getAddresses(wallet.seed, count + 1)
+      .subscribe(addresses => {
+        wallet.entries = addresses;
+        this.updateWallet(wallet);
+      });
+  }
+
   find(wallet: WalletModel) {
     return this.wallets.asObservable().map(wallets => wallets.find(w => w.seed === wallet.seed));
   }

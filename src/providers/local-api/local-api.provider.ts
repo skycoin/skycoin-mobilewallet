@@ -13,7 +13,7 @@ export class LocalApiProvider {
   getAddresses(seed: string, amount: number): Observable<AddressModel[]> {
     return this.call('getAddresses', [seed, amount])
       .map(response => JSON.parse(response).map(address => ({
-        adddress: address.Address,
+        address: address.Address,
         balance: 0,
       })))
   }
