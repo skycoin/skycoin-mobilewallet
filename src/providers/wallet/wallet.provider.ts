@@ -80,7 +80,7 @@ export class WalletProvider {
   }
 
   generateSeed() {
-    return this.localApi.generateSeed();
+    return this.localApi.getSeed();
   }
 
   refresh() {

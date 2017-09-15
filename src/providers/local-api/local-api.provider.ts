@@ -29,6 +29,10 @@ export class LocalApiProvider {
       })
   }
 
+  getSeed(): Observable<any> {
+    return this.call('getSeed', []);
+  }
+
   postTransaction(seed: string, addresses: number, destination: string, amount: number): Observable<any> {
     return this.call('postTransaction', [seed, addresses, destination, amount])
   }
