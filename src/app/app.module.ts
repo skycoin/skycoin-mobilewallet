@@ -24,17 +24,19 @@ import { WalletOptionPipe } from '../pipes/wallet-option/wallet-option';
 import { SecureStorageProvider } from '../providers/secure-storage/secure-storage';
 import { SecureStorage } from '@ionic-native/secure-storage';
 import { Clipboard } from '@ionic-native/clipboard';
+import { PincodePage } from '../pages/pincode/pincode';
 
 @NgModule({
   declarations: [
+    BalanceComponent,
+    CounttoDirective,
     MyApp,
     NewWalletPage,
+    PincodePage,
     SendSkycoinPage,
     SkyPipe,
     WalletDetailPage,
     WalletsPage,
-    CounttoDirective,
-    BalanceComponent,
     WalletOptionPipe,
   ],
   imports: [
@@ -47,6 +49,7 @@ import { Clipboard } from '@ionic-native/clipboard';
   entryComponents: [
     MyApp,
     NewWalletPage,
+    PincodePage,
     SendSkycoinPage,
     WalletDetailPage,
     WalletsPage,
