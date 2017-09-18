@@ -1,0 +1,263 @@
+@import 'https://fonts.googleapis.com/css?family=Titillium+Web:400,700';
+ion-content#pincode {
+  position: relative;
+  background-color: #272a2f;
+  font-family: 'Titillium Web', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  width: 100%;
+}
+#restartbtn {
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px;
+}
+.table {
+  display: table;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.cell {
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+#logo img {
+  max-width: 40%;
+}
+
+.pin-instructions {
+  padding: 0 20px;
+  color: white;
+}
+
+/*------
+# Pincode
+----*/
+
+ion-content#pincode {
+  position: fixed;
+  overflow: hidden;
+  z-index: 9999;
+
+  background: #686E96,; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, #686E96, #373B5C); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #686E96, #373B5C); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #686E96, #373B5C); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #686E96, #373B5C); /* Standard syntax (must be last) */
+
+  color: #fff;
+  text-align: center;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.6);
+}
+
+#numbers {
+  max-width: 300px;
+  padding: 0 20px;
+  margin: 0 auto;
+  position: relative;
+  display: block;
+  -webkit-transition: all 1s ease-out;
+  -moz-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+  opacity: 1;
+}
+
+#numbers.hide {
+  opacity: 0.3;
+}
+
+button {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  color: #fff;
+  font-size: 25px;
+  line-height: 50px;
+  border-radius: 100%;
+  opacity: 1;
+  outline: 0;
+  //border: 1px solid #fff;
+}
+
+button:active {
+  background-color: rgba(0, 0, 0, 0.6);
+  outline: 0;
+}
+
+#fields {
+  max-width: 200px;
+  padding: 0 20px;
+  margin: 50px auto;
+  position: relative;
+  display: block;
+}
+
+#fields .numberfield {
+  text-align: center;
+}
+
+#fields .numberfield span {
+  height: 10px;
+  width: 10px;
+  border: 2px solid #fff;
+  background-color: transparent;
+  border-radius: 100%;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+#fields .numberfield.active span {
+  background-color: #fff;
+}
+
+#fields .numberfield.right span {
+  background-color: #272a2f;
+  border-color: #272a2f;
+  transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out;
+}
+
+
+/*------
+# Toast Grid
+----*/
+
+.grid-row {
+  list-style: none;
+  margin-left: -20px;
+}
+
+.grid-col {
+  box-sizing: border-box;
+  display: inline-block;
+  margin-right: -.25em;
+  min-height: 1px;
+  padding-left: 20px;
+  vertical-align: top;
+}
+
+.miss {
+  -webkit-animation: miss .8s ease-out 1;
+  animation: miss .8s ease-out 1;
+}
+
+@-webkit-keyframes miss {
+  0% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  10% {
+    -webkit-transform: translate(-25px, 0);
+    transform: translate(-25px, 0);
+  }
+  20% {
+    -webkit-transform: translate(25px, 0);
+    transform: translate(25px, 0);
+  }
+  30% {
+    -webkit-transform: translate(-20px, 0);
+    transform: translate(-20px, 0);
+  }
+  40% {
+    -webkit-transform: translate(20px, 0);
+    transform: translate(20px, 0);
+  }
+  50% {
+    -webkit-transform: translate(-10px, 0);
+    transform: translate(-10px, 0);
+  }
+  60% {
+    -webkit-transform: translate(10px, 0);
+    transform: translate(10px, 0);
+  }
+  70% {
+    -webkit-transform: translate(-5px, 0);
+    transform: translate(-5px, 0);
+  }
+  80% {
+    -webkit-transform: translate(5px, 0);
+    transform: translate(5px, 0);
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes miss {
+  0% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  10% {
+    -webkit-transform: translate(-25px, 0);
+    transform: translate(-25px, 0);
+  }
+  20% {
+    -webkit-transform: translate(25px, 0);
+    transform: translate(25px, 0);
+  }
+  30% {
+    -webkit-transform: translate(-20px, 0);
+    transform: translate(-20px, 0);
+  }
+  40% {
+    -webkit-transform: translate(20px, 0);
+    transform: translate(20px, 0);
+  }
+  50% {
+    -webkit-transform: translate(-10px, 0);
+    transform: translate(-10px, 0);
+  }
+  60% {
+    -webkit-transform: translate(10px, 0);
+    transform: translate(10px, 0);
+  }
+  70% {
+    -webkit-transform: translate(-5px, 0);
+    transform: translate(-5px, 0);
+  }
+  80% {
+    -webkit-transform: translate(5px, 0);
+    transform: translate(5px, 0);
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+
+#hastylink {
+  position: fixed;
+  bottom:5px;
+  left: 0;
+  right: 0;
+  font-size: 13px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+}
+
+/**
+Custom CSS
+ */
+
+.width-25 {
+  width: 25%;
+}
+
+.width-33 {
+  width: 33.33333%;
+}

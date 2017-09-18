@@ -1,0 +1,48 @@
+<ion-content id="pincode">
+  <div class="table">
+    <div class="cell">
+      <div class="pin-instructions" *ngIf="status === 2">
+        <h2>Create a PIN</h2>
+        <p>This PIN # will be used to open the wallet. Don't forget your pin. If you do, you may lose access to your mobile wallet.</p>
+      </div>
+      <div class="pin-instructions" *ngIf="status === 3">
+        <h2>Confirm PIN</h2>
+        <p>Please confirm your PIN #.</p>
+      </div>
+      <div id="logo" *ngIf="status < 2">
+        <img src="/assets/logo/Skycoin+Logo+White.png">
+      </div>
+
+      <div id="fields" [ngClass]="{'miss': showError}">
+        <div class="grid-row">
+          <div class="grid-col width-25 numberfield" [ngClass]="{'active': pin.length >= 1}"><span></span></div>
+          <div class="grid-col width-25 numberfield" [ngClass]="{'active': pin.length >= 2}"><span></span></div>
+          <div class="grid-col width-25 numberfield" [ngClass]="{'active': pin.length >= 3}"><span></span></div>
+          <div class="grid-col width-25 numberfield" [ngClass]="{'active': pin.length >= 4}"><span></span></div>
+        </div>
+      </div>
+
+      <div id="numbers">
+        <div class="grid-row">
+          <div class="grid-col width-33" (click)="pressNumber(1)"><button>1</button></div>
+          <div class="grid-col width-33" (click)="pressNumber(2)"><button>2</button></div>
+          <div class="grid-col width-33" (click)="pressNumber(3)"><button>3</button></div>
+
+          <div class="grid-col width-33" (click)="pressNumber(4)"><button>4</button></div>
+          <div class="grid-col width-33" (click)="pressNumber(5)"><button>5</button></div>
+          <div class="grid-col width-33" (click)="pressNumber(6)"><button>6</button></div>
+
+          <div class="grid-col width-33" (click)="pressNumber(7)"><button>7</button></div>
+          <div class="grid-col width-33" (click)="pressNumber(8)"><button>8</button></div>
+          <div class="grid-col width-33" (click)="pressNumber(9)"><button>9</button></div>
+
+          <div class="grid-col width-33"></div>
+          <div class="grid-col width-33" (click)="pressNumber(0)"><button>0</button></div>
+          <div class="grid-col width-33"></div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</ion-content>
