@@ -22,16 +22,11 @@ export class SecureStorageProvider {
   }
 
   set(key: string, value: any) {
-    this.platform.ready().then(() => {
-      this.secureStorage.create('wallets')
-        .then((storage: SecureStorageObject) => {
-          storage.set(key, JSON.stringify(value))
-            .then(
-              data => console.log(data),
-              error => console.log(error)
-            );
-        });
-    });
+    return Observable.fromPromise(this.platform.ready().then(() => {
+      return this.secureStorage.create('wallets').then((storage: SecureStorageObject) => {
+        return storage.set(key, JSON.stringify(value));
+      });
+    }));
   }
 
   destroy(key: string) {
@@ -45,5 +40,14 @@ export class SecureStorageProvider {
             );
         });
     });
+  }
+
+  secureDevice() : void {
+    // this.platform.ready().then(() => {
+    //   this.secureStorage.create('_').then((storage: SecureStorageObject) => {
+    //     console.log('reached');
+    //     storage.secureDevice()
+    //   });
+    // })
   }
 }
