@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { AlertController, NavController } from 'ionic-angular';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 import { WalletsPage } from '../wallets/wallets';
 
@@ -9,7 +9,6 @@ import { WalletsPage } from '../wallets/wallets';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage()
 @Component({
   selector: 'page-pincode',
   templateUrl: 'pincode.html',
@@ -22,6 +21,7 @@ export class PincodePage {
 
 
   constructor(
+    public alert: AlertController,
     public el: ElementRef,
     public nav: NavController,
     public secureStorage: SecureStorageProvider,
@@ -44,8 +44,11 @@ export class PincodePage {
 
   private confirmPin() {
     if (this.pin === this.correct) {
-      this.secureStorage.set('pin', this.pin);
-      this.nav.setRoot(WalletsPage);
+      this.secureStorage.set('pin', this.pin).subscribe(
+        () => this.nav.setRoot(WalletsPage),
+        () => this.handleUnsafeDevice()
+      );
+
     } else {
       this.wrongPin();
       this.status = 2;
@@ -64,6 +67,18 @@ export class PincodePage {
         this.confirmPin();
         break;
     }
+  }
+
+  private handleUnsafeDevice() {
+    const alert = this.alert.create({
+      title: 'Unsafe device',
+      message: 'Please enable the screen lock on your device. This app cannot operate securely without it.',
+      buttons: [
+        { text: 'Ok', handler: () => this.secureStorage.secureDevice() }
+      ]
+    });
+    alert.present();
+
   }
 
   private newPin() {

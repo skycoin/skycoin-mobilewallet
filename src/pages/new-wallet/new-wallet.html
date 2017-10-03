@@ -20,7 +20,7 @@
     </ion-list>
     <div class="buttons">
       <button ion-button color="light" round class="inline-button" (click)="generateSeed()">New seed</button>
-      <button ion-button round class="inline-button" (click)="createWallet()">Create</button>
+      <button ion-button round class="inline-button" [disabled]="!form.valid" (click)="createWallet()">Create</button>
     </div>
   </div>
 </ion-content>

@@ -12,7 +12,7 @@ To-do:
 
 ## Installation
 
-To create Ionic projects, you'll need to install the latest version of the CLI and Cordova. Before you do that, you'll need a recent version of Node.js. [Download the installer](https://nodejs.org/) for Node.js 6 or greater and then proceed to install the Ionic CLI and Cordova for native app development:
+To create Ionic projects, you'll need to install the latest version of the CLI and Cordova. Before you do that, you'll need a recent version of Node.js. [Download the installer](https://nodejs.org/) for Node.js LTS 6 or greater and then proceed to install the Ionic CLI and Cordova for native app development:
 
 ```bash
 $ npm install -g ionic cordova
@@ -26,6 +26,12 @@ Next you will need to install all libraries specific for the application:
 $ npm install
 ```
 
+To test your installation so far, you can execute the mobile app locally. Please be aware that any native plug-ins will not work here, nor will the application behave normally.
+
+```bash
+$ ionic serve
+```
+ 
 To actually run/build the Android version of the mobile app, please refer to the [Cordova Android Platform guide](https://cordova.apache.org/docs/en/latest/guide/platforms/android/).
 
 ## Usage

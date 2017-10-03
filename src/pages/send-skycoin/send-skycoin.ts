@@ -39,13 +39,12 @@ export class SendSkycoinPage implements OnInit {
       address: ['', Validators.required],
       amount: ['', Validators.required],
     });
-
-    this.form.controls.address.setValue('djwVA6wFQKGLB7qbzVsa3FtGtn9vF7TJ6n');
   }
 
   private returnAndRefresh() {
     this.loading = false;
     this.wallet.refreshBalances();
     this.nav.popToRoot();
+    setTimeout(() => this.wallet.refreshBalances(), 5000)
   }
 }

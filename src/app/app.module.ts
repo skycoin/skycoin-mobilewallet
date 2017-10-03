@@ -25,6 +25,8 @@ import { SecureStorageProvider } from '../providers/secure-storage/secure-storag
 import { SecureStorage } from '@ionic-native/secure-storage';
 import { Clipboard } from '@ionic-native/clipboard';
 import { PincodePage } from '../pages/pincode/pincode';
+import { AddressPipe } from '../pipes/address/address';
+import { QrCodeComponent } from '../components/qr-code/qr-code';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { PincodePage } from '../pages/pincode/pincode';
     WalletDetailPage,
     WalletsPage,
     WalletOptionPipe,
+    AddressPipe,
+    QrCodeComponent,
   ],
   imports: [
     BrowserModule,
