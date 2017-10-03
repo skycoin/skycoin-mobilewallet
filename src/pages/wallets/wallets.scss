@@ -18,12 +18,42 @@ button[ion-fab] {
   width: 72px;
 }
 
-.line-left {
+.column-80 {
+  display: inline-block;
+  width: 80%;
+}
+
+.column-70 {
+  display: inline-block;
+  width: 70%;
+}
+
+.column-60 {
   display: inline-block;
   width: 60%;
 }
 
-.line-right {
+.column-50 {
+  display: inline-block;
+  width: 50%;
+}
+
+.column-40 {
   display: inline-block;
   width: 40%;
+}
+
+.column-30 {
+  display: inline-block;
+  width: 30%;
+}
+
+.column-20 {
+  display: inline-block;
+  width: 20%;
+}
+
+.column-15 {
+  display: inline-block;
+  width: 15%;
 }

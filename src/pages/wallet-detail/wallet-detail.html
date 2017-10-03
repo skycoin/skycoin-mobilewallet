@@ -9,10 +9,15 @@
     <h1> <balance [amount]="wallet.balance"></balance></h1>
   </div>
   <ion-list>
-    <ion-item-divider color="light">Addresses</ion-item-divider>
-   <ion-item *ngFor="let address of (wallet.entries||[])" (click)="copy(address)">
-      <h2>{{ address.address }}</h2>
-      Balance: <balance [amount]="address.balance"></balance>
+    <ion-item-divider color="light">
+      <div class="column-20">ID</div>
+      <div class="column-50">Address</div>
+      <div class="column-30">Balance</div>
+    </ion-item-divider>
+    <ion-item *ngFor="let address of (wallet.entries||[]); let i = index" (click)="copy(address)">
+      <div class="column-20">{{ i + 1 }}</div>
+      <div class="column-50 address-column">{{ address.address | address }}</div>
+      <div class="column-30">{{ address.balance | sky }}</div>
     </ion-item>
     <ion-item (click)="createAddress()"><i>Click to add an address</i></ion-item>
   </ion-list>

@@ -25,6 +25,7 @@ export class WalletDetailPage {
   ngOnInit() {
     this.walletSubscription = this.walletProvider.find(this.navParams.get('wallet')).subscribe(wallet => {
       this.wallet = wallet;
+      console.log(this.wallet);
     });
   }
 

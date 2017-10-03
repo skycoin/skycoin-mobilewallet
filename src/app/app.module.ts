@@ -25,6 +25,7 @@ import { SecureStorageProvider } from '../providers/secure-storage/secure-storag
 import { SecureStorage } from '@ionic-native/secure-storage';
 import { Clipboard } from '@ionic-native/clipboard';
 import { PincodePage } from '../pages/pincode/pincode';
+import { AddressPipe } from '../pipes/address/address';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { PincodePage } from '../pages/pincode/pincode';
     WalletDetailPage,
     WalletsPage,
     WalletOptionPipe,
+    AddressPipe,
   ],
   imports: [
     BrowserModule,
