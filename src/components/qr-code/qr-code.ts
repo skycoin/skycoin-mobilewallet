@@ -1,4 +1,4 @@
-import { Component,  Input, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component,  Input, OnInit, ViewChild } from '@angular/core';
 import { AddressModel } from '../../models/address.model';
 
 declare var QRCode: any;

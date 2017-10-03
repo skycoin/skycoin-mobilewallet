@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import { AlertController, IonicPage, NavController } from 'ionic-angular';
+import { AlertController, NavController } from 'ionic-angular';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 import { WalletsPage } from '../wallets/wallets';
 
@@ -9,7 +9,6 @@ import { WalletsPage } from '../wallets/wallets';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage()
 @Component({
   selector: 'page-pincode',
   templateUrl: 'pincode.html',
