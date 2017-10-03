@@ -20,11 +20,14 @@
     </ion-fab>
   </div>
   <ion-list>
-    <ion-item-divider color="light">Wallets</ion-item-divider>
+    <ion-item-divider color="light">
+      <div class="line-left">Wallet</div>
+      <div class="line-right">Balance</div>
+    </ion-item-divider>
     <ion-item-sliding *ngFor="let wallet of wallet.all() | async">
       <ion-item (click)="openWallet(wallet)">
-        <h2>{{ wallet.label ? wallet.label : 'No label' }}</h2>
-        <p>Balance: <balance [amount]="wallet.balance ? wallet.balance : null"></balance></p>
+        <div class="line-left">{{ wallet.label ? wallet.label : 'No label' }}</div>
+        <div class="line-right"><balance [amount]="wallet.balance ? wallet.balance : null"></balance></div>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="danger" (click)="deleteWallet(wallet)">
