@@ -14,6 +14,6 @@ export class AddressPipe implements PipeTransform {
    * Takes a value and makes it lowercase.
    */
   transform(value: string) {
-    return value.substr(0, 5) + ' ... ' + value.substr(value.length - 5);
+    return value.substr(0, 7) + ' ... ' + value.substr(value.length - 7);
   }
 }

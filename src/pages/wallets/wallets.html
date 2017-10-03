@@ -12,7 +12,7 @@
 
 <ion-content>
   <div class="sky-header-light">
-    <h1><balance [amount]="wallet.sum() | async"></balance></h1>
+    <h1>{{ sum | sky }} sky</h1>
     <ion-fab right bottom>
       <button ion-fab color="danger" (click)="openSendPage()">
         <ion-icon name="ios-send"></ion-icon>
@@ -27,7 +27,7 @@
     <ion-item-sliding *ngFor="let wallet of wallet.all() | async">
       <ion-item (click)="openWallet(wallet)">
         <div class="column-60">{{ wallet.label ? wallet.label : 'No label' }}</div>
-        <div class="column-40"><balance [amount]="wallet.balance ? wallet.balance : null"></balance></div>
+        <div class="column-40">{{ wallet.balance | sky }}</div>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="danger" (click)="deleteWallet(wallet)">

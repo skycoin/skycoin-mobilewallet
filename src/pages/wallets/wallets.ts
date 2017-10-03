@@ -21,6 +21,10 @@ export class WalletsPage {
     public wallet: WalletProvider,
   ) {}
 
+  ngOnInit() {
+    this.wallet.sum().subscribe(data => this.sum = data);
+  }
+
   deleteWallet(wallet) {
     this.wallet.remove(wallet);
   }

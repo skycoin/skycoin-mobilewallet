@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import {AlertController, Nav, Platform} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -19,6 +19,7 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(
+    public alert: AlertController,
     public platform: Platform,
     public splashScreen: SplashScreen,
     public statusBar: StatusBar,
@@ -32,6 +33,12 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
+      const alert = this.alert.create({
+        title: 'Beta version',
+        subTitle: `This is a beta version, it is not ready for production usage. Please report any bugs at https://github.com/skycoin/skycoin-mobilewallet.`,
+        buttons: ['OK']
+      });
+
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
