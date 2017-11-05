@@ -20,6 +20,10 @@ export class WalletProvider {
 
   wallets: Subject<WalletModel[]> = new BehaviorSubject<WalletModel[]>([]);
 
+  get addresses(): Observable<AddressModel[]> {
+    return this.all().map(wallets => wallets.reduce((array, wallet) => array.concat(wallet.entries), []));
+  }
+
   constructor(
     private localApi: LocalApiProvider,
     private platform: Platform,
