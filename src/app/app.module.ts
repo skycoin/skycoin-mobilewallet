@@ -27,6 +27,7 @@ import { Clipboard } from '@ionic-native/clipboard';
 import { PincodePage } from '../pages/pincode/pincode';
 import { AddressPipe } from '../pipes/address/address';
 import { QrCodeComponent } from '../components/qr-code/qr-code';
+import { TransactionsPage } from '../pages/transactions/transactions';
 import { BackendApiProvider } from '../providers/backend-api/backend-api.provider';
 import { HttpModule } from '@angular/http';
 
@@ -39,6 +40,7 @@ import { HttpModule } from '@angular/http';
     PincodePage,
     SendSkycoinPage,
     SkyPipe,
+    TransactionsPage,
     WalletDetailPage,
     WalletsPage,
     WalletOptionPipe,
@@ -58,6 +60,7 @@ import { HttpModule } from '@angular/http';
     NewWalletPage,
     PincodePage,
     SendSkycoinPage,
+    TransactionsPage,
     WalletDetailPage,
     WalletsPage,
   ],

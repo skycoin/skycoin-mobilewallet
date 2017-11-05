@@ -10,7 +10,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content id="pages-wallets">
   <div class="sky-header-light">
     <h1>{{ sum | sky }} sky</h1>
     <ion-fab right bottom>
@@ -35,6 +35,7 @@
         </button>
       </ion-item-options>
     </ion-item-sliding>
-    <ion-item (click)="openNewWalletPage()"><i>Click to add a wallet</i></ion-item>
+
+    <div class="list-link" (click)="openTransactions()">Transaction history</div>
   </ion-list>
 </ion-content>
