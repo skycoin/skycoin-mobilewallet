@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Transactions</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content id="pages-transactions">
+  <ion-list>
+    <ion-item-divider color="light">
+      <div class="column-30">Date</div>
+      <div class="column-50">Transaction</div>
+      <div class="column-20">Conf</div>
+    </ion-item-divider>
+    <ion-item *ngFor="let transaction of transactions">
+      <div class="column-30"> {{ transaction.timestamp * 1000 | date:'MMM d' }} </div>
+      <div class="column-50"> {{ transaction.txid | address }} </div>
+      <div class="column-20"> <ion-icon name="{{ transaction.status.confirmed ? 'checkmark' : 'close' }}"></ion-icon> </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
