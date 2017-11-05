@@ -1,3 +1,5 @@
+$screen-padding: 32px;
+
 #pages-wallets {
 
   .list-link {
@@ -6,7 +8,33 @@
     color: #8481ea;
     font-size: 15px;
   }
+
+  .floating-buttons {
+    position: fixed;
+    bottom: $screen-padding;
+    left: $screen-padding;
+    right: $screen-padding;
+
+    button {
+      border: solid 2px #eceef0;
+      border-radius: 0;
+      color: #333;
+      font-size: 15px;
+      height: 48px;
+      line-height: 1;
+      width: 45%;
+
+      &.-left {
+        float: left;
+      }
+
+      &.-right {
+        float: right;
+      }
+    }
+  }
 }
+
 .sky-header-light {
   background-image: linear-gradient(-110deg, #4990e2, #b87eea);
   width: 100%;

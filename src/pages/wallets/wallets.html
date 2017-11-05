@@ -13,11 +13,14 @@
 <ion-content id="pages-wallets">
   <div class="sky-header-light">
     <h1>{{ sum | sky }} sky</h1>
-    <ion-fab right bottom>
-      <button ion-fab color="danger" (click)="openSendPage()">
-        <ion-icon name="ios-send"></ion-icon>
+    <div class="floating-buttons">
+      <button class="-left" (click)="openNewWalletPage()">
+        Create wallet
       </button>
-    </ion-fab>
+      <button class="-right" (click)="openSendPage()">
+        Transaction
+      </button>
+    </div>
   </div>
   <ion-list>
     <ion-item-divider color="light">
