@@ -3,12 +3,8 @@
 ## IMPORTANT: This is a work-in-progress
 
 To-do:
-* Check balance for wallet
-* Generate wallet from seed
-* Add nickname to wallet
 * Add design
 * Add support for iOS
-* Add encryption
 
 ## Installation
 
@@ -47,3 +43,13 @@ Compile a new build by running:
 ## Cordova plugin
 
 The Skycoin mobile wallet uses the [Cordova Skycoin Liteclient plugin](https://github.com/montycrypto/cordova-skycoin)
+
+## Creating a release build
+
+Release builds have to be signed with the original keystore. If you feel you require this keystore, please contact Synth.
+
+The Android application is built using the Ionic CLI. This will require a variety of Android-related downloads. Please follow tutorials on how to build for Android with Ionic for more information.
+
+I find using a release build file to be helpful, see for more information: https://forum.ionicframework.com/t/how-to-automatically-sign-android-applications-with-the-ionic-cli/87449
+
+

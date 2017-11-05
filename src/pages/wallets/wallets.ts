@@ -6,6 +6,7 @@ import { WalletModel } from '../../models/wallet.model';
 import { SendSkycoinPage } from '../send-skycoin/send-skycoin';
 import { NewWalletPage } from '../new-wallet/new-wallet';
 import { Subject } from 'rxjs/Subject';
+import {TransactionsPage} from "../transactions/transactions";
 
 @Component({
   templateUrl: 'wallets.html'
@@ -39,6 +40,10 @@ export class WalletsPage {
 
   openSendPage() {
     this.nav.push(SendSkycoinPage);
+  }
+
+  openTransactions() {
+    this.nav.push(TransactionsPage);
   }
 
   refreshData() {

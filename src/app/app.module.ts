@@ -27,6 +27,9 @@ import { Clipboard } from '@ionic-native/clipboard';
 import { PincodePage } from '../pages/pincode/pincode';
 import { AddressPipe } from '../pipes/address/address';
 import { QrCodeComponent } from '../components/qr-code/qr-code';
+import { TransactionsPage } from '../pages/transactions/transactions';
+import { BackendApiProvider } from '../providers/backend-api/backend-api.provider';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,7 @@ import { QrCodeComponent } from '../components/qr-code/qr-code';
     PincodePage,
     SendSkycoinPage,
     SkyPipe,
+    TransactionsPage,
     WalletDetailPage,
     WalletsPage,
     WalletOptionPipe,
@@ -45,6 +49,7 @@ import { QrCodeComponent } from '../components/qr-code/qr-code';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     ReactiveFormsModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
@@ -55,6 +60,7 @@ import { QrCodeComponent } from '../components/qr-code/qr-code';
     NewWalletPage,
     PincodePage,
     SendSkycoinPage,
+    TransactionsPage,
     WalletDetailPage,
     WalletsPage,
   ],
@@ -64,6 +70,7 @@ import { QrCodeComponent } from '../components/qr-code/qr-code';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BackendApiProvider,
     LocalApiProvider,
     WalletProvider,
     StorageApiProvider,
