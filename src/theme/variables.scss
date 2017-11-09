@@ -38,11 +38,44 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
+$text-color-dark: #fff;
+$text-color-normal: #1d2127;
+$text-color-light: #b8b8b8;
+
+$background-color-normal: #f6f6f6;
+$background-color-light: #fbfbfb;
+
 $font-family-base: 'Montreal', sans-serif;
 $font-family-md-base: $font-family-base;
 $font-family-ios-base: $font-family-base;
 $font-family-wp-base: $font-family-base;
 
+// Toolbar
+$toolbar-button-color: white;
+$toolbar-md-button-color: $toolbar-button-color;
+$toolbar-ios-button-color: $toolbar-button-color;
+$toolbar-wp-button-color: $toolbar-button-color;
+
+$toolbar-title-text-color: white;
+$toolbar-md-title-text-color: $toolbar-title-text-color;
+$toolbar-ios-title-text-color: $toolbar-title-text-color;
+$toolbar-wp-title-text-color: $toolbar-title-text-color;
+
+$toolbar-title-text-align: center;
+$toolbar-md-title-text-align: $toolbar-title-text-align;
+$toolbar-ios-title-text-align: $toolbar-title-text-align;
+$toolbar-wp-title-text-align: $toolbar-title-text-align;
+
+// Divider
+$item-divider-background: $background-color-normal;
+$item-md-divider-background: $background-color-normal;
+$item-ios-divider-background: $background-color-normal;
+$item-wp-divider-background: $background-color-normal;
+
+$item-divider-color: $text-color-light;
+$item-md-divider-color: $text-color-light;
+$item-ios-divider-color: $text-color-light;
+$item-wp-divider-color: $text-color-light;
 
 
 // Named Color Variables
@@ -104,5 +137,4 @@ $colors: (
 // Fonts
 // --------------------------------------------------
 
-@import "roboto";
 @import "noto-sans";
