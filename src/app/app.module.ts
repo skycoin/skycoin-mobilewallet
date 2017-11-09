@@ -31,11 +31,13 @@ import { TransactionsPage } from '../pages/transactions/transactions';
 import { BackendApiProvider } from '../providers/backend-api/backend-api.provider';
 import { HttpModule } from '@angular/http';
 import { ModalComponent } from '../components/modal/modal';
+import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
 
 @NgModule({
   declarations: [
     MyApp,
 
+    DisclaimerPage,
     NewWalletPage,
     PincodePage,
     SendSkycoinPage,
@@ -62,6 +64,7 @@ import { ModalComponent } from '../components/modal/modal';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    DisclaimerPage,
     MyApp,
     NewWalletPage,
     PincodePage,
