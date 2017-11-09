@@ -6,6 +6,22 @@
 $font-path: "../assets/fonts";
 
 
+@font-face {
+  font-family: 'Montreal';
+  src: url('../assets/fonts/MontrealRegular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montreal';
+  src: url('../assets/fonts/MontrealBold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
 // http://ionicframework.com/docs/theming/rtl-support/
@@ -22,6 +38,10 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
+$font-family-base: 'Montreal', sans-serif;
+$font-family-md-base: $font-family-base;
+$font-family-ios-base: $font-family-base;
+$font-family-wp-base: $font-family-base;
 
 
 
