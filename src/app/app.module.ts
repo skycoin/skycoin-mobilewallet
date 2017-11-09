@@ -30,22 +30,28 @@ import { QrCodeComponent } from '../components/qr-code/qr-code';
 import { TransactionsPage } from '../pages/transactions/transactions';
 import { BackendApiProvider } from '../providers/backend-api/backend-api.provider';
 import { HttpModule } from '@angular/http';
+import { ModalComponent } from '../components/modal/modal';
 
 @NgModule({
   declarations: [
-    BalanceComponent,
-    CounttoDirective,
     MyApp,
+
     NewWalletPage,
     PincodePage,
     SendSkycoinPage,
-    SkyPipe,
     TransactionsPage,
     WalletDetailPage,
     WalletsPage,
+
+    BalanceComponent,
+    ModalComponent,
+    QrCodeComponent,
+
+    CounttoDirective,
+
+    SkyPipe,
     WalletOptionPipe,
     AddressPipe,
-    QrCodeComponent,
   ],
   imports: [
     BrowserModule,
