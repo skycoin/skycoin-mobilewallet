@@ -32,6 +32,7 @@ import { BackendApiProvider } from '../providers/backend-api/backend-api.provide
 import { HttpModule } from '@angular/http';
 import { ModalComponent } from '../components/modal/modal';
 import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
+import { TabsComponent } from '../components/tabs/tabs';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
     BalanceComponent,
     ModalComponent,
     QrCodeComponent,
+    TabsComponent,
 
     CounttoDirective,
 
