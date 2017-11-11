@@ -14,6 +14,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Platform } from 'ionic-angular';
 import { SecureStorageProvider } from '../secure-storage/secure-storage';
 import { AddressModel } from '../../models/address.model';
+import { BackendApiProvider } from '../backend-api/backend-api.provider';
+import { Output } from '../../app/app.datatypes';
 
 @Injectable()
 export class WalletProvider {
@@ -27,6 +29,7 @@ export class WalletProvider {
   }
 
   constructor(
+    private backendApi: BackendApiProvider,
     private localApi: LocalApiProvider,
     private platform: Platform,
     private secureStorage: SecureStorageProvider,
@@ -67,8 +70,7 @@ export class WalletProvider {
   }
 
   create(label: string, seed: string): Observable<AddressModel[]> {
-    // TODO: fix this
-    return this.localApi.getBalances(seed, 1)
+    return this.localApi.getAddresses(seed, 256)
       .do(data => {
         let wallet: WalletModel = {
           label: label,
@@ -76,6 +78,7 @@ export class WalletProvider {
           balance: null,
           hours: null,
           entries: data,
+          visible: 1,
         };
 
         this.addWallet(wallet);
@@ -101,12 +104,12 @@ export class WalletProvider {
   }
 
   private addBalance(wallet: WalletModel): Observable<WalletModel> {
-    return this.localApi.getBalances(wallet.seed, wallet.entries.length).map(addressesWithBalance => {
-      wallet.entries = addressesWithBalance;
-      wallet.balance = addressesWithBalance.reduce((balance, address) => balance + address.balance, 0);
-      wallet.hours = addressesWithBalance.reduce((hours, address) => hours + address.hours, 0);
+    return this.backendApi.getOutputs(wallet.entries).map((outputs: Output[]) => {
+      wallet.entries = this.attachOutputsToAddresses(wallet.entries, outputs);
+      wallet.balance = outputs.reduce((balance, output) => balance + output.coins, 0);
+      wallet.hours = outputs.reduce((hours, output) => hours + output.hours, 0);
       return wallet;
-    })
+    });
   }
 
   private addWallet(wallet: WalletModel) {
@@ -115,6 +118,18 @@ export class WalletProvider {
       this.updateWallets(wallets);
       this.refreshBalances();
     });
+  }
+
+  private attachOutputsToAddresses(addresses: AddressModel[], outputs: Output[]): AddressModel[] {
+    outputs.forEach(output => {
+      const address = addresses.find(address => address.address === output.address);
+      if (address) {
+        address.balance = address.balance ? address.balance + output.coins : output.coins;
+        address.hours = address.hours ? address.hours + output.hours : output.hours;
+      }
+    });
+
+    return addresses;
   }
 
   private updateWallet(wallet: WalletModel) {
@@ -139,8 +154,8 @@ export class WalletProvider {
     this.indexWallets()
       .first()
       .subscribe(wallets => {
-          this.wallets.next(wallets);
-          this.refreshBalances();
-        }, error => console.log(error));
+        this.wallets.next(wallets);
+        this.refreshBalances();
+      }, error => console.log(error));
   }
 }

@@ -6,4 +6,5 @@ export class WalletModel {
   label: string;
   seed: string;
   entries: AddressModel[];
+  visible: number;
 }

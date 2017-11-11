@@ -12,7 +12,7 @@
 
 <ion-content id="pages-wallets">
   <div class="-header primary-header-background">
-    <h1>{{ sum | sky }} <span>sky</span></h1>
+    <h1>{{ sum }} <span>sky</span></h1>
 
   </div>
   <ion-list>
@@ -25,7 +25,7 @@
       <button ion-item mode="ios" (click)="openWallet(wallet)">
         <div class="column-40">{{ wallet.label ? wallet.label : 'No label' }}</div>
         <div class="column-30">{{ wallet.hours }}</div>
-        <div class="column-30">{{ wallet.balance | sky }}</div>
+        <div class="column-30">{{ wallet.balance }}</div>
       </button>
       <ion-item-options side="right">
         <button ion-button color="danger" (click)="deleteWallet(wallet)">
