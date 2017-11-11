@@ -18,7 +18,6 @@ export class TransactionsPage implements OnInit {
   ngOnInit() {
     return this.wallet.addresses.first().subscribe(addresses => {
       this.backend.getTransactions(addresses).subscribe(transactions => {
-        console.log(transactions);
         this.transactions = transactions;
       });
     })

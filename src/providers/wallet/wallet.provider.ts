@@ -22,8 +22,6 @@ export class WalletProvider {
 
   wallets: Subject<WalletModel[]> = new BehaviorSubject<WalletModel[]>([]);
 
-  private secureStorageDisabled: boolean;
-
   get addresses(): Observable<AddressModel[]> {
     return this.all().map(wallets => wallets.reduce((array, wallet) => array.concat(wallet.entries.slice(0, wallet.visible)), []));
   }
@@ -47,27 +45,25 @@ export class WalletProvider {
     return this.wallets.asObservable();
   }
 
-  disableSecureStorage() {
-    this.secureStorageDisabled = true;
-  }
-
   find(wallet: WalletModel) {
-    return this.wallets.asObservable().map(wallets => wallets.find(w => w.seed === wallet.seed));
+    return this.wallets.asObservable().map(wallets => wallets.find(w => w.entries[0].address === wallet.entries[0].address));
   }
 
   remove(wallet: WalletModel) {
     this.wallets.first().subscribe(wallets => {
-      wallets = wallets.filter(w => w.seed !== wallet.seed);
+      wallets = wallets.filter(w => w.entries[0].address === wallet.entries[0].address);
       this.updateWallets(wallets);
     });
   }
 
   sum(): Observable<number> {
-    return this.all().map(wallets => wallets.map(wallet => wallet.balance >= 0 ? wallet.balance : 0).reduce((a,b) => a + b, 0));
+    return this.all().map(wallets => {
+      return wallets ? wallets.map(wallet => wallet.balance >= 0 ? wallet.balance : 0).reduce((a,b) => a + b, 0) : 0;
+    });
   }
 
   create(label: string, seed: string) {
-    this.localApi.getAddresses(seed, 32)
+    this.localApi.getAddresses(seed, 16)
       .subscribe(data => {
         let wallet: WalletModel = {
           label: label,
@@ -92,8 +88,10 @@ export class WalletProvider {
 
   refreshBalances() {
     this.all().first().subscribe(wallets => {
-      Observable.forkJoin(wallets.map(wallet => this.addBalance(wallet)))
-        .subscribe(wallets => this.updateWallets(wallets))
+      if (wallets) {
+        Observable.forkJoin(wallets.map(wallet => this.addBalance(wallet)))
+          .subscribe(wallets => this.updateWallets(wallets))
+      }
     });
   }
 
@@ -108,6 +106,7 @@ export class WalletProvider {
 
   private addWallet(wallet: WalletModel) {
     this.wallets.first().subscribe(wallets => {
+      wallets = wallets ? wallets : [];
       wallets.push(wallet);
       this.updateWallets(wallets);
       this.refreshBalances();
@@ -141,6 +140,9 @@ export class WalletProvider {
   }
 
   private updateWallets(wallets: WalletModel[]) {
+    if (this.secureStorage.secureStorageDisabled) {
+      wallets.forEach(wallet => wallet.seed = '');
+    }
     this.wallets.next(wallets);
     this.secureStorage.set('wallets', wallets);
   }
