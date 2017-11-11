@@ -44,7 +44,7 @@ export class SendSkycoinPage implements OnInit {
     const amount = this.form.value.amount * 1000000;
     this.localApi.postTransaction(seed, addresses, this.form.value.address, amount)
       .subscribe(
-        () => setTimeout(() => this.returnAndRefresh(), 3000),
+        () => this.nav.setRoot(WalletsPage),
         error => console.log(error)
       );
   }
@@ -52,7 +52,7 @@ export class SendSkycoinPage implements OnInit {
   private initForm() {
     const group: any = {
       wallet: ['', Validators.required],
-      address: ['24pexN7n4uwgktCG4FrohgADbesTV3yTt5x', Validators.required],
+      address: ['', Validators.required],
       amount: ['', Validators.required],
     };
 
@@ -61,11 +61,5 @@ export class SendSkycoinPage implements OnInit {
     }
 
     this.form = this.formBuilder.group(group);
-  }
-
-  private returnAndRefresh() {
-    this.loading = false;
-    this.nav.setRoot(WalletsPage);
-    setTimeout(() => this.wallet.refreshBalances(), 5000)
   }
 }
