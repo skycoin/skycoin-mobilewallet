@@ -121,15 +121,20 @@ export class WalletProvider {
   }
 
   private attachOutputsToAddresses(addresses: AddressModel[], outputs: Output[]): AddressModel[] {
+    const clonedAddresses = addresses.slice();
+    clonedAddresses.forEach(address => {
+      address.balance = 0;
+      address.hours = 0;
+    });
     outputs.forEach(output => {
-      const address = addresses.find(address => address.address === output.address);
+      const address = clonedAddresses.find(address => address.address === output.address);
       if (address) {
         address.balance = address.balance ? address.balance + output.coins : output.coins;
         address.hours = address.hours ? address.hours + output.hours : output.hours;
       }
     });
 
-    return addresses;
+    return clonedAddresses;
   }
 
   private updateWallet(wallet: WalletModel) {
