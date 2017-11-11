@@ -26,11 +26,8 @@ export class LoadWalletPage implements OnInit {
   }
 
   createWallet() {
-    this.wallet.create(this.form.value.label, this.form.value.seed).subscribe(() => this.view.dismiss());
-  }
-
-  generateSeed() {
-    this.wallet.generateSeed().subscribe(seed => this.form.controls.seed.setValue(seed));
+    this.wallet.create(this.form.value.label, this.form.value.seed);
+    this.view.dismiss();
   }
 
   private initForm() {
@@ -38,7 +35,5 @@ export class LoadWalletPage implements OnInit {
       label: new FormControl('', Validators.required),
       seed: new FormControl('', Validators.required),
     });
-
-    this.generateSeed();
   }
 }

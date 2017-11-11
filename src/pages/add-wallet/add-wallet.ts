@@ -26,7 +26,8 @@ export class AddWalletPage implements OnInit {
   }
 
   createWallet() {
-    this.wallet.create(this.form.value.label, this.form.value.seed).subscribe(() => this.view.dismiss());
+    this.wallet.create(this.form.value.label, this.form.value.seed);
+    this.view.dismiss();
   }
 
   generateSeed() {
