@@ -25,7 +25,7 @@ export class WalletProvider {
   private secureStorageDisabled: boolean;
 
   get addresses(): Observable<AddressModel[]> {
-    return this.all().map(wallets => wallets.reduce((array, wallet) => array.concat(wallet.entries), []));
+    return this.all().map(wallets => wallets.reduce((array, wallet) => array.concat(wallet.entries.slice(0, wallet.visible)), []));
   }
 
   constructor(
@@ -37,17 +37,14 @@ export class WalletProvider {
     this.platform.ready().then(() => this.loadData());
   }
 
-  all(): Observable<WalletModel[]> {
-    return this.wallets.asObservable();
+
+  addAddress(wallet: WalletModel) {
+    wallet.visible += 1;
+    this.updateWallet(wallet);
   }
 
-  createAddress(wallet: WalletModel) {
-    const count = wallet.entries ? wallet.entries.length : 0;
-    this.localApi.getAddresses(wallet.seed, count + 1)
-      .subscribe(addresses => {
-        wallet.entries = addresses;
-        this.updateWallet(wallet);
-      });
+  all(): Observable<WalletModel[]> {
+    return this.wallets.asObservable();
   }
 
   disableSecureStorage() {
@@ -69,9 +66,9 @@ export class WalletProvider {
     return this.all().map(wallets => wallets.map(wallet => wallet.balance >= 0 ? wallet.balance : 0).reduce((a,b) => a + b, 0));
   }
 
-  create(label: string, seed: string): Observable<AddressModel[]> {
-    return this.localApi.getAddresses(seed, 256)
-      .do(data => {
+  create(label: string, seed: string) {
+    this.localApi.getAddresses(seed, 32)
+      .subscribe(data => {
         let wallet: WalletModel = {
           label: label,
           seed: seed,
@@ -94,7 +91,7 @@ export class WalletProvider {
   }
 
   refreshBalances() {
-    this.wallets.first().subscribe(wallets => {
+    this.all().first().subscribe(wallets => {
       Observable.forkJoin(wallets.map(wallet => this.addBalance(wallet)))
         .subscribe(wallets => {
           console.log(wallets);
@@ -104,7 +101,7 @@ export class WalletProvider {
   }
 
   private addBalance(wallet: WalletModel): Observable<WalletModel> {
-    return this.backendApi.getOutputs(wallet.entries).map((outputs: Output[]) => {
+    return this.backendApi.getOutputs(wallet.entries, wallet.visible).map((outputs: Output[]) => {
       wallet.entries = this.attachOutputsToAddresses(wallet.entries, outputs);
       wallet.balance = outputs.reduce((balance, output) => balance + output.coins, 0);
       wallet.hours = outputs.reduce((hours, output) => hours + output.hours, 0);
@@ -121,7 +118,7 @@ export class WalletProvider {
   }
 
   private attachOutputsToAddresses(addresses: AddressModel[], outputs: Output[]): AddressModel[] {
-    const clonedAddresses = addresses.slice();
+    const clonedAddresses = JSON.parse(JSON.stringify(addresses));
     clonedAddresses.forEach(address => {
       address.balance = 0;
       address.hours = 0;
