@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendApiProvider } from '../../providers/backend-api/backend-api.provider';
+import { WalletProvider } from '../../providers/wallet/wallet.provider';
 
 @Component({
   selector: 'page-transactions',
@@ -11,12 +12,15 @@ export class TransactionsPage implements OnInit {
 
   constructor(
     public backend: BackendApiProvider,
+    public wallet: WalletProvider,
   ) {}
 
   ngOnInit() {
-    this.backend.getTransactions().subscribe(transactions => {
-      console.log(transactions);
-      this.transactions = transactions;
+    return this.wallet.addresses.first().subscribe(addresses => {
+      this.backend.getTransactions(addresses).subscribe(transactions => {
+        console.log(transactions);
+        this.transactions = transactions;
+      });
     })
   }
 }
