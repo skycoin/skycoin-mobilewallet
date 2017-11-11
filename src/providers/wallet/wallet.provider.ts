@@ -20,6 +20,8 @@ export class WalletProvider {
 
   wallets: Subject<WalletModel[]> = new BehaviorSubject<WalletModel[]>([]);
 
+  private secureStorageDisabled: boolean;
+
   get addresses(): Observable<AddressModel[]> {
     return this.all().map(wallets => wallets.reduce((array, wallet) => array.concat(wallet.entries), []));
   }
@@ -45,6 +47,10 @@ export class WalletProvider {
       });
   }
 
+  disableSecureStorage() {
+    this.secureStorageDisabled = true;
+  }
+
   find(wallet: WalletModel) {
     return this.wallets.asObservable().map(wallets => wallets.find(w => w.seed === wallet.seed));
   }
@@ -68,6 +74,7 @@ export class WalletProvider {
           label: label,
           seed: seed,
           balance: null,
+          hours: null,
           entries: data,
         };
 
@@ -97,6 +104,7 @@ export class WalletProvider {
     return this.localApi.getBalances(wallet.seed, wallet.entries.length).map(addressesWithBalance => {
       wallet.entries = addressesWithBalance;
       wallet.balance = addressesWithBalance.reduce((balance, address) => balance + address.balance, 0);
+      wallet.hours = addressesWithBalance.reduce((hours, address) => hours + address.hours, 0);
       return wallet;
     })
   }

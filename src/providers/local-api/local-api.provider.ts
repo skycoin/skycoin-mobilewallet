@@ -25,6 +25,7 @@ export class LocalApiProvider {
         return JSON.parse(response).map(address => ({
           address: address.Address,
           balance: address.Coins,
+          hours: address.Hours,
         }))
       })
   }
