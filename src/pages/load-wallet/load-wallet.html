@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Create Wallet</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div id="-add-seed-form" [formGroup]="form">
+    <div class="form-group">
+      <ion-label stacked>Give it a name</ion-label>
+      <ion-input formControlName="label" type="text"></ion-input>
+    </div>
+    <div class="form-group">
+      <ion-label stacked>Seed</ion-label>
+      <ion-textarea formControlName="seed" rows="3" placeholder="..."></ion-textarea>
+    </div>
+    <div class="buttons">
+      <button ion-button round class="-light" (click)="cancel()">Cancel</button>
+      <button ion-button round class="-main" [disabled]="!form.valid" (click)="createWallet()">Create</button>
+    </div>
+  </div>
+</ion-content>

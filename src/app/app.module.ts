@@ -33,26 +33,24 @@ import { HttpModule } from '@angular/http';
 import { ModalComponent } from '../components/modal/modal';
 import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
 import { TabsComponent } from '../components/tabs/tabs';
+import { LoadWalletPage } from '../pages/load-wallet/load-wallet';
 
 @NgModule({
   declarations: [
     MyApp,
-
     DisclaimerPage,
+    LoadWalletPage,
     NewWalletPage,
     PincodePage,
     SendSkycoinPage,
     TransactionsPage,
     WalletDetailPage,
     WalletsPage,
-
     BalanceComponent,
     ModalComponent,
     QrCodeComponent,
     TabsComponent,
-
     CounttoDirective,
-
     SkyPipe,
     WalletOptionPipe,
     AddressPipe,
@@ -67,6 +65,7 @@ import { TabsComponent } from '../components/tabs/tabs';
   bootstrap: [IonicApp],
   entryComponents: [
     DisclaimerPage,
+    LoadWalletPage,
     MyApp,
     NewWalletPage,
     PincodePage,
