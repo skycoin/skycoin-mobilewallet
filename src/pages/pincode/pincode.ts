@@ -2,7 +2,6 @@ import { Component, ElementRef } from '@angular/core';
 import { AlertController, NavController } from 'ionic-angular';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 import { WalletsPage } from '../wallets/wallets';
-import { WalletProvider } from '../../providers/wallet/wallet.provider';
 
 /**
  * Generated class for the PincodePage page.
@@ -27,7 +26,6 @@ export class PincodePage {
     public el: ElementRef,
     public nav: NavController,
     public secureStorage: SecureStorageProvider,
-    public wallet: WalletProvider,
   ) {
     this.secureStorage.get('pin').subscribe(
       pin => {
@@ -35,9 +33,10 @@ export class PincodePage {
         this.correct = pin;
       },
       error => {
-        if (error === 'not_found') {
+        if (error.toString() === 'Error: Key [_SS_pin] not found.') {
           this.startCreateNewPinFlow();
         } else {
+          // error.toString() === 'Error: Device is not secure'
           this.storageAvailable = false;
         }
       }
@@ -45,7 +44,7 @@ export class PincodePage {
   }
 
   disableSecure() {
-    this.wallet.disableSecureStorage();
+    this.secureStorage.secureStorageDisabled = true;
     this.nav.setRoot(WalletsPage);
   }
 
@@ -58,11 +57,7 @@ export class PincodePage {
 
   private confirmPin() {
     if (this.pin === this.correct) {
-      this.secureStorage.set('pin', this.pin).subscribe(
-        () => this.nav.setRoot(WalletsPage),
-        () => this.handleUnsafeDevice()
-      );
-
+      this.secureStorage.set('pin', this.pin).subscribe(() => this.nav.setRoot(WalletsPage));
     } else {
       this.wrongPin();
       this.status = 2;
@@ -81,18 +76,6 @@ export class PincodePage {
         this.confirmPin();
         break;
     }
-  }
-
-  private handleUnsafeDevice() {
-    const alert = this.alert.create({
-      title: 'Unsafe device',
-      message: 'Please enable the screen lock on your device. This app cannot operate securely without it.',
-      buttons: [
-        { text: 'Ok', handler: () => this.secureStorage.secureDevice() }
-      ]
-    });
-    alert.present();
-
   }
 
   private newPin() {

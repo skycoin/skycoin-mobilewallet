@@ -3,16 +3,24 @@ import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage
 import 'rxjs/add/observable/fromPromise';
 import { Platform } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
+import { StorageApiProvider } from '../storage-api/storage-api.provider';
 
 @Injectable()
 export class SecureStorageProvider {
 
+  secureStorageDisabled: boolean;
+
   constructor(
     private platform: Platform,
     private secureStorage: SecureStorage,
+    private storage: StorageApiProvider,
   ) {}
 
   get(key: string): Observable<any> {
+    if (this.secureStorageDisabled) {
+      return this.storage.get(key);
+    }
+
     return Observable.fromPromise(this.platform.ready().then(() => {
       return this.secureStorage.create('wallets')
         .then((storage: SecureStorageObject) => {
@@ -22,32 +30,14 @@ export class SecureStorageProvider {
   }
 
   set(key: string, value: any) {
+    if (this.secureStorageDisabled) {
+      return this.storage.set(key, value);
+    }
+
     return Observable.fromPromise(this.platform.ready().then(() => {
       return this.secureStorage.create('wallets').then((storage: SecureStorageObject) => {
         return storage.set(key, JSON.stringify(value));
       });
     }));
-  }
-
-  destroy(key: string) {
-    this.platform.ready().then(() => {
-      this.secureStorage.create('wallets')
-        .then((storage: SecureStorageObject) => {
-          storage.remove(key)
-            .then(
-              data => console.log(data),
-              error => console.log(error)
-            );
-        });
-    });
-  }
-
-  secureDevice() : void {
-    // this.platform.ready().then(() => {
-    //   this.secureStorage.create('_').then((storage: SecureStorageObject) => {
-    //     console.log('reached');
-    //     storage.secureDevice()
-    //   });
-    // })
   }
 }

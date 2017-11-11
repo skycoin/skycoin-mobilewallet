@@ -22,6 +22,10 @@
       <ion-label stacked>Amount to send</ion-label>
       <ion-input formControlName="amount" type="number"></ion-input>
     </ion-item>
+    <ion-item class="form-group" *ngIf="seedRequired">
+      <ion-label stacked>Seed</ion-label>
+      <ion-textarea formControlName="seed" rows="3" placeholder="..."></ion-textarea>
+    </ion-item>
     <div class="buttons">
       <button ion-button round class="-light" (click)="cancel()">Cancel</button>
       <button ion-button round class="-main" [disabled]="!form.valid" (click)="send()">

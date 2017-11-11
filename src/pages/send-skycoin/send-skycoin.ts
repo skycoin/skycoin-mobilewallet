@@ -3,6 +3,7 @@ import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LocalApiProvider } from '../../providers/local-api/local-api.provider';
 import { NavController, ViewController } from 'ionic-angular';
+import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 
 @Component({
   selector: 'page-send-skycoin',
@@ -12,14 +13,20 @@ export class SendSkycoinPage implements OnInit {
 
   form: FormGroup;
   loading = false;
+  seedRequired: boolean;
 
   constructor(
-    public formBuilder: FormBuilder,
-    public localApi: LocalApiProvider,
-    public nav: NavController,
+    private formBuilder: FormBuilder,
+    private localApi: LocalApiProvider,
+    private nav: NavController,
+    private secureStorage: SecureStorageProvider,
     private view: ViewController,
-    public wallet: WalletProvider,
-  ) {}
+    private wallet: WalletProvider,
+  ) {
+    if (this.secureStorage.secureStorageDisabled) {
+      this.seedRequired = true;
+    }
+  }
 
   ngOnInit() {
     this.initForm();
@@ -31,7 +38,7 @@ export class SendSkycoinPage implements OnInit {
 
   send() {
     this.loading = true;
-    const seed = this.form.value.wallet.seed;
+    const seed = this.seedRequired ? this.form.value.seed : this.form.value.wallet.seed;
     const addresses = this.form.value.wallet.visible;
     const amount = this.form.value.amount * 1000000;
     this.localApi.postTransaction(seed, addresses, this.form.value.address, amount)
@@ -42,11 +49,17 @@ export class SendSkycoinPage implements OnInit {
   }
 
   private initForm() {
-    this.form = this.formBuilder.group({
+    const group: any = {
       wallet: ['', Validators.required],
       address: ['24pexN7n4uwgktCG4FrohgADbesTV3yTt5x', Validators.required],
       amount: ['', Validators.required],
-    });
+    };
+
+    if (this.seedRequired) {
+      group.seed = ['', Validators.required];
+    }
+
+    this.form = this.formBuilder.group(group);
   }
 
   private returnAndRefresh() {
