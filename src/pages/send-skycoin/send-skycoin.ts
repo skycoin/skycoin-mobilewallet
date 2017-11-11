@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LocalApiProvider } from '../../providers/local-api/local-api.provider';
 import { NavController, ViewController } from 'ionic-angular';
@@ -22,7 +21,6 @@ export class SendSkycoinPage implements OnInit {
     private nav: NavController,
     private secureStorage: SecureStorageProvider,
     private view: ViewController,
-    private wallet: WalletProvider,
   ) {
     if (this.secureStorage.secureStorageDisabled) {
       this.seedRequired = true;
