@@ -33,11 +33,13 @@ import { HttpModule } from '@angular/http';
 import { ModalComponent } from '../components/modal/modal';
 import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
 import { TabsComponent } from '../components/tabs/tabs';
+import { AddWalletPage } from '../pages/add-wallet/add-wallet';
 import { LoadWalletPage } from '../pages/load-wallet/load-wallet';
 
 @NgModule({
   declarations: [
     MyApp,
+    AddWalletPage,
     DisclaimerPage,
     LoadWalletPage,
     NewWalletPage,
@@ -64,6 +66,7 @@ import { LoadWalletPage } from '../pages/load-wallet/load-wallet';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    AddWalletPage,
     DisclaimerPage,
     LoadWalletPage,
     MyApp,

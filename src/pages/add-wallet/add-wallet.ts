@@ -4,10 +4,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ViewController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-load-wallet',
-  templateUrl: 'load-wallet.html',
+  selector: 'page-add-wallet',
+  templateUrl: 'add-wallet.html',
 })
-export class LoadWalletPage implements OnInit {
+export class AddWalletPage implements OnInit {
 
   form: FormGroup;
   seed: string;
