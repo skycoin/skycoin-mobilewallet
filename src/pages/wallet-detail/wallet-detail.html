@@ -15,7 +15,7 @@
       <div class="column-25">Hours</div>
       <div class="column-25">Balance</div>
     </ion-item-divider>
-    <button ion-item mode="ios" *ngFor="let address of (wallet.entries||[]); let i = index" (click)="open(address)">
+    <button ion-item mode="ios" *ngFor="let address of addresses; let i = index" (click)="open(address)">
       <div class="column-10">{{ i + 1 }}</div>
       <div class="column-40">{{ address.address | address }}</div>
       <div class="column-25">{{ address.hours }}</div>
@@ -23,7 +23,7 @@
     </button>
 
     <div class="-action-buttons">
-      <button ion-button round (click)="createAddress()">
+      <button ion-button round (click)="addAddress()">
         <img src="assets/img/plus-gold.png"> Add Address
       </button>
     </div>
