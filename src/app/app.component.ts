@@ -23,13 +23,6 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      const alert = this.alert.create({
-        title: 'Beta version',
-        subTitle: `This is a beta version, it is not ready for production usage. Please report any bugs at https://github.com/skycoin/skycoin-mobilewallet.`,
-        buttons: ['OK']
-      });
-      alert.present();
-
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
