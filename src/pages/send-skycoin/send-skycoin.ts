@@ -27,16 +27,19 @@ export class SendSkycoinPage implements OnInit {
   send() {
     this.loading = true;
     const seed = this.form.value.wallet.seed;
-    const addresses = this.form.value.wallet.entries.length;
+    const addresses = this.form.value.wallet.visible;
     const amount = this.form.value.amount * 1000000;
     this.localApi.postTransaction(seed, addresses, this.form.value.address, amount)
-      .subscribe(() => setTimeout(() => this.returnAndRefresh(), 3000));
+      .subscribe(
+        () => setTimeout(() => this.returnAndRefresh(), 3000),
+        error => console.log(error)
+      );
   }
 
   private initForm() {
     this.form = this.formBuilder.group({
       wallet: ['', Validators.required],
-      address: ['', Validators.required],
+      address: ['mbXKUqhWzLdYt9kTwNafk9MNZpksWUGkvG', Validators.required],
       amount: ['', Validators.required],
     });
   }
