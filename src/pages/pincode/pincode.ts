@@ -2,6 +2,7 @@ import { Component, ElementRef } from '@angular/core';
 import { AlertController, NavController } from 'ionic-angular';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 import { WalletsPage } from '../wallets/wallets';
+import { WalletProvider } from '../../providers/wallet/wallet.provider';
 
 /**
  * Generated class for the PincodePage page.
@@ -18,6 +19,7 @@ export class PincodePage {
   correct: string;
   pin = "";
   showError = false;
+  storageAvailable = true;
 
 
   constructor(
@@ -25,14 +27,26 @@ export class PincodePage {
     public el: ElementRef,
     public nav: NavController,
     public secureStorage: SecureStorageProvider,
+    public wallet: WalletProvider,
   ) {
     this.secureStorage.get('pin').subscribe(
       pin => {
         this.status = 1;
         this.correct = pin;
       },
-      error => this.startCreateNewPinFlow()
+      error => {
+        if (error === 'not_found') {
+          this.startCreateNewPinFlow();
+        } else {
+          this.storageAvailable = false;
+        }
+      }
     );
+  }
+
+  disableSecure() {
+    this.wallet.disableSecureStorage();
+    this.nav.setRoot(WalletsPage);
   }
 
   pressNumber(value: string) {

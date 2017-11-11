@@ -1,18 +1,19 @@
-@import 'https://fonts.googleapis.com/css?family=Titillium+Web:400,700';
+$secondary-color: #ffc125;
+
 ion-content#pincode {
   position: relative;
-  background-color: #272a2f;
-  font-family: 'Titillium Web', sans-serif;
   -webkit-font-smoothing: antialiased;
   height: 100%;
   width: 100%;
 }
+
 #restartbtn {
   text-align: center;
   color: #fff;
   cursor: pointer;
   margin: 20px;
 }
+
 .table {
   display: table;
   height: 100%;
@@ -45,12 +46,6 @@ ion-content#pincode {
   position: fixed;
   overflow: hidden;
   z-index: 9999;
-
-  background: #686E96,; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left top, #686E96, #373B5C); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom right, #686E96, #373B5C); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom right, #686E96, #373B5C); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom right, #686E96, #373B5C); /* Standard syntax (must be last) */
 
   color: #fff;
   text-align: center;
@@ -108,10 +103,10 @@ button:active {
 }
 
 #fields .numberfield span {
-  height: 10px;
-  width: 10px;
-  border: 2px solid #fff;
-  background-color: transparent;
+  height: 14px;
+  width: 14px;
+  border: 2px solid #000;
+  background-color: #000;
   border-radius: 100%;
   position: relative;
   display: inline-block;
@@ -119,7 +114,8 @@ button:active {
 }
 
 #fields .numberfield.active span {
-  background-color: #fff;
+  background-color: $secondary-color;
+  border-color: $secondary-color;
 }
 
 #fields .numberfield.right span {
@@ -260,4 +256,13 @@ Custom CSS
 
 .width-33 {
   width: 33.33333%;
+}
+
+/**
+Modal CSS
+ */
+
+#pincode .sky-container.blurred {
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
 }
