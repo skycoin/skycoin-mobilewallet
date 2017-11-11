@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LocalApiProvider } from '../../providers/local-api/local-api.provider';
 import { NavController, ViewController } from 'ionic-angular';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
+import { WalletsPage } from '../wallets/wallets';
 
 @Component({
   selector: 'page-send-skycoin',
@@ -64,7 +65,7 @@ export class SendSkycoinPage implements OnInit {
 
   private returnAndRefresh() {
     this.loading = false;
-    this.nav.popToRoot();
+    this.nav.setRoot(WalletsPage);
     setTimeout(() => this.wallet.refreshBalances(), 5000)
   }
 }
