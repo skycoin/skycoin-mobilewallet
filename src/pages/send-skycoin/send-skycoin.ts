@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LocalApiProvider } from '../../providers/local-api/local-api.provider';
-import { NavController } from 'ionic-angular';
+import { NavController, ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'page-send-skycoin',
@@ -17,11 +17,16 @@ export class SendSkycoinPage implements OnInit {
     public formBuilder: FormBuilder,
     public localApi: LocalApiProvider,
     public nav: NavController,
+    private view: ViewController,
     public wallet: WalletProvider,
   ) {}
 
   ngOnInit() {
     this.initForm();
+  }
+
+  cancel() {
+    this.view.dismiss()
   }
 
   send() {
@@ -39,14 +44,13 @@ export class SendSkycoinPage implements OnInit {
   private initForm() {
     this.form = this.formBuilder.group({
       wallet: ['', Validators.required],
-      address: ['mbXKUqhWzLdYt9kTwNafk9MNZpksWUGkvG', Validators.required],
+      address: ['24pexN7n4uwgktCG4FrohgADbesTV3yTt5x', Validators.required],
       amount: ['', Validators.required],
     });
   }
 
   private returnAndRefresh() {
     this.loading = false;
-    this.wallet.refreshBalances();
     this.nav.popToRoot();
     setTimeout(() => this.wallet.refreshBalances(), 5000)
   }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ModalController, NavController } from 'ionic-angular';
 import { SendSkycoinPage } from '../../pages/send-skycoin/send-skycoin';
 import { TransactionsPage } from '../../pages/transactions/transactions';
 import { WalletsPage } from '../../pages/wallets/wallets';
@@ -11,18 +11,20 @@ import { WalletsPage } from '../../pages/wallets/wallets';
 export class TabsComponent {
 
   constructor(
+    private modal: ModalController,
     private nav: NavController,
   ) {}
 
   openWalletsPage() {
-    this.nav.push(WalletsPage);
+    this.nav.setRoot(WalletsPage);
   }
 
   openSendPage() {
-    this.nav.push(SendSkycoinPage);
+    const modal = this.modal.create(SendSkycoinPage);
+    modal.present();
   }
 
   openTransactions() {
-    this.nav.push(TransactionsPage);
+    this.nav.setRoot(TransactionsPage);
   }
 }

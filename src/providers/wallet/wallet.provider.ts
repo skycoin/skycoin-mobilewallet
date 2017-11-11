@@ -93,10 +93,7 @@ export class WalletProvider {
   refreshBalances() {
     this.all().first().subscribe(wallets => {
       Observable.forkJoin(wallets.map(wallet => this.addBalance(wallet)))
-        .subscribe(wallets => {
-          console.log(wallets);
-          this.updateWallets(wallets)
-        })
+        .subscribe(wallets => this.updateWallets(wallets))
     });
   }
 

@@ -11,8 +11,8 @@ export class TransactionsPage implements OnInit {
   transactions: any[];
 
   constructor(
-    public backend: BackendApiProvider,
-    public wallet: WalletProvider,
+    private backend: BackendApiProvider,
+    private wallet: WalletProvider,
   ) {}
 
   ngOnInit() {
