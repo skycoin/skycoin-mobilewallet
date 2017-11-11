@@ -1,44 +1,48 @@
 $screen-padding: 32px;
 
 #pages-wallets {
+  background-color: $background-color-normal;
 
-  .list-link {
-    text-align: center;
-    padding: 36px;
-    color: #8481ea;
-    font-size: 15px;
+  .-header {
+    min-height: 250px;
+    padding: 100px 0 0 0;
+    width: 100%;
   }
 
-  .floating-buttons {
-    position: fixed;
-    bottom: $screen-padding;
-    left: $screen-padding;
-    right: $screen-padding;
+  h1 span {
+    font-size: 20px;
+  }
+
+  ion-item-divider {
+    min-height: 50px;
+    padding-right: 32px;
+  }
+
+  ion-item-sliding .item .item-inner {
+    font-size: 13px;
+    min-height: 69px;
+  }
+
+  .-action-buttons {
+    padding: 40px 0 20px;
+    margin-bottom: 66px;
+    text-align: center;
 
     button {
-      border: solid 2px #eceef0;
-      border-radius: 0;
-      color: #333;
-      font-size: 15px;
-      height: 48px;
-      line-height: 1;
-      width: 45%;
+      background-color: $background-color-normal;
+      box-shadow: none;
+      color: $text-color-normal;
+      font-size: 13px;
+      margin: 0 5px;
+      min-width: 140px;
 
-      &.-left {
-        float: left;
-      }
-
-      &.-right {
-        float: right;
+      img {
+        height: 28px;
+        margin-left: -4px;
+        width: 28px;
       }
     }
   }
-}
-
-.sky-header-light {
-  background-image: linear-gradient(-110deg, #4990e2, #b87eea);
-  width: 100%;
-  height: 150px;
 }
 
 .fab ion-icon {
@@ -55,42 +59,4 @@ button[ion-fab] {
   width: 72px;
 }
 
-.column-80 {
-  display: inline-block;
-  width: 80%;
-}
 
-.column-70 {
-  display: inline-block;
-  width: 70%;
-}
-
-.column-60 {
-  display: inline-block;
-  width: 60%;
-}
-
-.column-50 {
-  display: inline-block;
-  width: 50%;
-}
-
-.column-40 {
-  display: inline-block;
-  width: 40%;
-}
-
-.column-30 {
-  display: inline-block;
-  width: 30%;
-}
-
-.column-20 {
-  display: inline-block;
-  width: 20%;
-}
-
-.column-15 {
-  display: inline-block;
-  width: 15%;
-}

@@ -1,6 +1,6 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Wallets</ion-title>
+<ion-header no-border>
+  <ion-navbar transparent mode="ios">
+    <ion-title mode="ios">Wallets</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="refreshData()">
         <ion-icon class="header-action-right" name="refresh"></ion-icon>
@@ -11,27 +11,22 @@
 
 
 <ion-content id="pages-wallets">
-  <div class="sky-header-light">
-    <h1>{{ sum | sky }} sky</h1>
-    <div class="floating-buttons">
-      <button class="-left" (click)="openNewWalletPage()">
-        Create wallet
-      </button>
-      <button class="-right" (click)="openSendPage()">
-        Transaction
-      </button>
-    </div>
+  <div class="-header primary-header-background">
+    <h1>{{ sum | sky }} <span>sky</span></h1>
+
   </div>
   <ion-list>
-    <ion-item-divider color="light">
-      <div class="column-60">Wallet</div>
-      <div class="column-40">Balance</div>
+    <ion-item-divider>
+      <div class="column-40">Wallet</div>
+      <div class="column-30">Hours</div>
+      <div class="column-30">Balance</div>
     </ion-item-divider>
     <ion-item-sliding *ngFor="let wallet of wallet.all() | async">
-      <ion-item (click)="openWallet(wallet)">
-        <div class="column-60">{{ wallet.label ? wallet.label : 'No label' }}</div>
-        <div class="column-40">{{ wallet.balance | sky }}</div>
-      </ion-item>
+      <button ion-item mode="ios" (click)="openWallet(wallet)">
+        <div class="column-40">{{ wallet.label ? wallet.label : 'No label' }}</div>
+        <div class="column-30">{{ wallet.hours }}</div>
+        <div class="column-30">{{ wallet.balance | sky }}</div>
+      </button>
       <ion-item-options side="right">
         <button ion-button color="danger" (click)="deleteWallet(wallet)">
           Delete
@@ -39,6 +34,16 @@
       </ion-item-options>
     </ion-item-sliding>
 
-    <div class="list-link" (click)="openTransactions()">Transaction history</div>
+    <div class="-action-buttons">
+      <button ion-button round (click)="addWallet()">
+        <img src="assets/img/plus-gold.png"> Add Wallet
+      </button>
+      <button ion-button round (click)="loadWallet()">
+        <img src="assets/img/load-gold.png"> Load Wallet
+      </button>
+    </div>
+
+    <!--<div class="list-link" (click)="openTransactions()">Transaction history</div>-->
   </ion-list>
+  <tabs></tabs>
 </ion-content>
