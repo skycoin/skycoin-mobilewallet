@@ -18,7 +18,6 @@ import { SkyPipe } from '../pipes/sky/sky.pipe';
 import { SendSkycoinPage } from '../pages/send-skycoin/send-skycoin';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CounttoDirective } from '../directives/countto/countto';
-import { NewWalletPage } from '../pages/new-wallet/new-wallet';
 import { BalanceComponent } from '../components/balance/balance';
 import { WalletOptionPipe } from '../pipes/wallet-option/wallet-option';
 import { SecureStorageProvider } from '../providers/secure-storage/secure-storage';
@@ -42,7 +41,6 @@ import { LoadWalletPage } from '../pages/load-wallet/load-wallet';
     AddWalletPage,
     DisclaimerPage,
     LoadWalletPage,
-    NewWalletPage,
     PincodePage,
     SendSkycoinPage,
     TransactionsPage,
@@ -70,7 +68,6 @@ import { LoadWalletPage } from '../pages/load-wallet/load-wallet';
     DisclaimerPage,
     LoadWalletPage,
     MyApp,
-    NewWalletPage,
     PincodePage,
     SendSkycoinPage,
     TransactionsPage,

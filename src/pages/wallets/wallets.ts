@@ -3,7 +3,6 @@ import { ModalController, NavController } from 'ionic-angular';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { WalletDetailPage } from '../wallet-detail/wallet-detail';
 import { WalletModel } from '../../models/wallet.model';
-import { NewWalletPage } from '../new-wallet/new-wallet';
 import { Subject } from 'rxjs/Subject';
 import { AddWalletPage } from '../add-wallet/add-wallet';
 import { LoadWalletPage } from '../load-wallet/load-wallet';
@@ -42,10 +41,6 @@ export class WalletsPage implements OnInit {
 
   openWallet(wallet) {
     this.nav.push(WalletDetailPage, {wallet: wallet});
-  }
-
-  openNewWalletPage() {
-    this.nav.push(NewWalletPage);
   }
 
   refreshData() {
