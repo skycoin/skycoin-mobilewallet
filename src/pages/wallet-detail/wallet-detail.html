@@ -1,26 +1,35 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>My wallet</ion-title>
+<ion-header no-border>
+  <ion-navbar transparent mode="ios">
+    <ion-title mode="ios">My Wallet</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <div class="sky-header-dark">
-    <h1> {{ wallet.balance | sky }} sky</h1>
+<ion-content id="pages-wallet-detail">
+  <div class="-header primary-header-background">
+    <h1>{{ wallet.balance }} <span>sky</span></h1>
   </div>
   <ion-list>
-    <ion-item-divider color="light">
-      <div class="column-20">ID</div>
-      <div class="column-60">Address</div>
-      <div class="column-20">Balance</div>
+    <ion-item-divider>
+      <div class="column-10">ID</div>
+      <div class="column-40">Address</div>
+      <div class="column-25">Hours</div>
+      <div class="column-25">Balance</div>
     </ion-item-divider>
-    <ion-item *ngFor="let address of (wallet.entries||[]); let i = index" (click)="open(address)">
-      <div class="column-20">{{ i + 1 }}</div>
-      <div class="column-60 address-column">{{ address.address | address }}</div>
-      <div class="column-20">{{ address.balance | sky }}</div>
-    </ion-item>
-    <ion-item (click)="createAddress()"><i>Click to add an address</i></ion-item>
+    <button ion-item mode="ios" *ngFor="let address of addresses; let i = index" (click)="open(address)">
+      <div class="column-10">{{ i + 1 }}</div>
+      <div class="column-40">{{ address.address | address }}</div>
+      <div class="column-25">{{ address.hours }}</div>
+      <div class="column-25">{{ address.balance }}</div>
+    </button>
+
+    <div class="-action-buttons">
+      <button ion-button round (click)="addAddress()">
+        <img src="assets/img/plus-gold.png"> Add Address
+      </button>
+    </div>
   </ion-list>
+
+  <tabs></tabs>
 
   <div class="overlay" id="overlay" *ngIf="address">
     <div class="modal-content">

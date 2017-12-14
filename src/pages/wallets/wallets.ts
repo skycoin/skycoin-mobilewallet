@@ -1,23 +1,22 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { ModalController, NavController } from 'ionic-angular';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { WalletDetailPage } from '../wallet-detail/wallet-detail';
 import { WalletModel } from '../../models/wallet.model';
-import { SendSkycoinPage } from '../send-skycoin/send-skycoin';
-import { NewWalletPage } from '../new-wallet/new-wallet';
 import { Subject } from 'rxjs/Subject';
-import {TransactionsPage} from "../transactions/transactions";
+import { AddWalletPage } from '../add-wallet/add-wallet';
+import { LoadWalletPage } from '../load-wallet/load-wallet';
 
 @Component({
   templateUrl: 'wallets.html'
 })
-export class WalletsPage {
+export class WalletsPage implements OnInit {
 
-  showCreateForm: boolean = false;
   sum: number = 0;
   wallets: Subject<WalletModel[]>;
 
   constructor(
+    private modal: ModalController,
     public nav: NavController,
     public wallet: WalletProvider,
   ) {}
@@ -26,24 +25,22 @@ export class WalletsPage {
     this.wallet.sum().subscribe(data => this.sum = data);
   }
 
+  addWallet() {
+    const modal = this.modal.create(AddWalletPage);
+    modal.present();
+  }
+
   deleteWallet(wallet) {
     this.wallet.remove(wallet);
   }
 
+  loadWallet() {
+    const modal = this.modal.create(LoadWalletPage);
+    modal.present();
+  }
+
   openWallet(wallet) {
     this.nav.push(WalletDetailPage, {wallet: wallet});
-  }
-
-  openNewWalletPage() {
-    this.nav.push(NewWalletPage);
-  }
-
-  openSendPage() {
-    this.nav.push(SendSkycoinPage);
-  }
-
-  openTransactions() {
-    this.nav.push(TransactionsPage);
   }
 
   refreshData() {

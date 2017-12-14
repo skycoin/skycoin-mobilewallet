@@ -1,38 +1,19 @@
-.sky-header-dark {
-  background-image: linear-gradient(-155deg, #686e96, #373b5c);
-  width: 100%;
-  height: 150px;
+#pages-transactions {
+  background-color: $background-color-normal;
+
+  .-header {
+    min-height: 40px;
+    width: 100%;
+  }
+
+  ion-item-divider {
+    min-height: 50px;
+    padding-right: 32px;
+  }
+
+  ion-item.item .item-inner {
+    font-size: 13px;
+    min-height: 69px;
+  }
 }
 
-.is-hidden { display: none; }
-
-.button-close {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAowAAAKMB8MeazgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAB5SURBVDiNrZPRCcAwCEQfnUiySAZuF8kSWeH6Yz8KrQZMQAicJ+epAB0YwAmYJKIADLic0/GPPCbQAnLznCd/4NWUFfkgy1VjH8CryA95ApYltAiTRCZxpuoW+gz9WXE6NPeg+ra1UDIxGlWEObe4SGxY5fIxlc75Bkt9V4JS7KWJAAAAAElFTkSuQmCC59ef34356faa7edebc7ed5432ddb673d');
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  z-index: 999;
-}
-
-.modal-content {
-  padding: 40px 40px;
-  width: 90%;
-  max-width: 250px;
-  position: relative;
-  min-height: 300px;
-  margin: 100px auto 0;
-  background: #fff;
-}

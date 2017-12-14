@@ -1,0 +1,62 @@
+page-load-wallet {
+  background-color: $background-color-light;
+
+  ion-header {
+    button, .toolbar-title {
+      font-size: 13px;
+      color: $primary-color !important;
+    }
+  }
+
+  #-add-seed-form {
+    padding: 32px;
+
+    .form-group {
+      ion-input, ion-textarea {
+        border: 2px solid #eff0f0;
+        border-radius: 5px;
+        color: $text-color-normal;
+        font-size: 12px;
+      }
+
+      ion-label {
+        font-size: 13px;
+        line-height: 32px;
+      }
+
+
+      &:first-child {
+        margin-top: 56px;
+      }
+    }
+
+    .buttons {
+      width: 100%;
+      padding: 32px 0;
+      text-align: center;
+
+      button {
+        border: 2px solid #eff0f0;
+        box-shadow: none;
+        font-size: 13px;
+        height: 50px;
+        margin: 0 10px;
+        min-width: 120px;
+
+        &.-light {
+          background-color: $background-color-light;
+          color: $text-color-normal;
+        }
+
+        &.-main {
+          background: $gradient-blue-dark; /* For browsers that do not support gradients */
+          background: -webkit-linear-gradient(left top, $gradient-blue-dark, $gradient-blue-light); /* For Safari 5.1 to 6.0 */
+          background: -o-linear-gradient(bottom right, $gradient-blue-dark, $gradient-blue-light); /* For Opera 11.1 to 12.0 */
+          background: -moz-linear-gradient(bottom right, $gradient-blue-dark, $gradient-blue-light); /* For Firefox 3.6 to 15 */
+          background: linear-gradient(to bottom right, $gradient-blue-dark, $gradient-blue-light); /* Standard syntax */
+          color: white;
+        }
+      }
+    }
+  }
+}

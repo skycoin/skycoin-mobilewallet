@@ -18,7 +18,6 @@ import { SkyPipe } from '../pipes/sky/sky.pipe';
 import { SendSkycoinPage } from '../pages/send-skycoin/send-skycoin';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CounttoDirective } from '../directives/countto/countto';
-import { NewWalletPage } from '../pages/new-wallet/new-wallet';
 import { BalanceComponent } from '../components/balance/balance';
 import { WalletOptionPipe } from '../pipes/wallet-option/wallet-option';
 import { SecureStorageProvider } from '../providers/secure-storage/secure-storage';
@@ -30,22 +29,31 @@ import { QrCodeComponent } from '../components/qr-code/qr-code';
 import { TransactionsPage } from '../pages/transactions/transactions';
 import { BackendApiProvider } from '../providers/backend-api/backend-api.provider';
 import { HttpModule } from '@angular/http';
+import { ModalComponent } from '../components/modal/modal';
+import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
+import { TabsComponent } from '../components/tabs/tabs';
+import { AddWalletPage } from '../pages/add-wallet/add-wallet';
+import { LoadWalletPage } from '../pages/load-wallet/load-wallet';
 
 @NgModule({
   declarations: [
-    BalanceComponent,
-    CounttoDirective,
     MyApp,
-    NewWalletPage,
+    AddWalletPage,
+    DisclaimerPage,
+    LoadWalletPage,
     PincodePage,
     SendSkycoinPage,
-    SkyPipe,
     TransactionsPage,
     WalletDetailPage,
     WalletsPage,
+    BalanceComponent,
+    ModalComponent,
+    QrCodeComponent,
+    TabsComponent,
+    CounttoDirective,
+    SkyPipe,
     WalletOptionPipe,
     AddressPipe,
-    QrCodeComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,8 +64,10 @@ import { HttpModule } from '@angular/http';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    AddWalletPage,
+    DisclaimerPage,
+    LoadWalletPage,
     MyApp,
-    NewWalletPage,
     PincodePage,
     SendSkycoinPage,
     TransactionsPage,

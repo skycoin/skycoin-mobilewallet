@@ -1,26 +1,19 @@
 // http://ionicframework.com/docs/v2/theming/
 
-
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
+$gradient-blue-dark: #0072ff;
+$gradient-blue-dark-transparent: rgba(0, 114, 255, 0.7);
+$gradient-blue-light: #00C3ff;
+$gradient-blue-light-transparent: rgba(0, 195, 255, 0.7);
 
 h1 {
   color: white;
   text-align: center;
-  line-height: 150px;
   font-size: 40px;
   margin: 0;
+}
+
+.scroll-content {
+  margin-top: 0 !important;
 }
 
 .split-background {
@@ -54,4 +47,87 @@ h1 {
 
 ion-buttons {
   order: 1
+}
+
+.sky-container {
+  background: $gradient-blue-dark; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, $gradient-blue-dark, $gradient-blue-light); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, $gradient-blue-dark, $gradient-blue-light); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, $gradient-blue-dark, $gradient-blue-light); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, $gradient-blue-dark, $gradient-blue-light); /* Standard syntax */
+  height: 100%;
+  width: 100%;
+}
+
+.primary-gradient {
+  background: $gradient-blue-dark; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, $gradient-blue-dark, $gradient-blue-light); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, $gradient-blue-dark, $gradient-blue-light); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, $gradient-blue-dark, $gradient-blue-light); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, $gradient-blue-dark, $gradient-blue-light); /* Standard syntax */
+}
+
+.primary-header-background {
+  background: $gradient-blue-dark; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, $gradient-blue-dark-transparent, $gradient-blue-light-transparent), url('../assets/img/header.png') center center no-repeat; /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, $gradient-blue-dark-transparent, $gradient-blue-light-transparent), url('../assets/img/header.png') center center no-repeat; /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, $gradient-blue-dark-transparent, $gradient-blue-light-transparent), url('../assets/img/header.png') center center no-repeat; /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, $gradient-blue-dark-transparent, $gradient-blue-light-transparent), url('../assets/img/header.png') center center no-repeat; /* Standard syntax */
+}
+
+.column-80 {
+  display: inline-block;
+  width: 80%;
+}
+
+.column-70 {
+  display: inline-block;
+  width: 70%;
+}
+
+.column-60 {
+  display: inline-block;
+  width: 60%;
+}
+
+.column-50 {
+  display: inline-block;
+  width: 50%;
+}
+
+.column-40 {
+  display: inline-block;
+  width: 40%;
+}
+
+.column-30 {
+  display: inline-block;
+  width: 30%;
+}
+
+.column-25 {
+  display: inline-block;
+  width: 25%;
+}
+
+.column-20 {
+  display: inline-block;
+  width: 20%;
+}
+
+.column-15 {
+  display: inline-block;
+  width: 15%;
+}
+
+.column-10 {
+  display: inline-block;
+  width: 10%;
+}
+
+
+.warning-text {
+  color: #fb003d;
+  font-size: 12px;
+  font-weight: 700;
 }

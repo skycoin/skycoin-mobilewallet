@@ -1,5 +1,15 @@
 <ion-content id="pincode">
-  <div class="table">
+  <modal [header]="'IMPORTANT!'"  *ngIf="!storageAvailable">
+    <p>
+      We could not instantiate our secure storage service on your device. This means you cannot set a pincode and/or
+      save your wallet seeds on your device. Whenever you want to transfer funds out of your wallet, you will be
+      requested to enter your wallet seed again. <b>Without your seed your funds will most likely be irretrievably
+      lost.</b>
+    </p>
+    <button ion-button color="light" round class="-continue" (click)="disableSecure()">Continue</button>
+  </modal>
+
+  <div class="table sky-container" [ngClass]="{ blurred: !storageAvailable }">
     <div class="cell">
       <div class="pin-instructions" *ngIf="status === 2">
         <h2>Create a PIN</h2>

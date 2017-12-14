@@ -1,0 +1,20 @@
+<ion-content>
+  <modal [header]="'DISCLAIMER!'" *ngIf="showDisclaimer">
+    <p>
+      By continuing, you understand the risks related to the use of cryptographic tokens & blockchain-based software,
+      the Skycoin Mobile wallet, and the Skycoin cryptocurrency. You understand that this product is provided as-is, and
+      agree to the Terms and Conditions governing the usage of this product.
+    </p>
+    <div class="-checkbox">
+      <ion-checkbox [(ngModel)]="disclaimerAccepted"></ion-checkbox>
+      <ion-label>I understand and agree</ion-label>
+    </div>
+
+    <button ion-button color="light" round class="-continue" [disabled]="!disclaimerAccepted" (click)="acceptDisclaimer()">Continue</button>
+  </modal>
+
+  <div class="sky-container">
+
+  </div>
+</ion-content>
+

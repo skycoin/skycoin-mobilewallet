@@ -18,6 +18,7 @@ export class PincodePage {
   correct: string;
   pin = "";
   showError = false;
+  storageAvailable = true;
 
 
   constructor(
@@ -31,8 +32,20 @@ export class PincodePage {
         this.status = 1;
         this.correct = pin;
       },
-      error => this.startCreateNewPinFlow()
+      error => {
+        if (error.toString() === 'Error: Key [_SS_pin] not found.') {
+          this.startCreateNewPinFlow();
+        } else {
+          // error.toString() === 'Error: Device is not secure'
+          this.storageAvailable = false;
+        }
+      }
     );
+  }
+
+  disableSecure() {
+    this.secureStorage.secureStorageDisabled = true;
+    this.nav.setRoot(WalletsPage);
   }
 
   pressNumber(value: string) {
@@ -44,11 +57,7 @@ export class PincodePage {
 
   private confirmPin() {
     if (this.pin === this.correct) {
-      this.secureStorage.set('pin', this.pin).subscribe(
-        () => this.nav.setRoot(WalletsPage),
-        () => this.handleUnsafeDevice()
-      );
-
+      this.secureStorage.set('pin', this.pin).subscribe(() => this.nav.setRoot(WalletsPage));
     } else {
       this.wrongPin();
       this.status = 2;
@@ -67,18 +76,6 @@ export class PincodePage {
         this.confirmPin();
         break;
     }
-  }
-
-  private handleUnsafeDevice() {
-    const alert = this.alert.create({
-      title: 'Unsafe device',
-      message: 'Please enable the screen lock on your device. This app cannot operate securely without it.',
-      buttons: [
-        { text: 'Ok', handler: () => this.secureStorage.secureDevice() }
-      ]
-    });
-    alert.present();
-
   }
 
   private newPin() {
