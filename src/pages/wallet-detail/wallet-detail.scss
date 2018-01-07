@@ -3,22 +3,40 @@
 
   .-header {
     min-height: 170px;
-    padding: 80px 0 0 0;
+    padding: 60px 0 0 0;
     width: 100%;
   }
 
   h1 span {
-    font-size: 20px;
+    font-size: 13px;
+    margin: 0 0 0 -10px;
+  }
+
+  .first-subt{
+    width: 100%;
+    font-size: 12px;
+    color: #FAFAFA;
+    float: left;
+    text-align: center;
+  }
+  .second-subt{
+    color: #171A1D;
+    font-size: 12px;
+    width: 100%;
+    float: left;
+    text-align: center;
+    margin-top: 16px;
   }
 
   ion-item-divider {
+    font-size: 12px;
+    line-height: 14px;
     min-height: 50px;
-    padding-right: 32px;
   }
 
-  button.item .item-inner {
+  ion-item {
     font-size: 13px;
-    min-height: 69px;
+    min-height: 70px;
   }
 
   .-action-buttons {
@@ -32,7 +50,7 @@
       color: $text-color-normal;
       font-size: 13px;
       margin: 0 5px;
-      min-width: 140px;
+      min-width: 160px;
 
       img {
         height: 28px;
@@ -74,4 +92,8 @@
   min-height: 300px;
   margin: 100px auto 0;
   background: #fff;
+}
+
+.redColor{
+  background-color: #FF004E;
 }

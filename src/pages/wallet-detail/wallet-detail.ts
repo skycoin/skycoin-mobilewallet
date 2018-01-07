@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {ModalController, NavParams, Platform, ToastController} from 'ionic-angular';
+import {ModalController, NavParams, Platform, ToastController, ItemSliding} from 'ionic-angular';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { Subscription } from 'rxjs/Subscription';
 import { AddressModel } from '../../models/address.model';
@@ -60,5 +60,9 @@ export class WalletDetailPage implements OnInit, OnDestroy {
 
   addAddress() {
     this.walletProvider.addAddress(this.wallet);
+  }
+
+  delAddress(slidingItem: ItemSliding) {
+    slidingItem.close();
   }
 }
