@@ -1,30 +1,44 @@
 <ion-header no-border>
   <ion-navbar transparent mode="ios">
-    <ion-title mode="ios">My Wallet</ion-title>
+    <ion-title mode="ios">Personal Wallet</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only>
+          <ion-icon class="header-action-right" name="refresh"></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content id="pages-wallet-detail">
   <div class="-header primary-header-background">
-    <h1>{{ wallet.balance }} <span>sky</span></h1>
+    <h1>{{ wallet.balance || 0 }} <span>sky</span></h1>
+    <span class="first-subt">$0.00 ($0.00)</span>
+    <span class="second-subt">{{ wallet.hours || 0 }} SKY Hours</span>
+
   </div>
   <ion-list>
     <ion-item-divider>
       <div class="column-10">ID</div>
       <div class="column-40">Address</div>
-      <div class="column-25">Hours</div>
+      <div class="column-25">SKY Hours</div>
       <div class="column-25">Balance</div>
     </ion-item-divider>
-    <button ion-item mode="ios" *ngFor="let address of addresses; let i = index" (click)="open(address)">
-      <div class="column-10">{{ i + 1 }}</div>
-      <div class="column-40">{{ address.address | address }}</div>
-      <div class="column-25">{{ address.hours }}</div>
-      <div class="column-25">{{ address.balance }}</div>
-    </button>
-
+    <ion-item-sliding #slidingItem *ngFor="let address of addresses; let i = index">
+      <ion-item  (click)="open(address)">
+        <div class="column-10">{{ i + 1 }}</div>
+        <div class="column-40">
+          <img src="assets/img/qrcode.png" style="margin-bottom: -5px">
+          {{ address.address | address }}</div>
+        <div class="column-25 ">{{ address.hours }}</div>
+        <div class="column-25">{{ address.balance }}</div>
+      </ion-item>
+      <ion-item-options side="right">
+        <button class="redColor" (click)="delAddress(slidingItem)" ion-button>Delete</button>
+      </ion-item-options>
+    </ion-item-sliding>
     <div class="-action-buttons">
       <button ion-button round (click)="addAddress()">
-        <img src="assets/img/plus-gold.png"> Add Address
+        <img src="assets/img/plus-gold.png"> New Address
       </button>
     </div>
   </ion-list>
