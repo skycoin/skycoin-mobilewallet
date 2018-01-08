@@ -10,7 +10,9 @@ import { ViewController } from 'ionic-angular';
 export class AddWalletPage implements OnInit {
 
   form: FormGroup;
-  seed: string;
+  label: string="";
+  seed: string="";
+  confirmseed: string="";
 
   constructor(
     private view: ViewController,
@@ -31,14 +33,24 @@ export class AddWalletPage implements OnInit {
   }
 
   generateSeed() {
-    this.wallet.generateSeed().subscribe(seed => this.form.controls.seed.setValue(seed));
+    this.wallet.generateSeed().subscribe(seed => {
+      this.form.controls.seed.setValue(seed);
+      this.form.controls.confirmseed.setValue(seed)
+    });
+  }
+
+  validateSeed(){
+   return (this.form.controls.seed.value && this.form.controls.seed.value === this.form.controls.confirmseed.value)
   }
 
   private initForm() {
     this.form = new FormGroup({
       label: new FormControl('', Validators.required),
       seed: new FormControl('', Validators.required),
+      confirmseed: new FormControl('', Validators.required)
     });
+    console.log(this.form);
+
 
     this.generateSeed();
   }
