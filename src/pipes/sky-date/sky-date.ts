@@ -15,7 +15,7 @@ export class SkyDatePipe implements PipeTransform {
    */
   transform(value: string) {
     let _value: string = '';
-    let _date = new Date(value);
+    let _date = new Date(Number.parseInt(value));
     let _now = new Date();
 
     let _dateDif = _now.getTime() - _date.getTime();
