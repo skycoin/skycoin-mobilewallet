@@ -7,16 +7,31 @@
 <ion-content id="pages-transactions">
   <div class="-header primary-header-background"></div>
   <ion-list>
-    <ion-item-divider>
-      <div class="column-30">Date</div>
-      <div class="column-50">Transaction</div>
-      <div class="column-20">Conf</div>
-    </ion-item-divider>
-    <ion-item ion-item mode="ios" *ngFor="let transaction of transactions">
-      <div class="column-30"> {{ transaction.timestamp * 1000 | date:'MMM d' }} </div>
-      <div class="column-50"> {{ transaction.txid | address }} </div>
-      <div class="column-20"> <ion-icon name="{{ transaction.status.confirmed ? 'checkmark' : 'close' }}"></ion-icon> </div>
-    </ion-item>
+    <ion-grid no-padding>
+      <div class="tx-container" *ngFor="let transaction of transactions">
+        <div class="tx-wrapper">
+          <ion-row>
+            <ion-col col-2>
+              <tx-arrow-icon [iconDirection]="iconDirection"></tx-arrow-icon>
+            </ion-col>
+            <ion-col col-7>
+              <ion-row>
+                <div class="tx-status">Received SKY</div>
+                <div class="tx-date">{{ transaction.txn.timestamp * 1000 | skydate }}</div>
+              </ion-row>
+              <ion-row>
+                <img class="qr-addrs" src="/assets/img/qr-code-black.png">
+                <div class="tx-addrs">{{ transaction.txn.txid | address }}</div>
+              </ion-row>
+            </ion-col>
+            <ion-col col-3>
+              <div class="tx-sky">-25 SKY</div>
+              <div class="tx-amount">$193.00</div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+    </ion-grid>
   </ion-list>
   <tabs></tabs>
 </ion-content>
