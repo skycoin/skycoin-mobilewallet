@@ -1,6 +1,11 @@
 <div class="-modal">
-  <div class="-header">
+  <div class="-header" [ngStyle]="{'color': color}">
     {{ header }}
+    <ion-buttons end>
+      <button (click)="closeModal()" class="ion-icon-botton">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
   </div>
   <div class="-body">
     <ng-content></ng-content>

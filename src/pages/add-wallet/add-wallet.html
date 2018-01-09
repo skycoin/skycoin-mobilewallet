@@ -15,13 +15,24 @@
       <ion-textarea formControlName="seed" rows="3" placeholder="..."></ion-textarea>
     </div>
     <p class="warning-text">
-      Important! Always have a back-up available of this seed, your device might delete your seed in various situations.
-      If you lose it, you won't be able to access your wallet again.
+      Important! Always have a back-up available of this seed, your device might delete your seed in various situations. If you
+      lose it, you won't be able to access your wallet again.
     </p>
     <div class="buttons">
       <button ion-button round class="-light" (click)="cancel()">Cancel</button>
       <button ion-button round class="-main" [disabled]="!form.valid" (click)="createWallet()">Create</button>
     </div>
   </div>
-  <modal header="Disclaimer"></modal>
+  <modal [header]="'Safeguard your seed!'" [color]="'#FF004E'"  (close)="hideModal($event)" *ngIf="showDisclaimer">
+    <p>
+      We want to make sure that you wrote down your seed and stored it in a safe place. If you forget your seed, you
+      <strong>WILL NOT</strong> be able to recover your Skycoin wallet!
+    </p>
+    <div class="-checkbox">
+      <ion-checkbox [(ngModel)]="disclaimerAccepted"></ion-checkbox>
+      <ion-label>Yeah, I understand.</ion-label>
+    </div>
+
+    <button ion-button color="light" round class="-continue" [disabled]="!disclaimerAccepted" (click)="confirm()">Continue</button>
+  </modal>
 </ion-content>

@@ -11,7 +11,7 @@ modal {
     background-color: #fbfbfb;
     border-radius: 4px;
     position: absolute;
-    top: 25%;
+    top: 40%;
     width: 100%;
     -webkit-transform: translateY(-30%);
     -moz-transform: translateY(-30%);
@@ -29,14 +29,39 @@ modal {
       background-color: #f7f7f7;
       border-bottom: 1px solid #eee;
       color: #1e2227;
-      line-height: 40px;
-      min-height: 40px;
+      line-height: 51px;
+      min-height: 51px;
       text-align: center;
       font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 1px;
+
+      button {
+        width: 32px;
+        height: 32px;
+        color: rgba(189, 189, 189, 1);
+        margin: 0;
+        padding: 0;
+      }
+
+      ion-buttons {
+        float: right;
+        margin: 8px 9px 0px -18px;
+
+        ion-icon {
+          font-size: 2rem;
+          margin: -8px 0px 0 -5px;
+          position: absolute;
+        }
+      }
     }
 
     .-body {
       padding: 25px;
+      font-size: 12px;
+      line-height: 20px;
+      text-align: left;
+
       p {
         color: #16191d;
         margin: 0 0 25px 0;
@@ -60,16 +85,37 @@ modal {
       }
 
       .-continue {
-        //background-color: #ececed;
-        //border-radius: 25px;
-        color: #848484;
+        text-transform: capitalize;
+        color: #fbfbfb;
         display: block;
-        font-size: 14px;
-        font-weight: 700;
+        font-size: 15px;
+        font-weight: bold;
         height: 50px;
-        line-height: 50px;
+        line-height: 18px;
         margin: 0 auto;
         width: 160px;
+        background: $gradient-blue-dark; /* For browsers that do not support gradients */
+        background: -webkit-linear-gradient(
+          left top,
+          $gradient-blue-dark,
+          $gradient-blue-light
+        ); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(
+          bottom right,
+          $gradient-blue-dark,
+          $gradient-blue-light
+        ); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(
+          bottom right,
+          $gradient-blue-dark,
+          $gradient-blue-light
+        ); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(
+          to bottom right,
+          $gradient-blue-dark,
+          $gradient-blue-light
+        ); /* Standard syntax */
+        color: white;
       }
     }
   }
