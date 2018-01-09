@@ -15,5 +15,67 @@
     font-size: 13px;
     min-height: 69px;
   }
+
+  .tx-container{
+    background-color: #FBFBFB;
+    height: 80px;
+    border-bottom: rgba(30, 34, 39, 0.1) solid 1px;
+
+    .tx-wrapper{
+      margin: 13px 0 0 15px;
+
+      .send-icon{
+        height: 100%;
+        width: 100%;
+
+        img{
+          display: block;
+          margin: 0 auto;
+          margin-top: 7px;
+        }
+      }
+
+      .tx-date{
+        color: rgba(30, 34, 39, 0.2);
+        font-size: 10px;
+        line-height: 12px;
+        text-align: left;
+        margin: 3px 0 0 5px;
+      }
+
+      .tx-status{
+        font-size: 13px;
+        font-weight: bold;
+        line-height: 15px;
+        text-align: left;
+      }
+
+      .tx-addrs{
+        color: rgba(197, 197, 197, 0.5);
+        font-size: 13px;
+        line-height: 15px;
+        margin-top: 8px;
+      }
+
+      .qr-addrs{
+        margin-left: -6px;
+      }
+
+      .tx-sky{
+        color: #1E2227;
+        font-size: 13px;
+        line-height: 15px;
+        text-align: right;
+      }
+
+      .tx-amount{
+        color: #1E2227;
+        font-size: 13px;
+        line-height: 15px;
+        opacity: 0.5;
+        text-align: right;
+      }
+    }
+  }
 }
 

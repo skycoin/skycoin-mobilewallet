@@ -35,6 +35,7 @@ import { TabsComponent } from '../components/tabs/tabs';
 import { AddWalletPage } from '../pages/add-wallet/add-wallet';
 import { LoadWalletPage } from '../pages/load-wallet/load-wallet';
 import { SkyDatePipe } from '../pipes/sky-date/sky-date';
+import { TxArrowIconComponent } from '../components/tx-arrow-icon/tx-arrow-icon';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { SkyDatePipe } from '../pipes/sky-date/sky-date';
     WalletOptionPipe,
     AddressPipe,
     SkyDatePipe,
+    TxArrowIconComponent,
   ],
   imports: [
     BrowserModule,

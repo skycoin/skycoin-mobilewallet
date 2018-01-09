@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
  * Angular Pipes.
  */
 @Pipe({
-  name: 'sky-date',
+  name: 'skydate',
 })
 export class SkyDatePipe implements PipeTransform {
   /**
