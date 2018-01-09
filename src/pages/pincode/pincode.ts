@@ -1,7 +1,7 @@
-import {Component, ElementRef} from '@angular/core';
-import {AlertController, NavController} from 'ionic-angular';
-import {SecureStorageProvider} from '../../providers/secure-storage/secure-storage';
-import {WalletsPage} from '../wallets/wallets';
+import { Component, ElementRef } from "@angular/core";
+import { AlertController, NavController } from "ionic-angular";
+import { SecureStorageProvider } from "../../providers/secure-storage/secure-storage";
+import { WalletsPage } from "../wallets/wallets";
 
 /**
  * Generated class for the PincodePage page.
@@ -21,10 +21,12 @@ export class PincodePage {
   storageAvailable = true;
 
 
-  constructor(public alert: AlertController,
-              public el: ElementRef,
-              public nav: NavController,
-              public secureStorage: SecureStorageProvider,) {
+  constructor(
+    public alert: AlertController,
+    public el: ElementRef,
+    public nav: NavController,
+    public secureStorage: SecureStorageProvider,
+  ) {
     this.secureStorage.get('pin').subscribe(
       pin => {
         this.status = 1;
