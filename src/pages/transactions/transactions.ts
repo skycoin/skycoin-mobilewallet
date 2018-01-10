@@ -16,10 +16,10 @@ export class TransactionsPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    return this.wallet.addresses.first().subscribe(addresses => {
-      this.backend.getTransactions(addresses).subscribe(transactions => {
+    return this.wallet.addresses.first().subscribe((addresses) => {
+      this.backend.getTransactions(addresses).subscribe((transactions) => {
         this.transactions = transactions;
       });
-    })
+    });
   }
 }

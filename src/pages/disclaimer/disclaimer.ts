@@ -20,19 +20,19 @@ export class DisclaimerPage implements OnInit {
 
   ngOnInit() {
     this.platform.ready().then(() => {
-      this.storage.get('disclaimer_accepted').then(data => {
+      this.storage.get('disclaimer_accepted').then((data) => {
         if (data) {
           this.nav.setRoot(PincodePage);
         } else {
           this.showDisclaimer = true;
         }
-      })
+      });
     });
   }
 
   acceptDisclaimer() {
     this.storage.set('disclaimer_accepted', true).then(() => {
       this.nav.setRoot(PincodePage);
-    })
+    });
   }
 }

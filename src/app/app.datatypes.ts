@@ -1,3 +1,4 @@
+// tslint:disable-next-line:interface-name
 export interface Output {
   hash: string;
   src_txt: string;
@@ -6,6 +7,7 @@ export interface Output {
   hours: number;
 }
 
+// tslint:disable-next-line:interface-name
 export interface OutputsResponse {
   head_outputs: any[];
   outgoing_outputs: any[];

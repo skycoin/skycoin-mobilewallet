@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'modal',
-  templateUrl: 'modal.html'
+  templateUrl: 'modal.html',
 })
 export class ModalComponent {
   @Input() header: string;
