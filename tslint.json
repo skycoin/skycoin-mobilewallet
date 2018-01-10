@@ -25,7 +25,9 @@
       "check-preblock"
     ],
     "member-access": false,
-    "no-shadowed-variable": false
+    "no-shadowed-variable": false,
+    "interface-name": false,
+    "arrow-parens": true
   },
   "tslint.autoFixOnSave": true,
   "rulesDirectory": ["node_modules/tslint-eslint-rules/dist/rules"]

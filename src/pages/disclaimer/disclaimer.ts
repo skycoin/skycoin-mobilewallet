@@ -20,7 +20,7 @@ export class DisclaimerPage implements OnInit {
 
   ngOnInit() {
     this.platform.ready().then(() => {
-      this.storage.get('disclaimer_accepted').then((data) => {
+      this.storage.get('disclaimer_accepted').then(data => {
         if (data) {
           this.nav.setRoot(PincodePage);
         } else {
