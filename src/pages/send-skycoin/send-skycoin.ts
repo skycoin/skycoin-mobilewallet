@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LocalApiProvider } from '../../providers/local-api/local-api.provider';
 import { NavController, ViewController } from 'ionic-angular';
+import { LocalApiProvider } from '../../providers/local-api/local-api.provider';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 import { WalletsPage } from '../wallets/wallets';
 
@@ -32,7 +32,7 @@ export class SendSkycoinPage implements OnInit {
   }
 
   cancel() {
-    this.view.dismiss()
+    this.view.dismiss();
   }
 
   send() {
@@ -43,15 +43,16 @@ export class SendSkycoinPage implements OnInit {
     this.localApi.postTransaction(seed, addresses, this.form.value.address, amount)
       .subscribe(
         () => this.nav.setRoot(WalletsPage),
-        error => console.log(error)
+        // tslint:disable-next-line:no-console
+        (error) => console.log(error),
       );
   }
 
   private initForm() {
     const group: any = {
-      wallet: ['', Validators.required],
       address: ['', Validators.required],
       amount: ['', Validators.required],
+      wallet: ['', Validators.required],
     };
 
     if (this.seedRequired) {

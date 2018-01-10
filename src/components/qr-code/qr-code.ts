@@ -5,7 +5,7 @@ declare var QRCode: any;
 
 @Component({
   selector: 'qr-code',
-  templateUrl: 'qr-code.html'
+  templateUrl: 'qr-code.html',
 })
 export class QrCodeComponent implements OnInit {
   @Input() address: AddressModel;
@@ -18,14 +18,15 @@ export class QrCodeComponent implements OnInit {
   usesvg: boolean = false;
 
   ngOnInit() {
+    // tslint:disable-next-line:no-unused-expression
     new QRCode(this.qr.nativeElement, {
-      text: this.address.address,
-      width: this.size,
-      height: this.size,
       colorDark: this.colordark,
       colorLight: this.colorlight,
+      correctLevel: QRCode.CorrectLevel[this.level.toString()],
+      height: this.size,
+      text: this.address.address,
       useSVG: this.usesvg,
-      correctLevel: QRCode.CorrectLevel[this.level.toString()]
+      width: this.size,
     });
   }
 }

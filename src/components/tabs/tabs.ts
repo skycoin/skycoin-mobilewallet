@@ -6,7 +6,7 @@ import { WalletsPage } from '../../pages/wallets/wallets';
 
 @Component({
   selector: 'tabs',
-  templateUrl: 'tabs.html'
+  templateUrl: 'tabs.html',
 })
 export class TabsComponent {
 

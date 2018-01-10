@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ViewController } from 'ionic-angular';
+import { WalletProvider } from '../../providers/wallet/wallet.provider';
 
 @Component({
   selector: 'page-load-wallet',
@@ -22,7 +22,7 @@ export class LoadWalletPage implements OnInit {
   }
 
   cancel() {
-    this.view.dismiss()
+    this.view.dismiss();
   }
 
   createWallet() {
