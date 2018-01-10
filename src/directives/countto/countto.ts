@@ -1,11 +1,11 @@
-import { Directive, Input, Output, EventEmitter } from '@angular/core';
+import { Directive, EventEmitter, Input, Output } from '@angular/core';
 
 /**
  * Copied from https://github.com/izupet/angular2-counto
  */
 
 @Directive({
-  selector: '[counto]'
+  selector: '[counto]',
 })
 export class CounttoDirective {
 
@@ -42,7 +42,7 @@ export class CounttoDirective {
   }
 
   run() {
-    let _this = this;
+    const _this = this;
     clearInterval(_this._timer);
 
     if (isNaN(_this._duration)) {
@@ -62,26 +62,29 @@ export class CounttoDirective {
     }
 
     if (_this._step <= 0) {
+      // tslint:disable-next-line:no-console
       console.info('Step must be greater than 0.');
       return false;
     }
 
     if (_this._duration <= 0) {
+      // tslint:disable-next-line:no-console
       console.info('Duration must be greater than 0.');
       return false;
     }
 
-    if (_this._step > _this._duration*1000) {
+    if (_this._step > _this._duration * 1000) {
+      // tslint:disable-next-line:no-console
       console.info('Step must be equal or smaller than duration.');
       return false;
     }
 
     let intermediate  = _this._countFrom;
-    let increment     = Math.abs(_this._countTo - _this._countFrom) / ((_this._duration * 1000) / _this._step);
+    const increment     = Math.abs(_this._countTo - _this._countFrom) / ((_this._duration * 1000) / _this._step);
 
     _this.countoChange.emit(intermediate);
 
-    _this._timer = setInterval(function() {
+    _this._timer = (setInterval) => {
       if (_this._countTo < _this._countFrom) {
         if (intermediate <= _this._countTo) {
           clearInterval(_this._timer);
@@ -101,6 +104,7 @@ export class CounttoDirective {
           intermediate += increment;
         }
       }
-    }, _this._step);
+    // tslint:disable-next-line:no-unused-expression
+    }, _this._step;
   }
 }

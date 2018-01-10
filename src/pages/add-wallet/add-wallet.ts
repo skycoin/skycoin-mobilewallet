@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ViewController } from 'ionic-angular';
+import { WalletProvider } from '../../providers/wallet/wallet.provider';
 
 @Component({
   selector: 'page-add-wallet',
@@ -22,7 +22,7 @@ export class AddWalletPage implements OnInit {
   }
 
   cancel() {
-    this.view.dismiss()
+    this.view.dismiss();
   }
 
   createWallet() {
@@ -31,7 +31,7 @@ export class AddWalletPage implements OnInit {
   }
 
   generateSeed() {
-    this.wallet.generateSeed().subscribe(seed => this.form.controls.seed.setValue(seed));
+    this.wallet.generateSeed().subscribe((seed) => this.form.controls.seed.setValue(seed));
   }
 
   private initForm() {

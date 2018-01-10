@@ -3,12 +3,6 @@ import { AlertController, NavController } from 'ionic-angular';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 import { WalletsPage } from '../wallets/wallets';
 
-/**
- * Generated class for the PincodePage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @Component({
   selector: 'page-pincode',
   templateUrl: 'pincode.html',
@@ -16,10 +10,9 @@ import { WalletsPage } from '../wallets/wallets';
 export class PincodePage {
   status: number;
   correct: string;
-  pin = "";
+  pin = '';
   showError = false;
   storageAvailable = true;
-
 
   constructor(
     public alert: AlertController,
@@ -28,18 +21,18 @@ export class PincodePage {
     public secureStorage: SecureStorageProvider,
   ) {
     this.secureStorage.get('pin').subscribe(
-      pin => {
+      (pin) => {
         this.status = 1;
         this.correct = pin;
       },
-      error => {
+      (error) => {
         if (error.toString() === 'Error: Key [_SS_pin] not found.') {
           this.startCreateNewPinFlow();
         } else {
           // error.toString() === 'Error: Device is not secure'
           this.storageAvailable = false;
         }
-      }
+      },
     );
   }
 
@@ -49,7 +42,7 @@ export class PincodePage {
   }
 
   pressNumber(value: string) {
-    this.pin += this.pin.length < 4 ? value : "";
+    this.pin += this.pin.length < 4 ? value : '';
     if (this.pin.length >= 4) {
       this.handlePin();
     }
@@ -81,7 +74,7 @@ export class PincodePage {
   private newPin() {
     this.status = 3;
     this.correct = this.pin;
-    this.pin = "";
+    this.pin = '';
   }
 
   private startCreateNewPinFlow() {
@@ -98,7 +91,7 @@ export class PincodePage {
 
   private wrongPin() {
     this.showError = true;
-    setTimeout(() => this.pin = "", 200);
+    setTimeout(() => this.pin = '', 200);
     setTimeout(() => this.showError = false, 500);
   }
 }

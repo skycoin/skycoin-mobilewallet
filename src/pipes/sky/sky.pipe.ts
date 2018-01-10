@@ -7,7 +7,7 @@ export class SkyPipe implements PipeTransform {
 
   transform(value: number) {
     if (value < 0) {
-      return 'loading .. '
+      return 'loading .. ';
     } else {
       return (value ? (value / 1000000) : 0);
     }
