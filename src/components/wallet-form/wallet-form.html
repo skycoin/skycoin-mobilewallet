@@ -1,0 +1,25 @@
+<ion-content>
+  <div id="-add-seed-form" [formGroup]="form">
+    <div class="form-group">
+      <ion-label stacked>Name</ion-label>
+      <ion-input [formControl]="form.get('label')" [(ngModel)]="label" type="text"></ion-input>
+      <ion-icon *ngIf="label && label.length > 0" class="check-confirm" name="checkmark-circle"></ion-icon>
+    </div>
+    <div class="form-group">
+      <ion-label stacked>Seed</ion-label>
+      <ion-textarea [formControl]="form.get('seed')" [(ngModel)]="seed" rows="2" placeholder="seed"></ion-textarea>
+      <ion-icon *ngIf="seed && seed.length > 0" class="check-confirm" name="checkmark-circle"></ion-icon>
+    </div>
+    <div class="form-group">
+      <ion-label stacked>Confirm seed</ion-label>
+      <ion-textarea [formControl]="form.get('confirmSeed')" [(ngModel)]="confirmSeed" rows="2" placeholder="seed"></ion-textarea>
+      <ion-icon *ngIf="validateSeed()" class="check-confirm" name="checkmark-circle"></ion-icon>
+    </div>
+    <div class="buttons-container">
+      <div class="buttons">
+        <button ion-button round class="-light" (click)="cancelAction()">Cancel</button>
+        <button ion-button round class="-main" [disabled]="!form.valid || !validateSeed()" (click)="createWallet()">Create</button>
+      </div>
+    </div>
+  </div>
+</ion-content>

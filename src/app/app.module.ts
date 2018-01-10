@@ -34,6 +34,7 @@ import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
 import { TabsComponent } from '../components/tabs/tabs';
 import { AddWalletPage } from '../pages/add-wallet/add-wallet';
 import { LoadWalletPage } from '../pages/load-wallet/load-wallet';
+import { WalletFormComponent } from '../components/wallet-form/wallet-form';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { LoadWalletPage } from '../pages/load-wallet/load-wallet';
     SkyPipe,
     WalletOptionPipe,
     AddressPipe,
+    WalletFormComponent,
   ],
   imports: [
     BrowserModule,
