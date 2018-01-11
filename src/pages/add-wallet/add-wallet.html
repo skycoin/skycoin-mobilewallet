@@ -1,26 +1,36 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Create Wallet</ion-title>
+    <ion-title>New Wallet</ion-title>
+    <ion-buttons end >
+      <button class="ion-icon-botton" (click)="cancel()">
+          <ion-icon name="close"></ion-icon>
+      </button>
+      </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <div id="-add-seed-form" [formGroup]="form">
     <div class="form-group">
-      <ion-label stacked>Give it a name</ion-label>
-      <ion-input formControlName="label" type="text"></ion-input>
+      <ion-label stacked>Name</ion-label>
+      <ion-input formControlName="label" [(ngModel)]="label" type="text"></ion-input>
+      <ion-icon *ngIf="label.length > 0" class="check-confirm" name="checkmark-circle"></ion-icon>
     </div>
     <div class="form-group">
       <ion-label stacked>Seed</ion-label>
-      <ion-textarea formControlName="seed" rows="3" placeholder="..."></ion-textarea>
+      <ion-textarea formControlName="seed" rows="2" placeholder="seed"  [(ngModel)]="seed"></ion-textarea>
+      <ion-icon *ngIf="seed.length > 0" class="check-confirm" name="checkmark-circle"></ion-icon>
     </div>
-    <p class="warning-text">
-      Important! Always have a back-up available of this seed, your device might delete your seed in various situations.
-      If you lose it, you won't be able to access your wallet again.
-    </p>
-    <div class="buttons">
-      <button ion-button round class="-light" (click)="cancel()">Cancel</button>
-      <button ion-button round class="-main" [disabled]="!form.valid" (click)="createWallet()">Create</button>
+    <div class="form-group">
+        <ion-label stacked>Confirm seed</ion-label>
+        <ion-textarea formControlName="confirmseed" rows="2" placeholder="seed" [(ngModel)]="confirmseed"></ion-textarea>
+        <ion-icon *ngIf="validateSeed()" class="check-confirm" name="checkmark-circle"></ion-icon>
+      </div>
+    <div class="buttons-container">
+      <div class="buttons">
+        <button ion-button round class="-light" (click)="cancel()">Cancel</button>
+        <button ion-button round class="-main" [disabled]="!form.valid || !validateSeed()" (click)="createWallet()">Create</button>
+      </div>
     </div>
   </div>
 </ion-content>
