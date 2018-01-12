@@ -34,6 +34,7 @@ import { LocalApiProvider } from '../providers/local-api/local-api.provider';
 import { SecureStorageProvider } from '../providers/secure-storage/secure-storage';
 import { StorageApiProvider } from '../providers/storage-api/storage-api.provider';
 import { WalletProvider } from '../providers/wallet/wallet.provider';
+import { SkyHeaderComponent } from '../components/sky-header/sky-header';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { WalletProvider } from '../providers/wallet/wallet.provider';
     SkyPipe,
     WalletOptionPipe,
     AddressPipe,
+    SkyHeaderComponent,
   ],
   imports: [
     BrowserModule,
