@@ -10,7 +10,7 @@ import { SkyHeaderComponent } from './sky-header';
     IonicModule,
   ],
   exports: [
-    SkyHeaderComponent
-  ]
+    SkyHeaderComponent,
+  ],
 })
 export class SkyHeaderComponentModule {}
