@@ -10,7 +10,7 @@ import { SkyButtonComponent } from './sky-button';
     IonicModule,
   ],
   exports: [
-    SkyButtonComponent
-  ]
+    SkyButtonComponent,
+  ],
 })
 export class SkyButtonComponentModule {}

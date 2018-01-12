@@ -17,6 +17,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { BalanceComponent } from '../components/balance/balance';
 import { ModalComponent } from '../components/modal/modal';
 import { QrCodeComponent } from '../components/qr-code/qr-code';
+import { SkyButtonComponent } from '../components/sky-button/sky-button';
 import { TabsComponent } from '../components/tabs/tabs';
 import { CounttoDirective } from '../directives/countto/countto';
 import { AddWalletPage } from '../pages/add-wallet/add-wallet';
@@ -34,7 +35,6 @@ import { LocalApiProvider } from '../providers/local-api/local-api.provider';
 import { SecureStorageProvider } from '../providers/secure-storage/secure-storage';
 import { StorageApiProvider } from '../providers/storage-api/storage-api.provider';
 import { WalletProvider } from '../providers/wallet/wallet.provider';
-import { SkyButtonComponent } from '../components/sky-button/sky-button';
 
 @NgModule({
   declarations: [
