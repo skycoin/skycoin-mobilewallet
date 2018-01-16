@@ -1,0 +1,9 @@
+<button ion-button round [disabled]="disabled" (click)="onClick()" [ngClass]="{enabled: !disabled,error:state===2}">
+  <ng-content></ng-content>
+  &nbsp;
+  <ion-icon *ngIf="state === 1" name="done-all"></ion-icon>
+  <ion-icon *ngIf="state === 2" name="warning"></ion-icon>
+  <ion-spinner *ngIf="state === 0"></ion-spinner>
+</button>
+
+
