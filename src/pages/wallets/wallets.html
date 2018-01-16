@@ -1,25 +1,60 @@
 <app-header title="Wallets"></app-header>
 
 
-<ion-content padding>
+<ion-content>
   <ion-list>
     <ion-item-divider>
-      <div>Wallet</div>
-      <div>Hours</div>
-      <div>Balance</div>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            Wallet
+          </ion-col>
+          <ion-col col-3>
+            Hours
+          </ion-col>
+          <ion-col col-3>
+            Balance
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-item-divider>
     <ion-item-sliding *ngFor="let wallet of wallet.all() | async">
-      <button ion-item mode="ios" (click)="openWallet(wallet)">
-        <div class="column-40">{{ wallet.label ? wallet.label : 'No label' }}</div>
-        <div class="column-30">{{ wallet.hours }}</div>
-        <div class="column-30">{{ wallet.balance }}</div>
-      </button>
+      <ion-item (click)="openWallet(wallet)">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6>
+              {{ wallet.label ? wallet.label : 'No label' }}
+            </ion-col>
+            <ion-col col-3>
+              {{ wallet.hours }}
+            </ion-col>
+            <ion-col col-3>
+              {{ wallet.balance }}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
       <ion-item-options side="right">
         <button ion-button color="danger" (click)="deleteWallet(wallet)">
           Delete
         </button>
       </ion-item-options>
     </ion-item-sliding>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 offset-2>
+          <button ion-button color="light" (click)="addWallet()">
+            <ion-icon name="sky-plus"></ion-icon> &nbsp; Add Wallet
+          </button>
+        </ion-col>
+        <ion-col col-4>
+          <button ion-button color="light" (click)="loadWallet()">
+            <ion-icon name="sky-load"></ion-icon> &nbsp; Load Wallet
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-list>
 
   <tabs></tabs>
