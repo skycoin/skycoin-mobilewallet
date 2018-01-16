@@ -1,6 +1,8 @@
 <app-header title="Wallets"></app-header>
 <ion-content>
   <ion-list id="pages-wallets">
+    <div class="-header">
+    </div>
     <ion-item-divider>
       <ion-grid>
         <ion-row>
@@ -24,10 +26,10 @@
               {{ wallet.label ? wallet.label : 'No label' }}
             </ion-col>
             <ion-col col-3>
-              {{ wallet.hours }}
+              {{ wallet.hours ? wallet.hours : 0 }}
             </ion-col>
             <ion-col col-3>
-              {{ wallet.balance }}
+              {{ wallet.balance ? wallet.balance : 0 }}
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -39,19 +41,14 @@
       </ion-item-options>
     </ion-item-sliding>
 
-    <ion-grid>
-      <ion-row>
-        <ion-col col-4 offset-2>
-          <button ion-button color="light" (click)="addWallet()">
-            <ion-icon name="sky-plus"></ion-icon> &nbsp; Add Wallet
-          </button>
-        </ion-col>
-        <ion-col col-4>
-          <button ion-button color="light" (click)="loadWallet()">
-            <ion-icon name="sky-load"></ion-icon> &nbsp; Load Wallet
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <div class="-actions-buttons">
+      <button class="add-wallet" ion-button color="light" (click)="addWallet()">
+        <ion-icon name="sky-plus"></ion-icon> &nbsp; Add Wallet
+      </button>
+      <button class="load-wallet" ion-button color="light" (click)="loadWallet()">
+        <ion-icon name="sky-load"></ion-icon> &nbsp; Load Wallet
+      </button>
+    </div>
+
   </ion-list>
 </ion-content>

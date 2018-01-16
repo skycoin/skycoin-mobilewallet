@@ -35,7 +35,7 @@ export class WalletProvider {
   constructor(private backendApi: BackendApiProvider,
               private localApi: LocalApiProvider,
               private platform: Platform,
-              private secureStorage: SecureStorageProvider,) {
+              private secureStorage: SecureStorageProvider ) {
     this.platform.ready().then(() => this.loadData());
   }
 

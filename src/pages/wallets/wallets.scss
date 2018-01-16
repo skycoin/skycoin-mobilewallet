@@ -4,9 +4,16 @@ $screen-padding: 32px;
   background-color: $background-color-normal;
 
   .-header {
-    min-height: 250px;
+    min-height: 174px;
     padding: 100px 0 0 0;
     width: 100%;
+  }
+  ion-list {
+    height: 100%;
+  }
+
+  .list-md {
+    margin: 0;
   }
 
   h1 span {
@@ -22,6 +29,9 @@ $screen-padding: 32px;
     min-height: 69px;
   }
   ion-item-sliding {
+    button {
+      text-transform: capitalize !important;
+    }
     .item-md {
       padding: 0 !important;
       ion-label {
@@ -30,12 +40,19 @@ $screen-padding: 32px;
     }
   }
 
-  button {
-    width: 100%;
-    text-transform: capitalize;
-    border: none;
-    box-shadow: none;
+  .-actions-buttons {
+    margin: 0 auto;
+    width: 250px;
+    button{
+      width: auto;
+      text-transform: capitalize;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+    }
   }
+
+
 }
 
 

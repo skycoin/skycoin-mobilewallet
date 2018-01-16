@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
-
 import { NavParams } from 'ionic-angular';
-
 import { WalletsPage } from '../wallets/wallets';
 import { SendSkycoinPage } from '../send-skycoin/send-skycoin';
 import { TransactionsPage } from '../transactions/transactions';
-
 
 @Component({
   selector: 'tabs-page',

@@ -8,4 +8,3 @@ export class WalletModel {
   hours?: number;
   visible?: number;
 }
-
