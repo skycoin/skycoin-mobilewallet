@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import {Injectable} from '@angular/core';
+import {Platform} from 'ionic-angular';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/do';
@@ -7,15 +7,15 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/retry';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import { Output } from '../../app/app.datatypes';
-import { AddressModel } from '../../models/address.model';
-import { WalletModel } from '../../models/wallet.model';
-import { BackendApiProvider } from '../backend-api/backend-api.provider';
-import { LocalApiProvider } from '../local-api/local-api.provider';
-import { SecureStorageProvider } from '../secure-storage/secure-storage';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
+import {Output} from '../../app/app.datatypes';
+import {AddressModel} from '../../models/address.model';
+import {WalletModel} from '../../models/wallet.model';
+import {BackendApiProvider} from '../backend-api/backend-api.provider';
+import {LocalApiProvider} from '../local-api/local-api.provider';
+import {SecureStorageProvider} from '../secure-storage/secure-storage';
 
 @Injectable()
 export class WalletProvider {
@@ -26,23 +26,21 @@ export class WalletProvider {
     return this.all().map((wallets) =>
       wallets.reduce(
         (array, wallet) =>
-          array.concat(wallet.entries.slice(0, wallet.visible)),
+          array.concat(wallet.entries.slice(0, wallet.visible ? 1 : 0)),
         [],
       ),
     );
   }
 
-  constructor(
-    private backendApi: BackendApiProvider,
-    private localApi: LocalApiProvider,
-    private platform: Platform,
-    private secureStorage: SecureStorageProvider,
-  ) {
+  constructor(private backendApi: BackendApiProvider,
+              private localApi: LocalApiProvider,
+              private platform: Platform,
+              private secureStorage: SecureStorageProvider,) {
     this.platform.ready().then(() => this.loadData());
   }
 
   addAddress(wallet: WalletModel) {
-    wallet.visible += 1;
+    wallet.visible = true;
     this.updateWallet(wallet);
   }
 
@@ -168,7 +166,7 @@ export class WalletProvider {
       .subscribe((wallets) => {
         this.wallets.next(wallets);
         this.refreshBalances();
-      // tslint:disable-next-line:no-console
+        // tslint:disable-next-line:no-console
       }, (error) => console.log(error));
   }
 }

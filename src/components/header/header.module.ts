@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
-import { SkyHeaderComponent } from './sky-header';
+import { HeaderComponent } from './header';
 
 @NgModule({
   declarations: [
-    SkyHeaderComponent,
+    HeaderComponent,
   ],
   imports: [
     IonicModule,
   ],
   exports: [
-    SkyHeaderComponent,
-  ],
+    HeaderComponent  ],
 })
 export class SkyHeaderComponentModule {}
