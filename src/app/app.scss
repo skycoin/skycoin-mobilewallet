@@ -131,3 +131,79 @@ ion-buttons {
   font-size: 12px;
   font-weight: 700;
 }
+
+.ion-ios-transactions,
+.ion-md-transactions {
+  content: url(../assets/icon/transactions-grey.svg);
+  width: 32px;
+  height: 32px;
+  padding: 6px 4px 2px;
+  opacity: 0.9;
+
+  &[ng-reflect-is-active=true] {
+    content: url(../assets/icon/transactions-black.svg);
+  }
+}
+
+.ion-ios-wallets,
+.ion-md-wallets {
+  content: url(../assets/icon/wallets-grey.svg);
+  width: 32px;
+  height: 32px;
+  padding: 6px 4px 2px;
+  opacity: 0.9;
+  &[ng-reflect-is-active=true] {
+    content: url(../assets/icon/wallets-black.svg);
+  }
+}
+
+.ion-ios-sky-send,
+.ion-md-sky-send {
+  content: url(../assets/icon/send-white.svg);
+  width: 32px;
+  height: 32px;
+  margin: 0 0 0 10px;
+  opacity: 0.9;
+  transform-origin: unset !important;
+  transform: rotate(180deg) !important;
+  &[ng-reflect-is-active=true] {
+    transform: rotate(180deg) !important;
+
+  }
+}
+
+.ion-ios-sky-back,
+.ion-md-sky-back {
+  content: url(../assets/icon/back-icon.svg);
+  width: 32px;
+  height: 32px;
+  margin: 0 0 0 10px;
+  opacity: 0.9;
+}
+
+.ion-ios-sky-refresh,
+.ion-md-sky-refresh {
+  content: url(../assets/icon/refresh-icon.svg);
+  width: 32px;
+  height: 32px;
+  margin: 0 0 0 10px;
+  opacity: 0.9;
+}
+
+.ion-ios-sky-plus,
+.ion-md-sky-plus {
+  content: url(../assets/icon/sky-plus.svg);
+  width: 32px;
+  height: 32px;
+  margin: 0 0 0 10px;
+  opacity: 0.9;
+}
+
+.ion-ios-sky-load,
+.ion-md-sky-load {
+  content: url(../assets/icon/sky-load.svg);
+  width: 32px;
+  height: 32px;
+  margin: 0 0 0 10px;
+  opacity: 0.9;
+}

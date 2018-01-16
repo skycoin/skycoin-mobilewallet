@@ -34,6 +34,7 @@ import {LocalApiProvider} from '../providers/local-api/local-api.provider';
 import {SecureStorageProvider} from '../providers/secure-storage/secure-storage';
 import {StorageApiProvider} from '../providers/storage-api/storage-api.provider';
 import {WalletProvider} from '../providers/wallet/wallet.provider';
+import {PriceService} from '../providers/price/price.service';
 import {HeaderComponent} from '../components/header/header';
 
 @NgModule({
@@ -86,6 +87,7 @@ import {HeaderComponent} from '../components/header/header';
     LocalApiProvider,
     WalletProvider,
     StorageApiProvider,
+    PriceService,
     SecureStorage,
     SecureStorageProvider,
     Clipboard,

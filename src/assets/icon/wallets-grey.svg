@@ -1,0 +1,41 @@
+<svg width="28" height="22" viewBox="0 0 28 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Union</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-5503 -472)">
+<rect x="5503" y="472" width="28" height="22" fill="#FFFFFF"/>
+<clipPath id="clip-0" clip-rule="evenodd">
+<path d="M 5436 -220L 5850 -220L 5850 516L 5436 516L 5436 -220Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="Transaction History" clip-path="url(#clip-0)">
+<path d="M 5436 -220L 5850 -220L 5850 516L 5436 516L 5436 -220Z" fill="#FFFFFF"/>
+<g id="Table">
+<g id="Container">
+<use xlink:href="#path0_fill" transform="translate(5436 -160)" fill="#F7F7F7"/>
+</g>
+</g>
+<g id="Tab Bar / Transactions Active">
+<g id="BG">
+<use xlink:href="#path1_fill" transform="translate(5436 450)" fill="#FBFBFB"/>
+</g>
+<clipPath id="clip-1" clip-rule="evenodd">
+<path d="M 5436 450L 5593 450L 5593 516L 5436 516L 5436 450Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="Wallets" clip-path="url(#clip-1)">
+<clipPath id="clip-2" clip-rule="evenodd">
+<path d="M 5501 467L 5533 467L 5533 499L 5501 499L 5501 467Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="icons / wallet-black" opacity="0.2" clip-path="url(#clip-2)">
+<g id="Union">
+<use xlink:href="#path2_fill" transform="translate(5503 472)" fill="#1E2227"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 0 0L 414 0L 414 676L 0 676L 0 0Z"/>
+<path id="path1_fill" fill-rule="evenodd" d="M 0 0L 414 0L 414 66L 0 66L 0 0Z"/>
+<path id="path2_fill" fill-rule="evenodd" d="M 4 2L 24 2C 25.1045 2 26 2.89542 26 4L 26 7L 19 7C 17.3433 7 16 8.34314 16 10L 16 12C 16 13.6569 17.3433 15 19 15L 26 15L 26 18C 26 19.1046 25.1045 20 24 20L 4 20C 2.89551 20 2 19.1046 2 18L 2 4C 2 2.89542 2.89551 2 4 2ZM 26 13L 26 9L 19 9C 18.4478 9 18 9.44772 18 10L 18 12C 18 12.5523 18.4478 13 19 13L 26 13ZM 28 13L 28 18C 28 20.2091 26.209 22 24 22L 4 22C 1.79102 22 0 20.2091 0 18L 0 4C 0 1.79086 1.79102 0 4 0L 24 0C 26.209 0 28 1.79086 28 4L 28 9L 28 13Z"/>
+</defs>
+</svg>

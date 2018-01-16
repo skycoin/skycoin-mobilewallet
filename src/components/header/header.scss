@@ -1,4 +1,4 @@
-sky-header {
+app-header {
   text-align: center;
   .toolbar-title {
     font-size: 14px;
@@ -7,39 +7,39 @@ sky-header {
   }
   .toolbar-background-md {
     background: rgba(
-      0,
-      114,
-      255,
-      1
+        0,
+        114,
+        255,
+        1
     ); /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(
         left top,
         rgba(0, 114, 255, 1) 0%,
         rgba(0, 130, 255, 0.76) 30%,
         rgba(0, 195, 255, 0.2) 100%
-      ),
-      url("../assets/imgs/header.png") center center no-repeat; /* For Safari 5.1 to 6.0 */
+    ),
+    url("../assets/imgs/header.png") center center no-repeat; /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(
         bottom right,
         rgba(0, 114, 255, 1) 0%,
         rgba(0, 130, 255, 0.76) 30%,
         rgba(0, 195, 255, 0.2) 100%
-      ),
-      url("../assets/imgs/header.png") center center no-repeat; /* For Opera 11.1 to 12.0 */
+    ),
+    url("../assets/imgs/header.png") center center no-repeat; /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(
         bottom right,
         rgba(0, 114, 255, 1) 0%,
         rgba(0, 130, 255, 0.76) 30%,
         rgba(0, 195, 255, 0.2) 100%
-      ),
-      url("../assets/imgs/header.png") center center no-repeat; /* For Firefox 3.6 to 15 */
+    ),
+    url("../assets/imgs/header.png") center center no-repeat; /* For Firefox 3.6 to 15 */
     background: linear-gradient(
         to bottom right,
         rgba(0, 114, 255, 1) 0%,
         rgba(0, 130, 255, 0.76) 30%,
         rgba(0, 195, 255, 0.2) 100%
-      ),
-      url("../assets/imgs/header.png") center center no-repeat; /* Standard syntax */
+    ),
+    url("../assets/imgs/header.png") center center no-repeat; /* Standard syntax */
   }
 
   h1 {
@@ -66,10 +66,10 @@ sky-header {
     &.sky-hours {
       color: black;
       background: -webkit-linear-gradient(
-        left top,
-        rgba(0, 114, 255, 1) 0%,
-        rgba(0, 130, 255, 0.76) 30%,
-        rgba(0, 195, 255, 0.2) 100%
+          left top,
+          rgba(0, 114, 255, 1) 0%,
+          rgba(0, 130, 255, 0.76) 30%,
+          rgba(0, 195, 255, 0.2) 100%
       );
       padding: 5px 15px;
       -webkit-border-radius: 15px;

@@ -14,49 +14,28 @@ $screen-padding: 32px;
   }
 
   ion-item-divider {
-    min-height: 50px;
-    padding-right: 32px;
+    height: 50px;
   }
 
   ion-item-sliding .item .item-inner {
     font-size: 13px;
     min-height: 69px;
   }
-
-  .-action-buttons {
-    padding: 40px 0 20px;
-    margin-bottom: 66px;
-    text-align: center;
-
-    button {
-      background-color: $background-color-normal;
-      box-shadow: none;
-      color: $text-color-normal;
-      font-size: 13px;
-      margin: 0 5px;
-      min-width: 140px;
-
-      img {
-        height: 28px;
-        margin-left: -4px;
-        width: 28px;
+  ion-item-sliding {
+    .item-md {
+      padding: 0 !important;
+      ion-label {
+        padding-left: 16px !important;
       }
     }
   }
-}
 
-.fab ion-icon {
-  font-size: 3.6em;
-}
-
-ion-fab[bottom][right] {
-  right: 30px;
-  bottom: 30px;
-}
-
-button[ion-fab] {
-  height: 72px;
-  width: 72px;
+  button {
+    width: 100%;
+    text-transform: capitalize;
+    border: none;
+    box-shadow: none;
+  }
 }
 
 

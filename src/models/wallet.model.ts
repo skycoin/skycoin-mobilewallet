@@ -6,6 +6,6 @@ export class WalletModel {
   entries: AddressModel[];
   balance?: number;
   hours?: number;
-  visible?: boolean;
+  visible?: number;
 }
 

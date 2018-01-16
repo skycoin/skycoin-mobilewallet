@@ -26,7 +26,7 @@ export class WalletProvider {
     return this.all().map((wallets) =>
       wallets.reduce(
         (array, wallet) =>
-          array.concat(wallet.entries.slice(0, wallet.visible ? 1 : 0)),
+          array.concat(wallet.entries.slice(0, wallet.visible)),
         [],
       ),
     );
@@ -40,7 +40,7 @@ export class WalletProvider {
   }
 
   addAddress(wallet: WalletModel) {
-    wallet.visible = true;
+    wallet.visible += 1;
     this.updateWallet(wallet);
   }
 

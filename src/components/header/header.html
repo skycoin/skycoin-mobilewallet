@@ -3,7 +3,7 @@
     <ion-grid>
       <ion-row>
         <ion-col col-4>
-          <ion-icon *ngIf="backAction" name="sky-back" style="float: left;"></ion-icon>
+          <!--<ion-icon *ngIf="backAction" name="sky-back" style="float: left;"></ion-icon>-->
         </ion-col>
         <ion-col col-4>
           <ion-title>{{title}}</ion-title>
@@ -14,7 +14,7 @@
       </ion-row>
       <ion-row>
         <ion-col col-12>
-          <h1>{{sky}}
+          <h1>{{coins}}
             <span>sky</span>
           </h1>
         </ion-col>
@@ -22,7 +22,7 @@
       </ion-row>
       <ion-row>
         <ion-col col-12>
-          <span class="sky-money">${{money}} (${{secMoney}})</span>
+          <span class="sky-money">{{balance}}</span>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -30,7 +30,6 @@
           <span class="sky-hours">{{hours}} SKY Hours</span>
         </ion-col>
       </ion-row>
-      <ion-row></ion-row>
       <ion-row></ion-row>
     </ion-grid>
 
