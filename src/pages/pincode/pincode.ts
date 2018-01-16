@@ -1,7 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { AlertController, NavController } from 'ionic-angular';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
-import { WalletsPage } from '../wallets/wallets';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-pincode',
@@ -38,7 +38,7 @@ export class PincodePage {
 
   disableSecure() {
     this.secureStorage.secureStorageDisabled = true;
-    this.nav.setRoot(WalletsPage);
+    this.nav.setRoot(TabsPage);
   }
 
   pressNumber(value: string) {
@@ -50,7 +50,7 @@ export class PincodePage {
 
   private confirmPin() {
     if (this.pin === this.correct) {
-      this.secureStorage.set('pin', this.pin).subscribe(() => this.nav.setRoot(WalletsPage));
+      this.secureStorage.set('pin', this.pin).subscribe(() => this.nav.setRoot(TabsPage));
     } else {
       this.wrongPin();
       this.status = 2;
@@ -83,7 +83,7 @@ export class PincodePage {
 
   private verifyPin() {
     if (this.pin === this.correct) {
-      this.nav.setRoot(WalletsPage);
+      this.nav.setRoot(TabsPage);
     } else {
       this.wrongPin();
     }

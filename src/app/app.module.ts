@@ -26,6 +26,7 @@ import {PincodePage} from '../pages/pincode/pincode';
 import {SendSkycoinPage} from '../pages/send-skycoin/send-skycoin';
 import {TransactionsPage} from '../pages/transactions/transactions';
 import {WalletDetailPage} from '../pages/wallet-detail/wallet-detail';
+import {TabsPage} from '../pages/tabs/tabs';
 import {AddressPipe} from '../pipes/address/address';
 import {SkyPipe} from '../pipes/sky/sky.pipe';
 import {WalletOptionPipe} from '../pipes/wallet-option/wallet-option';
@@ -45,6 +46,7 @@ import {HeaderComponent} from '../components/header/header';
     LoadWalletPage,
     PincodePage,
     SendSkycoinPage,
+    TabsPage,
     TransactionsPage,
     WalletDetailPage,
     WalletsPage,
@@ -72,6 +74,7 @@ import {HeaderComponent} from '../components/header/header';
     LoadWalletPage,
     MyApp,
     PincodePage,
+    TabsPage,
     SendSkycoinPage,
     TransactionsPage,
     WalletDetailPage,
