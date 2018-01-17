@@ -131,3 +131,15 @@ ion-buttons {
   font-size: 12px;
   font-weight: 700;
 }
+
+.ion-ios-backspace,
+.ion-md-backspace {
+  content: url(../assets/icon/backspace-black.svg);
+  width: 32px;
+  height: 32px;
+  padding: 6px 4px 2px;
+  opacity: 0.9;
+  &[ng-reflect-is-active=true] {
+    content: url(../assets/icon/backspace-white.svg);
+  }
+}

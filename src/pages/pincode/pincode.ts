@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import { AlertController, NavController } from 'ionic-angular';
+import { AlertController, LoadingController, NavController } from 'ionic-angular';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 import { WalletsPage } from '../wallets/wallets';
 
@@ -13,17 +13,26 @@ export class PincodePage {
   pin = '';
   showError = false;
   storageAvailable = true;
+  display = false;
 
   constructor(
     public alert: AlertController,
     public el: ElementRef,
     public nav: NavController,
     public secureStorage: SecureStorageProvider,
+    public loadingCtrl: LoadingController,
   ) {
+    const loader = this.loadingCtrl.create({
+      content: 'Please wait...',
+    });
+    loader.present();
+
     this.secureStorage.get('pin').subscribe(
       (pin) => {
         this.status = 1;
         this.correct = pin;
+        this.display = true;
+        loader.dismiss();
       },
       (error) => {
         if (error.toString() === 'Error: Key [_SS_pin] not found.') {
@@ -32,6 +41,8 @@ export class PincodePage {
           // error.toString() === 'Error: Device is not secure'
           this.storageAvailable = false;
         }
+        this.display = true;
+        loader.dismiss();
       },
     );
   }
@@ -46,6 +57,10 @@ export class PincodePage {
     if (this.pin.length >= 4) {
       this.handlePin();
     }
+  }
+
+  pressBack() {
+    this.pin = this.pin.substr(0, this.pin.length - 1);
   }
 
   private confirmPin() {
