@@ -1,5 +1,5 @@
-import { Component, ElementRef } from '@angular/core';
-import { AlertController, LoadingController, NavController } from 'ionic-angular';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AlertController, LoadingController, NavController, Slides } from 'ionic-angular';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 import { WalletsPage } from '../wallets/wallets';
 
@@ -15,6 +15,8 @@ export class PincodePage {
   storageAvailable = true;
   display = false;
 
+  @ViewChild('slides') slides: Slides;
+
   constructor(
     public alert: AlertController,
     public el: ElementRef,
@@ -22,34 +24,42 @@ export class PincodePage {
     public secureStorage: SecureStorageProvider,
     public loadingCtrl: LoadingController,
   ) {
-    const loader = this.loadingCtrl.create({
-      content: 'Please wait...',
-    });
-    loader.present();
+    this.display = true;
+    this.status = 1;
 
-    this.secureStorage.get('pin').subscribe(
-      (pin) => {
-        this.status = 1;
-        this.correct = pin;
-        this.display = true;
-        loader.dismiss();
-      },
-      (error) => {
-        if (error.toString() === 'Error: Key [_SS_pin] not found.') {
-          this.startCreateNewPinFlow();
-        } else {
-          // error.toString() === 'Error: Device is not secure'
-          this.storageAvailable = false;
-        }
-        this.display = true;
-        loader.dismiss();
-      },
-    );
+    // const loader = this.loadingCtrl.create({
+    //   content: 'Please wait...',
+    // });
+    // loader.present();
+
+    // this.secureStorage.get('pin').subscribe(
+    //   (pin) => {
+    //     this.status = 1;
+    //     this.correct = pin;
+    //     this.display = true;
+    //     loader.dismiss();
+    //   },
+    //   (error) => {
+    //     if (error.toString() === 'Error: Key [_SS_pin] not found.') {
+    //       this.startCreateNewPinFlow();
+    //     } else {
+    //       // error.toString() === 'Error: Device is not secure'
+    //       this.storageAvailable = false;
+    //     }
+    //     this.display = true;
+    //     loader.dismiss();
+    //   },
+    // );
+  }
+
+  changeStatus() {
+    this.status++;
+    if (this.status > 3)this.status = 1;
   }
 
   disableSecure() {
     this.secureStorage.secureStorageDisabled = true;
-    this.nav.setRoot(WalletsPage);
+    // this.nav.setRoot(WalletsPage);
   }
 
   pressNumber(value: string) {
@@ -63,9 +73,30 @@ export class PincodePage {
     this.pin = this.pin.substr(0, this.pin.length - 1);
   }
 
+  onSlideChangeStart(slider: Slides) {
+    // this.showSkip = !slider.isEnd();
+  }
+
+  ionViewWillEnter() {
+    this.slides.update();
+    this.slides.lockSwipes(true);
+  }
+
+  ionViewDidEnter() {
+    // the root left menu should be disabled on the tutorial page
+    // this.menu.enable(false);
+  }
+
+  ionViewDidLeave() {
+    // enable the root left menu when leaving the tutorial page
+    // this.menu.enable(true);
+  }
+
   private confirmPin() {
     if (this.pin === this.correct) {
-      this.secureStorage.set('pin', this.pin).subscribe(() => this.nav.setRoot(WalletsPage));
+      this.slides.lockSwipes(false);
+      this.slides.slideNext();
+      // this.secureStorage.set('pin', this.pin).subscribe(() => this.nav.setRoot(WalletsPage));
     } else {
       this.wrongPin();
       this.status = 2;
@@ -98,7 +129,8 @@ export class PincodePage {
 
   private verifyPin() {
     if (this.pin === this.correct) {
-      this.nav.setRoot(WalletsPage);
+      this.slides.slideNext();
+      // this.nav.setRoot(WalletsPage);
     } else {
       this.wrongPin();
     }
