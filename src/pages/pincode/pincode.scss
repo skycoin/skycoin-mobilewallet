@@ -229,6 +229,12 @@ page-pincode{
     .text-input-md{
       margin: 0;
     }
+    img{
+      border-radius: 20px;
+      float: right;
+      position: relative;
+      margin: -7px 0 0px 0px;
+    }
   }
 
   ion-input, ion-textarea{
@@ -239,13 +245,17 @@ page-pincode{
     margin-top: 2px;
 
     line-height: 20px;
-    padding: 5px 10px;
+    padding: 10px 10px;
+    //width: 99%;
   }
 
   ion-textarea{
     textarea{
       width: 100% !important;
     }
+  }
+  ion-input{
+    padding-left: 0;
   }
 
   .buttons{

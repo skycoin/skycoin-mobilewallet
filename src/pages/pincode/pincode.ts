@@ -1,21 +1,26 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { AlertController, LoadingController, NavController, Slides } from 'ionic-angular';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertController, LoadingController, NavController, Slides, ViewController } from 'ionic-angular';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
-import { WalletsPage } from '../wallets/wallets';
+import { WalletProvider } from '../../providers/wallet/wallet.provider';
+import { PasswordValidation } from './../../match';
 
 @Component({
   selector: 'page-pincode',
   templateUrl: 'pincode.html',
 })
-export class PincodePage {
-  status: number;
-  correct: string;
-  pin = '';
-  showError = false;
-  storageAvailable = true;
-  display = false;
+export class PincodePage implements OnInit {
 
   @ViewChild('slides') slides: Slides;
+  form: FormGroup;
+  status: number;
+  seed: string;
+  confirmSeed: string;
+  correct: string;
+  pin: string;
+  showError: boolean;
+  display: boolean;
+  storageAvailable: boolean = true;
 
   constructor(
     public alert: AlertController,
@@ -23,7 +28,20 @@ export class PincodePage {
     public nav: NavController,
     public secureStorage: SecureStorageProvider,
     public loadingCtrl: LoadingController,
+    private view: ViewController,
+    private wallet: WalletProvider,
+    fb: FormBuilder,
   ) {
+    this.form = fb.group({
+        confirmSeed: ['', Validators.required],
+        label: ['', Validators.required],
+        seed: ['', Validators.required],
+    }, {
+        validator: PasswordValidation.MatchSeed,
+    });
+
+    this.generateSeed();
+
     this.display = true;
     this.status = 1;
 
@@ -52,9 +70,25 @@ export class PincodePage {
     // );
   }
 
+  ngOnInit() {
+    this.pin = '';
+  }
+
+  createWallet() {
+    this.wallet.create(this.form.value.label, this.form.value.seed);
+    this.view.dismiss();
+  }
+
+  generateSeed() {
+    // this.wallet.generateSeed().subscribe((seed) => this.form.controls.seed.setValue(seed));
+  }
+
   changeStatus() {
     this.status++;
-    if (this.status > 3)this.status = 1;
+    if (this.status <= 3) {
+      return;
+    }
+    this.status = 1;
   }
 
   disableSecure() {
@@ -141,4 +175,5 @@ export class PincodePage {
     setTimeout(() => this.pin = '', 200);
     setTimeout(() => this.showError = false, 500);
   }
+
 }

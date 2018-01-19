@@ -111,21 +111,22 @@
           </div>
           <div class="cell-body">
             <ion-toggle checked="false">New</ion-toggle>
-            <div>
+            <div [formGroup]="form">
               <div class="form-group">
                 <ion-label>Give it a name</ion-label>
-                <ion-input type="text"></ion-input>
+                <ion-input formControlName="label" type="text"></ion-input>
               </div>
               <div class="form-group">
                 <ion-label>Seed</ion-label>
-                <ion-textarea  rows="2"></ion-textarea>
+                <ion-textarea formControlName="seed" rows="2"></ion-textarea>
               </div>
               <div class="form-group">
                 <ion-label>Confirm seed</ion-label>
-                <ion-textarea  rows="2"></ion-textarea>
+                <ion-textarea formControlName="confirmSeed" rows="2"></ion-textarea>
+                <img *ngIf="!form.controls.confirmSeed.errors?.MatchSeed" src="./../../assets/icon/Valid.svg" />
               </div>
               <div class="buttons">
-                <button ion-button round class="-main" >Create</button>
+                <button ion-button round class="-main" [disabled]="!form.valid" (click)="createWallet()">Create</button>
               </div>
             </div>
           </div>
