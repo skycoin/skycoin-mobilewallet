@@ -1,22 +1,26 @@
-<ion-content id="pincode">
+<ion-content id="pincode" class="sky-container">
   <modal [header]="'IMPORTANT!'" *ngIf="!storageAvailable">
     <p>
-      We could not instantiate our secure storage service on your device. This means you cannot set a pincode and/or save your
-      wallet seeds on your device. Whenever you want to transfer funds out of your wallet, you will be requested to enter
+      We could not instantiate our secure storage service on your device. This means you cannot set a pincode and/or
+      save your
+      wallet seeds on your device. Whenever you want to transfer funds out of your wallet, you will be requested to
+      enter
       your wallet seed again.
       <b>Without your seed your funds will most likely be irretrievably lost.
       </b>
     </p>
     <button ion-button color="light" round class="-continue" (click)="disableSecure()">Continue</button>
   </modal>
+
   <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager>
     <ion-slide>
-      <div *ngIf="display" class="table sky-container" [ngClass]="{ blurred: !storageAvailable }">
+      <div *ngIf="display" class="table " [ngClass]="{ blurred: !storageAvailable }">
         <div class="cell">
           <div class="cell-header">
             <div class="pin-instructions" *ngIf="status === 2">
               <h2>Set a PIN #</h2>
-              <p>This PIN # will used to open the wallet. Don't forget it; if you do, you may lose access to your mobile wallet.</p>
+              <p>This PIN # will used to open the wallet. Don't forget it; if you do, you may lose access to your mobile
+                wallet.</p>
             </div>
             <div class="pin-instructions" *ngIf="status === 3">
               <h2>Confirm PIN #</h2>
@@ -97,15 +101,33 @@
     </ion-slide>
 
     <ion-slide>
-      <div class="sky-container">
+      <div class="">
         <div class="cell-header">
           <div class="pin-instructions">
             <h2>Create a wallet</h2>
-            <p>If you don’t yet have a wallet, generate a seed and we’ll create one for you. If you already have a wallet, enter
+            <p>If you don’t yet have a wallet, generate a seed and we’ll create one for you. If you already have a
+              wallet, enter
               the seed below and load it.</p>
           </div>
           <div class="cell-body">
             <ion-toggle checked="false">New</ion-toggle>
+            <div>
+              <div class="form-group">
+                <ion-label>Give it a name</ion-label>
+                <ion-input type="text"></ion-input>
+              </div>
+              <div class="form-group">
+                <ion-label>Seed</ion-label>
+                <ion-textarea  rows="2"></ion-textarea>
+              </div>
+              <div class="form-group">
+                <ion-label>Confirm seed</ion-label>
+                <ion-textarea  rows="2"></ion-textarea>
+              </div>
+              <div class="buttons">
+                <button ion-button round class="-main" >Create</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
