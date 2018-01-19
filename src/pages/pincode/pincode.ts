@@ -4,7 +4,7 @@ import { AlertController, LoadingController, NavController, Slides, ViewControll
 import { WalletsPage } from '../../pages/wallets/wallets';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
-import { PasswordValidation } from './../../match';
+import { SeedValidation } from './../../match';
 
 @Component({
   selector: 'page-pincode',
@@ -38,7 +38,7 @@ export class PincodePage implements OnInit {
         label: ['', Validators.required],
         seed: ['', Validators.required],
     }, {
-        validator: PasswordValidation.MatchSeed,
+        validator: SeedValidation.MatchSeed,
     });
   }
 
