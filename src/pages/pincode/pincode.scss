@@ -1,235 +1,239 @@
-page-pincode{
+page-pincode {
 
   $secondary-color: #ffc125;
 
   ion-content#pincode {
-      position: relative;
-      -webkit-font-smoothing: antialiased;
-      height: 100%;
-      width: 100%;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    height: 100%;
+    width: 100%;
   }
 
   .slide-zoom {
-      height: 100%;
+    height: 100%;
   }
 
   #restartbtn {
-      text-align: center;
-      color: #fff;
-      cursor: pointer;
-      margin: 20px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
   }
 
   .table {
-      display: table;
-      height: 100%;
-      width: 100%;
-      position: relative;
+    display: table;
+    height: 100%;
+    width: 100%;
+    position: relative;
   }
 
   .cell {
-      display: table-cell;
-      vertical-align: middle;
-      position: relative;
-      width: 100%;
-      text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    width: 100%;
+    text-align: center;
   }
 
-  #logo img {
+  #logo {
+    img {
       max-width: 40%;
+    }
+
   }
 
   .cell-header {
-      height: 95px;
+    height: 95px;
   }
 
   .pin-instructions {
-      padding: 0 20px;
-      color: white;
-      margin-top: 40px;
-      p {
-          font-size: 14px;
-          line-height: 25px;
-          opacity: 0.5;
-      }
+    padding: 0 20px;
+    color: white;
+    p {
+      font-size: 14px;
+      line-height: 20px;
+      opacity: 0.5;
+      margin: 0;
+    }
   }
 
   ion-content#pincode {
-      position: fixed;
-      overflow: hidden;
-      z-index: 9999;
-      color: #fff;
-      text-align: center;
-      box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.6);
+    position: fixed;
+    overflow: hidden;
+    z-index: 9999;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.6);
   }
 
   #numbers {
-      max-width: 300px;
-      padding: 0 20px;
-      margin: 0 auto;
-      position: relative;
-      display: block;
-      transition: all 1s ease-out;
-      opacity: 1;
+    max-width: 300px;
+    padding: 0 20px;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    transition: all 1s ease-out;
+    opacity: 1;
   }
 
   #numbers.hide {
-      opacity: 0.3;
+    opacity: 0.3;
   }
 
   button {
-      width: 70px;
-      height: 70px;
-      margin-bottom: 10px;
-      background-color: rgba(0, 0, 0, 0);
-      border: 0;
-      color: #fff;
-      font-size: 25px;
-      line-height: 50px;
-      border-radius: 100%;
-      opacity: 1;
-      outline: 0; //border: 1px solid #fff;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    color: #fff;
+    font-size: 25px;
+    line-height: 50px;
+    border-radius: 100%;
+    opacity: 1;
+    outline: 0; //border: 1px solid #fff;
   }
 
   button:active {
-      background-color: rgba(0, 0, 0, 0.6);
-      outline: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    outline: 0;
   }
 
   #fields {
-      max-width: 200px;
-      padding: 0 20px;
-      margin-top: 20px;
-      position: relative;
-      display: block;
+    max-width: 200px;
+    padding: 0 20px;
+    margin-top: 20px;
+    position: relative;
+    display: block;
   }
 
   ion-col {
-      text-align: center;
+    text-align: center;
   }
 
   ion-col span {
-      height: 14px;
-      width: 14px;
-      border: 2px solid #000;
-      background-color: #000;
-      border-radius: 100%;
-      position: relative;
-      display: inline-block;
-      text-align: center;
-      margin: 0 auto;
+    height: 14px;
+    width: 14px;
+    border: 2px solid #000;
+    background-color: #000;
+    border-radius: 100%;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
   }
 
   ion-col.active span {
-      background-color: $secondary-color;
-      border-color: $secondary-color;
+    background-color: $secondary-color;
+    border-color: $secondary-color;
   }
 
   ion-col.right span {
-      background-color: #272a2f;
-      border-color: #272a2f;
-      transition: all .5s ease-in-out;
-      -webkit-transition: all .5s ease-in-out;
+    background-color: #272a2f;
+    border-color: #272a2f;
+    transition: all .5s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
   }
 
   ion-row {
-      list-style: none;
-      margin-left: -20px;
+    list-style: none;
+    margin-left: -20px;
   }
 
   .grid-col {
-      box-sizing: border-box;
-      display: inline-block;
-      margin-right: -.25em;
-      min-height: 1px;
-      padding-left: 20px;
-      vertical-align: top;
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: -.25em;
+    min-height: 1px;
+    padding-left: 20px;
+    vertical-align: top;
   }
 
   .miss {
-      animation: miss .8s ease-out 1;
+    animation: miss .8s ease-out 1;
   }
 
   @keyframes miss {
-      0% {
-          transform: translate(0, 0);
-      }
-      10% {
-          transform: translate(-25px, 0);
-      }
-      20% {
-          transform: translate(25px, 0);
-      }
-      30% {
-          transform: translate(-20px, 0);
-      }
-      40% {
-          transform: translate(20px, 0);
-      }
-      50% {
-          transform: translate(-10px, 0);
-      }
-      60% {
-          transform: translate(10px, 0);
-      }
-      70% {
-          transform: translate(-5px, 0);
-      }
-      80% {
-          transform: translate(5px, 0);
-      }
-      100% {
-          transform: translate(0, 0);
-      }
+    0% {
+      transform: translate(0, 0);
+    }
+    10% {
+      transform: translate(-25px, 0);
+    }
+    20% {
+      transform: translate(25px, 0);
+    }
+    30% {
+      transform: translate(-20px, 0);
+    }
+    40% {
+      transform: translate(20px, 0);
+    }
+    50% {
+      transform: translate(-10px, 0);
+    }
+    60% {
+      transform: translate(10px, 0);
+    }
+    70% {
+      transform: translate(-5px, 0);
+    }
+    80% {
+      transform: translate(5px, 0);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
   }
 
   ion-col {
-      font-size: 30px;
-      height: 80px;
-      div {
-          height: 40px;
-          width: 40px;
-          margin: 0 auto;
-          padding: 2px 0 0px 2px;
-          &:active {
-              background: #1E2227;
-              border-radius: 50%;
-              color: #fff;
-              .ion-ios-backspace,
-              .ion-md-backspace {
-                  & {
-                      padding: 5px 3px 0 0px;
-                      content: url(../assets/icon/backspace-white.svg);
-                  }
-              }
+    font-size: 30px;
+    height: 80px;
+    div {
+      height: 40px;
+      width: 40px;
+      margin: 0 auto;
+      padding: 2px 0 0px 2px;
+      &:active {
+        background: #1E2227;
+        border-radius: 50%;
+        color: #fff;
+        .ion-ios-backspace,
+        .ion-md-backspace {
+          & {
+            padding: 5px 3px 0 0px;
+            content: url(../assets/icon/backspace-white.svg);
           }
+        }
       }
+    }
   }
 
-  ion-toggle{
+  ion-toggle {
     margin: 0 auto;
     width: 234px;
     height: 36px;
     border-radius: 100px;
   }
 
-  h2{
+  h2 {
     font-size: 20px;
     line-height: 30px;
+    margin: 0;
   }
 
-  .form-group{
+  .form-group {
     width: 90%;
     margin: 15px auto;
-    ion-label{
+    ion-label {
       text-align: left;
       font-size: 14px;
       margin: 0;
     }
-    .text-input-md{
+    .text-input-md {
       margin: 0;
     }
-    img{
+    img {
       border-radius: 20px;
       float: right;
       position: relative;
@@ -237,7 +241,7 @@ page-pincode{
     }
   }
 
-  ion-input, ion-textarea{
+  ion-input, ion-textarea {
     background-color: #fff;
     border-radius: 5px;
     color: rgba(23, 26, 29, 0.8);
@@ -249,17 +253,17 @@ page-pincode{
     //width: 99%;
   }
 
-  ion-textarea{
-    textarea{
+  ion-textarea {
+    textarea {
       width: 100% !important;
     }
   }
-  ion-input{
+  ion-input {
     padding-left: 0;
   }
 
-  .buttons{
-    button{
+  .buttons {
+    button {
       padding: 20px 60px;
       border-radius: 20px;
       box-shadow: none;
@@ -267,8 +271,51 @@ page-pincode{
       text-transform: capitalize;
       background-color: #1E2227;
       margin-top: 30px;
+      text-align: center;
+    }
+  }
+
+  .-toggle {
+    width: 234px;
+    margin: 20px auto;
+    background-color: #58a8ff;
+    border-radius: 20px;
+    height: 30px;
+    button {
+      height: 30px;
+      width: 112px;
+      position: relative;
+      top: -4px;
+      box-shadow: none;
+      font-size: 14px;
+      text-transform: capitalize;
+
+      &.new {
+        float: left;
+        background-color: #1E2227;
+      }
+      &.new:hover {
+        float: left;
+        background-color: #1E2227;
+      }
+      &.load {
+        float: right;
+        background-color: #58a8ff;
+      }
+      &.load:hover {
+        float: right;
+        background-color: #58a8ff;
+      }
     }
   }
 }
 
+button.swiper-pagination-bullet {
+  background-color: #fff;
+  opacity: 0.5;
+  &.swiper-pagination-bullet-active {
+    background-color: #fff;
+    opacity: 1;
+  }
+}
 
