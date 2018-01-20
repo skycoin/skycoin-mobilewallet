@@ -22,5 +22,9 @@
   "compileOnSave": false,
   "atom": {
     "rewriteTsconfig": false
-  }
+  },
+  "extends": [
+    "tslint:latest",
+    "tslint-config-prettier"
+  ]
 }
