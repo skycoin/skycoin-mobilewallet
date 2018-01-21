@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, LoadingController, NavController, Slides, ViewController } from 'ionic-angular';
-import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 import { SeedValidation } from '../../match';
+import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { TabsPage } from '../tabs/tabs';
 
