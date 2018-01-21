@@ -1,11 +1,14 @@
 <div class="-modal">
   <div class="-header">
     <span> {{ header }} </span>
-    <button ion-button color="light" clear>
+    <button (click)="cancelAction()" ion-button color="light" clear>
       <ion-icon name="close"></ion-icon>
     </button>
   </div>
   <div class="-body">
     <ng-content></ng-content>
+  </div>
+  <div class="-footer" *ngIf="footer">
+    <span> {{ footer }}</span>
   </div>
 </div>

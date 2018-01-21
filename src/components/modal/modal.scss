@@ -8,6 +8,7 @@ modal {
   z-index: 99999;
 
   .-modal {
+    text-align: center;
     background-color: #fbfbfb;
     border-radius: 4px;
     position: absolute;
@@ -17,6 +18,7 @@ modal {
     -ms-transform: translateY(-30%);
     -o-transform: translateY(-30%);
     transform: translateY(-30%);
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.6);
 
     .-header {
       border-top-left-radius: 4px;
@@ -74,7 +76,7 @@ modal {
         }
 
         ion-checkbox {
-          margin: 15px 10px 0 0;
+          margin: 10px 10px 0 0;
           float: left;
         }
 
@@ -88,14 +90,48 @@ modal {
       }
 
       .-continue {
-        color: #848484;
-        display: block;
-        font-size: 14px;
-        font-weight: 700;
-        height: 50px;
-        line-height: 50px;
-        margin: 0 auto;
-        width: 160px;
+        &.disabled {
+          background: #f0f0f0 !important;
+          color: rgba(30, 34, 39, 0.2);
+        }
+        width: auto !important;
+        text-transform: capitalize;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+          0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        color: #fbfbfb;
+        background: linear-gradient(
+          to bottom right,
+          #0072ff,
+          #00c3ff
+        ) !important;
+        font-family: Skycoin;
+        line-height: normal;
+        font-size: 15px;
+        text-align: center;
+        color: #fbfbfb;
+        height: 40px;
+        box-shadow: none;
+        span {
+          margin: -0px 0 0px 0px;
+        }
+      }
+    }
+
+    .-footer {
+      height: 40px;
+      background: #f7f7f7;
+      mix-blend-mode: normal;
+      opacity: 0.43;
+      border-top: 1px solid #eee;
+      padding: 10px 0;
+      span {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: normal;
+        line-height: normal;
+        font-size: 12px;
+
+        color: #1e2227;
       }
     }
   }

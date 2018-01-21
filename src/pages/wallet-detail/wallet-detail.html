@@ -3,10 +3,14 @@
     <ion-title mode="ios">My Wallet</ion-title>
   </ion-navbar>
 </ion-header>
-
-<ion-content id="pages-wallet-detail">
+<modal (close)="closeModal()" [header]="'View QR Code'" *ngIf="address" [footer]="'B9UG4KcdGdNRScAt5GxxJvX4J89S5vkRcY'">
+  <qr-code [address]="address"></qr-code>
+</modal>
+<ion-content id="pages-wallet-detail" [ngClass]="{ blurred: address }">
   <div class="-header primary-header-background">
-    <h1>{{ wallet.balance }} <span>sky</span></h1>
+    <h1>{{ wallet.balance }}
+      <span>sky</span>
+    </h1>
   </div>
   <ion-list>
     <ion-item-divider>
@@ -30,13 +34,4 @@
   </ion-list>
 
   <tabs></tabs>
-
-  <div class="overlay" id="overlay" *ngIf="address">
-    <div class="modal-content">
-      <span class="button-close" (click)="closeModal()"></span>
-      <qr-code [address]="address"></qr-code>
-      <h5 (click)="copy(this.address)">{{ address.address }} <ion-icon name="copy"></ion-icon></h5>
-    </div>
-  </div>
-
 </ion-content>
