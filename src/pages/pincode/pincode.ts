@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertController, LoadingController, NavController, Slides, ViewController } from 'ionic-angular';
+import { AlertController, LoadingController, NavController, Slides } from 'ionic-angular';
 import { SeedValidation } from '../../match';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
@@ -29,7 +29,6 @@ export class PincodePage implements OnInit {
     public nav: NavController,
     public secureStorage: SecureStorageProvider,
     public loadingCtrl: LoadingController,
-    private view: ViewController,
     private wallet: WalletProvider,
     fb: FormBuilder,
   ) {

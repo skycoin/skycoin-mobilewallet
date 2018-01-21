@@ -67,7 +67,10 @@ export class WalletProvider {
 
   sum(): Observable<number> {
     return this.all().map( ( wallets ) => {
-      return wallets ? wallets.map( ( wallet ) => wallet.balance >= 0 ? wallet.balance : 0 ).reduce( ( a, b ) => a + b, 0 ) : 0;
+      if ( wallets ) {
+        return wallets.map( ( wallet ) => wallet.balance >= 0 ? wallet.balance : 0 ).reduce( ( a, b ) => a + b, 0 );
+      }
+      return 0;
     } );
   }
 
