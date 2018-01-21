@@ -1,0 +1,45 @@
+<svg width="13" height="13" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Valid</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-241 -332)">
+<rect x="241" y="332" width="13" height="13" fill="#FFFFFF"/>
+<clipPath id="clip-0" clip-rule="evenodd">
+<path d="M -132 -220L 282 -220L 282 516L -132 516L -132 -220Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="Onboarding - Create Wallet 2" clip-path="url(#clip-0)">
+<path d="M -132 -220L 282 -220L 282 516L -132 516L -132 -220Z" fill="#FFFFFF"/>
+<g id="Background">
+<g id="bg">
+<use xlink:href="#path0_fill" transform="translate(-132 -220)" fill="url(#paint0_linear)"/>
+</g>
+</g>
+<g id="Form">
+<g id="Confirm seed">
+<g id="Form / Text Area / Valid">
+<g id="Rectangle 2">
+<use xlink:href="#path1_fill" transform="translate(-100 281)" fill="#FFFFFF"/>
+</g>
+<g id="Valid">
+<g id="Rectangle">
+<use xlink:href="#path2_fill" transform="translate(241 332)" fill="#00DF80"/>
+</g>
+<g id="Vector (Stroke)">
+<use xlink:href="#path3_fill" transform="matrix(0.707107 -0.707107 0.707107 0.707107 243 339.362)" fill="#FBFBFB"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(414 736 -414 736 207 -368)">
+<stop offset="0" stop-color="#0072FF"/>
+<stop offset="1" stop-color="#00C3FF"/>
+</linearGradient>
+<path id="path0_fill" fill-rule="evenodd" d="M 0 736L 414 736L 414 0L 0 0L 0 736Z"/>
+<path id="path1_fill" fill-rule="evenodd" d="M 0 6C 0 2.68629 2.68629 0 6 0L 344 0C 347.314 0 350 2.68629 350 6L 350 54C 350 57.3137 347.314 60 344 60L 6 60C 2.68629 60 0 57.3137 0 54L 0 6Z"/>
+<path id="path2_fill" d="M 0 6.5C 0 2.91015 2.91015 0 6.5 0C 10.0899 0 13 2.91015 13 6.5C 13 10.0899 10.0899 13 6.5 13C 2.91015 13 0 10.0899 0 6.5Z"/>
+<path id="path3_fill" fill-rule="evenodd" d="M 0.49987 0C 0.775941 0 0.99974 0.223799 0.99974 0.49987L 0.99974 2.99922L 8.49779 2.99922C 8.77386 2.99922 8.99766 3.22302 8.99766 3.49909C 8.99766 3.77516 8.77386 3.99896 8.49779 3.99896L 0.49987 3.99896C 0.223799 3.99896 0 3.77516 0 3.49909L 0 0.49987C 0 0.223799 0.223799 0 0.49987 0Z"/>
+</defs>
+</svg>
