@@ -23,41 +23,71 @@ modal {
       border-top-right-radius: 4px;
       background-color: #f7f7f7;
       border-bottom: 1px solid #eee;
-      color: #fb003d;
-      line-height: 40px;
-      min-height: 40px;
-      text-align: center;
+      padding: 10px 0;
+
+      span {
+        font-family: Skycoin;
+        line-height: 30px;
+        font-size: 14px;
+        text-align: center;
+        letter-spacing: 0.0769231em;
+        color: #ff004e;
+      }
+      button {
+        margin: 0px 10px 0px -20px;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        float: right;
+        ion-icon {
+          color: #1e2227;
+          opacity: 0.4;
+        }
+      }
     }
 
     .-body {
-      padding: 25px;
+      padding: 20px;
       p {
-        color: #16191d;
-        margin: 0 0 25px 0;
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 20px;
+        font-size: 12px;
+
+        color: #1e2227;
+        mix-blend-mode: normal;
+        opacity: 0.8;
+        border-radius: 6px;
+        padding: 0;
+        margin: 0;
       }
 
       .-checkbox {
         text-align: center;
         width: 100%;
+        margin: 10px 0 25px 0;
+
+        .-checkbox-container {
+          width: fit-content;
+          margin: 0 auto;
+        }
 
         ion-checkbox {
-          display: inline-block;
-          margin-right: 10px;
+          margin: 15px 10px 0 0;
+          float: left;
         }
 
         ion-label {
-          display: inline-block;
-          margin: 0;
+          font-family: Skycoin;
+          line-height: normal;
+          font-size: 14px;
+          color: #1e2227;
+          float: left;
         }
-
-        margin-bottom: 25px;
       }
 
-
-
       .-continue {
-        //background-color: #ececed;
-        //border-radius: 25px;
         color: #848484;
         display: block;
         font-size: 14px;

@@ -1,16 +1,29 @@
 <ion-content id="pincode" class="sky-container">
   <modal [header]="'IMPORTANT!'" *ngIf="!storageAvailable">
     <p>
-      We could not instantiate our secure storage service on your device. This means you cannot set a pincode and/or
-      save your
-      wallet seeds on your device. Whenever you want to transfer funds out of your wallet, you will be requested to
-      enter
+      We could not instantiate our secure storage service on your device. This means you cannot set a pincode and/or save your
+      wallet seeds on your device. Whenever you want to transfer funds out of your wallet, you will be requested to enter
       your wallet seed again.
       <b>Without your seed your funds will most likely be irretrievably lost.
       </b>
     </p>
     <button ion-button color="light" round class="-continue" (click)="disableSecure()">Continue</button>
   </modal>
+  <modal [header]="'Safeguard your seed!'" *ngIf="showConfirm">
+    <p>
+      We want to make sure that you wrote down your seed and stored it in a safe place. If you forget your seed, you
+      <strong>WILL NOT</strong> be able to recover your Skycoin wallet!
+    </p>
+
+    <div class="-checkbox">
+      <div class="-checkbox-container">
+        <ion-checkbox></ion-checkbox>
+        <ion-label>It’s safe, I swear.</ion-label>
+      </div>
+    </div>
+    <button ion-button color="light" round class="-continue" (click)="disableSecure()">Continue</button>
+  </modal>
+
 
   <ion-slides #slides pager>
     <ion-slide>
@@ -19,8 +32,8 @@
           <div class="cell-header">
             <div class="pin-instructions" *ngIf="status === 2">
               <h2>Set a PIN #</h2>
-              <p>This PIN # will used to open the wallet. Don't forget it; if you do, you may lose access to your mobile
-                wallet.</p>
+              <p>This PIN # will used to open the wallet. Don't forget it; if you do, you may lose access to your mobile wallet.
+              </p>
             </div>
             <div class="pin-instructions" *ngIf="status === 3">
               <h2>Confirm PIN #</h2>
@@ -104,14 +117,13 @@
         <div class="cell-header">
           <div class="pin-instructions" style="margin-top: 20px;">
             <h2>Create a wallet</h2>
-            <p>If you don’t yet have a wallet, generate a seed and we’ll create one for you. If you already have a
-              wallet, enter
+            <p>If you don’t yet have a wallet, generate a seed and we’ll create one for you. If you already have a wallet, enter
               the seed below and load it.</p>
           </div>
           <div class="cell-body">
             <div class="-toggle">
-              <button class="new" ion-button round >New</button>
-              <button [disabled]="true" class="load" ion-button round >Load</button>
+              <button class="new" ion-button round>New</button>
+              <button [disabled]="true" class="load" ion-button round>Load</button>
             </div>
             <div [formGroup]="form">
               <div class="form-group">

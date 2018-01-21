@@ -1,6 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertController, LoadingController, NavController, Slides, ViewController } from 'ionic-angular';
+import {
+  AlertController,
+  LoadingController,
+  NavController,
+  Slides,
+  ViewController,
+} from 'ionic-angular';
 import { WalletsPage } from '../../pages/wallets/wallets';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
@@ -11,7 +17,6 @@ import { SeedValidation } from './../../match';
   templateUrl: 'pincode.html',
 })
 export class PincodePage implements OnInit {
-
   @ViewChild('slides') slides: Slides;
   form: FormGroup;
   status: number;
@@ -22,6 +27,7 @@ export class PincodePage implements OnInit {
   showError: boolean;
   display: boolean;
   storageAvailable: boolean = true;
+  showConfirm: boolean = true;
 
   constructor(
     public alert: AlertController,
@@ -33,55 +39,64 @@ export class PincodePage implements OnInit {
     private wallet: WalletProvider,
     fb: FormBuilder,
   ) {
-    this.form = fb.group({
+    this.form = fb.group(
+      {
         confirmSeed: ['', Validators.required],
         label: ['', Validators.required],
         seed: ['', Validators.required],
-    }, {
-        validator: SeedValidation.MatchSeed,
-    });
-  }
-
-  ngOnInit() {
-    this.pin = '';
-    this.generateSeed();
-    const loader = this.loadingCtrl.create({
-      content: 'Please wait...',
-    });
-    loader.present();
-
-    this.secureStorage.get('pin').subscribe(
-      (pin) => {
-        this.status = 1;
-        this.correct = pin;
-        this.display = true;
-        loader.dismiss();
       },
-      (error) => {
-        if (error.toString() === 'Error: Key [_SS_pin] not found.') {
-          this.startCreateNewPinFlow();
-        } else {
-          // error.toString() === 'Error: Device is not secure'
-          this.storageAvailable = false;
-        }
-        this.display = true;
-        loader.dismiss();
+      {
+        validator: SeedValidation.MatchSeed,
       },
     );
   }
 
+  ngOnInit() {
+    this.pin = '';
+
+    this.status = 2;
+    this.display = true;
+
+    // this.generateSeed();
+    // const loader = this.loadingCtrl.create({
+    //   content: 'Please wait...',
+    // });
+    // loader.present();
+
+    // this.secureStorage.get('pin').subscribe(
+    //   pin => {
+    //     this.status = 1;
+    //     this.correct = pin;
+    //     this.display = true;
+    //     loader.dismiss();
+    //   },
+    //   error => {
+    //     if (error.toString() === 'Error: Key [_SS_pin] not found.') {
+    //       this.startCreateNewPinFlow();
+    //     } else {
+    //       // error.toString() === 'Error: Device is not secure'
+    //       this.storageAvailable = false;
+    //     }
+    //     this.display = true;
+    //     loader.dismiss();
+    //   },
+    // );
+  }
+
   createWallet() {
     this.wallet.create(this.form.value.label, this.form.value.seed);
-    this.nav.setRoot(WalletsPage);
+    // this.nav.setRoot(WalletsPage);
   }
 
   generateSeed() {
-    this.wallet.generateSeed().subscribe((seed) => this.form.controls.seed.setValue(seed));
+    this.wallet
+      .generateSeed()
+      .subscribe(seed => this.form.controls.seed.setValue(seed));
   }
 
   disableSecure() {
     this.secureStorage.secureStorageDisabled = true;
-    this.nav.setRoot(WalletsPage);
+    // this.nav.setRoot(WalletsPage);
   }
 
   pressNumber(value: string) {
@@ -139,7 +154,7 @@ export class PincodePage implements OnInit {
 
   private verifyPin() {
     if (this.pin === this.correct) {
-      this.nav.setRoot(WalletsPage);
+      // this.nav.setRoot(WalletsPage);
     } else {
       this.wrongPin();
     }
@@ -147,8 +162,7 @@ export class PincodePage implements OnInit {
 
   private wrongPin() {
     this.showError = true;
-    setTimeout(() => this.pin = '', 200);
-    setTimeout(() => this.showError = false, 500);
+    setTimeout(() => (this.pin = ''), 200);
+    setTimeout(() => (this.showError = false), 500);
   }
-
 }
