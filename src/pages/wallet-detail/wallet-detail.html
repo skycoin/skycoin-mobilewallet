@@ -3,7 +3,7 @@
     <ion-title mode="ios">My Wallet</ion-title>
   </ion-navbar>
 </ion-header>
-<modal (close)="closeModal()" [header]="'View QR Code'" *ngIf="address" [footer]="'B9UG4KcdGdNRScAt5GxxJvX4J89S5vkRcY'">
+<modal (close)="closeModal()" [header]="'View QR Code'" *ngIf="address" [footer]="address">
   <qr-code [address]="address"></qr-code>
 </modal>
 <ion-content id="pages-wallet-detail" [ngClass]="{ blurred: address }">

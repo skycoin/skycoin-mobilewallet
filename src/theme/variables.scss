@@ -5,21 +5,6 @@
 // roboto, and noto sans fonts
 $font-path: "../../assets/fonts";
 
-
-@font-face {
-  font-family: 'Montreal';
-  src: url('../../assets/custom-fonts/MontrealRegular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Montreal';
-  src: url('../../assets/custom-fonts/MontrealBold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-
 @font-face {
   font-family: 'Skycoin';
   font-style: normal;
@@ -98,7 +83,7 @@ $text-color-light: #b8b8b8;
 $background-color-normal: #f6f6f6;
 $background-color-light: #fbfbfb;
 
-$font-family-base: 'Montreal', sans-serif;
+$font-family-base: 'Skycoin', sans-serif;
 $font-family-md-base: $font-family-base;
 $font-family-ios-base: $font-family-base;
 $font-family-wp-base: $font-family-base;

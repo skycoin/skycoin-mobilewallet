@@ -54,26 +54,25 @@ export class PincodePage implements OnInit {
 
   ngOnInit() {
     this.pin = '';
-    this.nav.setRoot(WalletsPage);
-    // this.generateSeed();
-    // const loader = this.loadingCtrl.create({ content: 'Please wait...' });
-    // loader.present();
+    this.generateSeed();
+    const loader = this.loadingCtrl.create({ content: 'Please wait...' });
+    loader.present();
 
-    // this.secureStorage.get('pin').subscribe(pin => {
-    //     this.status = 1;
-    //     this.correct = pin;
-    //     this.display = true;
-    //     loader.dismiss();
-    //   }, error => {
-    //     if (error.toString() === 'Error: Key [_SS_pin] not found.') {
-    //       this.startCreateNewPinFlow();
-    //     } else {
-    //       // error.toString() === 'Error: Device is not secure'
-    //       this.storageAvailable = false;
-    //     }
-    //     this.display = true;
-    //     loader.dismiss();
-    //   });
+    this.secureStorage.get('pin').subscribe(pin => {
+        this.status = 1;
+        this.correct = pin;
+        this.display = true;
+        loader.dismiss();
+      }, error => {
+        if (error.toString() === 'Error: Key [_SS_pin] not found.') {
+          this.startCreateNewPinFlow();
+        } else {
+          // error.toString() === 'Error: Device is not secure'
+          this.storageAvailable = false;
+        }
+        this.display = true;
+        loader.dismiss();
+      });
   }
 
   createWallet() {
@@ -106,6 +105,10 @@ export class PincodePage implements OnInit {
   ionViewWillEnter() {
     this.slides.update();
     this.slides.lockSwipes(true);
+  }
+
+  private startCreateNewPinFlow() {
+    this.status = 2;
   }
 
   confirmCreateWallet() {
