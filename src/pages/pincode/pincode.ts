@@ -5,7 +5,6 @@ import {
   LoadingController,
   NavController,
   Slides,
-  ViewController,
 } from 'ionic-angular';
 import { WalletsPage } from '../../pages/wallets/wallets';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
@@ -36,7 +35,6 @@ export class PincodePage implements OnInit {
     public nav: NavController,
     public secureStorage: SecureStorageProvider,
     public loadingCtrl: LoadingController,
-    private view: ViewController,
     private wallet: WalletProvider,
     fb: FormBuilder,
   ) {
@@ -107,16 +105,16 @@ export class PincodePage implements OnInit {
     this.slides.lockSwipes(true);
   }
 
-  private startCreateNewPinFlow() {
-    this.status = 2;
-  }
-
   confirmCreateWallet() {
     this.showConfirm = true;
   }
   closeModal() {
     this.storageAvailable = true;
     this.showConfirm = false;
+  }
+
+  private startCreateNewPinFlow() {
+    this.status = 2;
   }
 
   private confirmPin() {
