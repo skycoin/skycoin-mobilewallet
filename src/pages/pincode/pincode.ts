@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertController, LoadingController, NavController, Slides } from 'ionic-angular';
+import { LoadingController, NavController, Slides } from 'ionic-angular';
 import { SeedValidation } from '../../match';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
@@ -25,7 +25,6 @@ export class PincodePage implements OnInit {
   showConfirmCheck: boolean;
 
   constructor(
-    public alert: AlertController,
     public el: ElementRef,
     public nav: NavController,
     public secureStorage: SecureStorageProvider,
