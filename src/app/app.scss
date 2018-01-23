@@ -132,6 +132,10 @@ ion-buttons {
   font-weight: 700;
 }
 
+.blurred{
+  filter: blur(5px);
+}
+
 .ion-ios-backspace,
 .ion-md-backspace {
   content: url(../assets/icon/backspace-black.svg);

@@ -3,22 +3,58 @@
 
 // Font path is used to include ionicons,
 // roboto, and noto sans fonts
-$font-path: "../assets/fonts";
-
+$font-path: "../../assets/fonts";
 
 @font-face {
-  font-family: 'Montreal';
-  src: url('../assets/custom-fonts/MontrealRegular.ttf') format('truetype');
+  font-family: 'Skycoin';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/skycoin/Skycoin-Light.woff2') format('woff2'),
+  url('../assets/skycoin/Skycoin-Light.woff') format('woff');
+}
+@font-face {
+  font-family: 'Skycoin';
+  font-style: italic;
+  font-weight: 700;
+  src: url('../assets/skycoin/Skycoin-LightItalic.woff2') format('woff2'),
+  url('../assets/skycoin/Skycoin-LightItalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Skycoin';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/skycoin/Skycoin-Regular.woff2') format('woff2'),
+  url('../assets/skycoin/Skycoin-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Skycoin';
+  font-style: italic;
+  font-weight: 700;
+  src: url('../assets/skycoin/Skycoin-RegularItalic.woff2') format('woff2'),
+  url('../assets/skycoin/Skycoin-RegularItalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Skycoin';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/skycoin/Skycoin-Bold.woff2') format('woff2'),
+  url('../assets/skycoin/Skycoin-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Skycoin';
+  font-style: italic;
+  font-weight: 700;
+  src: url('../assets/skycoin/Skycoin-BoldItalic.woff2') format('woff2'),
+  url('../assets/skycoin/Skycoin-BoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src: url('../../assets/work_sans/WorkSans-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'Montreal';
-  src: url('../assets/custom-fonts/MontrealBold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
 
 
 
@@ -47,7 +83,7 @@ $text-color-light: #b8b8b8;
 $background-color-normal: #f6f6f6;
 $background-color-light: #fbfbfb;
 
-$font-family-base: 'Montreal', sans-serif;
+$font-family-base: 'Skycoin', sans-serif;
 $font-family-md-base: $font-family-base;
 $font-family-ios-base: $font-family-base;
 $font-family-wp-base: $font-family-base;
