@@ -11,7 +11,6 @@ import { TabsPage } from '../tabs/tabs';
   templateUrl: 'pincode.html',
 })
 export class PincodePage implements OnInit {
-
   @ViewChild('slides') slides: Slides;
   form: FormGroup;
   status: number;
@@ -22,6 +21,8 @@ export class PincodePage implements OnInit {
   showError: boolean;
   display: boolean;
   storageAvailable: boolean = true;
+  showConfirm: boolean;
+  showConfirmCheck: boolean;
 
   constructor(
     public alert: AlertController,
@@ -32,31 +33,30 @@ export class PincodePage implements OnInit {
     private wallet: WalletProvider,
     fb: FormBuilder,
   ) {
-    this.form = fb.group({
+    this.form = fb.group(
+      {
         confirmSeed: ['', Validators.required],
         label: ['', Validators.required],
         seed: ['', Validators.required],
-    }, {
+      },
+      {
         validator: SeedValidation.MatchSeed,
-    });
+      },
+    );
   }
 
   ngOnInit() {
     this.pin = '';
     this.generateSeed();
-    const loader = this.loadingCtrl.create({
-      content: 'Please wait...',
-    });
+    const loader = this.loadingCtrl.create({ content: 'Please wait...' });
     loader.present();
 
-    this.secureStorage.get('pin').subscribe(
-      (pin) => {
+    this.secureStorage.get('pin').subscribe(pin => {
         this.status = 1;
         this.correct = pin;
         this.display = true;
         loader.dismiss();
-      },
-      (error) => {
+      }, error => {
         if (error.toString() === 'Error: Key [_SS_pin] not found.') {
           this.startCreateNewPinFlow();
         } else {
@@ -65,8 +65,7 @@ export class PincodePage implements OnInit {
         }
         this.display = true;
         loader.dismiss();
-      },
-    );
+      });
   }
 
   createWallet() {
@@ -75,7 +74,9 @@ export class PincodePage implements OnInit {
   }
 
   generateSeed() {
-    this.wallet.generateSeed().subscribe((seed) => this.form.controls.seed.setValue(seed));
+    this.wallet
+      .generateSeed()
+      .subscribe(seed => this.form.controls.seed.setValue(seed));
   }
 
   disableSecure() {
@@ -97,6 +98,18 @@ export class PincodePage implements OnInit {
   ionViewWillEnter() {
     this.slides.update();
     this.slides.lockSwipes(true);
+  }
+
+  confirmCreateWallet() {
+    this.showConfirm = true;
+  }
+  closeModal() {
+    this.storageAvailable = true;
+    this.showConfirm = false;
+  }
+
+  private startCreateNewPinFlow() {
+    this.status = 2;
   }
 
   private confirmPin() {
@@ -132,10 +145,6 @@ export class PincodePage implements OnInit {
     this.pin = '';
   }
 
-  private startCreateNewPinFlow() {
-    this.status = 2;
-  }
-
   private verifyPin() {
     if (this.pin === this.correct) {
       this.nav.setRoot(TabsPage);
@@ -146,8 +155,7 @@ export class PincodePage implements OnInit {
 
   private wrongPin() {
     this.showError = true;
-    setTimeout(() => this.pin = '', 200);
-    setTimeout(() => this.showError = false, 500);
+    setTimeout(() => (this.pin = ''), 200);
+    setTimeout(() => (this.showError = false), 500);
   }
-
 }

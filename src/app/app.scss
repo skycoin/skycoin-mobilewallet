@@ -208,6 +208,10 @@ ion-buttons {
   opacity: 0.9;
 }
 
+.blurred{
+  filter: blur(5px);
+}
+
 .ion-ios-backspace,
 .ion-md-backspace {
   content: url(../assets/icon/backspace-black.svg);

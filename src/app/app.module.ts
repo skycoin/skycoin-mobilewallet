@@ -18,6 +18,7 @@ import { BalanceComponent } from '../components/balance/balance';
 import { HeaderComponent } from '../components/header/header';
 import { ModalComponent } from '../components/modal/modal';
 import { QrCodeComponent } from '../components/qr-code/qr-code';
+import { ButtonComponent } from '../components/button/button.component';
 import { TabsComponent } from '../components/tabs/tabs';
 import { CounttoDirective } from '../directives/countto/countto';
 import { AddWalletPage } from '../pages/add-wallet/add-wallet';
@@ -59,6 +60,7 @@ import { WalletProvider } from '../providers/wallet/wallet.provider';
     WalletOptionPipe,
     AddressPipe,
     HeaderComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,
