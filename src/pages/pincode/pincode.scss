@@ -1,7 +1,5 @@
 page-pincode {
-
   $secondary-color: #ffc125;
-
 
   ion-content#pincode {
     position: relative;
@@ -40,7 +38,6 @@ page-pincode {
     img {
       max-width: 40%;
     }
-
   }
 
   .cell-header {
@@ -132,8 +129,8 @@ page-pincode {
   ion-col.right span {
     background-color: #272a2f;
     border-color: #272a2f;
-    transition: all .5s ease-in-out;
-    -webkit-transition: all .5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
   }
 
   ion-row {
@@ -144,14 +141,14 @@ page-pincode {
   .grid-col {
     box-sizing: border-box;
     display: inline-block;
-    margin-right: -.25em;
+    margin-right: -0.25em;
     min-height: 1px;
     padding-left: 20px;
     vertical-align: top;
   }
 
   .miss {
-    animation: miss .8s ease-out 1;
+    animation: miss 0.8s ease-out 1;
   }
 
   @keyframes miss {
@@ -196,7 +193,7 @@ page-pincode {
       margin: 0 auto;
       padding: 2px 0 0px 0px;
       &:active {
-        background: #1E2227;
+        background: #1e2227;
         border-radius: 50%;
         color: #fff;
         .ion-ios-backspace,
@@ -242,7 +239,8 @@ page-pincode {
     }
   }
 
-  ion-input, ion-textarea {
+  ion-input,
+  ion-textarea {
     background-color: #fff;
     border-radius: 5px;
     color: rgba(23, 26, 29, 0.8);
@@ -270,7 +268,7 @@ page-pincode {
       box-shadow: none;
       font-size: 14px;
       text-transform: capitalize;
-      background-color: #1E2227;
+      background-color: #1e2227;
       margin-top: 30px;
       text-align: center;
     }
@@ -293,11 +291,11 @@ page-pincode {
 
       &.new {
         float: left;
-        background-color: #1E2227;
+        background-color: #1e2227;
       }
       &.new:hover {
         float: left;
-        background-color: #1E2227;
+        background-color: #1e2227;
       }
       &.load {
         float: right;
@@ -319,4 +317,3 @@ button.swiper-pagination-bullet {
     opacity: 1;
   }
 }
-

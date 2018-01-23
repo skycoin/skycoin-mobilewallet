@@ -50,12 +50,14 @@ export class PincodePage implements OnInit {
     const loader = this.loadingCtrl.create({ content: 'Please wait...' });
     loader.present();
 
-    this.secureStorage.get('pin').subscribe(pin => {
+    this.secureStorage.get('pin').subscribe(
+      pin => {
         this.status = 1;
         this.correct = pin;
         this.display = true;
         loader.dismiss();
-      }, error => {
+      },
+      error => {
         if (error.toString() === 'Error: Key [_SS_pin] not found.') {
           this.startCreateNewPinFlow();
         } else {
@@ -64,7 +66,8 @@ export class PincodePage implements OnInit {
         }
         this.display = true;
         loader.dismiss();
-      });
+      },
+    );
   }
 
   createWallet() {

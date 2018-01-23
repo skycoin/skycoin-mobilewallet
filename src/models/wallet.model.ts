@@ -1,4 +1,4 @@
-import {AddressModel} from './address.model';
+import { AddressModel } from './address.model';
 
 export class WalletModel {
   label: string;

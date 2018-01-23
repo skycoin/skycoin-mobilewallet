@@ -15,10 +15,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
 import { BalanceComponent } from '../components/balance/balance';
+import { ButtonComponent } from '../components/button/button.component';
 import { HeaderComponent } from '../components/header/header';
 import { ModalComponent } from '../components/modal/modal';
 import { QrCodeComponent } from '../components/qr-code/qr-code';
-import { ButtonComponent } from '../components/button/button.component';
 import { TabsComponent } from '../components/tabs/tabs';
 import { CounttoDirective } from '../directives/countto/countto';
 import { AddWalletPage } from '../pages/add-wallet/add-wallet';
@@ -39,7 +39,7 @@ import { SecureStorageProvider } from '../providers/secure-storage/secure-storag
 import { StorageApiProvider } from '../providers/storage-api/storage-api.provider';
 import { WalletProvider } from '../providers/wallet/wallet.provider';
 
-@NgModule( {
+@NgModule({
   declarations: [
     MyApp,
     AddWalletPage,
@@ -66,10 +66,10 @@ import { WalletProvider } from '../providers/wallet/wallet.provider';
     BrowserModule,
     HttpModule,
     ReactiveFormsModule,
-    IonicModule.forRoot( MyApp ),
+    IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
   ],
-  bootstrap: [ IonicApp ],
+  bootstrap: [IonicApp],
   entryComponents: [
     AddWalletPage,
     DisclaimerPage,
@@ -97,6 +97,5 @@ import { WalletProvider } from '../providers/wallet/wallet.provider';
     SecureStorageProvider,
     Clipboard,
   ],
-} )
-export class AppModule {
-}
+})
+export class AppModule {}

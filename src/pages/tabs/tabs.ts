@@ -9,7 +9,6 @@ import { WalletsPage } from '../wallets/wallets';
   templateUrl: 'tabs.html',
 })
 export class TabsPage {
-
   tab1Root: any = WalletsPage;
   tab2Root: any = SendSkycoinPage;
   tab3Root: any = TransactionsPage;
@@ -18,5 +17,4 @@ export class TabsPage {
   constructor(navParams: NavParams) {
     this.mySelectedIndex = navParams.data.tabIndex || 0;
   }
-
 }

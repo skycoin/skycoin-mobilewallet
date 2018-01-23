@@ -6,8 +6,10 @@
   max-width: 200px;
 }
 
-#tab-t0-0, #tab-t0-1, #tab-t0-2 {
-  &[aria-selected=true] {
+#tab-t0-0,
+#tab-t0-1,
+#tab-t0-2 {
+  &[aria-selected='true'] {
     .ion-ios-wallets,
     .ion-md-wallets {
       content: url(../assets/icon/wallets-black.svg);
@@ -26,16 +28,13 @@
   margin: 5px 5px;
   width: auto !important;
   text-transform: capitalize;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
   color: #fbfbfb;
   background: linear-gradient(to bottom right, #0072ff, #00c3ff) !important;
   border-radius: 64px;
 
-  &[aria-selected=true] {
-    background: linear-gradient(
-        to bottom right,
-        #0563d8,
-        #09a6d6
-    ) !important;
+  &[aria-selected='true'] {
+    background: linear-gradient(to bottom right, #0563d8, #09a6d6) !important;
   }
 }
