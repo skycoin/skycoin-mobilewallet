@@ -8,7 +8,6 @@ import { PincodePage } from '../pincode/pincode';
   templateUrl: 'disclaimer.html',
 })
 export class DisclaimerPage implements OnInit {
-
   disclaimerAccepted: boolean;
   showDisclaimer: boolean;
 

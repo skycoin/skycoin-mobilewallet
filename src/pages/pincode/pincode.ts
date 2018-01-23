@@ -1,15 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {
-  AlertController,
-  LoadingController,
-  NavController,
-  Slides,
-} from 'ionic-angular';
-import { WalletsPage } from '../../pages/wallets/wallets';
+import { LoadingController, NavController, Slides } from 'ionic-angular';
+import { SeedValidation } from '../../match';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
-import { SeedValidation } from './../../match';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-pincode',
@@ -30,7 +25,6 @@ export class PincodePage implements OnInit {
   showConfirmCheck: boolean;
 
   constructor(
-    public alert: AlertController,
     public el: ElementRef,
     public nav: NavController,
     public secureStorage: SecureStorageProvider,
@@ -56,12 +50,14 @@ export class PincodePage implements OnInit {
     const loader = this.loadingCtrl.create({ content: 'Please wait...' });
     loader.present();
 
-    this.secureStorage.get('pin').subscribe(pin => {
+    this.secureStorage.get('pin').subscribe(
+      pin => {
         this.status = 1;
         this.correct = pin;
         this.display = true;
         loader.dismiss();
-      }, error => {
+      },
+      error => {
         if (error.toString() === 'Error: Key [_SS_pin] not found.') {
           this.startCreateNewPinFlow();
         } else {
@@ -70,12 +66,13 @@ export class PincodePage implements OnInit {
         }
         this.display = true;
         loader.dismiss();
-      });
+      },
+    );
   }
 
   createWallet() {
     this.wallet.create(this.form.value.label, this.form.value.seed);
-    this.nav.setRoot(WalletsPage);
+    this.nav.setRoot(TabsPage);
   }
 
   generateSeed() {
@@ -86,7 +83,7 @@ export class PincodePage implements OnInit {
 
   disableSecure() {
     this.secureStorage.secureStorageDisabled = true;
-    this.nav.setRoot(WalletsPage);
+    this.nav.setRoot(TabsPage);
   }
 
   pressNumber(value: string) {
@@ -152,7 +149,7 @@ export class PincodePage implements OnInit {
 
   private verifyPin() {
     if (this.pin === this.correct) {
-      this.nav.setRoot(WalletsPage);
+      this.nav.setRoot(TabsPage);
     } else {
       this.wrongPin();
     }

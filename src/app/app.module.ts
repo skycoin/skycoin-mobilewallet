@@ -15,9 +15,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
 import { BalanceComponent } from '../components/balance/balance';
+import { ButtonComponent } from '../components/button/button.component';
+import { HeaderComponent } from '../components/header/header';
 import { ModalComponent } from '../components/modal/modal';
 import { QrCodeComponent } from '../components/qr-code/qr-code';
-import { ButtonComponent } from '../components/button/button.component';
 import { TabsComponent } from '../components/tabs/tabs';
 import { CounttoDirective } from '../directives/countto/countto';
 import { AddWalletPage } from '../pages/add-wallet/add-wallet';
@@ -25,6 +26,7 @@ import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
 import { LoadWalletPage } from '../pages/load-wallet/load-wallet';
 import { PincodePage } from '../pages/pincode/pincode';
 import { SendSkycoinPage } from '../pages/send-skycoin/send-skycoin';
+import { TabsPage } from '../pages/tabs/tabs';
 import { TransactionsPage } from '../pages/transactions/transactions';
 import { WalletDetailPage } from '../pages/wallet-detail/wallet-detail';
 import { AddressPipe } from '../pipes/address/address';
@@ -32,6 +34,7 @@ import { SkyPipe } from '../pipes/sky/sky.pipe';
 import { WalletOptionPipe } from '../pipes/wallet-option/wallet-option';
 import { BackendApiProvider } from '../providers/backend-api/backend-api.provider';
 import { LocalApiProvider } from '../providers/local-api/local-api.provider';
+import { PriceService } from '../providers/price/price.service';
 import { SecureStorageProvider } from '../providers/secure-storage/secure-storage';
 import { StorageApiProvider } from '../providers/storage-api/storage-api.provider';
 import { WalletProvider } from '../providers/wallet/wallet.provider';
@@ -44,6 +47,7 @@ import { WalletProvider } from '../providers/wallet/wallet.provider';
     LoadWalletPage,
     PincodePage,
     SendSkycoinPage,
+    TabsPage,
     TransactionsPage,
     WalletDetailPage,
     WalletsPage,
@@ -55,6 +59,7 @@ import { WalletProvider } from '../providers/wallet/wallet.provider';
     SkyPipe,
     WalletOptionPipe,
     AddressPipe,
+    HeaderComponent,
     ButtonComponent,
   ],
   imports: [
@@ -64,7 +69,6 @@ import { WalletProvider } from '../providers/wallet/wallet.provider';
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
   ],
-  // tslint:disable-next-line:object-literal-sort-keys
   bootstrap: [IonicApp],
   entryComponents: [
     AddWalletPage,
@@ -72,6 +76,7 @@ import { WalletProvider } from '../providers/wallet/wallet.provider';
     LoadWalletPage,
     MyApp,
     PincodePage,
+    TabsPage,
     SendSkycoinPage,
     TransactionsPage,
     WalletDetailPage,
@@ -82,11 +87,12 @@ import { WalletProvider } from '../providers/wallet/wallet.provider';
     NativeStorage,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     BackendApiProvider,
     LocalApiProvider,
     WalletProvider,
     StorageApiProvider,
+    PriceService,
     SecureStorage,
     SecureStorageProvider,
     Clipboard,
