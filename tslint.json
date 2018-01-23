@@ -27,7 +27,8 @@
     "member-access": false,
     "no-shadowed-variable": false,
     "interface-name": false,
-    "arrow-parens": true
+    "arrow-parens": false,
+    "object-literal-sort-keys": false
   },
   "tslint.autoFixOnSave": true,
   "rulesDirectory": ["node_modules/tslint-eslint-rules/dist/rules"]
