@@ -1,0 +1,82 @@
+<svg width="14" height="14" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Union</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-1133 -6)">
+<rect x="1133" y="6" width="14" height="14" fill="#FFFFFF"/>
+<clipPath id="clip-0" clip-rule="evenodd">
+<path d="M 797 -220L 1212 -220L 1212 516L 797 516L 797 -220Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="Onboarding - Create Wallet - Important Modal Popup 2" clip-path="url(#clip-0)">
+<path d="M 797 -220L 1212 -220L 1212 516L 797 516L 797 -220Z" fill="#FFFFFF"/>
+<g id="Background">
+<g id="bg">
+<use xlink:href="#path0_fill" transform="translate(797 -220)" fill="url(#paint0_linear)"/>
+</g>
+</g>
+<clipPath id="clip-1" clip-rule="evenodd">
+<path d="M 797 10L 1212 10L 1212 516L 797 516L 797 10Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="Form" clip-path="url(#clip-1)">
+</g>
+<g id="Modal">
+<g id="Modal Background">
+<g id="BG Blur" filter="url(#filter0_b)">
+<use xlink:href="#path1_fill" transform="translate(797 -220)" fill="#1E2227" fill-opacity="0.45"/>
+</g>
+</g>
+<g id="Modal / Pop-up Modal" filter="url(#filter1_d)">
+<mask id="mask0_alpha" mask-type="alpha">
+<g id="Modal Mask">
+<use xlink:href="#path2_fill" transform="translate(845 -12)" fill="#FBFBFB"/>
+</g>
+</mask>
+<g id="Modal BG" mask="url(#mask0_alpha)">
+<use xlink:href="#path3_fill" transform="translate(845 -12)" fill="#FBFBFB"/>
+</g>
+<g id="Content" mask="url(#mask0_alpha)">
+<g id="Modal / Titlebar / Important">
+<g id="Rectangle 3">
+<use xlink:href="#path4_fill" transform="translate(845 -12)" fill="#F7F7F7"/>
+</g>
+<clipPath id="clip-2" clip-rule="evenodd">
+<path d="M 1124 -3L 1156 -3L 1156 29L 1124 29L 1124 -3Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="icons / close-black" opacity="0.2" clip-path="url(#clip-2)">
+<g id="Union">
+<use xlink:href="#path5_fill" transform="translate(1133 6)" fill="#1E2227"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_b" filterUnits="userSpaceOnUse" x="793" y="-224" width="422" height="744" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImage" stdDeviation="2"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur" result="shape"/>
+</filter>
+<filter id="filter1_d" filterUnits="userSpaceOnUse" x="815" y="-42" width="380" height="361" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 0"/>
+<feOffset dx="0" dy="0"/>
+<feGaussianBlur stdDeviation="15"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(415 736 -415 736 207.5 -368)">
+<stop offset="0" stop-color="#0072FF"/>
+<stop offset="1" stop-color="#00C3FF"/>
+</linearGradient>
+<path id="path0_fill" fill-rule="evenodd" d="M 0 736L 415 736L 415 0L 0 0L 0 736Z"/>
+<path id="path1_fill" d="M 0 0L 414 0L 414 736L 0 736L 0 0Z"/>
+<path id="path2_fill" d="M 0 6C 0 2.68629 2.68629 0 6 0L 314 0C 317.314 0 320 2.68629 320 6L 320 295C 320 298.314 317.314 301 314 301L 6 301C 2.68629 301 0 298.314 0 295L 0 6Z"/>
+<path id="path3_fill" d="M 0 0L 320 0L 320 301L 0 301L 0 0Z"/>
+<path id="path4_fill" fill-rule="evenodd" d="M 0 0L 320 0L 320 50L 0 50L 0 0Z"/>
+<path id="path5_fill" fill-rule="evenodd" d="M 0.292999 11.6066C -0.0976257 11.9971 -0.0976257 12.6303 0.292999 13.0208C 0.683502 13.4113 1.31668 13.4113 1.70718 13.0208L 6.65689 8.07111L 11.6066 13.0208C 11.9971 13.4113 12.6303 13.4113 13.0209 13.0208C 13.4114 12.6303 13.4114 11.9971 13.0209 11.6066L 8.0712 6.65685L 13.0209 1.70711C 13.4114 1.31658 13.4114 0.683417 13.0209 0.292893C 12.6304 -0.0976311 11.9972 -0.0976311 11.6067 0.292893L 6.65689 5.24266L 1.70718 0.292894C 1.31656 -0.0976297 0.683502 -0.0976297 0.292877 0.292894C -0.0976257 0.683419 -0.0976257 1.31658 0.292877 1.70711L 5.24271 6.65692L 0.292999 11.6066Z"/>
+</defs>
+</svg>

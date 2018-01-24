@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LoadingController, NavController } from 'ionic-angular';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
 import { ObCreateWalletPage } from '../ob-create-wallet/ob-create-wallet';
+import { TabsPage } from '../tabs/tabs';
 
 @Component( {
   selector: 'page-pincode',
@@ -47,7 +48,7 @@ export class PincodePage implements OnInit {
 
   disableSecure() {
     this.secureStorage.secureStorageDisabled = true;
-    this.nav.setRoot(ObCreateWalletPage);
+    this.nav.setRoot( TabsPage );
   }
 
   pressNumber( value: string ) {
@@ -98,7 +99,7 @@ export class PincodePage implements OnInit {
 
   private verifyPin() {
     if ( this.pin === this.correct ) {
-      this.nav.setRoot(ObCreateWalletPage);
+      this.nav.setRoot( TabsPage );
     } else {
       this.wrongPin();
     }
