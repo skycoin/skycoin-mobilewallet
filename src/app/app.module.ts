@@ -19,7 +19,6 @@ import { ButtonComponent } from '../components/button/button.component';
 import { HeaderComponent } from '../components/header/header';
 import { ModalComponent } from '../components/modal/modal';
 import { QrCodeComponent } from '../components/qr-code/qr-code';
-import { TabsComponent } from '../components/tabs/tabs';
 import { CounttoDirective } from '../directives/countto/countto';
 import { AddWalletPage } from '../pages/add-wallet/add-wallet';
 import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
@@ -54,7 +53,6 @@ import { WalletProvider } from '../providers/wallet/wallet.provider';
     BalanceComponent,
     ModalComponent,
     QrCodeComponent,
-    TabsComponent,
     CounttoDirective,
     SkyPipe,
     WalletOptionPipe,

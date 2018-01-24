@@ -1,6 +1,65 @@
 page-pincode {
   $secondary-color: #ffc125;
 
+  ion-col {
+    text-align: center;
+    font-size: 30px;
+    height: 80px;
+
+    & > span {
+      height: 14px;
+      width: 14px;
+      border: 2px solid #000;
+      background-color: #000;
+      border-radius: 100%;
+      position: relative;
+      display: inline-block;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    &.active span {
+      background-color: $secondary-color;
+      border-color: $secondary-color;
+    }
+    &.right span {
+      background-color: #272a2f;
+      border-color: #272a2f;
+      transition: all 0.5s ease-in-out;
+      -webkit-transition: all 0.5s ease-in-out;
+    }
+
+    & > button {
+      padding: 5px 0 0 0 !important;
+      width: 50px !important;
+      height: 50px !important;
+      font-size: 30px !important;
+      line-height: 30px !important;
+      box-shadow: none !important;
+      background-color: transparent !important;
+      .ion-ios-backspace,
+      .ion-md-backspace {
+        & {
+          padding: 0px;
+        }
+      }
+      &.backspace span {
+        padding: 0 0 5px 0px;
+      }
+      &:active {
+        background-color: #1E2227 !important;
+        opacity: 0.5;
+        .ion-ios-backspace,
+        .ion-md-backspace {
+          & {
+            padding: 0px;
+            content: url(../assets/icon/backspace-white.svg);
+          }
+        }
+      }
+    }
+  }
+
   ion-content#pincode {
     position: relative;
     -webkit-font-smoothing: antialiased;
@@ -105,34 +164,6 @@ page-pincode {
     display: block;
   }
 
-  ion-col {
-    text-align: center;
-  }
-
-  ion-col span {
-    height: 14px;
-    width: 14px;
-    border: 2px solid #000;
-    background-color: #000;
-    border-radius: 100%;
-    position: relative;
-    display: inline-block;
-    text-align: center;
-    margin: 0 auto;
-  }
-
-  ion-col.active span {
-    background-color: $secondary-color;
-    border-color: $secondary-color;
-  }
-
-  ion-col.right span {
-    background-color: #272a2f;
-    border-color: #272a2f;
-    transition: all 0.5s ease-in-out;
-    -webkit-transition: all 0.5s ease-in-out;
-  }
-
   ion-row {
     list-style: none;
     margin-left: -20px;
@@ -181,29 +212,6 @@ page-pincode {
     }
     100% {
       transform: translate(0, 0);
-    }
-  }
-
-  ion-col {
-    font-size: 30px;
-    height: 80px;
-    div {
-      height: 40px;
-      width: 40px;
-      margin: 0 auto;
-      padding: 2px 0 0px 0px;
-      &:active {
-        background: #1e2227;
-        border-radius: 50%;
-        color: #fff;
-        .ion-ios-backspace,
-        .ion-md-backspace {
-          & {
-            padding: 5px 3px 0 0px;
-            content: url(../assets/icon/backspace-white.svg);
-          }
-        }
-      }
     }
   }
 
