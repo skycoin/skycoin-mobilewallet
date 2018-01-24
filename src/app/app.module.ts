@@ -20,14 +20,17 @@ import { HeaderComponent } from '../components/header/header';
 import { ModalComponent } from '../components/modal/modal';
 import { QrCodeComponent } from '../components/qr-code/qr-code';
 import { CounttoDirective } from '../directives/countto/countto';
+
 import { AddWalletPage } from '../pages/add-wallet/add-wallet';
 import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
 import { LoadWalletPage } from '../pages/load-wallet/load-wallet';
 import { PincodePage } from '../pages/pincode/pincode';
+import { ObCreateWalletPage } from '../pages/ob-create-wallet/ob-create-wallet';
 import { SendSkycoinPage } from '../pages/send-skycoin/send-skycoin';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TransactionsPage } from '../pages/transactions/transactions';
 import { WalletDetailPage } from '../pages/wallet-detail/wallet-detail';
+
 import { AddressPipe } from '../pipes/address/address';
 import { SkyPipe } from '../pipes/sky/sky.pipe';
 import { WalletOptionPipe } from '../pipes/wallet-option/wallet-option';
@@ -50,6 +53,7 @@ import { WalletProvider } from '../providers/wallet/wallet.provider';
     TransactionsPage,
     WalletDetailPage,
     WalletsPage,
+    ObCreateWalletPage,
     BalanceComponent,
     ModalComponent,
     QrCodeComponent,
@@ -78,6 +82,7 @@ import { WalletProvider } from '../providers/wallet/wallet.provider';
     SendSkycoinPage,
     TransactionsPage,
     WalletDetailPage,
+    ObCreateWalletPage,
     WalletsPage,
   ],
   providers: [

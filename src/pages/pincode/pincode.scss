@@ -62,7 +62,6 @@ page-pincode {
 
   ion-content#pincode {
     position: relative;
-    -webkit-font-smoothing: antialiased;
     height: 100%;
     width: 100%;
   }
@@ -215,113 +214,7 @@ page-pincode {
     }
   }
 
-  ion-toggle {
-    margin: 0 auto;
-    width: 234px;
-    height: 36px;
-    border-radius: 100px;
-  }
 
-  h2 {
-    font-size: 20px;
-    line-height: 30px;
-    margin: 0;
-  }
-
-  .form-group {
-    width: 90%;
-    margin: 15px auto;
-    ion-label {
-      text-align: left;
-      font-size: 14px;
-      margin: 0;
-    }
-    .text-input-md {
-      margin: 0;
-    }
-    img {
-      border-radius: 20px;
-      float: right;
-      position: relative;
-      margin: -7px 0 0px 0px;
-    }
-  }
-
-  ion-input,
-  ion-textarea {
-    background-color: #fff;
-    border-radius: 5px;
-    color: rgba(23, 26, 29, 0.8);
-    font-size: 14px;
-    margin-top: 2px;
-
-    line-height: 20px;
-    padding: 10px 10px;
-    //width: 99%;
-  }
-
-  ion-textarea {
-    textarea {
-      width: 100% !important;
-    }
-  }
-  ion-input {
-    padding-left: 0;
-  }
-
-  .buttons {
-    button {
-      padding: 20px 60px;
-      border-radius: 20px;
-      box-shadow: none;
-      font-size: 14px;
-      text-transform: capitalize;
-      background-color: #1e2227;
-      margin-top: 30px;
-      text-align: center;
-    }
-  }
-
-  .-toggle {
-    width: 234px;
-    margin: 20px auto;
-    background-color: #58a8ff;
-    border-radius: 20px;
-    height: 30px;
-    button {
-      height: 30px;
-      width: 112px;
-      position: relative;
-      top: -4px;
-      box-shadow: none;
-      font-size: 14px;
-      text-transform: capitalize;
-
-      &.new {
-        float: left;
-        background-color: #1e2227;
-      }
-      &.new:hover {
-        float: left;
-        background-color: #1e2227;
-      }
-      &.load {
-        float: right;
-        background-color: #58a8ff;
-      }
-      &.load:hover {
-        float: right;
-        background-color: #58a8ff;
-      }
-    }
-  }
 }
 
-button.swiper-pagination-bullet {
-  background-color: #fff;
-  opacity: 0.5;
-  &.swiper-pagination-bullet-active {
-    background-color: #fff;
-    opacity: 1;
-  }
-}
+
