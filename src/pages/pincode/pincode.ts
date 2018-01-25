@@ -4,10 +4,10 @@ import { SecureStorageProvider } from '../../providers/secure-storage/secure-sto
 import { ObCreateWalletPage } from '../ob-create-wallet/ob-create-wallet';
 import { TabsPage } from '../tabs/tabs';
 
-@Component( {
+@Component({
   selector: 'page-pincode',
   templateUrl: 'pincode.html',
-} )
+})
 export class PincodePage implements OnInit {
   status: number;
   correct: string;
@@ -16,18 +16,19 @@ export class PincodePage implements OnInit {
   display: boolean;
   storageAvailable: boolean = true;
 
-  constructor( public el: ElementRef,
-               public nav: NavController,
-               public secureStorage: SecureStorageProvider,
-               public loadingCtrl: LoadingController, ) {
-  }
+  constructor(
+    public el: ElementRef,
+    public nav: NavController,
+    public secureStorage: SecureStorageProvider,
+    public loadingCtrl: LoadingController,
+  ) {}
 
   ngOnInit() {
     this.pin = '';
-    const loader = this.loadingCtrl.create( { content: 'Please wait...' } );
+    const loader = this.loadingCtrl.create({ content: 'Please wait...' });
     loader.present();
 
-    this.secureStorage.get( 'pin' ).subscribe(
+    this.secureStorage.get('pin').subscribe(
       pin => {
         this.status = 1;
         this.correct = pin;
@@ -35,7 +36,7 @@ export class PincodePage implements OnInit {
         loader.dismiss();
       },
       error => {
-        if ( error.toString() === 'Error: Key [_SS_pin] not found.' ) {
+        if (error.toString() === 'Error: Key [_SS_pin] not found.') {
           this.startCreateNewPinFlow();
         } else {
           this.storageAvailable = false;
@@ -48,18 +49,18 @@ export class PincodePage implements OnInit {
 
   disableSecure() {
     this.secureStorage.secureStorageDisabled = true;
-    this.nav.setRoot( TabsPage );
+    this.nav.setRoot(TabsPage);
   }
 
-  pressNumber( value: string ) {
+  pressNumber(value: string) {
     this.pin += this.pin.length < 4 ? value : '';
-    if ( this.pin.length >= 4 ) {
+    if (this.pin.length >= 4) {
       this.handlePin();
     }
   }
 
   pressBack() {
-    this.pin = this.pin.substr( 0, this.pin.length - 1 );
+    this.pin = this.pin.substr(0, this.pin.length - 1);
   }
 
   private startCreateNewPinFlow() {
@@ -67,10 +68,10 @@ export class PincodePage implements OnInit {
   }
 
   private confirmPin() {
-    if ( this.pin === this.correct ) {
-      this.secureStorage.set( 'pin', this.pin ).subscribe( () => {
-        this.nav.setRoot( ObCreateWalletPage );
-      } );
+    if (this.pin === this.correct) {
+      this.secureStorage.set('pin', this.pin).subscribe(() => {
+        this.nav.setRoot(ObCreateWalletPage);
+      });
     } else {
       this.wrongPin();
       this.status = 2;
@@ -78,7 +79,7 @@ export class PincodePage implements OnInit {
   }
 
   private handlePin() {
-    switch ( this.status ) {
+    switch (this.status) {
       case 1:
         this.verifyPin();
         break;
@@ -98,8 +99,8 @@ export class PincodePage implements OnInit {
   }
 
   private verifyPin() {
-    if ( this.pin === this.correct ) {
-      this.nav.setRoot( TabsPage );
+    if (this.pin === this.correct) {
+      this.nav.setRoot(TabsPage);
     } else {
       this.wrongPin();
     }
@@ -107,7 +108,7 @@ export class PincodePage implements OnInit {
 
   private wrongPin() {
     this.showError = true;
-    setTimeout( () => ( this.pin = '' ), 200 );
-    setTimeout( () => ( this.showError = false ), 500 );
+    setTimeout(() => (this.pin = ''), 200);
+    setTimeout(() => (this.showError = false), 500);
   }
 }

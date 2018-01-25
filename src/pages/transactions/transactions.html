@@ -15,7 +15,9 @@
     <ion-item ion-item mode="ios" *ngFor="let transaction of transactions">
       <div class="column-30"> {{ transaction.timestamp * 1000 | date:'MMM d' }} </div>
       <div class="column-50"> {{ transaction.txid | address }} </div>
-      <div class="column-20"> <ion-icon name="{{ transaction.status.confirmed ? 'checkmark' : 'close' }}"></ion-icon> </div>
+      <div class="column-20">
+        <ion-icon name="{{ transaction.status.confirmed ? 'checkmark' : 'close' }}"></ion-icon>
+      </div>
     </ion-item>
   </ion-list>
 </ion-content>

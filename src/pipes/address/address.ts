@@ -1,11 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-/**
- * Generated class for the AddressPipe pipe.
- *
- * See https://angular.io/docs/ts/latest/guide/pipes.html for more info on
- * Angular Pipes.
- */
 @Pipe({
   name: 'address',
 })

@@ -11,9 +11,8 @@
       </ion-item>
     </div>
   </div>
-  <button [ngClass]="{ disabled: !showConfirmCheck }" [disabled]="!showConfirmCheck" ion-button color="light" round
-          class="-continue"
-          (click)="createWallet()">Continue
+  <button [ngClass]="{ disabled: !showConfirmCheck }" [disabled]="!showConfirmCheck" ion-button color="light" round class="-continue"
+    (click)="createWallet()">Continue
   </button>
 </modal>
 
@@ -21,9 +20,8 @@
   <div class="cell-header">
     <div class="pin-instructions">
       <h2>Create a wallet</h2>
-      <p>If you don’t yet have a wallet, generate a seed and we’ll create one for you. If you already have a
-        wallet,
-        enter the seed below and load it.</p>
+      <p>If you don’t yet have a wallet, generate a seed and we’ll create one for you. If you already have a wallet, enter the
+        seed below and load it.</p>
     </div>
   </div>
   <ion-grid>
@@ -41,7 +39,7 @@
           <div class="form-group">
             <ion-label>Confirm seed</ion-label>
             <ion-textarea formControlName="confirmSeed" rows="2"></ion-textarea>
-            <img *ngIf="!form.controls.confirmSeed.errors?.MatchSeed" src="assets/icon/Valid.svg"/>
+            <img *ngIf="!form.controls.confirmSeed.errors?.MatchSeed" src="assets/icon/Valid.svg" />
           </div>
           <div class="buttons">
             <button ion-button round [disabled]="!form.valid" (click)="confirmCreateWallet()">Create</button>
@@ -53,4 +51,3 @@
   </ion-grid>
 
 </ion-content>
-

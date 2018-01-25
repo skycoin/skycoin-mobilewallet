@@ -1,10 +1,8 @@
 <ion-content id="pincode">
   <modal [header]="'IMPORTANT!'" *ngIf="!storageAvailable">
     <p>
-      We could not instantiate our secure storage service on your device. This means you cannot set a pincode and/or
-      save your
-      wallet seeds on your device. Whenever you want to transfer funds out of your wallet, you will be requested to
-      enter
+      We could not instantiate our secure storage service on your device. This means you cannot set a pincode and/or save your
+      wallet seeds on your device. Whenever you want to transfer funds out of your wallet, you will be requested to enter
       your wallet seed again.
       <b>Without your seed your funds will most likely be irretrievably lost.
       </b>
@@ -19,8 +17,7 @@
         <div class="cell-header">
           <div class="pin-instructions" *ngIf="status === 2">
             <h2>Set a PIN #</h2>
-            <p>This PIN # will used to open the wallet. Don't forget it; if you do, you may lose access to your
-              mobile wallet.
+            <p>This PIN # will used to open the wallet. Don't forget it; if you do, you may lose access to your mobile wallet.
             </p>
           </div>
           <div class="pin-instructions" *ngIf="status === 3">

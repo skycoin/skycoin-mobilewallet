@@ -1,32 +1,30 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ViewController } from 'ionic-angular';
-import { WalletProvider } from '../../providers/wallet/wallet.provider'
-import { ButtonComponent } from './../../components/button/button.component'
+import { WalletProvider } from '../../providers/wallet/wallet.provider';
+import { ButtonComponent } from './../../components/button/button.component';
 import { SeedValidation } from './../../match';
 
-@Component( {
+@Component({
   selector: 'page-add-wallet',
   templateUrl: 'add-wallet.html',
-} )
+})
 export class AddWalletPage implements OnInit {
   @ViewChild('button') button: ButtonComponent;
   showConfirm: boolean;
   form: FormGroup;
   seed: string;
 
-  constructor( public view: ViewController,
-               private wallet: WalletProvider,
-               fb: FormBuilder, ) {
+  constructor(
+    public view: ViewController,
+    private wallet: WalletProvider,
+    fb: FormBuilder,
+  ) {
     this.form = fb.group(
       {
-        confirmSeed: [ '', Validators.required ],
-        label: [ '', Validators.required ],
-        seed: [ '', Validators.required ],
+        confirmSeed: ['', Validators.required],
+        label: ['', Validators.required],
+        seed: ['', Validators.required],
       },
       {
         validator: SeedValidation.MatchSeed,
@@ -40,7 +38,8 @@ export class AddWalletPage implements OnInit {
 
   createWallet() {
     this.button.setLoading();
-    this.wallet.create( this.form.value.label, this.form.value.seed );
+    this.resetForm();
+    this.wallet.create(this.form.value.label, this.form.value.seed);
     this.button.setSuccess();
     this.view.dismiss();
   }

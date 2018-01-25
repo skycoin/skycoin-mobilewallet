@@ -11,16 +11,14 @@
       </ion-item>
     </div>
   </div>
-  <app-button #button [ngClass]="{ disabled: !showConfirmCheck }" [disabled]="!showConfirmCheck"
-              class="primary"
-              (click)="createWallet()">Continue
+  <app-button #button [ngClass]="{ disabled: !showConfirmCheck }" [disabled]="!showConfirmCheck" class="primary" (click)="createWallet()">Continue
   </app-button>
 </modal>
 <ion-header>
   <ion-navbar>
     <ion-title>Create Wallet</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="openModal()">
+      <button ion-button icon-only (click)="cancel()">
         <ion-icon name="sky-close"></ion-icon>
       </button>
     </ion-buttons>
@@ -40,10 +38,10 @@
     <div class="form-group">
       <ion-label>Confirm seed</ion-label>
       <ion-textarea formControlName="confirmSeed" rows="2"></ion-textarea>
-      <img *ngIf="!form.controls.confirmSeed.errors?.MatchSeed" src="assets/icon/Valid.svg"/>
+      <img *ngIf="!form.controls.confirmSeed.errors?.MatchSeed" src="assets/icon/Valid.svg" />
     </div>
     <div class="buttons">
-      <app-button class="negative">Cancel</app-button>
+      <app-button class="negative" (click)="cancel()">Cancel</app-button>
       <app-button class="primary" [disabled]="!form.valid" (click)="confirmCreateWallet()">Create</app-button>
     </div>
   </div>

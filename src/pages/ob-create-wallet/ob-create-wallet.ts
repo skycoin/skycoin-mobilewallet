@@ -1,30 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { WalletProvider } from "../../providers/wallet/wallet.provider";
-import { SeedValidation } from "../../match";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { WalletProvider } from '../../providers/wallet/wallet.provider';
+import { SeedValidation } from '../../match';
 import { TabsPage } from '../tabs/tabs';
 
-@Component( {
+@Component({
   selector: 'page-ob-create-wallet',
   templateUrl: 'ob-create-wallet.html',
-} )
+})
 export class ObCreateWalletPage implements OnInit {
   form: FormGroup;
   seed: string;
-  confirmSeed: string
+  confirmSeed: string;
   showConfirm: boolean;
   showConfirmCheck: boolean;
 
-  constructor( public nav: NavController,
-               private wallet: WalletProvider,
-               fb: FormBuilder ) {
-
+  constructor(
+    public nav: NavController,
+    private wallet: WalletProvider,
+    fb: FormBuilder,
+  ) {
     this.form = fb.group(
       {
-        confirmSeed: [ '', Validators.required ],
-        label: [ '', Validators.required ],
-        seed: [ '', Validators.required ],
+        confirmSeed: ['', Validators.required],
+        label: ['', Validators.required],
+        seed: ['', Validators.required],
       },
       {
         validator: SeedValidation.MatchSeed,
@@ -37,14 +38,14 @@ export class ObCreateWalletPage implements OnInit {
   }
 
   createWallet() {
-    this.wallet.create( this.form.value.label, this.form.value.seed );
-    this.nav.setRoot( TabsPage );
+    this.wallet.create(this.form.value.label, this.form.value.seed);
+    this.nav.setRoot(TabsPage);
   }
 
   generateSeed() {
     this.wallet
       .generateSeed()
-      .subscribe( seed => this.form.controls.seed.setValue( seed ) );
+      .subscribe(seed => this.form.controls.seed.setValue(seed));
   }
 
   confirmCreateWallet() {
@@ -54,5 +55,4 @@ export class ObCreateWalletPage implements OnInit {
   closeModal() {
     this.showConfirm = false;
   }
-
 }

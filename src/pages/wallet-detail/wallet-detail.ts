@@ -1,6 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Clipboard } from '@ionic-native/clipboard';
-import { ModalController, NavParams, Platform, ToastController } from 'ionic-angular';
+import {
+  ModalController,
+  NavParams,
+  Platform,
+  ToastController,
+} from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
 import { AddressModel } from '../../models/address.model';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
@@ -27,10 +32,15 @@ export class WalletDetailPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.walletSubscription = this.walletProvider.find(this.navParams.get('wallet')).subscribe((wallet) => {
-      this.addresses = wallet && wallet.entries ? wallet.entries.slice(0, wallet.visible) : [];
-      this.wallet = wallet;
-    });
+    this.walletSubscription = this.walletProvider
+      .find(this.navParams.get('wallet'))
+      .subscribe(wallet => {
+        this.addresses =
+          wallet && wallet.entries
+            ? wallet.entries.slice(0, wallet.visible)
+            : [];
+        this.wallet = wallet;
+      });
   }
 
   ngOnDestroy() {

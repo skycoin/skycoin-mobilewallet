@@ -37,7 +37,7 @@ $screen-padding: 32px;
       font-family: Skycoin;
       line-height: normal;
       font-size: 13px;
-      color: #1E2227;
+      color: #1e2227;
     }
   }
 
@@ -58,14 +58,12 @@ $screen-padding: 32px;
     line-height: normal;
     font-size: 12px;
 
-    color: #1E2227;
+    color: #1e2227;
     mix-blend-mode: normal;
     opacity: 0.25;
   }
-  .item-md,.item-divider-md{
+  .item-md,
+  .item-divider-md {
     padding: 0;
   }
-
 }
-
-

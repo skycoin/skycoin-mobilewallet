@@ -5,7 +5,6 @@ import { WalletModel } from '../../models/wallet.model';
   name: 'walletOption',
 })
 export class WalletOptionPipe implements PipeTransform {
-
   transform(wallet: WalletModel) {
     const balance = wallet.balance ? wallet.balance : 0;
     return wallet.label + ` (${balance})`;
