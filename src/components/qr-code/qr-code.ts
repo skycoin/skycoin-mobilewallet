@@ -1,5 +1,5 @@
-import { Component,  Input, OnInit, ViewChild } from '@angular/core';
-import { AddressModel } from '../../models/address.model';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Address } from '../../models/address.model';
 
 declare var QRCode: any;
 
@@ -8,7 +8,7 @@ declare var QRCode: any;
   templateUrl: 'qr-code.html',
 })
 export class QrCodeComponent implements OnInit {
-  @Input() address: AddressModel;
+  @Input() address: Address;
   @ViewChild('qr') qr: any;
 
   size: number = 300;

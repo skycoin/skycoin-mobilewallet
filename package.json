@@ -68,6 +68,8 @@
       "cordova-clipboard": {},
       "cordova-skycoin-liteclient": {}
     },
-    "platforms": ["android"]
+    "platforms": [
+      "android"
+    ]
   }
 }

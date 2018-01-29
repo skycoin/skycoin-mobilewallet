@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from 'ionic-angular';
 import { Subject } from 'rxjs/Subject';
-import { WalletModel } from '../../models/wallet.model';
+import { Wallet} from '../../models/wallet.model';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { AddWalletPage } from '../add-wallet/add-wallet';
 import { LoadWalletPage } from '../load-wallet/load-wallet';
@@ -13,7 +13,7 @@ import { WalletDetailPage } from '../wallet-detail/wallet-detail';
 export class WalletsPage implements OnInit {
 
   sum: number = 0;
-  wallets: Subject<WalletModel[]>;
+  wallets: Subject<Wallet[]>;
 
   constructor(
     private modal: ModalController,
@@ -31,7 +31,7 @@ export class WalletsPage implements OnInit {
   }
 
   deleteWallet(wallet) {
-    this.wallet.remove(wallet);
+    // this.wallet.remove(wallet);
   }
 
   loadWallet() {
