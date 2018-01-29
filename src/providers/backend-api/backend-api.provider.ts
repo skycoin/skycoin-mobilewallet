@@ -1,33 +1,59 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Headers, Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { Config } from '../../app/app.config';
-import { Output, OutputsResponse } from '../../app/app.datatypes';
-import { AddressModel } from '../../models/address.model';
+import { Address } from '../../models/address.model';
+import { Transaction } from '../../models/transaction.model';
 
 @Injectable()
-export class BackendApiProvider {
+export class ApiService {
+  private url = 'http://127.0.0.1:6420/'; // production
+  // private url = '/api/'; // test
 
-  constructor(
-    public http: Http,
-  ) {}
+  constructor(private http: Http) {}
 
-  getTransactions(addresses: AddressModel[]): Observable<any[]> {
-    const firstAddresses = addresses.length > 20 ? addresses.slice(0, 19) : addresses;
-    const url =
-      Config.backendUrl +
-      'transactions?addresses=' +
-      firstAddresses.map((address) => address.address).join(',');
-    return firstAddresses.length ? this.http.get(url).map((res: any) => res.json()) : Observable.of([]);
+  get(url, options = null) {
+    return this.http
+      .get(this.getUrl(url, options), this.getHeaders())
+      .map((res: any) => res.json())
+      .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
-  getOutputs(addresses: AddressModel[], max?: number): Observable<Output[]> {
-    const firstAddresses = addresses.length > (max ? max : 20) ? addresses.slice(0, (max ? max : 20)) : addresses;
-    const url = Config.backendUrl + 'outputs?addresses=' + firstAddresses.map((address) => address.address).join(',');
-    return firstAddresses.length ? this.http.get(url).map((res: any) => {
-      const response: OutputsResponse = res.json();
-      response.head_outputs.forEach((output) => output.coins = parseFloat(output.coins));
-      return response.head_outputs;
-    }) : Observable.of([]);
+  getExplorerAddress(address: Address): Observable<Transaction[]> {
+    return this.get('explorer/address', { address: address.address }).map(
+      transactions =>
+        transactions.map(transaction => ({
+          addresses: [],
+          balance: 0,
+          block: transaction.status.block_seq,
+          confirmed: transaction.status.confirmed,
+          timestamp: transaction.timestamp,
+          txid: transaction.txid,
+          inputs: transaction.inputs,
+          outputs: transaction.outputs,
+        })),
+    );
+  }
+
+  private getUrl(url, options = null) {
+    return this.url + url + '?' + this.getQueryString(options);
+  }
+
+  private getHeaders() {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    return headers;
+  }
+
+  private getQueryString(parameters = null) {
+    if (!parameters) {
+      return '';
+    }
+
+    return Object.keys(parameters)
+      .reduce((array, key) => {
+        array.push(key + '=' + encodeURIComponent(parameters[key]));
+        return array;
+      }, [])
+      .join('&');
   }
 }

@@ -1,12 +1,7 @@
 import { ErrorHandler, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
-import { WalletsPage } from '../pages/wallets/wallets';
-import { MyApp } from './app.component';
-
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
 import { Clipboard } from '@ionic-native/clipboard';
 import { File } from '@ionic-native/file';
 import { NativeStorage } from '@ionic-native/native-storage';
@@ -14,6 +9,7 @@ import { SecureStorage } from '@ionic-native/secure-storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { BalanceComponent } from '../components/balance/balance';
 import { ButtonComponent } from '../components/button/button.component';
 import { HeaderComponent } from '../components/header/header';
@@ -29,15 +25,17 @@ import { SendSkycoinPage } from '../pages/send-skycoin/send-skycoin';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TransactionsPage } from '../pages/transactions/transactions';
 import { WalletDetailPage } from '../pages/wallet-detail/wallet-detail';
+import { WalletsPage } from '../pages/wallets/wallets';
 import { AddressPipe } from '../pipes/address/address';
 import { SkyPipe } from '../pipes/sky/sky.pipe';
 import { WalletOptionPipe } from '../pipes/wallet-option/wallet-option';
-import { BackendApiProvider } from '../providers/backend-api/backend-api.provider';
+import { ApiService } from '../providers/backend-api/backend-api.provider';
 import { LocalApiProvider } from '../providers/local-api/local-api.provider';
 import { PriceService } from '../providers/price/price.service';
 import { SecureStorageProvider } from '../providers/secure-storage/secure-storage';
 import { StorageApiProvider } from '../providers/storage-api/storage-api.provider';
 import { WalletProvider } from '../providers/wallet/wallet.provider';
+import { MyApp } from './app.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +86,7 @@ import { WalletProvider } from '../providers/wallet/wallet.provider';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    BackendApiProvider,
+    ApiService,
     LocalApiProvider,
     WalletProvider,
     StorageApiProvider,

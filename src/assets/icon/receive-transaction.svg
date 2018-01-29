@@ -1,0 +1,36 @@
+<svg width="28" height="24" viewBox="0 0 28 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Vector</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-5457 -28)">
+<rect x="5457" y="28" width="28" height="24" fill="#FFFFFF"/>
+<clipPath id="clip-0" clip-rule="evenodd">
+<path d="M 5436 -220L 5850 -220L 5850 516L 5436 516L 5436 -220Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="Transaction History" clip-path="url(#clip-0)">
+<path d="M 5436 -220L 5850 -220L 5850 516L 5436 516L 5436 -220Z" fill="#FFFFFF"/>
+<g id="Table">
+<g id="Container">
+<use xlink:href="#path0_fill" transform="translate(5436 -160)" fill="#F7F7F7"/>
+</g>
+<g id="Table / Row / Transaction Received">
+<g id="Row BG">
+<use xlink:href="#path1_fill" transform="translate(5436 0)" fill="#FBFBFB"/>
+</g>
+<clipPath id="clip-1" clip-rule="evenodd">
+<path d="M 5455 24L 5487 24L 5487 56L 5455 56L 5455 24Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="icons / send-black" clip-path="url(#clip-1)">
+<g id="Vector">
+<use xlink:href="#path2_stroke" transform="matrix(1 5.34378e-24 -5.34378e-24 1 5458 29)" fill="#0072FF"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 0 0L 414 0L 414 676L 0 676L 0 0Z"/>
+<path id="path1_fill" fill-rule="evenodd" d="M 0 0L 414 0L 414 80L 0 80L 0 0Z"/>
+<path id="path2_stroke" d="M 0 11L -0.38964 10.079C -0.75961 10.2356 -1 10.5983 -1 11C -1 11.4017 -0.75961 11.7644 -0.38964 11.921L 0 11ZM 26 0L 27 0C 27 -0.335319 26.8319 -0.648318 26.5524 -0.833559C 26.2729 -1.0188 25.9192 -1.05162 25.6104 -0.920967L 26 0ZM 26 22L 25.6104 22.921C 25.9192 23.0516 26.2729 23.0188 26.5524 22.8336C 26.8319 22.6483 27 22.3353 27 22L 26 22ZM 17 10C 16.4477 10 16 10.4477 16 11C 16 11.5523 16.4477 12 17 12L 17 10ZM 0.38964 11.921L 26.3896 0.920967L 25.6104 -0.920967L -0.38964 10.079L 0.38964 11.921ZM 26.3896 21.079L 0.38964 10.079L -0.38964 11.921L 25.6104 22.921L 26.3896 21.079ZM 25 0L 25 11L 27 11L 27 0L 25 0ZM 25 11L 25 22L 27 22L 27 11L 25 11ZM 26 10L 17 10L 17 12L 26 12L 26 10Z"/>
+</defs>
+</svg>

@@ -1,0 +1,112 @@
+<svg width="17" height="17" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Group</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-5505 119)">
+<g id="Group">
+<g id="Rectangle">
+<mask id="mask0_outline_ins">
+<use xlink:href="#path0_fill" fill="white" transform="translate(5505 -119)"/>
+</mask>
+<g mask="url(#mask0_outline_ins)">
+<use xlink:href="#path1_stroke_2x" transform="translate(5505 -119)" fill="#1E2227"/>
+</g>
+</g>
+<g id="Rectangle">
+<mask id="mask1_outline_ins">
+<use xlink:href="#path2_fill" fill="white" transform="translate(5505 -108)"/>
+</mask>
+<g mask="url(#mask1_outline_ins)">
+<use xlink:href="#path3_stroke_2x" transform="translate(5505 -108)" fill="#1E2227"/>
+</g>
+</g>
+<g id="Rectangle">
+<mask id="mask2_outline_ins">
+<use xlink:href="#path4_fill" fill="white" transform="translate(5512 -106)"/>
+</mask>
+<g mask="url(#mask2_outline_ins)">
+<use xlink:href="#path5_stroke_2x" transform="translate(5512 -106)" fill="#1E2227"/>
+</g>
+</g>
+<g id="Rectangle">
+<mask id="mask3_outline_ins">
+<use xlink:href="#path6_fill" fill="white" transform="matrix(-1 0 0 1 5509 -106)"/>
+</mask>
+<g mask="url(#mask3_outline_ins)">
+<use xlink:href="#path7_stroke_2x" transform="matrix(-1 0 0 1 5509 -106)" fill="#1E2227"/>
+</g>
+</g>
+<g id="Rectangle">
+<mask id="mask4_outline_ins">
+<use xlink:href="#path8_fill" fill="white" transform="matrix(-1 0 0 -1 5513 -107)"/>
+</mask>
+<g mask="url(#mask4_outline_ins)">
+<use xlink:href="#path9_stroke_2x" transform="matrix(-1 0 0 -1 5513 -107)" fill="#1E2227"/>
+</g>
+</g>
+<g id="Rectangle">
+<mask id="mask5_outline_ins">
+<use xlink:href="#path10_fill" fill="white" transform="matrix(1 0 0 -1 5505 -109)"/>
+</mask>
+<g mask="url(#mask5_outline_ins)">
+<use xlink:href="#path11_stroke_2x" transform="matrix(1 0 0 -1 5505 -109)" fill="#1E2227"/>
+</g>
+</g>
+<g id="Rectangle">
+<mask id="mask6_outline_ins">
+<use xlink:href="#path12_fill" fill="white" transform="translate(5507 -117)"/>
+</mask>
+<g mask="url(#mask6_outline_ins)">
+<use xlink:href="#path13_stroke_2x" transform="translate(5507 -117)" fill="#1E2227"/>
+</g>
+</g>
+<g id="Rectangle">
+<mask id="mask7_outline_ins">
+<use xlink:href="#path0_fill" fill="white" transform="translate(5514 -119)"/>
+</mask>
+<g mask="url(#mask7_outline_ins)">
+<use xlink:href="#path1_stroke_2x" transform="translate(5514 -119)" fill="#1E2227"/>
+</g>
+</g>
+<g id="Rectangle">
+<mask id="mask8_outline_ins">
+<use xlink:href="#path12_fill" fill="white" transform="matrix(-1 0 0 1 5520 -117)"/>
+</mask>
+<g mask="url(#mask8_outline_ins)">
+<use xlink:href="#path13_stroke_2x" transform="matrix(-1 0 0 1 5520 -117)" fill="#1E2227"/>
+</g>
+</g>
+<g id="Rectangle">
+<mask id="mask9_outline_ins">
+<use xlink:href="#path0_fill" fill="white" transform="translate(5514 -110)"/>
+</mask>
+<g mask="url(#mask9_outline_ins)">
+<use xlink:href="#path1_stroke_2x" transform="translate(5514 -110)" fill="#1E2227"/>
+</g>
+</g>
+<g id="Rectangle">
+<mask id="mask10_outline_ins">
+<use xlink:href="#path12_fill" fill="white" transform="matrix(-1 0 0 1 5520 -108)"/>
+</mask>
+<g mask="url(#mask10_outline_ins)">
+<use xlink:href="#path13_stroke_2x" transform="matrix(-1 0 0 1 5520 -108)" fill="#1E2227"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 0 0L 8 0L 8 8L 0 8L 0 0Z"/>
+<path id="path1_stroke_2x" d="M 0 0L 0 -1L -1 -1L -1 0L 0 0ZM 8 0L 9 0L 9 -1L 8 -1L 8 0ZM 8 8L 8 9L 9 9L 9 8L 8 8ZM 0 8L -1 8L -1 9L 0 9L 0 8ZM 0 1L 8 1L 8 -1L 0 -1L 0 1ZM 7 0L 7 8L 9 8L 9 0L 7 0ZM 8 7L 0 7L 0 9L 8 9L 8 7ZM 1 8L 1 0L -1 0L -1 8L 1 8Z"/>
+<path id="path2_fill" d="M 0 0L 6 0L 6 6L 0 6L 0 0Z"/>
+<path id="path3_stroke_2x" d="M 0 0L 0 -1L -1 -1L -1 0L 0 0ZM 6 0L 7 0L 7 -1L 6 -1L 6 0ZM 6 6L 6 7L 7 7L 7 6L 6 6ZM 0 6L -1 6L -1 7L 0 7L 0 6ZM 0 1L 6 1L 6 -1L 0 -1L 0 1ZM 5 0L 5 6L 7 6L 7 0L 5 0ZM 6 5L 0 5L 0 7L 6 7L 6 5ZM 1 6L 1 0L -1 0L -1 6L 1 6Z"/>
+<path id="path4_fill" d="M 0 0L 1 0L 1 4L 0 4L 0 0Z"/>
+<path id="path5_stroke_2x" d="M 0 0L 0 -1L -1 -1L -1 0L 0 0ZM 1 0L 2 0L 2 -1L 1 -1L 1 0ZM 1 4L 1 5L 2 5L 2 4L 1 4ZM 0 4L -1 4L -1 5L 0 5L 0 4ZM 0 1L 1 1L 1 -1L 0 -1L 0 1ZM 0 0L 0 4L 2 4L 2 0L 0 0ZM 1 3L 0 3L 0 5L 1 5L 1 3ZM 1 4L 1 0L -1 0L -1 4L 1 4Z"/>
+<path id="path6_fill" d="M 0 0L 2 0L 2 2L 0 2L 0 0Z"/>
+<path id="path7_stroke_2x" d="M 0 0L 0 -1L -1 -1L -1 0L 0 0ZM 2 0L 3 0L 3 -1L 2 -1L 2 0ZM 2 2L 2 3L 3 3L 3 2L 2 2ZM 0 2L -1 2L -1 3L 0 3L 0 2ZM 0 1L 2 1L 2 -1L 0 -1L 0 1ZM 1 0L 1 2L 3 2L 3 0L 1 0ZM 2 1L 0 1L 0 3L 2 3L 2 1ZM 1 2L 1 0L -1 0L -1 2L 1 2Z"/>
+<path id="path8_fill" d="M 0 0L 3 0L 3 3L 0 3L 0 0Z"/>
+<path id="path9_stroke_2x" d="M 0 0L 0 -1L -1 -1L -1 0L 0 0ZM 3 0L 4 0L 4 -1L 3 -1L 3 0ZM 3 3L 3 4L 4 4L 4 3L 3 3ZM 0 3L -1 3L -1 4L 0 4L 0 3ZM 0 1L 3 1L 3 -1L 0 -1L 0 1ZM 2 0L 2 3L 4 3L 4 0L 2 0ZM 3 2L 0 2L 0 4L 3 4L 3 2ZM 1 3L 1 0L -1 0L -1 3L 1 3Z"/>
+<path id="path10_fill" d="M 0 0L 4 0L 4 1L 0 1L 0 0Z"/>
+<path id="path11_stroke_2x" d="M 0 0L 0 -1L -1 -1L -1 0L 0 0ZM 4 0L 5 0L 5 -1L 4 -1L 4 0ZM 4 1L 4 2L 5 2L 5 1L 4 1ZM 0 1L -1 1L -1 2L 0 2L 0 1ZM 0 1L 4 1L 4 -1L 0 -1L 0 1ZM 3 0L 3 1L 5 1L 5 0L 3 0ZM 4 0L 0 0L 0 2L 4 2L 4 0ZM 1 1L 1 0L -1 0L -1 1L 1 1Z"/>
+<path id="path12_fill" d="M 0 0L 4 0L 4 4L 0 4L 0 0Z"/>
+<path id="path13_stroke_2x" d="M 0 0L 0 -1L -1 -1L -1 0L 0 0ZM 4 0L 5 0L 5 -1L 4 -1L 4 0ZM 4 4L 4 5L 5 5L 5 4L 4 4ZM 0 4L -1 4L -1 5L 0 5L 0 4ZM 0 1L 4 1L 4 -1L 0 -1L 0 1ZM 3 0L 3 4L 5 4L 5 0L 3 0ZM 4 3L 0 3L 0 5L 4 5L 4 3ZM 1 4L 1 0L -1 0L -1 4L 1 4Z"/>
+</defs>
+</svg>

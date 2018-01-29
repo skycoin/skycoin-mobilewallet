@@ -1,5 +1,5 @@
-export class AddressModel {
+export class Address {
   address: string;
-  balance: number;
+  coins: number;
   hours: number;
 }

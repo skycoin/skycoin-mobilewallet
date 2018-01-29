@@ -1,10 +1,12 @@
-import { AddressModel } from './address.model';
+import { Address } from './address.model';
 
-export class WalletModel {
+export class Wallet {
   label: string;
   seed: string;
-  entries: AddressModel[];
-  balance?: number;
-  hours?: number;
+  coins: number;
+  hours: number;
+  addresses: Address[];
   visible?: number;
+  hideEmpty?: boolean;
+  opened?: boolean;
 }

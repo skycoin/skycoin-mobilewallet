@@ -1,22 +1,63 @@
 <ion-header no-border>
-  <ion-navbar transparent mode="ios">
-    <ion-title mode="ios">Transactions</ion-title>
+  <ion-navbar>
+    <ion-title>Transactions</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="cancel()">
+        <ion-icon name="sky-refresh"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content id="pages-transactions">
+<ion-content>
   <div class="-header primary-header-background"></div>
   <ion-list>
-    <ion-item-divider>
-      <div class="column-30">Date</div>
-      <div class="column-50">Transaction</div>
-      <div class="column-20">Conf</div>
-    </ion-item-divider>
-    <ion-item ion-item mode="ios" *ngFor="let transaction of transactions">
-      <div class="column-30"> {{ transaction.timestamp * 1000 | date:'MMM d' }} </div>
-      <div class="column-50"> {{ transaction.txid | address }} </div>
-      <div class="column-20"> <ion-icon name="{{ transaction.status.confirmed ? 'checkmark' : 'close' }}"></ion-icon> </div>
+    <ion-item *ngFor="let transaction of transactions">
+      <ion-row *ngIf="transaction.balance !== 0" (click)="showTransaction(transaction)">
+        <ion-col col-2>
+          <ion-icon *ngIf="transaction.balance < 0" ngClass="'-pending': !transaction.confirmed" name="send-trans"></ion-icon>
+          <ion-icon *ngIf="transaction.balance > 0" ngClass="'-pending': !transaction.confirmed" name="receive-trans"></ion-icon>
+        </ion-col>
+        <ion-col col-8>
+          <ion-row>
+            <ion-col>
+
+              <span *ngIf="transaction.balance < 0 && transaction.confirmed" class="trans-title">Sent SKY</span>
+              <span *ngIf="transaction.balance < 0 && transaction.confirmed" class="trans-subtitle">{{ transaction.timestamp * 1000 | date:'short' }}</span>
+
+              <span *ngIf="transaction.balance < 0 && !transaction.confirmed" class="trans-title">Sending SKY</span>
+              <span *ngIf="transaction.balance < 0 && !transaction.confirmed" class="trans-subtitle">Pending</span>
+
+
+              <span *ngIf="transaction.balance > 0 && !transaction.confirmed" class="trans-title">Received SKY</span>
+              <span *ngIf="transaction.balance > 0 && !transaction.confirmed" class="trans-subtitle">{{ transaction.timestamp * 1000 | date:'short' }}</span>
+
+              <span *ngIf="transaction.balance > 0 && transaction.confirmed" class="trans-title">Sent SKY</span>
+              <span *ngIf="transaction.balance > 0 && transaction.confirmed" class="trans-subtitle pending">Pending</span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-icon name="sky-qr"></ion-icon>
+              <span class="trans-address">{{ transaction.txn.txid | address }}</span>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col col-2>
+          <ion-row>
+            <ion-col>
+              <span class="trans-title">{{ transaction.balance }} SKY</span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <span *ngIf="price" class="trans-address">{{ transaction.balance * price | currency:'USD':true:'1.2-2' }}</span>
+            </ion-col>
+
+          </ion-row>
+        </ion-col>
+      </ion-row>
     </ion-item>
+
   </ion-list>
-  <tabs></tabs>
 </ion-content>
