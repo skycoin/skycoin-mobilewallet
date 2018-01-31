@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ViewController } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
-import { ApiService } from '../../providers/backend-api/backend-api.provider';
+import {  } from '../../providers/backend-api/backend-api.provider';
 import { PriceService } from '../../providers/price/price.service';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
 
@@ -20,7 +20,6 @@ export class TransactionsPage implements OnInit, OnDestroy {
     private view: ViewController,
     private walletService: WalletProvider,
     private priceService: PriceService,
-    private apiService: ApiService,
   ) {}
 
   ngOnInit() {
