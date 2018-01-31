@@ -81,4 +81,75 @@ page-transactions {
     margin: 15px 0 0 0;
     height: 80px;
   }
+
+  modal div.-modal {
+    width: 100%;
+    top: 20%;
+    .-body {
+      background-color: #ffffff;
+      padding: 0;
+      margin: 0 0 10px 0;
+    }
+
+    ion-grid > ion-row > ion-col.center-icon ion-icon {
+      float: none;
+    }
+
+    ion-icon {
+      color: #00df80;
+      float: right;
+      margin-right: 4px;
+      margin-top: 4px;
+    }
+
+    .item-md,
+    item-ios {
+      height: auto;
+      padding: 0;
+      margin: 0;
+      background-color: #f7f7f7;
+    }
+
+    span.-modal-title {
+      margin-left: 10px;
+      font-family: Work Sans;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 0px;
+      font-size: 12px;
+
+      color: #1e2227;
+      mix-blend-mode: normal;
+      opacity: 0.5;
+    }
+    span.-modal-subtitle {
+      line-height: 30px;
+      font-family: Work Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 13px;
+      text-align: right;
+      color: #1e2227;
+      float: right;
+      .-address {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: normal;
+        line-height: normal;
+        font-size: 13px;
+        text-align: right;
+
+        color: rgba(30, 34, 39, 0.5);
+        mix-blend-mode: normal;
+      }
+    }
+    .-modal-list {
+      .label label-md {
+        margin-top: 30px;
+      }
+    }
+    .-middle {
+      width: 70%;
+    }
+  }
 }

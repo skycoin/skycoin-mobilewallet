@@ -11,20 +11,22 @@ import { WalletProvider } from '../../providers/wallet/wallet.provider';
 })
 export class TransactionsPage implements OnInit, OnDestroy {
   transactions: any[];
-
-  private price: number;
-  private priceSubscription: Subscription;
+  transaction: any;
+  price: number;
+  priceSubscription: Subscription;
+  showConfirm: boolean;
 
   constructor(
     private view: ViewController,
     private walletService: WalletProvider,
     private priceService: PriceService,
+    private apiService: ApiService,
   ) {}
 
   ngOnInit() {
-    this.priceSubscription = this.priceService.price.subscribe(
-      price => (this.price = price),
-    );
+    this.priceSubscription = this.priceService.price.subscribe(price => {
+      this.price = price;
+    });
     this.walletService
       .transactions()
       .subscribe(transactions => (this.transactions = transactions));
@@ -35,13 +37,19 @@ export class TransactionsPage implements OnInit, OnDestroy {
   }
 
   showTransaction(transaction: any) {
-    // const config = new MdDialogConfig();
-    // config.width = '566px';
-    // config.data = transaction;
-    // this.dialog.open(TransactionDetailComponent, config).afterClosed().subscribe();
+    this.transaction = transaction;
+    this.showConfirm = true;
+  }
+
+  closeModal() {
+    this.showConfirm = false;
   }
 
   cancel() {
     this.view.dismiss();
+  }
+
+  showOutput(output) {
+    return !this.transaction.inputs.find(input => input.owner === output.dst);
   }
 }
