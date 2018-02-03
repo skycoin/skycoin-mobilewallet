@@ -1,9 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoadingController, NavController, Slides } from 'ionic-angular';
-import { SeedValidation } from '../../match';
+import { Component, ElementRef, OnInit } from '@angular/core';
+import { LoadingController, NavController } from 'ionic-angular';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
-import { WalletProvider } from '../../providers/wallet/wallet.provider';
+import { ObCreateWalletPage } from '../ob-create-wallet/ob-create-wallet';
 import { TabsPage } from '../tabs/tabs';
 
 @Component({
@@ -11,42 +9,22 @@ import { TabsPage } from '../tabs/tabs';
   templateUrl: 'pincode.html',
 })
 export class PincodePage implements OnInit {
-  @ViewChild('slides') slides: Slides;
-  form: FormGroup;
   status: number;
-  seed: string;
-  confirmSeed: string;
   correct: string;
   pin: string;
   showError: boolean;
   display: boolean;
   storageAvailable: boolean = true;
-  showConfirm: boolean;
-  showConfirmCheck: boolean;
 
   constructor(
     public el: ElementRef,
     public nav: NavController,
     public secureStorage: SecureStorageProvider,
     public loadingCtrl: LoadingController,
-    private wallet: WalletProvider,
-    fb: FormBuilder,
-  ) {
-    this.form = fb.group(
-      {
-        confirmSeed: ['', Validators.required],
-        label: ['', Validators.required],
-        seed: ['', Validators.required],
-      },
-      {
-        validator: SeedValidation.MatchSeed,
-      },
-    );
-  }
+  ) {}
 
   ngOnInit() {
     this.pin = '';
-    this.generateSeed();
     const loader = this.loadingCtrl.create({ content: 'Please wait...' });
     loader.present();
 
@@ -61,24 +39,12 @@ export class PincodePage implements OnInit {
         if (error.toString() === 'Error: Key [_SS_pin] not found.') {
           this.startCreateNewPinFlow();
         } else {
-          // error.toString() === 'Error: Device is not secure'
           this.storageAvailable = false;
         }
         this.display = true;
         loader.dismiss();
       },
     );
-  }
-
-  createWallet() {
-    this.wallet.create(this.form.value.label, this.form.value.seed);
-    this.nav.setRoot(TabsPage);
-  }
-
-  generateSeed() {
-    this.wallet
-      .generateSeed()
-      .subscribe(seed => this.form.controls.seed.setValue(seed));
   }
 
   disableSecure() {
@@ -97,19 +63,6 @@ export class PincodePage implements OnInit {
     this.pin = this.pin.substr(0, this.pin.length - 1);
   }
 
-  ionViewWillEnter() {
-    this.slides.update();
-    this.slides.lockSwipes(true);
-  }
-
-  confirmCreateWallet() {
-    this.showConfirm = true;
-  }
-  closeModal() {
-    this.storageAvailable = true;
-    this.showConfirm = false;
-  }
-
   private startCreateNewPinFlow() {
     this.status = 2;
   }
@@ -117,9 +70,7 @@ export class PincodePage implements OnInit {
   private confirmPin() {
     if (this.pin === this.correct) {
       this.secureStorage.set('pin', this.pin).subscribe(() => {
-        this.slides.lockSwipes(false);
-        this.slides.slideNext();
-        this.slides.lockSwipes(true);
+        this.nav.setRoot(ObCreateWalletPage);
       });
     } else {
       this.wrongPin();

@@ -11,7 +11,6 @@ import { WalletDetailPage } from '../wallet-detail/wallet-detail';
   templateUrl: 'wallets.html',
 })
 export class WalletsPage implements OnInit {
-
   sum: number = 0;
   wallets: Subject<WalletModel[]>;
 
@@ -22,7 +21,7 @@ export class WalletsPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.wallet.sum().subscribe((data) => this.sum = data);
+    this.wallet.sum().subscribe(data => (this.sum = data));
   }
 
   addWallet() {
@@ -40,7 +39,7 @@ export class WalletsPage implements OnInit {
   }
 
   openWallet(wallet) {
-    this.nav.push(WalletDetailPage, {wallet});
+    this.nav.push(WalletDetailPage, { wallet });
   }
 
   refreshData() {

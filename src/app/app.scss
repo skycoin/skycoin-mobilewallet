@@ -12,10 +12,6 @@ h1 {
   margin: 0;
 }
 
-.scroll-content {
-  margin-top: 0 !important;
-}
-
 .split-background {
   background-image: linear-gradient(bottom, #dddddd 65%, #4990e2 65%);
   background-image: -o-linear-gradient(bottom, #dddddd 65%, #4990e2 65%);
@@ -272,4 +268,12 @@ ion-buttons {
   &[ng-reflect-is-active='true'] {
     content: url(../assets/icon/backspace-white.svg);
   }
+}
+
+.ion-ios-sky-close,
+.ion-md-sky-close {
+  content: url(../assets/icon/sky-close.svg);
+  width: 16px;
+  height: 16px;
+  padding: 0;
 }

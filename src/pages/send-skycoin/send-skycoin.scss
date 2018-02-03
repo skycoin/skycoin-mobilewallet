@@ -1,4 +1,6 @@
-ion-input, input, textarea {
+ion-input,
+input,
+textarea {
   -webkit-user-select: all !important;
   -khtml-user-select: all !important;
   -moz-user-select: all !important;
@@ -7,15 +9,22 @@ ion-input, input, textarea {
   user-select: all !important;
 }
 
-.backdrop { display: none; }
-.backdrop.visible { display: block; }
-.loading-container:not(.visible) { display: none; }
+.backdrop {
+  display: none;
+}
+.backdrop.visible {
+  display: block;
+}
+.loading-container:not(.visible) {
+  display: none;
+}
 
 page-send-skycoin {
   background-color: $background-color-light;
 
   ion-header {
-    button, .toolbar-title {
+    button,
+    .toolbar-title {
       font-size: 13px;
       color: $primary-color !important;
     }
@@ -25,7 +34,8 @@ page-send-skycoin {
     padding: 32px;
 
     .form-group {
-      ion-input, ion-select {
+      ion-input,
+      ion-select {
         border: 2px solid #eff0f0;
         border-radius: 5px;
         color: $text-color-normal;
@@ -43,7 +53,6 @@ page-send-skycoin {
         border-bottom: none !important;
         box-shadow: none !important;
       }
-
 
       &:first-child {
         margin-top: 56px;
@@ -70,10 +79,26 @@ page-send-skycoin {
 
         &.-main {
           background: $gradient-blue-dark; /* For browsers that do not support gradients */
-          background: -webkit-linear-gradient(left top, $gradient-blue-dark, $gradient-blue-light); /* For Safari 5.1 to 6.0 */
-          background: -o-linear-gradient(bottom right, $gradient-blue-dark, $gradient-blue-light); /* For Opera 11.1 to 12.0 */
-          background: -moz-linear-gradient(bottom right, $gradient-blue-dark, $gradient-blue-light); /* For Firefox 3.6 to 15 */
-          background: linear-gradient(to bottom right, $gradient-blue-dark, $gradient-blue-light); /* Standard syntax */
+          background: -webkit-linear-gradient(
+            left top,
+            $gradient-blue-dark,
+            $gradient-blue-light
+          ); /* For Safari 5.1 to 6.0 */
+          background: -o-linear-gradient(
+            bottom right,
+            $gradient-blue-dark,
+            $gradient-blue-light
+          ); /* For Opera 11.1 to 12.0 */
+          background: -moz-linear-gradient(
+            bottom right,
+            $gradient-blue-dark,
+            $gradient-blue-light
+          ); /* For Firefox 3.6 to 15 */
+          background: linear-gradient(
+            to bottom right,
+            $gradient-blue-dark,
+            $gradient-blue-light
+          ); /* Standard syntax */
           color: white;
         }
       }

@@ -73,11 +73,16 @@ modal {
         .-checkbox-container {
           width: fit-content;
           margin: 0 auto;
-        }
-
-        ion-checkbox {
-          margin: 10px 10px 0 0;
-          float: left;
+          ion-item {
+            background: transparent;
+            .item-inner {
+              border: none;
+            }
+          }
+          ion-checkbox {
+            margin-right: 10px;
+            margin-top: 7px;
+          }
         }
 
         ion-label {

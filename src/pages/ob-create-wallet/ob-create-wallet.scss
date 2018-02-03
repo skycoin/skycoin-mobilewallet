@@ -1,35 +1,14 @@
-page-load-wallet {
-  background-color: $background-color-light;
-
-  #-add-wallet-form {
-    font-family: Skycoin;
-    line-height: 30px;
-    font-size: 14px;
-    text-align: center;
-    letter-spacing: 0.0769231em;
-
-    color: #1e2227;
-  }
-
-  .toolbar-title {
-    font-family: Skycoin;
-    line-height: 30px;
-    font-size: 14px;
-    text-align: center;
-    letter-spacing: 0.0769231em;
-
-    color: #1e2227;
-  }
-
+page-ob-create-wallet {
   position: fixed;
   overflow: hidden;
   z-index: 9999;
   color: #fff;
   text-align: center;
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.6);
+
   .pin-instructions {
+    padding: 0 20px;
     color: white;
-    padding: 20px 20px 5px 20px;
     p {
       font-size: 14px;
       line-height: 20px;
@@ -37,14 +16,14 @@ page-load-wallet {
       margin: 0;
     }
   }
-
   .form-group {
     width: 90%;
     margin: 15px auto;
     ion-label {
-      text-align: left;
+      color: #1e2227;
+      font-family: Skycoin;
+      line-height: normal;
       font-size: 14px;
-      margin: 0;
     }
     .text-input-md {
       margin: 0;
@@ -59,17 +38,14 @@ page-load-wallet {
 
   ion-input,
   ion-textarea {
-    background: #ffffff;
-    border: 2px solid rgba(0, 0, 0, 0.05);
-    box-sizing: border-box;
-    border-radius: 6px;
+    background-color: #fff;
+    border-radius: 5px;
     color: rgba(23, 26, 29, 0.8);
     font-size: 14px;
     margin-top: 2px;
 
     line-height: 20px;
     padding: 10px 10px;
-    //width: 99%;
   }
 
   ion-textarea {
@@ -79,5 +55,18 @@ page-load-wallet {
   }
   ion-input {
     padding-left: 0;
+  }
+
+  .buttons {
+    button {
+      padding: 20px 60px;
+      border-radius: 20px;
+      box-shadow: none;
+      font-size: 14px;
+      text-transform: capitalize;
+      background-color: #1e2227;
+      margin-top: 30px;
+      text-align: center;
+    }
   }
 }

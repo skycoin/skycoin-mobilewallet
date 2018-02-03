@@ -7,7 +7,6 @@ import { WalletProvider } from '../../providers/wallet/wallet.provider';
   templateUrl: 'transactions.html',
 })
 export class TransactionsPage implements OnInit {
-
   transactions: any[];
 
   constructor(
@@ -16,8 +15,8 @@ export class TransactionsPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    return this.wallet.addresses.first().subscribe((addresses) => {
-      this.backend.getTransactions(addresses).subscribe((transactions) => {
+    return this.wallet.addresses.first().subscribe(addresses => {
+      this.backend.getTransactions(addresses).subscribe(transactions => {
         this.transactions = transactions;
       });
     });
