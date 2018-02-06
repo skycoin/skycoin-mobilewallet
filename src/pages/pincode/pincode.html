@@ -9,145 +9,92 @@
     </p>
     <button ion-button color="light" round class="-continue" (click)="disableSecure()">Continue</button>
   </modal>
-  <modal [header]="'Safeguard your seed!'" *ngIf="showConfirm" (close)="closeModal($event)" (ok)="createWallet($event)">
-    <p>
-      We want to make sure that you wrote down your seed and stored it in a safe place. If you forget your seed, you
-      <strong>WILL NOT</strong> be able to recover your Skycoin wallet!
-    </p>
-    <div class="-checkbox">
-      <div class="-checkbox-container">
-        <ion-checkbox [(ngModel)]="showConfirmCheck"></ion-checkbox>
-        <ion-label>It’s safe, I swear.</ion-label>
+
+  <div class="sky-container" [ngClass]="{ blurred: !storageAvailable }">
+
+    <div *ngIf="display" class="table">
+      <div class="cell">
+        <div class="cell-header">
+          <div class="pin-instructions" *ngIf="status === 2">
+            <h2>Set a PIN #</h2>
+            <p>This PIN # will used to open the wallet. Don't forget it; if you do, you may lose access to your mobile wallet.
+            </p>
+          </div>
+          <div class="pin-instructions" *ngIf="status === 3">
+            <h2>Confirm PIN #</h2>
+            <p>Enter your pin once more to continue.</p>
+          </div>
+          <div id="logo" *ngIf="status < 2">
+            <img src="assets/logo/logo-white.png">
+          </div>
+        </div>
+
+        <ion-grid id="fields" [ngClass]="{'miss': showError}">
+          <ion-row>
+            <ion-col col-3 [ngClass]="{'active': pin.length >= 1}">
+              <span></span>
+            </ion-col>
+            <ion-col col-3 [ngClass]="{'active': pin.length >= 2}">
+              <span></span>
+            </ion-col>
+            <ion-col col-3 [ngClass]="{'active': pin.length >= 3}">
+              <span></span>
+            </ion-col>
+            <ion-col col-3 [ngClass]="{'active': pin.length >= 4}">
+              <span></span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid id="numbers">
+          <ion-row>
+            <ion-col col-4>
+              <button (click)="pressNumber(1)" ion-button round>1</button>
+            </ion-col>
+            <ion-col col-4>
+              <button (click)="pressNumber(2)" ion-button round>2</button>
+            </ion-col>
+            <ion-col col-4>
+              <button (click)="pressNumber(3)" ion-button round>3</button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>
+              <button (click)="pressNumber(4)" ion-button round>4</button>
+            </ion-col>
+            <ion-col col-4>
+              <button (click)="pressNumber(5)" ion-button round>5</button>
+            </ion-col>
+            <ion-col col-4>
+              <button (click)="pressNumber(6)" ion-button round>6</button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>
+              <button (click)="pressNumber(7)" ion-button round>7</button>
+            </ion-col>
+            <ion-col col-4>
+              <button (click)="pressNumber(8)" ion-button round>8</button>
+            </ion-col>
+            <ion-col col-4>
+              <button (click)="pressNumber(9)" ion-button round>9</button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>
+            </ion-col>
+            <ion-col col-4>
+              <button (click)="pressNumber(0)" ion-button round>0</button>
+            </ion-col>
+            <ion-col col-4>
+              <button class="backspace" (click)="pressBack()" ion-button round icon-end>
+                <ion-icon name="backspace"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </div>
     </div>
-    <button [ngClass]="{ disabled: !showConfirmCheck }" [disabled]="!showConfirmCheck" ion-button color="light" round class="-continue"
-      (click)="createWallet()">Continue</button>
-  </modal>
-
-  <div class="sky-container" [ngClass]="{ blurred: !storageAvailable || showConfirm }">
-    <ion-slides #slides pager>
-      <ion-slide>
-        <div *ngIf="display" class="table">
-          <div class="cell">
-            <div class="cell-header">
-              <div class="pin-instructions" *ngIf="status === 2">
-                <h2>Set a PIN #</h2>
-                <p>This PIN # will used to open the wallet. Don't forget it; if you do, you may lose access to your mobile wallet.
-                </p>
-              </div>
-              <div class="pin-instructions" *ngIf="status === 3">
-                <h2>Confirm PIN #</h2>
-                <p>Enter your pin once more to continue.</p>
-              </div>
-              <div id="logo" *ngIf="status < 2">
-                <img src="assets/logo/logo-white.png">
-              </div>
-            </div>
-
-            <ion-grid id="fields" [ngClass]="{'miss': showError}">
-              <ion-row>
-                <ion-col col-3 [ngClass]="{'active': pin.length >= 1}">
-                  <span></span>
-                </ion-col>
-                <ion-col col-3 [ngClass]="{'active': pin.length >= 2}">
-                  <span></span>
-                </ion-col>
-                <ion-col col-3 [ngClass]="{'active': pin.length >= 3}">
-                  <span></span>
-                </ion-col>
-                <ion-col col-3 [ngClass]="{'active': pin.length >= 4}">
-                  <span></span>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-
-            <ion-grid id="numbers">
-              <ion-row>
-                <ion-col col-4>
-                  <div (click)="pressNumber(1)">1</div>
-                </ion-col>
-                <ion-col col-4>
-                  <div (click)="pressNumber(2)">2</div>
-                </ion-col>
-                <ion-col col-4>
-                  <div (click)="pressNumber(3)">3</div>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col col-4>
-                  <div (click)="pressNumber(4)">4</div>
-                </ion-col>
-                <ion-col col-4>
-                  <div (click)="pressNumber(5)">5</div>
-                </ion-col>
-                <ion-col col-4>
-                  <div (click)="pressNumber(6)">6</div>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col col-4>
-                  <div (click)="pressNumber(7)">7</div>
-                </ion-col>
-                <ion-col col-4>
-                  <div (click)="pressNumber(8)">8</div>
-                </ion-col>
-                <ion-col col-4>
-                  <div (click)="pressNumber(9)">9</div>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col col-4>
-                </ion-col>
-                <ion-col col-4>
-                  <div (click)="pressNumber(0)">0</div>
-                </ion-col>
-                <ion-col col-4>
-                  <div (click)="pressBack()">
-                    <ion-icon name="backspace"></ion-icon>
-                  </div>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </div>
-        </div>
-      </ion-slide>
-
-      <ion-slide>
-        <div class="">
-          <div class="cell-header">
-            <div class="pin-instructions" style="margin-top: 20px;">
-              <h2>Create a wallet</h2>
-              <p>If you don’t yet have a wallet, generate a seed and we’ll create one for you. If you already have a wallet,
-                enter the seed below and load it.</p>
-            </div>
-            <div class="cell-body">
-              <div class="-toggle">
-                <button class="new" ion-button round>New</button>
-                <button [disabled]="true" class="load" ion-button round>Load</button>
-              </div>
-              <div [formGroup]="form">
-                <div class="form-group">
-                  <ion-label>Give it a name</ion-label>
-                  <ion-input formControlName="label" type="text"></ion-input>
-                </div>
-                <div class="form-group">
-                  <ion-label>Seed</ion-label>
-                  <ion-textarea formControlName="seed" rows="2"></ion-textarea>
-                </div>
-                <div class="form-group">
-                  <ion-label>Confirm seed</ion-label>
-                  <ion-textarea formControlName="confirmSeed" rows="2"></ion-textarea>
-                  <img *ngIf="!form.controls.confirmSeed.errors?.MatchSeed" src="./../../assets/icon/Valid.svg" />
-                </div>
-                <div class="buttons">
-                  <button ion-button round [disabled]="!form.valid" (click)="confirmCreateWallet()">Create</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ion-slide>
-    </ion-slides>
   </div>
 
 

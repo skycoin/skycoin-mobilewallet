@@ -10,7 +10,6 @@ import { WalletsPage } from '../wallets/wallets';
   templateUrl: 'send-skycoin.html',
 })
 export class SendSkycoinPage implements OnInit {
-
   form: FormGroup;
   loading = false;
   seedRequired: boolean;
@@ -37,14 +36,17 @@ export class SendSkycoinPage implements OnInit {
 
   send() {
     this.loading = true;
-    const seed = this.seedRequired ? this.form.value.seed : this.form.value.wallet.seed;
+    const seed = this.seedRequired
+      ? this.form.value.seed
+      : this.form.value.wallet.seed;
     const addresses = this.form.value.wallet.visible;
     const amount = this.form.value.amount * 1000000;
-    this.localApi.postTransaction(seed, addresses, this.form.value.address, amount)
+    this.localApi
+      .postTransaction(seed, addresses, this.form.value.address, amount)
       .subscribe(
         () => this.nav.setRoot(WalletsPage),
         // tslint:disable-next-line:no-console
-        (error) => console.log(error),
+        error => console.log(error),
       );
   }
 

@@ -1,22 +1,23 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ViewController } from 'ionic-angular';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
-import { ButtonComponent } from './../../components/button/button.component';
-import { SeedValidation } from './../../match';
+import { SeedValidation } from '../../match';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
-  selector: 'page-add-wallet',
-  templateUrl: 'add-wallet.html',
+  selector: 'page-ob-create-wallet',
+  templateUrl: 'ob-create-wallet.html',
 })
-export class AddWalletPage implements OnInit {
-  @ViewChild('button') button: ButtonComponent;
-  showConfirm: boolean;
+export class ObCreateWalletPage implements OnInit {
   form: FormGroup;
   seed: string;
+  confirmSeed: string;
+  showConfirm: boolean;
+  showConfirmCheck: boolean;
 
   constructor(
-    public view: ViewController,
+    public nav: NavController,
     private wallet: WalletProvider,
     fb: FormBuilder,
   ) {
@@ -37,15 +38,8 @@ export class AddWalletPage implements OnInit {
   }
 
   createWallet() {
-    this.button.setLoading();
-    this.resetForm();
     this.wallet.create(this.form.value.label, this.form.value.seed);
-    this.button.setSuccess();
-    this.view.dismiss();
-  }
-
-  cancel() {
-    this.view.dismiss();
+    this.nav.setRoot(TabsPage);
   }
 
   generateSeed() {
@@ -60,11 +54,5 @@ export class AddWalletPage implements OnInit {
 
   closeModal() {
     this.showConfirm = false;
-  }
-
-  private resetForm() {
-    this.form.controls.label.reset(undefined);
-    this.form.controls.seed.reset(undefined);
-    this.form.controls.confirmSeed.reset(undefined);
   }
 }

@@ -4,22 +4,22 @@ app-button {
       width: auto !important;
       text-transform: capitalize;
       box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-      0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
       color: #fbfbfb;
       background: linear-gradient(to bottom right, #0072ff, #00c3ff) !important;
 
       &:hover {
         background: linear-gradient(
-            to bottom right,
-            #0563d8,
-            #09a6d6
+          to bottom right,
+          #0563d8,
+          #09a6d6
         ) !important;
       }
       &.active {
         background: linear-gradient(
-            to bottom right,
-            #0563d8,
-            #09a6d6
+          to bottom right,
+          #0563d8,
+          #09a6d6
         ) !important;
       }
 
@@ -27,8 +27,8 @@ app-button {
         width: auto !important;
         text-transform: capitalize;
         color: #fff !important;
-        background:transparent !important;
-        background-color: #FF004E !important;
+        background: transparent !important;
+        background-color: #ff004e !important;
         box-shadow: unset;
         cursor: default;
       }
@@ -36,10 +36,10 @@ app-button {
         width: auto !important;
         text-transform: capitalize;
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-        0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+          0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
         color: rgba(30, 34, 39, 0.2);
         background-color: #f0f0f0 !important;
-        box-shadow: unset;
+        box-shadow: none;
         cursor: default;
       }
     }
@@ -50,10 +50,10 @@ app-button {
       width: auto !important;
       text-transform: capitalize;
       box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-      0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
       color: #1e2227;
       background-color: #f9f8f3;
-
+      box-shadow: none;
       &:hover {
         background-color: #f1f0eb !important;
       }
@@ -65,7 +65,7 @@ app-button {
         width: auto !important;
         text-transform: capitalize;
         color: #fff;
-        background-color: #FF004E !important;
+        background-color: #ff004e !important;
         box-shadow: unset;
         cursor: default;
       }
@@ -73,7 +73,7 @@ app-button {
         width: auto !important;
         text-transform: capitalize;
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-        0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+          0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
         color: rgba(30, 34, 39, 0.2);
         background-color: #f0f0f0 !important;
         box-shadow: unset;
@@ -81,9 +81,4 @@ app-button {
       }
     }
   }
-
-
 }
-
-
-

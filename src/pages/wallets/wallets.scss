@@ -32,18 +32,19 @@ $screen-padding: 32px;
     button {
       text-transform: capitalize !important;
     }
-    .item-md {
-      padding: 0 !important;
-      ion-label {
-        padding-left: 16px !important;
-      }
+
+    ion-col {
+      font-family: Skycoin;
+      line-height: normal;
+      font-size: 13px;
+      color: #1e2227;
     }
   }
 
   .-actions-buttons {
     margin: 0 auto;
     width: 250px;
-    button{
+    button {
       width: auto;
       text-transform: capitalize;
       border: none;
@@ -52,7 +53,17 @@ $screen-padding: 32px;
     }
   }
 
+  .-header-table {
+    font-family: Skycoin;
+    line-height: normal;
+    font-size: 12px;
 
+    color: #1e2227;
+    mix-blend-mode: normal;
+    opacity: 0.25;
+  }
+  .item-md,
+  .item-divider-md {
+    padding: 0;
+  }
 }
-
-

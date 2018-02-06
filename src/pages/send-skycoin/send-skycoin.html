@@ -9,10 +9,10 @@
     <ion-item class="form-group">
       <ion-label stacked>Send from</ion-label>
       <ion-select formControlName="wallet">
-      <ng-container *ngFor="let wallet of wallet.all() | async">
-        <ion-option *ngIf="wallet.balance" [value]="wallet">{{ wallet | walletOption }}</ion-option>
-      </ng-container>
-    </ion-select>
+        <ng-container *ngFor="let wallet of wallet.all() | async">
+          <ion-option *ngIf="wallet.balance" [value]="wallet">{{ wallet }}</ion-option>
+        </ng-container>
+      </ion-select>
     </ion-item>
     <ion-item class="form-group">
       <ion-label stacked>Send to</ion-label>
@@ -29,7 +29,8 @@
     <div class="buttons">
       <button ion-button round class="-light" (click)="cancel()">Cancel</button>
       <button ion-button round class="-main" [disabled]="!form.valid" (click)="send()">
-        Send <ion-spinner item-start name="bubbles" *ngIf="loading"></ion-spinner>
+        Send
+        <ion-spinner item-start name="bubbles" *ngIf="loading"></ion-spinner>
       </button>
     </div>
   </div>

@@ -1,10 +1,9 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-button',
   templateUrl: 'button.component.html',
 })
-
 export class ButtonComponent {
   @Input() disabled: any;
   @Output() action = new EventEmitter();
@@ -25,7 +24,7 @@ export class ButtonComponent {
 
   setSuccess() {
     this.state = 1;
-    setTimeout(() => this.state = null, 3000);
+    setTimeout(() => (this.state = null), 3000);
   }
 
   setError(error: any) {
