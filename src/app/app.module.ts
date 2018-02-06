@@ -28,7 +28,6 @@ import { WalletDetailPage } from '../pages/wallet-detail/wallet-detail';
 import { WalletsPage } from '../pages/wallets/wallets';
 import { AddressPipe } from '../pipes/address/address';
 import { SkyPipe } from '../pipes/sky/sky.pipe';
-import { WalletOptionPipe } from '../pipes/wallet-option/wallet-option';
 import { ApiService } from '../providers/backend-api/backend-api.provider';
 import { LocalApiProvider } from '../providers/local-api/local-api.provider';
 import { PriceService } from '../providers/price/price.service';

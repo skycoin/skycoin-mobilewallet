@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ViewController } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
-import {  } from '../../providers/backend-api/backend-api.provider';
 import { PriceService } from '../../providers/price/price.service';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
 
