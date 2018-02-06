@@ -10,7 +10,6 @@ import 'rxjs/add/operator/retry';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { Output } from '../../app/app.datatypes';
 import { Address } from '../../models/address.model';
 import { Wallet } from '../../models/wallet.model';
 import { ApiService } from '../backend-api/backend-api.provider';
@@ -165,32 +164,6 @@ export class WalletProvider {
       this.updateWallets(wallets);
       this.refreshBalances();
     });
-  }
-
-  private attachOutputsToAddresses(
-    addresses: Address[],
-    outputs: Output[],
-  ): Address[] {
-    const clonedAddresses = JSON.parse(JSON.stringify(addresses));
-    clonedAddresses.forEach(address => {
-      address.balance = 0;
-      address.hours = 0;
-    });
-    outputs.forEach(output => {
-      const address = clonedAddresses.find(
-        address => address.address === output.address,
-      );
-      if (address) {
-        address.balance = address.balance
-          ? address.balance + output.coins
-          : output.coins;
-        address.hours = address.hours
-          ? address.hours + output.hours
-          : output.hours;
-      }
-    });
-
-    return clonedAddresses;
   }
 
   private updateWallet(wallet: Wallet) {

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { WalletProvider } from '../../providers/wallet/wallet.provider';
+import { NavController } from 'ionic-angular';
 import { SeedValidation } from '../../match';
+import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { TabsPage } from '../tabs/tabs';
 
 @Component({
