@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content [ngClass]="{ blurred: showConfirm }">
-  <div class="-header primary-header-background"></div>
+  <div></div>
   <ion-list>
     <ion-item *ngFor="let transaction of transactions">
       <ion-row *ngIf="transaction.balance !== 0" (click)="showTransaction(transaction)">
@@ -52,7 +52,6 @@
         </ion-col>
       </ion-row>
     </ion-item>
-
   </ion-list>
 </ion-content>
 
