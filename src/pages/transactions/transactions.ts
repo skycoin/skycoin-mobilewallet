@@ -26,8 +26,11 @@ export class TransactionsPage implements OnInit, OnDestroy {
       this.price = price;
     });
     this.walletService
-      .transactions()
-      .subscribe(transactions => (this.transactions = transactions));
+      .history()
+      .subscribe(
+        transactions =>
+          (this.transactions = this.mapTransactions(transactions)),
+      );
   }
 
   ngOnDestroy() {
@@ -49,5 +52,14 @@ export class TransactionsPage implements OnInit, OnDestroy {
 
   showOutput(output) {
     return !this.transaction.inputs.find(input => input.owner === output.dst);
+  }
+
+  private mapTransactions(transactions) {
+    return transactions.map(transaction => {
+      transaction.amount = transaction.outputs
+        .map(output => (output.coins >= 0 ? output.coins : 0))
+        .reduce((a, b) => a + parseInt(b, 10), 0);
+      return transaction;
+    });
   }
 }

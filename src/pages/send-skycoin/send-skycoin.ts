@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, ViewController } from 'ionic-angular';
+import { Subject } from 'rxjs/Subject';
+import { WalletModel } from '../../models/wallet.model';
 import { LocalApiProvider } from '../../providers/local-api/local-api.provider';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
-import { WalletsPage } from '../wallets/wallets';
-import { Wallet } from '../../models/wallet.model';
-import { Subject } from 'rxjs/Subject';
 import { WalletProvider } from '../../providers/wallet/wallet.provider';
+import { WalletsPage } from '../wallets/wallets';
 import { ButtonComponent } from './../../components/button/button.component';
 
 @Component({
@@ -19,7 +19,7 @@ export class SendSkycoinPage implements OnInit {
   loading = false;
   seedRequired: boolean;
   sum: number = 0;
-  wallets: Subject<Wallet[]>;
+  wallets: Subject<WalletModel[]>;
 
   constructor(
     private formBuilder: FormBuilder,

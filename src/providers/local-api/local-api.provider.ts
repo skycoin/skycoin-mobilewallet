@@ -3,13 +3,13 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
-import { Address } from '../../models/address.model';
+import { AddressModel } from '../../models/address.model';
 
 declare var Skycoin: any;
 
 @Injectable()
 export class LocalApiProvider {
-  getAddresses(seed: string, amount: number): Observable<Address[]> {
+  getAddresses(seed: string, amount: number): Observable<AddressModel[]> {
     return this.call('getAddresses', [seed, amount]).map(response =>
       JSON.parse(response).map(address => ({
         address: address.Address,
