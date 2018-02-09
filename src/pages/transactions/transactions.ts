@@ -50,10 +50,6 @@ export class TransactionsPage implements OnInit, OnDestroy {
     this.view.dismiss();
   }
 
-  showOutput(output) {
-    return !this.transaction.inputs.find(input => input.owner === output.dst);
-  }
-
   private mapTransactions(transactions) {
     return transactions.map(transaction => {
       transaction.amount = transaction.outputs

@@ -11,18 +11,6 @@ export class BackendApiProvider {
 
   constructor(private http: Http) {}
 
-  getTransactions(addresses: AddressModel[]): Observable<any[]> {
-    const firstAddresses =
-      addresses.length > 20 ? addresses.slice(0, 19) : addresses;
-    const url =
-      Config.backendUrl +
-      'transactions?addresses=' +
-      firstAddresses.map(address => address.address).join(',');
-    return firstAddresses.length
-      ? this.http.get(url).map((res: any) => res.json())
-      : Observable.of([]);
-  }
-
   getOutputs(addresses: AddressModel[], max?: number): Observable<Output[]> {
     const firstAddresses =
       addresses.length > (max ? max : 20)

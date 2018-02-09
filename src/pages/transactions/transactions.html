@@ -1,4 +1,4 @@
-<ion-header no-border [ngClass]="{ blurred: showConfirm }">
+<ion-header no-border [ngClass]="{blurred: showConfirm}">
   <ion-navbar>
     <ion-title>Transactions</ion-title>
     <ion-buttons end>
@@ -9,7 +9,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content [ngClass]="{ blurred: showConfirm }">
+<ion-content [ngClass]="{blurred: showConfirm}">
   <div></div>
   <ion-list>
     <ion-item *ngFor="let transaction of transactions">
@@ -21,32 +21,57 @@
         <ion-col col-7>
           <ion-row>
             <ion-col>
-              <span *ngIf="transaction.balance < 0 && transaction.confirmed" class="trans-title">Sent SKY</span>
-              <span *ngIf="transaction.balance < 0 && transaction.confirmed" class="trans-subtitle">{{ transaction.timestamp * 1000 | date:'short' }}</span>
-              <span *ngIf="transaction.balance < 0 && !transaction.confirmed" class="trans-title">Sending SKY</span>
-              <span *ngIf="transaction.balance < 0 && !transaction.confirmed" class="trans-subtitle">Pending</span>
-              <span *ngIf="transaction.balance > 0 && !transaction.confirmed" class="trans-title">Received SKY</span>
-              <span *ngIf="transaction.balance > 0 && !transaction.confirmed" class="trans-subtitle">{{ transaction.timestamp * 1000 | date:'short' }}</span>
-              <span *ngIf="transaction.balance > 0 && transaction.confirmed" class="trans-title">Sent SKY</span>
-              <span *ngIf="transaction.balance > 0 && transaction.confirmed" class="trans-subtitle pending">Pending</span>
+
+              <ng-container *ngIf="transaction.balance < 0 && transaction.confirmed">
+                <span class="trans-title">Sent SKY</span>
+              </ng-container>
+
+              <ng-container *ngIf="transaction.balance < 0 && transaction.confirmed">
+                <span class="trans-subtitle">{{transaction.timestamp * 1000|date:'short'}}</span>
+              </ng-container>
+
+              <ng-container *ngIf="transaction.balance < 0 && !transaction.confirmed">
+                <span class="trans-title">Sending SKY</span>
+              </ng-container>
+
+              <ng-container *ngIf="transaction.balance < 0 && !transaction.confirmed">
+                <span class="trans-subtitle">Pending</span>
+              </ng-container>
+
+              <ng-container *ngIf="transaction.balance > 0 && !transaction.confirmed">
+                <span class="trans-title">Received SKY</span>
+              </ng-container>
+
+              <ng-container *ngIf="transaction.balance > 0 && !transaction.confirmed">
+                <span class="trans-subtitle">{{transaction.timestamp * 1000|date:'short'}}</span>
+              </ng-container>
+
+              <ng-container *ngIf="transaction.balance > 0 && transaction.confirmed">
+                <span class="trans-title">Sent SKY</span>
+              </ng-container>
+
+              <ng-container *ngIf="transaction.balance > 0 && transaction.confirmed">
+                <span class="trans-subtitle pending">Pending</span>
+              </ng-container>
+
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
               <ion-icon name="sky-qr"></ion-icon>
-              <span class="trans-address">{{ transaction.txid | address }}</span>
+              <span class="trans-address">{{transaction.txid|address}}</span>
             </ion-col>
           </ion-row>
         </ion-col>
         <ion-col col-3>
           <ion-row>
             <ion-col>
-              <span class="trans-title">{{ transaction.balance }} SKY</span>
+              <span class="trans-title">{{transaction.balance}} SKY</span>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <span *ngIf="price" class="trans-address">{{ transaction.balance * price | currency:'USD':true:'1.2-2' }}</span>
+              <span *ngIf="price" class="trans-address">{{transaction.balance * price|currency:'USD':true:'1.2-2'}}</span>
             </ion-col>
           </ion-row>
         </ion-col>
@@ -67,20 +92,20 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <h4>{{ transaction.balance }} SKY</h4>
-        <p *ngIf="price">{{ transaction.balance * price | currency:'USD':true:'1.2-2' }}</p>
+        <h4>{{transaction.balance|number}} SKY</h4>
+        <p *ngIf="price">{{transaction.balance * price|currency:'USD':true:'1.2-2'}}</p>
       </ion-col>
     </ion-row>
   </ion-grid>
   <ion-list>
     <ion-item>
       <span class="-modal-title">Date</span>
-      <span class="-modal-subtitle"> {{ transaction.timestamp * 1000 | date:'short' }}</span>
+      <span class="-modal-subtitle"> {{transaction.timestamp * 1000|date:'short'}}</span>
     </ion-item>
 
     <ion-item>
       <span class="-modal-title"> Status</span>
-      <span class="-modal-subtitle"> {{ transaction.confirmed ? 'Complete' : 'Pending' }}</span>
+      <span class="-modal-subtitle"> {{transaction.confirmed ? 'Complete' : 'Pending'}}</span>
       <ion-icon *ngIf="transaction.confirmed" name="checkmark"></ion-icon>
 
     </ion-item>
@@ -90,13 +115,13 @@
       <span class="-modal-subtitle -middle">
         <span>Personal Wallet</span>
         <br/>
-        <span class="-address" *ngFor="let input of transaction.inputs">{{ input| address }}</span>
+        <span class="-address" *ngFor="let input of transaction.inputs">{{input|address}}</span>
       </span>
     </ion-item>
 
     <ion-item>
       <span class="-modal-title"> To</span>
-      <span class="-modal-subtitle -middle" *ngFor="let output of transaction.outputs">{{ output.dst| address }}</span>
+      <span class="-modal-subtitle -middle" *ngFor="let output of transaction.outputs">{{output.dst|address}}</span>
     </ion-item>
   </ion-list>
 
