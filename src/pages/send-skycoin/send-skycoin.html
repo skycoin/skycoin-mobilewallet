@@ -1,37 +1,42 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Send coins</ion-title>
+    <ion-title>Send SKY</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="cancel()">
+        <ion-icon name="sky-close"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <div id="send-form" [formGroup]="form">
-    <ion-item class="form-group">
-      <ion-label stacked>Send from</ion-label>
-      <ion-select formControlName="wallet">
-        <ng-container *ngFor="let wallet of wallet.all() | async">
-          <ion-option *ngIf="wallet.balance" [value]="wallet">{{ wallet | walletOption }}</ion-option>
-        </ng-container>
-      </ion-select>
-    </ion-item>
-    <ion-item class="form-group">
-      <ion-label stacked>Send to</ion-label>
+<ion-content id="-add-wallet-form">
+  <div [formGroup]="form">
+    <div class="form-group">
+      <div class="select-send-sky">
+        <ion-label>Send from</ion-label>
+        <ion-select formControlName="wallet">
+          <ion-option *ngFor="let wallet of wallet.all() | async" [value]="wallet.label">{{ wallet.label }}</ion-option>
+        </ion-select>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <ion-label>Send to</ion-label>
       <ion-input formControlName="address" type="text"></ion-input>
-    </ion-item>
-    <ion-item class="form-group">
-      <ion-label stacked>Amount to send</ion-label>
-      <ion-input formControlName="amount" type="number"></ion-input>
-    </ion-item>
-    <ion-item class="form-group" *ngIf="seedRequired">
-      <ion-label stacked>Seed</ion-label>
-      <ion-textarea formControlName="seed" rows="3" placeholder="..."></ion-textarea>
-    </ion-item>
+    </div>
+    <div class="form-group">
+      <ion-label>Amount</ion-label>
+      <ion-input formControlName="amount" type="text"></ion-input>
+    </div>
+    <div class="form-group">
+      <ion-label>Notes</ion-label>
+      <ion-textarea formControlName="notes" rows="2"></ion-textarea>
+    </div>
     <div class="buttons">
-      <button ion-button round class="-light" (click)="cancel()">Cancel</button>
-      <button ion-button round class="-main" [disabled]="!form.valid" (click)="send()">
-        Send
-        <ion-spinner item-start name="bubbles" *ngIf="loading"></ion-spinner>
-      </button>
+      <app-button class="negative" (click)="cancel()">Cancel</app-button>
+      <app-button class="primary" [disabled]="!form.valid" (click)="send()">Send</app-button>
     </div>
   </div>
+
 </ion-content>

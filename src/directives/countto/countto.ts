@@ -103,6 +103,7 @@ export class CounttoDirective {
       }
       // tslint:disable-next-line:no-unused-expression
     }),
+      // tslint:disable-next-line:no-unused-expression
       _this._step;
   }
 }

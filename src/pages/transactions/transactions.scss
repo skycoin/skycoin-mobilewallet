@@ -1,18 +1,155 @@
-#pages-transactions {
+page-transactions {
   background-color: $background-color-normal;
+
+  .toolbar-title {
+    font-family: Skycoin;
+    line-height: 30px;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.0769231em;
+    color: #fff;
+  }
+  .toolbar-background {
+    background: linear-gradient(to bottom right, #0072ff, #00c3ff) !important;
+  }
+  span.button-inner {
+    ion-icon {
+      height: 20px;
+    }
+  }
 
   .-header {
     min-height: 40px;
     width: 100%;
   }
 
-  ion-item-divider {
-    min-height: 50px;
-    padding-right: 32px;
+  .trans-title {
+    font-family: Skycoin;
+    line-height: normal;
+    font-size: 13px;
+
+    color: #1e2227;
   }
 
-  ion-item.item .item-inner {
+  .trans-subtitle {
+    font-family: Skycoin;
+    line-height: normal;
+    font-size: 10px;
+    color: rgba(30, 34, 39, 0.2);
+    &.pending {
+      color: #fdb51e;
+    }
+  }
+
+  .trans-address {
+    font-family: Skycoin;
+    line-height: normal;
     font-size: 13px;
-    min-height: 69px;
+    color: rgba(30, 34, 39, 0.5);
+    mix-blend-mode: normal;
+  }
+
+  .ion-ios-sky-qr,
+  .ion-md-sky-qr {
+    height: 17px;
+    width: 17px;
+    margin: 0px 0 -3px 0;
+    position: relative;
+  }
+
+  .ion-ios-send-trans,
+  .ion-md-send-trans {
+    margin: 20px 0 0 10px;
+    position: relative;
+    .-pending {
+      opacity: 0.5;
+    }
+  }
+  .ion-ios-receive-trans,
+  .ion-md-receive-trans {
+    margin: 20px 0 0 10px;
+    position: relative;
+    .-pending {
+      opacity: 0.5;
+    }
+  }
+
+  .item-md,
+  item-ios,
+  item-inner {
+    padding: 0;
+    margin: 15px 0 0 0;
+    height: 80px;
+  }
+
+  modal div.-modal {
+    width: 100%;
+    top: 20%;
+    .-body {
+      background-color: #ffffff;
+      padding: 0;
+      margin: 0 0 10px 0;
+    }
+
+    ion-grid > ion-row > ion-col.center-icon ion-icon {
+      float: none;
+    }
+
+    ion-icon {
+      color: #00df80;
+      float: right;
+      margin-right: 4px;
+      margin-top: 4px;
+    }
+
+    .item-md,
+    item-ios {
+      height: auto;
+      padding: 0;
+      margin: 0;
+      background-color: #f7f7f7;
+    }
+
+    span.-modal-title {
+      margin-left: 10px;
+      font-family: Work Sans;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 0px;
+      font-size: 12px;
+
+      color: #1e2227;
+      mix-blend-mode: normal;
+      opacity: 0.5;
+    }
+    span.-modal-subtitle {
+      line-height: 30px;
+      font-family: Work Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 13px;
+      text-align: right;
+      color: #1e2227;
+      float: right;
+      .-address {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: normal;
+        line-height: normal;
+        font-size: 13px;
+        text-align: right;
+
+        color: rgba(30, 34, 39, 0.5);
+        mix-blend-mode: normal;
+      }
+    }
+    .-modal-list {
+      .label label-md {
+        margin-top: 30px;
+      }
+    }
+    .-middle {
+      width: 70%;
+    }
   }
 }

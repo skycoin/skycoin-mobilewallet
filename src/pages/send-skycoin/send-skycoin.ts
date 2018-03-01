@@ -1,25 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, ViewController } from 'ionic-angular';
+import { Subject } from 'rxjs/Subject';
+import { WalletModel } from '../../models/wallet.model';
 import { LocalApiProvider } from '../../providers/local-api/local-api.provider';
 import { SecureStorageProvider } from '../../providers/secure-storage/secure-storage';
+import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { WalletsPage } from '../wallets/wallets';
+import { ButtonComponent } from './../../components/button/button.component';
 
 @Component({
   selector: 'page-send-skycoin',
   templateUrl: 'send-skycoin.html',
 })
 export class SendSkycoinPage implements OnInit {
+  @ViewChild('button') button: ButtonComponent;
   form: FormGroup;
   loading = false;
   seedRequired: boolean;
+  sum: number = 0;
+  wallets: Subject<WalletModel[]>;
 
   constructor(
     private formBuilder: FormBuilder,
     private localApi: LocalApiProvider,
     private nav: NavController,
     private secureStorage: SecureStorageProvider,
-    private view: ViewController,
+    public view: ViewController,
+    public wallet: WalletProvider,
   ) {
     if (this.secureStorage.secureStorageDisabled) {
       this.seedRequired = true;
@@ -27,11 +35,12 @@ export class SendSkycoinPage implements OnInit {
   }
 
   ngOnInit() {
+    this.wallet.sum().subscribe(data => (this.sum = data));
     this.initForm();
   }
 
   cancel() {
-    this.view.dismiss();
+    this.nav.setRoot(WalletsPage);
   }
 
   send() {
@@ -48,6 +57,8 @@ export class SendSkycoinPage implements OnInit {
         // tslint:disable-next-line:no-console
         error => console.log(error),
       );
+
+    this.resetForm();
   }
 
   private initForm() {
@@ -55,6 +66,7 @@ export class SendSkycoinPage implements OnInit {
       address: ['', Validators.required],
       amount: ['', Validators.required],
       wallet: ['', Validators.required],
+      notes: ['', Validators.required],
     };
 
     if (this.seedRequired) {
@@ -62,5 +74,12 @@ export class SendSkycoinPage implements OnInit {
     }
 
     this.form = this.formBuilder.group(group);
+  }
+
+  private resetForm() {
+    this.form.controls.address.reset(undefined);
+    this.form.controls.amount.reset(undefined);
+    this.form.controls.wallet.reset(undefined);
+    this.form.controls.notes.reset(undefined);
   }
 }

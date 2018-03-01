@@ -20,15 +20,7 @@ import { SecureStorageProvider } from '../secure-storage/secure-storage';
 @Injectable()
 export class WalletProvider {
   wallets: Subject<WalletModel[]> = new BehaviorSubject<WalletModel[]>([]);
-
-  constructor(
-    private backendApi: BackendApiProvider,
-    private localApi: LocalApiProvider,
-    private platform: Platform,
-    private secureStorage: SecureStorageProvider,
-  ) {
-    this.platform.ready().then(() => this.loadData());
-  }
+  transactions: Subject<any[]> = new BehaviorSubject<any[]>([]);
 
   get addresses(): Observable<AddressModel[]> {
     return this.all().map(wallets =>
@@ -38,6 +30,15 @@ export class WalletProvider {
         [],
       ),
     );
+  }
+
+  constructor(
+    private backendApi: BackendApiProvider,
+    private localApi: LocalApiProvider,
+    private platform: Platform,
+    private secureStorage: SecureStorageProvider,
+  ) {
+    this.platform.ready().then(() => this.loadData());
   }
 
   addAddress(wallet: WalletModel) {
@@ -68,23 +69,22 @@ export class WalletProvider {
 
   sum(): Observable<number> {
     return this.all().map(wallets => {
-      if (wallets) {
-        return wallets
-          .map(wallet => (wallet.balance >= 0 ? wallet.balance : 0))
-          .reduce((a, b) => a + b, 0);
-      }
-      return 0;
+      return wallets
+        ? wallets
+            .map(wallet => (wallet.balance >= 0 ? wallet.balance : 0))
+            .reduce((a, b) => a + b, 0)
+        : 0;
     });
   }
 
   create(label: string, seed: string) {
     this.localApi.getAddresses(seed, 16).subscribe(data => {
       const wallet: WalletModel = {
-        balance: null,
-        entries: data,
-        hours: null,
         label,
         seed,
+        balance: null,
+        hours: null,
+        entries: data,
         visible: 1,
       };
 
@@ -110,6 +110,32 @@ export class WalletProvider {
           ).subscribe(wallets => this.updateWallets(wallets));
         }
       });
+  }
+
+  transaction(txid: string): Observable<any> {
+    return this.backendApi.get('transaction', { txid }).flatMap(transaction => {
+      if (transaction.txn.inputs && !transaction.txn.inputs.length) {
+        return Observable.of(transaction);
+      }
+      return Observable.forkJoin(
+        transaction.txn.inputs.map(input =>
+          this.retrieveInputAddress(input).map(response => {
+            return response.owner_address;
+          }),
+        ),
+      ).map(inputs => {
+        transaction.txn.inputs = inputs;
+        return transaction;
+      });
+    });
+  }
+
+  history(): Observable<any[]> {
+    return this.transactions.asObservable();
+  }
+
+  private retrieveInputAddress(input: string) {
+    return this.backendApi.get('uxout', { uxid: input });
   }
 
   private addBalance(wallet: WalletModel): Observable<WalletModel> {
@@ -193,7 +219,6 @@ export class WalletProvider {
           this.wallets.next(wallets);
           this.refreshBalances();
         },
-        // tslint:disable-next-line:no-console
         error => console.log(error),
       );
   }

@@ -29,10 +29,6 @@ export class WalletsPage implements OnInit {
     modal.present();
   }
 
-  deleteWallet(wallet) {
-    this.wallet.remove(wallet);
-  }
-
   loadWallet() {
     const modal = this.modal.create(LoadWalletPage);
     modal.present();

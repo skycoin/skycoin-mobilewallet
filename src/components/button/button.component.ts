@@ -28,7 +28,7 @@ export class ButtonComponent {
   }
 
   setError(error: any) {
-    this.error = error['_body'];
+    this.error = error._body;
     this.state = 2;
   }
 }

@@ -270,6 +270,33 @@ ion-buttons {
   }
 }
 
+.ion-ios-receive-trans,
+.ion-md-receive-trans {
+  content: url(../assets/icon/receive-transaction.svg);
+  width: 32px;
+  height: 32px;
+  margin: 0 0 0 10px;
+  opacity: 0.9;
+}
+
+.ion-ios-send-trans,
+.ion-md-send-trans {
+  content: url(../assets/icon/send-transaction.svg);
+  width: 32px;
+  height: 32px;
+  margin: 0 0 0 10px;
+  opacity: 0.9;
+}
+
+.ion-ios-sky-qr,
+.ion-md-sky-qr {
+  content: url(../assets/icon/qr.svg);
+  width: 32px;
+  height: 32px;
+  margin: 0 0 0 10px;
+  opacity: 0.9;
+}
+
 .ion-ios-sky-close,
 .ion-md-sky-close {
   content: url(../assets/icon/sky-close.svg);
