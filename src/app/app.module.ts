@@ -14,6 +14,7 @@ import { BalanceComponent } from '../components/balance/balance';
 import { ButtonComponent } from '../components/button/button.component';
 import { HeaderComponent } from '../components/header/header';
 import { ModalComponent } from '../components/modal/modal';
+import { NotificationComponent } from '../components/notification/notification';
 import { QrCodeComponent } from '../components/qr-code/qr-code';
 import { CounttoDirective } from '../directives/countto/countto';
 import { AddWalletPage } from '../pages/add-wallet/add-wallet';
@@ -57,6 +58,7 @@ import { MyApp } from './app.component';
     AddressPipe,
     HeaderComponent,
     ButtonComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,

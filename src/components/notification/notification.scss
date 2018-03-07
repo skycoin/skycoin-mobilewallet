@@ -1,0 +1,18 @@
+notification {
+  .-notification {
+    height: 40px;
+    border-radius: 10px;
+    line-height: 40px;
+    font-family: Skycoin;
+    font-size: 12px;
+    text-align: left;
+    color: #fbfbfb;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+  }
+  ion-icon {
+    margin: 0 5px -3px 15px;
+  }
+}

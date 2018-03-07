@@ -304,3 +304,11 @@ ion-buttons {
   height: 16px;
   padding: 0;
 }
+
+.ion-ios-notification-ok,
+.ion-md-notification-ok {
+  content: url(../assets/icon/notification-ok.svg);
+  width: 16px;
+  height: 16px;
+  padding: 0;
+}
