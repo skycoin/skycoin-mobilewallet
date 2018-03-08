@@ -1,268 +1,216 @@
-$secondary-color: #ffc125;
+page-pincode {
+  $secondary-color: #ffc125;
 
-ion-content#pincode {
-  position: relative;
-  -webkit-font-smoothing: antialiased;
-  height: 100%;
-  width: 100%;
-}
+  ion-col {
+    text-align: center;
+    font-size: 30px;
+    height: 80px;
 
-#restartbtn {
-  text-align: center;
-  color: #fff;
-  cursor: pointer;
-  margin: 20px;
-}
+    & > span {
+      height: 14px;
+      width: 14px;
+      border: 2px solid #000;
+      background-color: #000;
+      border-radius: 100%;
+      position: relative;
+      display: inline-block;
+      text-align: center;
+      margin: 0 auto;
+    }
 
-.table {
-  display: table;
-  height: 100%;
-  width: 100%;
-  position: relative;
-}
+    &.active span {
+      background-color: $secondary-color;
+      border-color: $secondary-color;
+    }
+    &.right span {
+      background-color: #272a2f;
+      border-color: #272a2f;
+      transition: all 0.5s ease-in-out;
+      -webkit-transition: all 0.5s ease-in-out;
+    }
 
-.cell {
-  display: table-cell;
-  vertical-align: middle;
-  position: relative;
-  width: 100%;
-  text-align: center;
-}
-
-#logo img {
-  max-width: 40%;
-}
-
-.pin-instructions {
-  padding: 0 20px;
-  color: white;
-}
-
-/*------
-# Pincode
-----*/
-
-ion-content#pincode {
-  position: fixed;
-  overflow: hidden;
-  z-index: 9999;
-
-  color: #fff;
-  text-align: center;
-  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.6);
-  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.6);
-  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.6);
-}
-
-#numbers {
-  max-width: 300px;
-  padding: 0 20px;
-  margin: 0 auto;
-  position: relative;
-  display: block;
-  -webkit-transition: all 1s ease-out;
-  -moz-transition: all 1s ease-out;
-  transition: all 1s ease-out;
-  opacity: 1;
-}
-
-#numbers.hide {
-  opacity: 0.3;
-}
-
-button {
-  width: 70px;
-  height: 70px;
-  margin-bottom: 10px;
-  background-color: rgba(0, 0, 0, 0);
-  border: 0;
-  color: #fff;
-  font-size: 25px;
-  line-height: 50px;
-  border-radius: 100%;
-  opacity: 1;
-  outline: 0;
-  //border: 1px solid #fff;
-}
-
-button:active {
-  background-color: rgba(0, 0, 0, 0.6);
-  outline: 0;
-}
-
-#fields {
-  max-width: 200px;
-  padding: 0 20px;
-  margin: 50px auto;
-  position: relative;
-  display: block;
-}
-
-#fields .numberfield {
-  text-align: center;
-}
-
-#fields .numberfield span {
-  height: 14px;
-  width: 14px;
-  border: 2px solid #000;
-  background-color: #000;
-  border-radius: 100%;
-  position: relative;
-  display: inline-block;
-  text-align: center;
-}
-
-#fields .numberfield.active span {
-  background-color: $secondary-color;
-  border-color: $secondary-color;
-}
-
-#fields .numberfield.right span {
-  background-color: #272a2f;
-  border-color: #272a2f;
-  transition: all .5s ease-in-out;
-  -webkit-transition: all .5s ease-in-out;
-}
-
-
-/*------
-# Toast Grid
-----*/
-
-.grid-row {
-  list-style: none;
-  margin-left: -20px;
-}
-
-.grid-col {
-  box-sizing: border-box;
-  display: inline-block;
-  margin-right: -.25em;
-  min-height: 1px;
-  padding-left: 20px;
-  vertical-align: top;
-}
-
-.miss {
-  -webkit-animation: miss .8s ease-out 1;
-  animation: miss .8s ease-out 1;
-}
-
-@-webkit-keyframes miss {
-  0% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
+    & > button {
+      padding: 5px 0 0 0 !important;
+      width: 50px !important;
+      height: 50px !important;
+      font-size: 30px !important;
+      line-height: 30px !important;
+      box-shadow: none !important;
+      background-color: transparent !important;
+      .ion-ios-backspace,
+      .ion-md-backspace {
+        & {
+          padding: 0px;
+        }
+      }
+      &.backspace span {
+        padding: 0 0 5px 0px;
+      }
+      &:active {
+        background-color: #1e2227 !important;
+        opacity: 0.5;
+        .ion-ios-backspace,
+        .ion-md-backspace {
+          & {
+            padding: 0px;
+            content: url(../assets/icon/backspace-white.svg);
+          }
+        }
+      }
+    }
   }
-  10% {
-    -webkit-transform: translate(-25px, 0);
-    transform: translate(-25px, 0);
-  }
-  20% {
-    -webkit-transform: translate(25px, 0);
-    transform: translate(25px, 0);
-  }
-  30% {
-    -webkit-transform: translate(-20px, 0);
-    transform: translate(-20px, 0);
-  }
-  40% {
-    -webkit-transform: translate(20px, 0);
-    transform: translate(20px, 0);
-  }
-  50% {
-    -webkit-transform: translate(-10px, 0);
-    transform: translate(-10px, 0);
-  }
-  60% {
-    -webkit-transform: translate(10px, 0);
-    transform: translate(10px, 0);
-  }
-  70% {
-    -webkit-transform: translate(-5px, 0);
-    transform: translate(-5px, 0);
-  }
-  80% {
-    -webkit-transform: translate(5px, 0);
-    transform: translate(5px, 0);
-  }
-  100% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-}
 
-@keyframes miss {
-  0% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
+  ion-content#pincode {
+    position: relative;
+    height: 100%;
+    width: 100%;
   }
-  10% {
-    -webkit-transform: translate(-25px, 0);
-    transform: translate(-25px, 0);
-  }
-  20% {
-    -webkit-transform: translate(25px, 0);
-    transform: translate(25px, 0);
-  }
-  30% {
-    -webkit-transform: translate(-20px, 0);
-    transform: translate(-20px, 0);
-  }
-  40% {
-    -webkit-transform: translate(20px, 0);
-    transform: translate(20px, 0);
-  }
-  50% {
-    -webkit-transform: translate(-10px, 0);
-    transform: translate(-10px, 0);
-  }
-  60% {
-    -webkit-transform: translate(10px, 0);
-    transform: translate(10px, 0);
-  }
-  70% {
-    -webkit-transform: translate(-5px, 0);
-    transform: translate(-5px, 0);
-  }
-  80% {
-    -webkit-transform: translate(5px, 0);
-    transform: translate(5px, 0);
-  }
-  100% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-}
 
-#hastylink {
-  position: fixed;
-  bottom:5px;
-  left: 0;
-  right: 0;
-  font-size: 13px;
-  color: #fff;
-  text-decoration: none;
-  text-align: center;
-}
+  .slide-zoom {
+    height: 100%;
+  }
 
-/**
-Custom CSS
- */
+  #restartbtn {
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+  }
 
-.width-25 {
-  width: 25%;
-}
+  .table {
+    display: table;
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
 
-.width-33 {
-  width: 33.33333%;
-}
+  .cell {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    width: 100%;
+    text-align: center;
+  }
 
-/**
-Modal CSS
- */
+  #logo {
+    img {
+      max-width: 40%;
+    }
+  }
 
-#pincode .sky-container.blurred {
-  filter: blur(4px);
-  -webkit-filter: blur(4px);
+  .cell-header {
+    height: 95px;
+  }
+
+  .pin-instructions {
+    margin-top: 60px;
+    color: white;
+    p {
+      font-size: 14px;
+      line-height: 20px;
+      opacity: 0.5;
+      margin: 0;
+    }
+  }
+
+  ion-content#pincode {
+    position: fixed;
+    overflow: hidden;
+    z-index: 9999;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.6);
+  }
+
+  #numbers {
+    max-width: 300px;
+    padding: 0 20px;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    transition: all 1s ease-out;
+    opacity: 1;
+  }
+
+  #numbers.hide {
+    opacity: 0.3;
+  }
+
+  button {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    color: #fff;
+    font-size: 25px;
+    line-height: 50px;
+    border-radius: 100%;
+    opacity: 1;
+    outline: 0; //border: 1px solid #fff;
+  }
+
+  button:active {
+    background-color: rgba(0, 0, 0, 0.6);
+    outline: 0;
+  }
+
+  #fields {
+    max-width: 200px;
+    padding: 0 20px;
+    margin-top: 20px;
+    position: relative;
+    display: block;
+  }
+
+  ion-row {
+    list-style: none;
+    margin-left: -20px;
+  }
+
+  .grid-col {
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: -0.25em;
+    min-height: 1px;
+    padding-left: 20px;
+    vertical-align: top;
+  }
+
+  .miss {
+    animation: miss 0.8s ease-out 1;
+  }
+
+  @keyframes miss {
+    0% {
+      transform: translate(0, 0);
+    }
+    10% {
+      transform: translate(-25px, 0);
+    }
+    20% {
+      transform: translate(25px, 0);
+    }
+    30% {
+      transform: translate(-20px, 0);
+    }
+    40% {
+      transform: translate(20px, 0);
+    }
+    50% {
+      transform: translate(-10px, 0);
+    }
+    60% {
+      transform: translate(10px, 0);
+    }
+    70% {
+      transform: translate(-5px, 0);
+    }
+    80% {
+      transform: translate(5px, 0);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
 }

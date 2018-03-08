@@ -1,82 +1,96 @@
-ion-input, input, textarea {
-  -webkit-user-select: all !important;
-  -khtml-user-select: all !important;
-  -moz-user-select: all !important;
-  -ms-user-select: all !important;
-  -o-user-select: all !important;
-  user-select: all !important;
-}
-
-.backdrop { display: none; }
-.backdrop.visible { display: block; }
-.loading-container:not(.visible) { display: none; }
-
 page-send-skycoin {
   background-color: $background-color-light;
 
-  ion-header {
-    button, .toolbar-title {
-      font-size: 13px;
-      color: $primary-color !important;
+  #-add-wallet-form {
+    font-family: Skycoin;
+    line-height: 30px;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.0769231em;
+
+    color: #1e2227;
+  }
+
+  .toolbar-title {
+    font-family: Skycoin;
+    line-height: 30px;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.0769231em;
+
+    color: #1e2227;
+  }
+
+  position: fixed;
+  overflow: hidden;
+  z-index: 9999;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.6);
+
+  .pin-instructions {
+    color: white;
+    padding: 20px 20px 5px 20px;
+    p {
+      font-size: 14px;
+      line-height: 20px;
+      opacity: 0.5;
+      margin: 0;
     }
   }
 
-  #send-form {
-    padding: 32px;
-
-    .form-group {
-      ion-input, ion-select {
-        border: 2px solid #eff0f0;
-        border-radius: 5px;
-        color: $text-color-normal;
-        font-size: 12px;
-        max-width: 100%;
-        width: 100%;
-      }
-
-      ion-label {
-        font-size: 13px;
-        line-height: 32px;
-      }
-
-      .item-inner {
-        border-bottom: none !important;
-        box-shadow: none !important;
-      }
-
-
-      &:first-child {
-        margin-top: 56px;
-      }
+  .form-group {
+    width: 90%;
+    margin: 15px auto;
+    ion-label {
+      text-align: left;
+      font-size: 14px;
+      margin: 0;
     }
+    .text-input-md {
+      margin: 0;
+    }
+    img {
+      border-radius: 20px;
+      float: right;
+      position: relative;
+      margin: -7px 0 0px 0px;
+    }
+  }
 
-    .buttons {
-      width: 100%;
-      padding: 32px 0;
-      text-align: center;
+  ion-input,
+  ion-select,
+  ion-textarea {
+    background: #ffffff;
+    border: 2px solid rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    border-radius: 6px;
+    color: rgba(23, 26, 29, 0.8);
+    font-size: 14px;
+    margin-top: 2px;
 
-      button {
-        border: 2px solid #eff0f0;
-        box-shadow: none;
-        font-size: 13px;
-        height: 50px;
-        margin: 0 10px;
-        min-width: 120px;
+    line-height: 20px;
+    padding: 10px 10px;
+    //width: 99%;
+  }
 
-        &.-light {
-          background-color: $background-color-light;
-          color: $text-color-normal;
-        }
+  ion-textarea {
+    textarea {
+      width: 100% !important;
+    }
+  }
+  ion-input {
+    padding-left: 0;
+  }
 
-        &.-main {
-          background: $gradient-blue-dark; /* For browsers that do not support gradients */
-          background: -webkit-linear-gradient(left top, $gradient-blue-dark, $gradient-blue-light); /* For Safari 5.1 to 6.0 */
-          background: -o-linear-gradient(bottom right, $gradient-blue-dark, $gradient-blue-light); /* For Opera 11.1 to 12.0 */
-          background: -moz-linear-gradient(bottom right, $gradient-blue-dark, $gradient-blue-light); /* For Firefox 3.6 to 15 */
-          background: linear-gradient(to bottom right, $gradient-blue-dark, $gradient-blue-light); /* Standard syntax */
-          color: white;
-        }
-      }
+  .select-send-sky {
+    position: relative;
+    ion-select {
+      padding: 10px 10px !important;
+      max-width: none;
+    }
+    .select-text {
+      text-align: left;
     }
   }
 }

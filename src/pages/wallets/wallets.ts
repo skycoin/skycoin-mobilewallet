@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from 'ionic-angular';
-import { WalletProvider } from '../../providers/wallet/wallet.provider';
-import { WalletDetailPage } from '../wallet-detail/wallet-detail';
-import { WalletModel } from '../../models/wallet.model';
 import { Subject } from 'rxjs/Subject';
+import { WalletModel } from '../../models/wallet.model';
+import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { AddWalletPage } from '../add-wallet/add-wallet';
 import { LoadWalletPage } from '../load-wallet/load-wallet';
+import { WalletDetailPage } from '../wallet-detail/wallet-detail';
 
 @Component({
-  templateUrl: 'wallets.html'
+  templateUrl: 'wallets.html',
 })
 export class WalletsPage implements OnInit {
-
   sum: number = 0;
   wallets: Subject<WalletModel[]>;
 
@@ -22,16 +21,12 @@ export class WalletsPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.wallet.sum().subscribe(data => this.sum = data);
+    this.wallet.sum().subscribe(data => (this.sum = data));
   }
 
   addWallet() {
     const modal = this.modal.create(AddWalletPage);
     modal.present();
-  }
-
-  deleteWallet(wallet) {
-    this.wallet.remove(wallet);
   }
 
   loadWallet() {
@@ -40,11 +35,10 @@ export class WalletsPage implements OnInit {
   }
 
   openWallet(wallet) {
-    this.nav.push(WalletDetailPage, {wallet: wallet});
+    this.nav.push(WalletDetailPage, { wallet });
   }
 
   refreshData() {
-    console.log('refreshing');
     this.wallet.refresh();
   }
 }

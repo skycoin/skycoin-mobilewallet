@@ -1,9 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {ModalController, NavParams, Platform, ToastController} from 'ionic-angular';
-import { WalletProvider } from '../../providers/wallet/wallet.provider';
+import { Clipboard } from '@ionic-native/clipboard';
+import {
+  ModalController,
+  NavParams,
+  Platform,
+  ToastController,
+} from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
 import { AddressModel } from '../../models/address.model';
-import { Clipboard } from '@ionic-native/clipboard';
+import { WalletProvider } from '../../providers/wallet/wallet.provider';
 
 @Component({
   selector: 'page-wallet-detail',
@@ -27,10 +32,15 @@ export class WalletDetailPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.walletSubscription = this.walletProvider.find(this.navParams.get('wallet')).subscribe(wallet => {
-      this.addresses = wallet && wallet.entries ? wallet.entries.slice(0, wallet.visible) : [];
-      this.wallet = wallet;
-    });
+    this.walletSubscription = this.walletProvider
+      .find(this.navParams.get('wallet'))
+      .subscribe(wallet => {
+        this.addresses =
+          wallet && wallet.entries
+            ? wallet.entries.slice(0, wallet.visible)
+            : [];
+        this.wallet = wallet;
+      });
   }
 
   ngOnDestroy() {
@@ -46,13 +56,11 @@ export class WalletDetailPage implements OnInit, OnDestroy {
   }
 
   copy(address: AddressModel) {
-    console.log('starting');
     this.platform.ready().then(() => {
-      console.log('done');
       this.clipboard.copy(address.address);
-      let toast = this.toast.create({
+      const toast = this.toast.create({
+        duration: 3000,
         message: 'Address copied to clipboard',
-        duration: 3000
       });
       toast.present();
     });

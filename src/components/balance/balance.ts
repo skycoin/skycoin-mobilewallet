@@ -1,14 +1,8 @@
 import { Component, Input } from '@angular/core';
 
-/**
- * Generated class for the BalanceComponent component.
- *
- * See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
- * for more info on Angular Components.
- */
 @Component({
   selector: 'balance',
-  templateUrl: 'balance.html'
+  templateUrl: 'balance.html',
 })
 export class BalanceComponent {
   @Input() amount: any;
@@ -17,9 +11,9 @@ export class BalanceComponent {
   timer: any;
 
   ngOnChanges() {
-    if (this.amount != this.displayValue && !isNaN(this.amount)) {
+    if (this.amount !== this.displayValue && !isNaN(this.amount)) {
       this.displayValue = this.initialValue;
-      let increment = Math.abs(this.amount - this.initialValue) / (1000 / 60);
+      const increment = Math.abs(this.amount - this.initialValue) / (1000 / 60);
       this.timer = setInterval(() => {
         if (this.amount < this.initialValue) {
           if (this.displayValue <= this.amount) {

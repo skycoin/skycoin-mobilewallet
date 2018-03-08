@@ -1,26 +1,48 @@
+<modal [header]="'Safeguard your seed!'" *ngIf="showConfirm" (close)="closeModal($event)" (ok)="createWallet($event)">
+  <p>
+    We want to make sure that you wrote down your seed and stored it in a safe place. If you forget your seed, you
+    <strong>WILL NOT</strong> be able to recover your Skycoin wallet!
+  </p>
+  <div class="-checkbox">
+    <div class="-checkbox-container">
+      <ion-item>
+        <ion-label>It’s safe, I swear.</ion-label>
+        <ion-checkbox [(ngModel)]="showConfirmCheck"></ion-checkbox>
+      </ion-item>
+    </div>
+  </div>
+  <app-button #button [ngClass]="{ disabled: !showConfirmCheck }" [disabled]="!showConfirmCheck" class="primary" (click)="createWallet()">Continue
+  </app-button>
+</modal>
 <ion-header>
   <ion-navbar>
     <ion-title>Create Wallet</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="cancel()">
+        <ion-icon name="sky-close"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <div id="-add-seed-form" [formGroup]="form">
+<ion-content id="-add-wallet-form">
+  <div [formGroup]="form">
     <div class="form-group">
-      <ion-label stacked>Give it a name</ion-label>
+      <ion-label>Give it a name</ion-label>
       <ion-input formControlName="label" type="text"></ion-input>
     </div>
     <div class="form-group">
-      <ion-label stacked>Seed</ion-label>
-      <ion-textarea formControlName="seed" rows="3" placeholder="..."></ion-textarea>
+      <ion-label>Seed</ion-label>
+      <ion-textarea formControlName="seed" rows="2"></ion-textarea>
     </div>
-    <p class="warning-text">
-      Important! Always have a back-up available of this seed, your device might delete your seed in various situations.
-      If you lose it, you won't be able to access your wallet again.
-    </p>
+    <div class="form-group">
+      <ion-label>Confirm seed</ion-label>
+      <ion-textarea formControlName="confirmSeed" rows="2"></ion-textarea>
+      <img *ngIf="!form.controls.confirmSeed.errors?.MatchSeed" src="assets/icon/Valid.svg" />
+    </div>
     <div class="buttons">
-      <button ion-button round class="-light" (click)="cancel()">Cancel</button>
-      <button ion-button round class="-main" [disabled]="!form.valid" (click)="createWallet()">Create</button>
+      <app-button class="negative" (click)="cancel()">Cancel</app-button>
+      <app-button class="primary" [disabled]="!form.valid" (click)="confirmCreateWallet()">Create</app-button>
     </div>
   </div>
 </ion-content>

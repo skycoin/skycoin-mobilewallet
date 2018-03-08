@@ -1,0 +1,46 @@
+<svg width="23" height="18" viewBox="0 0 23 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Group</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-3902 -474)">
+<rect x="3902" y="474" width="23" height="18" fill="#FFFFFF"/>
+<clipPath id="clip-0" clip-rule="evenodd">
+<path d="M 3580 -220L 3994 -220L 3994 516L 3580 516L 3580 -220Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="Wallet Detail 2" clip-path="url(#clip-0)">
+<path d="M 3580 -220L 3994 -220L 3994 516L 3580 516L 3580 -220Z" fill="#FFFFFF"/>
+<g id="Table">
+<g id="Container">
+<use xlink:href="#path0_fill" transform="translate(3580 -30)" fill="#F7F7F7"/>
+</g>
+</g>
+<g id="Tab Bar / Wallets Active">
+<g id="BG">
+<use xlink:href="#path1_fill" transform="translate(3580 450)" fill="#FBFBFB"/>
+</g>
+<clipPath id="clip-1" clip-rule="evenodd">
+<path d="M 3837 450L 3994 450L 3994 516L 3837 516L 3837 450Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="Transactions" clip-path="url(#clip-1)">
+<clipPath id="clip-2" clip-rule="evenodd">
+<path d="M 3897 467L 3929 467L 3929 499L 3897 499L 3897 467Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="icons / transactions-black" opacity="0.2" clip-path="url(#clip-2)">
+<g id="Group">
+<g id="Vector">
+<use xlink:href="#path2_stroke" transform="translate(3903 483.111)" fill="#1E2227"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path2_stroke" transform="matrix(-1 -1.22465e-16 1.22465e-16 -1 3924 482.778)" fill="#1E2227"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 0 0L 414 0L 414 546L 0 546L 0 0Z"/>
+<path id="path1_fill" fill-rule="evenodd" d="M 0 0L 414 0L 414 66L 0 66L 0 0Z"/>
+<path id="path2_stroke" d="M 0 3.88889L -0.613941 3.09954C -0.857527 3.28899 -1 3.5803 -1 3.88889C -1 4.19748 -0.857527 4.48878 -0.613941 4.67824L 0 3.88889ZM 21 4.88889C 21.5523 4.88889 22 4.44117 22 3.88889C 22 3.3366 21.5523 2.88889 21 2.88889L 21 4.88889ZM 5.61394 0.789352C 6.04989 0.450282 6.12842 -0.177993 5.78935 -0.613941C 5.45028 -1.04989 4.82201 -1.12842 4.38606 -0.789352L 5.61394 0.789352ZM 4.38606 8.56713C 4.82201 8.9062 5.45028 8.82767 5.78935 8.39172C 6.12842 7.95577 6.04989 7.3275 5.61394 6.98843L 4.38606 8.56713ZM 0 4.88889L 21 4.88889L 21 2.88889L 0 2.88889L 0 4.88889ZM 0.613941 4.67824L 5.61394 0.789352L 4.38606 -0.789352L -0.613941 3.09954L 0.613941 4.67824ZM -0.613941 4.67824L 4.38606 8.56713L 5.61394 6.98843L 0.613941 3.09954L -0.613941 4.67824Z"/>
+</defs>
+</svg>
