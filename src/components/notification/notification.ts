@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'notification',
@@ -7,4 +7,9 @@ import { Component, Input } from '@angular/core';
 export class NotificationComponent {
   @Input() text: string;
   @Input() color: string;
+  @Output() action = new EventEmitter();
+
+  onClick() {
+    this.action.emit();
+  }
 }

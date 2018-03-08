@@ -312,3 +312,11 @@ ion-buttons {
   height: 16px;
   padding: 0;
 }
+
+.ion-ios-notification-close,
+.ion-md-notification-close {
+  content: url(../assets/icon/notification-close.svg);
+  width: 16px;
+  height: 16px;
+  padding: 0;
+}

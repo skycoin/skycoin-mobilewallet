@@ -1,5 +1,6 @@
 <!-- Generated template for the NotificationComponent component -->
 <div class="-notification" [ngStyle]="{'background-color': color}">
-  <ion-icon name="notification-ok"></ion-icon> 
+  <ion-icon name="notification-ok"></ion-icon>
   <span>{{text}}</span>
+  <ion-icon (click)="onClick()" class="-notification-close" name="notification-close"></ion-icon>
 </div>
