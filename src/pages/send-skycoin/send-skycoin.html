@@ -13,25 +13,66 @@
   <div [formGroup]="form">
     <div class="form-group">
       <div class="select-send-sky">
-        <ion-label>Send from</ion-label>
-        <ion-select formControlName="wallet">
-          <ion-option *ngFor="let wallet of wallet.all() | async" [value]="wallet.label">{{ wallet.label }}</ion-option>
-        </ion-select>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label>Send from</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-select formControlName="wallet">
+                <ion-option *ngFor="let wallet of wallet.all() | async" [value]="wallet.label">{{ wallet.label }}</ion-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </div>
-
-    </div>
-
-    <div class="form-group">
-      <ion-label>Send to</ion-label>
-      <ion-input formControlName="address" type="text"></ion-input>
     </div>
     <div class="form-group">
-      <ion-label>Amount</ion-label>
-      <ion-input formControlName="amount" type="text"></ion-input>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label>Send to</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-10>
+            <ion-input formControlName="address" type="text"></ion-input>
+          </ion-col>
+          <ion-col col-2>
+            <ion-icon name="sky-qr2"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
     <div class="form-group">
-      <ion-label>Notes</ion-label>
-      <ion-textarea formControlName="notes" rows="2"></ion-textarea>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label>Amount</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input formControlName="amount" type="text"></ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div class="form-group">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label>Notes</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-textarea formControlName="notes" rows="2"></ion-textarea>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
     <div class="buttons">
       <app-button class="negative" (click)="cancel()">Cancel</app-button>

@@ -41,11 +41,12 @@ page-send-skycoin {
 
   .form-group {
     width: 90%;
-    margin: 15px auto;
+    margin: 0px auto;
     ion-label {
       text-align: left;
       font-size: 14px;
       margin: 0;
+      margin-bottom: -15px;
     }
     .text-input-md {
       margin: 0;

@@ -65,5 +65,6 @@
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <allow-navigation href="http://192.168.0.100:8100" />
     <allow-navigation href="http://10.42.0.1:8100" />
+    <plugin name="cordova-plugin-qrscanner" spec="^2.5.0" />
     <engine name="android" spec="6.4.0" />
 </widget>
