@@ -1,4 +1,8 @@
 app-button {
+  .button-round-md {
+    border-radius: 64px;
+    padding: 5px 30px 0px 30px;
+}
   &.primary {
     button {
       width: auto !important;
