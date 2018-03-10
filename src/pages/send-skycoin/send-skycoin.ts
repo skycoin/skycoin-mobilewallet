@@ -18,13 +18,12 @@ import { Toast } from '@ionic-native/toast';
 })
 export class SendSkycoinPage implements OnInit {
   @ViewChild('button') button: ButtonComponent;
-  sentTo:string;
+  sentTo: string;
   form: FormGroup;
   loading = false;
   seedRequired: boolean;
   sum: number = 0;
   wallets: Subject<WalletModel[]>;
-  
 
   constructor(
     private formBuilder: FormBuilder,
@@ -70,12 +69,13 @@ export class SendSkycoinPage implements OnInit {
 
   scan() {
     this.barcodeScanner.scan().then((barcodeData) => {
-      this.sentTo=barcodeData.text;
+      this.sentTo = barcodeData.text;
     }, (err) => {
       this.toast.show(err, '5000', 'center').subscribe(
         toast => {
+          // tslint:disable-next-line:no-console
           console.log(toast);
-        }
+        },
       );
     });
   }
