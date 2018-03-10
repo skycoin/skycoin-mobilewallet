@@ -38,10 +38,10 @@
         </ion-row>
         <ion-row>
           <ion-col col-10>
-            <ion-input formControlName="address" type="text"></ion-input>
+            <ion-input [(ngModel)]="sentTo" formControlName="address" type="text" ></ion-input>
           </ion-col>
           <ion-col col-2>
-            <ion-icon name="sky-qr2"></ion-icon>
+            <ion-icon (click)="scan()" name="sky-qr2"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-grid>

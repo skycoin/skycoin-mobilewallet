@@ -8,6 +8,8 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { SecureStorage } from '@ionic-native/secure-storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Toast } from '@ionic-native/toast';
 import { IonicStorageModule } from '@ionic/storage';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { BalanceComponent } from '../components/balance/balance';
@@ -95,6 +97,8 @@ import { MyApp } from './app.component';
     SecureStorage,
     SecureStorageProvider,
     Clipboard,
+    BarcodeScanner,
+    Toast,
   ],
 })
-export class AppModule {}
+export class AppModule { }
