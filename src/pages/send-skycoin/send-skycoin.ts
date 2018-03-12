@@ -9,12 +9,16 @@ import { WalletProvider } from '../../providers/wallet/wallet.provider';
 import { WalletsPage } from '../wallets/wallets';
 import { ButtonComponent } from './../../components/button/button.component';
 
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Toast } from '@ionic-native/toast';
+
 @Component({
   selector: 'page-send-skycoin',
   templateUrl: 'send-skycoin.html',
 })
 export class SendSkycoinPage implements OnInit {
   @ViewChild('button') button: ButtonComponent;
+  sentTo: string;
   form: FormGroup;
   loading = false;
   seedRequired: boolean;
@@ -28,6 +32,8 @@ export class SendSkycoinPage implements OnInit {
     private secureStorage: SecureStorageProvider,
     public view: ViewController,
     public wallet: WalletProvider,
+    private barcodeScanner: BarcodeScanner,
+    private toast: Toast,
   ) {
     if (this.secureStorage.secureStorageDisabled) {
       this.seedRequired = true;
@@ -59,6 +65,19 @@ export class SendSkycoinPage implements OnInit {
       );
 
     this.resetForm();
+  }
+
+  scan() {
+    this.barcodeScanner.scan().then((barcodeData) => {
+      this.sentTo = barcodeData.text;
+    }, (err) => {
+      this.toast.show(err, '5000', 'center').subscribe(
+        toast => {
+          // tslint:disable-next-line:no-console
+          console.log(toast);
+        },
+      );
+    });
   }
 
   private initForm() {

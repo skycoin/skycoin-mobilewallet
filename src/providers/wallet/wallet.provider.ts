@@ -219,7 +219,6 @@ export class WalletProvider {
           this.wallets.next(wallets);
           this.refreshBalances();
         },
-        error => console.log(error),
       );
   }
 }

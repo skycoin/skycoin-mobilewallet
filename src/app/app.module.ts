@@ -2,18 +2,21 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Clipboard } from '@ionic-native/clipboard';
 import { File } from '@ionic-native/file';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { SecureStorage } from '@ionic-native/secure-storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Toast } from '@ionic-native/toast';
 import { IonicStorageModule } from '@ionic/storage';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { BalanceComponent } from '../components/balance/balance';
 import { ButtonComponent } from '../components/button/button.component';
 import { HeaderComponent } from '../components/header/header';
 import { ModalComponent } from '../components/modal/modal';
+import { NotificationComponent } from '../components/notification/notification';
 import { QrCodeComponent } from '../components/qr-code/qr-code';
 import { CounttoDirective } from '../directives/countto/countto';
 import { AddWalletPage } from '../pages/add-wallet/add-wallet';
@@ -57,6 +60,7 @@ import { MyApp } from './app.component';
     AddressPipe,
     HeaderComponent,
     ButtonComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,6 +97,8 @@ import { MyApp } from './app.component';
     SecureStorage,
     SecureStorageProvider,
     Clipboard,
+    BarcodeScanner,
+    Toast,
   ],
 })
-export class AppModule {}
+export class AppModule { }
