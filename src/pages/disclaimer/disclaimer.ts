@@ -8,7 +8,6 @@ import { PincodePage } from '../pincode/pincode';
   templateUrl: 'disclaimer.html',
 })
 export class DisclaimerPage implements OnInit {
-
   disclaimerAccepted: boolean;
   showDisclaimer: boolean;
 
@@ -26,13 +25,13 @@ export class DisclaimerPage implements OnInit {
         } else {
           this.showDisclaimer = true;
         }
-      })
+      });
     });
   }
 
   acceptDisclaimer() {
     this.storage.set('disclaimer_accepted', true).then(() => {
       this.nav.setRoot(PincodePage);
-    })
+    });
   }
 }

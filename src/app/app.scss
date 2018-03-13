@@ -2,7 +2,7 @@
 
 $gradient-blue-dark: #0072ff;
 $gradient-blue-dark-transparent: rgba(0, 114, 255, 0.7);
-$gradient-blue-light: #00C3ff;
+$gradient-blue-light: #00c3ff;
 $gradient-blue-light-transparent: rgba(0, 195, 255, 0.7);
 
 h1 {
@@ -10,10 +10,6 @@ h1 {
   text-align: center;
   font-size: 40px;
   margin: 0;
-}
-
-.scroll-content {
-  margin-top: 0 !important;
 }
 
 .split-background {
@@ -31,8 +27,8 @@ h1 {
   margin-right: 10%;
   padding: 5%;
   background: white;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .inline-button {
@@ -41,38 +37,90 @@ h1 {
 
 .header-action-right {
   display: inline-block;
-  font-size: 2.0em;
+  font-size: 2em;
   margin-right: 0.8em;
 }
 
 ion-buttons {
-  order: 1
+  order: 1;
 }
 
 .sky-container {
   background: $gradient-blue-dark; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left top, $gradient-blue-dark, $gradient-blue-light); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom right, $gradient-blue-dark, $gradient-blue-light); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom right, $gradient-blue-dark, $gradient-blue-light); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom right, $gradient-blue-dark, $gradient-blue-light); /* Standard syntax */
+  background: -webkit-linear-gradient(
+    left top,
+    $gradient-blue-dark,
+    $gradient-blue-light
+  ); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(
+    bottom right,
+    $gradient-blue-dark,
+    $gradient-blue-light
+  ); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(
+    bottom right,
+    $gradient-blue-dark,
+    $gradient-blue-light
+  ); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(
+    to bottom right,
+    $gradient-blue-dark,
+    $gradient-blue-light
+  ); /* Standard syntax */
   height: 100%;
   width: 100%;
 }
 
 .primary-gradient {
   background: $gradient-blue-dark; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left top, $gradient-blue-dark, $gradient-blue-light); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom right, $gradient-blue-dark, $gradient-blue-light); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom right, $gradient-blue-dark, $gradient-blue-light); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom right, $gradient-blue-dark, $gradient-blue-light); /* Standard syntax */
+  background: -webkit-linear-gradient(
+    left top,
+    $gradient-blue-dark,
+    $gradient-blue-light
+  ); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(
+    bottom right,
+    $gradient-blue-dark,
+    $gradient-blue-light
+  ); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(
+    bottom right,
+    $gradient-blue-dark,
+    $gradient-blue-light
+  ); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(
+    to bottom right,
+    $gradient-blue-dark,
+    $gradient-blue-light
+  ); /* Standard syntax */
 }
 
 .primary-header-background {
   background: $gradient-blue-dark; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left top, $gradient-blue-dark-transparent, $gradient-blue-light-transparent), url('../assets/img/header.png') center center no-repeat; /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom right, $gradient-blue-dark-transparent, $gradient-blue-light-transparent), url('../assets/img/header.png') center center no-repeat; /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom right, $gradient-blue-dark-transparent, $gradient-blue-light-transparent), url('../assets/img/header.png') center center no-repeat; /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom right, $gradient-blue-dark-transparent, $gradient-blue-light-transparent), url('../assets/img/header.png') center center no-repeat; /* Standard syntax */
+  background: -webkit-linear-gradient(
+      left top,
+      $gradient-blue-dark-transparent,
+      $gradient-blue-light-transparent
+    ),
+    url('../assets/img/header.png') center center no-repeat; /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(
+      bottom right,
+      $gradient-blue-dark-transparent,
+      $gradient-blue-light-transparent
+    ),
+    url('../assets/img/header.png') center center no-repeat; /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(
+      bottom right,
+      $gradient-blue-dark-transparent,
+      $gradient-blue-light-transparent
+    ),
+    url('../assets/img/header.png') center center no-repeat; /* For Firefox 3.6 to 15 */
+  background: linear-gradient(
+      to bottom right,
+      $gradient-blue-dark-transparent,
+      $gradient-blue-light-transparent
+    ),
+    url('../assets/img/header.png') center center no-repeat; /* Standard syntax */
 }
 
 .column-80 {
@@ -125,9 +173,159 @@ ion-buttons {
   width: 10%;
 }
 
-
 .warning-text {
   color: #fb003d;
   font-size: 12px;
   font-weight: 700;
+}
+
+.ion-ios-transactions,
+.ion-md-transactions {
+  content: url(../assets/icon/transactions-grey.svg);
+  width: 32px;
+  height: 32px;
+  padding: 6px 4px 2px;
+  opacity: 0.9;
+
+  &[ng-reflect-is-active='true'] {
+    content: url(../assets/icon/transactions-black.svg);
+  }
+}
+
+.ion-ios-wallets,
+.ion-md-wallets {
+  content: url(../assets/icon/wallets-grey.svg);
+  width: 32px;
+  height: 32px;
+  padding: 6px 4px 2px;
+  opacity: 0.9;
+  &[ng-reflect-is-active='true'] {
+    content: url(../assets/icon/wallets-black.svg);
+  }
+}
+
+.ion-ios-sky-send,
+.ion-md-sky-send {
+  content: url(../assets/icon/send-white.svg);
+  width: 32px;
+  height: 32px;
+  margin: 0 0 0 10px;
+  opacity: 0.9;
+  transform-origin: unset !important;
+  transform: rotate(180deg) !important;
+  &[ng-reflect-is-active='true'] {
+    transform: rotate(180deg) !important;
+  }
+}
+
+.ion-ios-sky-back,
+.ion-md-sky-back {
+  content: url(../assets/icon/back-icon.svg);
+  width: 32px;
+  height: 32px;
+  margin: 0 0 0 10px;
+  opacity: 0.9;
+}
+
+.ion-ios-sky-refresh,
+.ion-md-sky-refresh {
+  content: url(../assets/icon/refresh-icon.svg);
+  width: 32px;
+  height: 32px;
+  margin: 0 0 0 10px;
+  opacity: 0.9;
+}
+
+.ion-ios-sky-plus,
+.ion-md-sky-plus {
+  content: url(../assets/icon/sky-plus.svg);
+  width: 16px;
+  height: 16px;
+  margin: 0 0 0 10px;
+  opacity: 0.9;
+}
+
+.ion-ios-sky-load,
+.ion-md-sky-load {
+  content: url(../assets/icon/sky-load.svg);
+  width: 16px;
+  height: 16px;
+  margin: 0 0 0 10px;
+  opacity: 0.9;
+}
+
+.blurred {
+  filter: blur(5px);
+}
+
+.ion-ios-backspace,
+.ion-md-backspace {
+  content: url(../assets/icon/backspace-black.svg);
+  width: 32px;
+  height: 32px;
+  padding: 6px 4px 2px;
+  opacity: 0.9;
+  &[ng-reflect-is-active='true'] {
+    content: url(../assets/icon/backspace-white.svg);
+  }
+}
+
+.ion-ios-receive-trans,
+.ion-md-receive-trans {
+  content: url(../assets/icon/receive-transaction.svg);
+  width: 32px;
+  height: 32px;
+  margin: 0 0 0 10px;
+  opacity: 0.9;
+}
+
+.ion-ios-send-trans,
+.ion-md-send-trans {
+  content: url(../assets/icon/send-transaction.svg);
+  width: 32px;
+  height: 32px;
+  margin: 0 0 0 10px;
+  opacity: 0.9;
+}
+
+.ion-ios-sky-qr,
+.ion-md-sky-qr {
+  content: url(../assets/icon/qr.svg);
+  width: 32px;
+  height: 32px;
+  margin: 0 0 0 10px;
+  opacity: 0.9;
+}
+
+.ion-ios-sky-qr2,
+.ion-md-sky-qr2 {
+  content: url(../assets/icon/qr2.svg);
+  width: 41px;
+  height: 41px;
+  margin: 5px 0 0 0px;
+  opacity: 0.9;
+}
+
+.ion-ios-sky-close,
+.ion-md-sky-close {
+  content: url(../assets/icon/sky-close.svg);
+  width: 16px;
+  height: 16px;
+  padding: 0;
+}
+
+.ion-ios-notification-ok,
+.ion-md-notification-ok {
+  content: url(../assets/icon/notification-ok.svg);
+  width: 16px;
+  height: 16px;
+  padding: 0;
+}
+
+.ion-ios-notification-close,
+.ion-md-notification-close {
+  content: url(../assets/icon/notification-close.svg);
+  width: 16px;
+  height: 16px;
+  padding: 0;
 }

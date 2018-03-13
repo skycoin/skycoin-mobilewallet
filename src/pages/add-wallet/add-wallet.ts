@@ -1,45 +1,70 @@
-import { Component, OnInit } from '@angular/core';
-import { WalletProvider } from '../../providers/wallet/wallet.provider';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ViewController } from 'ionic-angular';
+import { WalletProvider } from '../../providers/wallet/wallet.provider';
+import { ButtonComponent } from './../../components/button/button.component';
+import { SeedValidation } from './../../match';
 
 @Component({
   selector: 'page-add-wallet',
   templateUrl: 'add-wallet.html',
 })
 export class AddWalletPage implements OnInit {
-
+  @ViewChild('button') button: ButtonComponent;
+  showConfirm: boolean;
   form: FormGroup;
   seed: string;
 
   constructor(
-    private view: ViewController,
+    public view: ViewController,
     private wallet: WalletProvider,
-  ) {}
-
-  ngOnInit() {
-    this.initForm();
+    fb: FormBuilder,
+  ) {
+    this.form = fb.group(
+      {
+        confirmSeed: ['', Validators.required],
+        label: ['', Validators.required],
+        seed: ['', Validators.required],
+      },
+      {
+        validator: SeedValidation.MatchSeed,
+      },
+    );
   }
 
-  cancel() {
-    this.view.dismiss()
+  ngOnInit() {
+    this.generateSeed();
   }
 
   createWallet() {
+    this.button.setLoading();
+    this.resetForm();
     this.wallet.create(this.form.value.label, this.form.value.seed);
+    this.button.setSuccess();
+    this.view.dismiss();
+  }
+
+  cancel() {
     this.view.dismiss();
   }
 
   generateSeed() {
-    this.wallet.generateSeed().subscribe(seed => this.form.controls.seed.setValue(seed));
+    this.wallet
+      .generateSeed()
+      .subscribe(seed => this.form.controls.seed.setValue(seed));
   }
 
-  private initForm() {
-    this.form = new FormGroup({
-      label: new FormControl('', Validators.required),
-      seed: new FormControl('', Validators.required),
-    });
+  confirmCreateWallet() {
+    this.showConfirm = true;
+  }
 
-    this.generateSeed();
+  closeModal() {
+    this.showConfirm = false;
+  }
+
+  private resetForm() {
+    this.form.controls.label.reset(undefined);
+    this.form.controls.seed.reset(undefined);
+    this.form.controls.confirmSeed.reset(undefined);
   }
 }

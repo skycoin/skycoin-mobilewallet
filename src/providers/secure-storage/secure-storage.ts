@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage';
-import 'rxjs/add/observable/fromPromise';
 import { Platform } from 'ionic-angular';
+import 'rxjs/add/observable/fromPromise';
 import { Observable } from 'rxjs/Observable';
 import { StorageApiProvider } from '../storage-api/storage-api.provider';
 
@@ -24,9 +24,9 @@ export class SecureStorageProvider {
     return Observable.fromPromise(this.platform.ready().then(() => {
       return this.secureStorage.create('wallets')
         .then((storage: SecureStorageObject) => {
-          return storage.get(key)
+          return storage.get(key);
         });
-    })).map(value => JSON.parse(value));
+    })).map((value) => JSON.parse(value));
   }
 
   set(key: string, value: any) {

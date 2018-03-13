@@ -4,9 +4,16 @@ $screen-padding: 32px;
   background-color: $background-color-normal;
 
   .-header {
-    min-height: 250px;
+    min-height: 174px;
     padding: 100px 0 0 0;
     width: 100%;
+  }
+  ion-list {
+    height: 100%;
+  }
+
+  .list-md {
+    margin: 0;
   }
 
   h1 span {
@@ -14,49 +21,52 @@ $screen-padding: 32px;
   }
 
   ion-item-divider {
-    min-height: 50px;
-    padding-right: 32px;
+    height: 50px;
   }
 
   ion-item-sliding .item .item-inner {
     font-size: 13px;
     min-height: 69px;
   }
-
-  .-action-buttons {
-    padding: 40px 0 20px;
-    margin-bottom: 66px;
-    text-align: center;
-
+  ion-item-sliding {
     button {
-      background-color: $background-color-normal;
-      box-shadow: none;
-      color: $text-color-normal;
-      font-size: 13px;
-      margin: 0 5px;
-      min-width: 140px;
+      text-transform: capitalize !important;
+    }
 
-      img {
-        height: 28px;
-        margin-left: -4px;
-        width: 28px;
-      }
+    ion-col {
+      font-family: Skycoin;
+      line-height: normal;
+      font-size: 13px;
+      color: #1e2227;
     }
   }
+
+  .-actions-buttons {
+    margin: 0 auto;
+    width: 250px;
+    button {
+      width: auto;
+      text-transform: capitalize;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+    }
+  }
+  .-actions-buttons-texts {
+    margin: 3px 0 0 6px;
+  }
+
+  .-header-table {
+    font-family: Skycoin;
+    line-height: normal;
+    font-size: 12px;
+
+    color: #1e2227;
+    mix-blend-mode: normal;
+    opacity: 0.25;
+  }
+  .item-md,
+  .item-divider-md {
+    padding: 0;
+  }
 }
-
-.fab ion-icon {
-  font-size: 3.6em;
-}
-
-ion-fab[bottom][right] {
-  right: 30px;
-  bottom: 30px;
-}
-
-button[ion-fab] {
-  height: 72px;
-  width: 72px;
-}
-
-
