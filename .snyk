@@ -1,0 +1,33 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:hoek:20180212':
+    - '@ionic/app-scripts > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > sntp > hoek':
+        patched: '2018-12-08T07:45:54.376Z'
+    - '@ionic/app-scripts > chokidar > fsevents > node-pre-gyp > hawk > hoek':
+        patched: '2018-12-08T07:45:54.376Z'
+    - '@ionic/app-scripts > chokidar > fsevents > node-pre-gyp > hawk > sntp > hoek':
+        patched: '2018-12-08T07:45:54.376Z'
+    - '@ionic/app-scripts > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > hoek':
+        patched: '2018-12-08T07:45:54.376Z'
+    - '@ionic/app-scripts > babili > babel-cli > chokidar > fsevents > node-pre-gyp > hawk > hoek':
+        patched: '2018-12-08T07:45:54.376Z'
+    - '@ionic/app-scripts > chokidar > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek':
+        patched: '2018-12-08T07:45:54.376Z'
+    - '@ionic/app-scripts > chokidar > fsevents > node-pre-gyp > hawk > boom > hoek':
+        patched: '2018-12-08T07:45:54.376Z'
+    - '@ionic/app-scripts > babili > babel-cli > chokidar > fsevents > node-pre-gyp > hawk > sntp > hoek':
+        patched: '2018-12-08T07:45:54.376Z'
+    - '@ionic/app-scripts > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > boom > hoek':
+        patched: '2018-12-08T07:45:54.376Z'
+    - '@ionic/app-scripts > babili > babel-cli > chokidar > fsevents > node-pre-gyp > hawk > boom > hoek':
+        patched: '2018-12-08T07:45:54.376Z'
+    - '@ionic/app-scripts > babili > babel-cli > chokidar > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek':
+        patched: '2018-12-08T07:45:54.376Z'
+    - '@ionic/app-scripts > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek':
+        patched: '2018-12-08T07:45:54.376Z'
+  'npm:lodash:20180130':
+    - cordova-android > cordova-common > plist > xmlbuilder > lodash:
+        patched: '2018-12-08T07:45:54.376Z'
