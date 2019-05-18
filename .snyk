@@ -1,0 +1,36 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.3
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:hoek:20180212':
+    - '@ionic/app-scripts > babili > babel-cli > chokidar > fsevents > node-pre-gyp > hawk > sntp > hoek':
+        patched: '2019-05-18T00:50:55.785Z'
+    - '@ionic/app-scripts > chokidar > fsevents > node-pre-gyp > hawk > hoek':
+        patched: '2019-05-18T00:50:55.785Z'
+    - '@ionic/app-scripts > chokidar > fsevents > node-pre-gyp > hawk > sntp > hoek':
+        patched: '2019-05-18T00:50:55.785Z'
+    - '@ionic/app-scripts > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > hoek':
+        patched: '2019-05-18T00:50:55.785Z'
+    - '@ionic/app-scripts > babili > babel-cli > chokidar > fsevents > node-pre-gyp > hawk > hoek':
+        patched: '2019-05-18T00:50:55.785Z'
+    - '@ionic/app-scripts > chokidar > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek':
+        patched: '2019-05-18T00:50:55.785Z'
+    - '@ionic/app-scripts > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > sntp > hoek':
+        patched: '2019-05-18T00:50:55.785Z'
+    - '@ionic/app-scripts > chokidar > fsevents > node-pre-gyp > hawk > boom > hoek':
+        patched: '2019-05-18T00:50:55.785Z'
+    - '@ionic/app-scripts > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > boom > hoek':
+        patched: '2019-05-18T00:50:55.785Z'
+    - '@ionic/app-scripts > babili > babel-cli > chokidar > fsevents > node-pre-gyp > hawk > boom > hoek':
+        patched: '2019-05-18T00:50:55.785Z'
+    - '@ionic/app-scripts > babili > babel-cli > chokidar > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek':
+        patched: '2019-05-18T00:50:55.785Z'
+    - '@ionic/app-scripts > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek':
+        patched: '2019-05-18T00:50:55.785Z'
+  'npm:lodash:20180130':
+    - cordova-android > cordova-common > plist > xmlbuilder > lodash:
+        patched: '2019-05-18T00:50:55.785Z'
+  'npm:semver:20150403':
+    - '@ionic/app-scripts > rollup-plugin-node-builtins > browserify-fs > levelup > semver':
+        patched: '2019-05-18T00:50:55.785Z'
