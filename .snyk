@@ -1,0 +1,78 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.14.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - '@ionic/app-scripts > babili > babel-cli > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > node-sass > sass-graph > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > webpack > async > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > xml2js > xmlbuilder > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-core > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-register > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > node-sass > gaze > globule > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > webpack > watchpack > async > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-core > babel-types > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-core > babel-generator > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-core > babel-traverse > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-core > babel-template > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-register > babel-core > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-core > babel-register > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-core > babel-generator > babel-types > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-core > babel-traverse > babel-types > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-core > babel-template > babel-types > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-register > babel-core > babel-types > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-register > babel-core > babel-generator > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-core > babel-template > babel-traverse > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-register > babel-core > babel-traverse > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-core > babel-helpers > babel-template > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-register > babel-core > babel-template > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-register > babel-core > babel-generator > babel-types > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-core > babel-template > babel-traverse > babel-types > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-register > babel-core > babel-traverse > babel-types > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-core > babel-helpers > babel-template > babel-types > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-register > babel-core > babel-template > babel-types > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-core > babel-helpers > babel-template > babel-traverse > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-register > babel-core > babel-template > babel-traverse > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-register > babel-core > babel-helpers > babel-template > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-register > babel-core > babel-template > babel-traverse > babel-types > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-register > babel-core > babel-helpers > babel-template > babel-types > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
+    - '@ionic/app-scripts > babili > babel-cli > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash':
+        patched: '2020-05-01T00:52:10.373Z'
